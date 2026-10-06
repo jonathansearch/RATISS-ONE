@@ -1,0 +1,14 @@
+=== tissu Ecoute ===
+=== EDUCATION (commune x9, nuit x2) ===
+=== ECOUTE ===
+entendu soleil : le tissu tient à 90 sur 100
+le tissu comprend soleil
+entendu lune : le tissu tient à 90 sur 100
+le tissu comprend lune
+entendu comete : le tissu tient à 0 sur 100
+le tissu ne comprend pas comete
+mot hors vocabulaire : banane
+liens : 7
+force moyenne : 77/100
+liens forts : 6
+=== fin du programme ===

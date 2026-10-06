@@ -1,0 +1,72 @@
+# ============================================================
+# ECOUTE — généré par porte-voix/pont.py (déterministe)
+# Transcription reçue : soleil lune comete banane
+# Régénérer : python3 porte-voix/pont.py --texte "..."
+# ============================================================
+
+tissu Ecoute
+
+  neurone chaud seuil 50
+  neurone froid seuil 50
+  neurone lointain seuil 50
+  neurone lumiere seuil 50
+  neurone mot_comete seuil 50
+  neurone mot_lune seuil 50
+  neurone mot_soleil seuil 50
+
+  lien mot_soleil chaud force 10
+  lien mot_soleil lumiere force 10
+  lien chaud lumiere force 10
+  lien mot_lune froid force 10
+  lien mot_lune lumiere force 10
+  lien froid lumiere force 10
+  lien mot_comete lointain force 10
+
+  motif MSOLEIL : mot_soleil chaud lumiere
+  motif MLUNE : mot_lune froid lumiere
+  motif MCOMETE : mot_comete lointain
+  motif TOUT : mot_soleil mot_lune chaud froid lumiere
+
+  dire === EDUCATION (commune x9, nuit x2) ===
+  répéter 9
+    rencontre TOUT
+    propager
+    renforcer
+    repos
+  fin
+  répéter 2
+    oublier
+  fin
+
+  dire === ECOUTE ===
+  rencontre MSOLEIL
+  propager
+  dire entendu soleil : le tissu tient à résonance MSOLEIL sur 100
+  repos
+  si MSOLEIL tient 60 alors
+    dire le tissu comprend soleil
+  sinon
+    dire le tissu ne comprend pas soleil
+  fin
+  rencontre MLUNE
+  propager
+  dire entendu lune : le tissu tient à résonance MLUNE sur 100
+  repos
+  si MLUNE tient 60 alors
+    dire le tissu comprend lune
+  sinon
+    dire le tissu ne comprend pas lune
+  fin
+  rencontre MCOMETE
+  propager
+  dire entendu comete : le tissu tient à résonance MCOMETE sur 100
+  repos
+  si MCOMETE tient 60 alors
+    dire le tissu comprend comete
+  sinon
+    dire le tissu ne comprend pas comete
+  fin
+  dire mot hors vocabulaire : banane
+  mesurer
+
+fin

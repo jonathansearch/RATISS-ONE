@@ -119,6 +119,20 @@ marge, pas un optimum — le balayage reste à faire.
 > asymétrique les fait coexister. La coexistence est un RÉGLAGE de la loi, pas
 > un module ajouté.
 
+### Leçon 6 👂 — L'oreille : le pont parle au tissu
+*Pont : `porte-voix/pont.py` — preuve : `preuves/sortie-ecoute.txt`*
+
+Transcription simulée « soleil lune comete banane » → programme Ratum généré →
+exécuté : soleil et lune COMPRIS (90), comete entendue mais NON COMPRISE (0),
+banane signalée HORS VOCABULAIRE. Statut honnête : le pont est prouvé de bout
+en bout, mais l'oreille est simulée — Phonon-2 (anglais seul, 164 Mo) n'est pas
+installable dans ce bac à sable et attend une machine avec audio (voir
+`porte-voix/PHONON.md`).
+
+> **Énoncé :** une porte sensorielle n'a pas besoin de comprendre : elle
+> convertit le monde en motifs, et c'est le TISSU qui comprend (ou pas).
+> L'inconnu entendu ne pollue pas le connu — il est rejeté proprement.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -163,7 +177,9 @@ pas encore branché.
       (livré 6 oct. : 300 nœuds, 40/40 à 75-85, témoins 0, 0,1 s)
 - [x] **v1-loi** — pas asymétriques + seuils adaptatifs, calibrés par mesure
       (livré 6 oct. : lie 10 / délie 3, 10 → 52, seuils 50 → 75 → 37)
-- [ ] **v1-voix** — brancher Phonon-2 comme porte voix (audio → motifs)
+- [x] **v1-voix (pont)** — socket voix prête + oreille simulée prouvée
+      (livré 6 oct. : soleil/lune 90 compris, comete 0, banane hors vocabulaire)
+- [ ] **vrai modèle branché** — Phonon-2 sur machine audio + oreille française
 - [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 

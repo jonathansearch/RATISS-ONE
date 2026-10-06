@@ -76,6 +76,15 @@ CAS = {
         "code": 1,
         "attend": ["ERREUR RATUM"],
     },
+    "porte-voix/ecoute.ratum": {
+        "code": 0,
+        "attend": [
+            "le tissu comprend soleil",
+            "le tissu comprend lune",
+            "le tissu ne comprend pas comete",
+            "mot hors vocabulaire : banane",
+        ],
+    },
     "jouets/j11-asymetrie.ratum": {
         "code": 0,
         "attend": ["JUGEMENT A : TIENT", "JUGEMENT B : TIENT"],
@@ -112,8 +121,23 @@ CAS = {
 }
 
 
+def reconstruire_ecoute():
+    """Régénère ecoute.ratum via le pont (déterministe) avant les contrôles."""
+    proc = subprocess.run(
+        [sys.executable, "porte-voix/pont.py", "--texte", "soleil lune comete banane"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    return proc.returncode == 0
+
+
 def main():
     echecs, controles = 0, 0
+    controles += 1
+    if reconstruire_ecoute():
+        print("OK : pont voix régénéré (ecoute.ratum)")
+    else:
+        print("ÉCHEC : le pont voix ne tourne pas")
+        return 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],
