@@ -8,7 +8,8 @@
 > et on ÉCOUTE le verdict (résonance, juge).
 >
 > Règles du jeu v0 : tout niveau vit entre 0 et 100, en nombres entiers.
-> Tout lien naît faible (10). Tout neurone s'allume à mi-charge (50).
+> Tout lien naît faible (10). Chaque neurone bat quand sa charge atteint
+> son seuil (50 par défaut, réglable par neurone depuis v0.1).
 > Le pas du renforcement vaut 10, celui de l'oubli 5.
 > Tout programme est déterministe : rejoué, il redit la même chose.
 
@@ -71,9 +72,9 @@
 
 ### 7. `renforcer` — LA LOI (RENFORCEMENT)
 - **Sens :** *ce qui se tient ensemble se renforce, ce qui se disjoint s'efface.*
-  Pour chaque lien : si les deux bouts battent (charge ≥ 50), la force monte
-  d'un pas ; sinon, elle descend d'un pas. Aucune exception, aucun pilote :
-  la structure fait le tri toute seule.
+  Pour chaque lien : si les deux bouts battent (chacun a atteint son seuil),
+  la force monte d'un pas ; sinon, elle descend d'un pas. Aucune exception,
+  aucun pilote : la structure fait le tri toute seule.
 - **Usage :** `renforcer [pas <n>]` (pas 10 par défaut)
 - **Exemple :** `renforcer`
 
@@ -184,6 +185,26 @@
 - `fin` et `sinon` hors bloc = erreur. Deuxième `tissu` = erreur (v0 : un seul cœur).
 - Les accents des mots-clés sont tolérés avec ou sans (`résonance` ou `resonance`,
   `répéter` ou `repeter`) : la machine ne doit pas buter sur un clavier.
+
+---
+
+## G. 🧪 Batterie v0.1 — les 10 jouets qui verrouillent la spec
+
+Chaque jouet prouve un recoin du langage. Tous rejoués le 6 octobre 2026
+(preuve : `preuves/sortie-jouets.txt`), tous vérifiés par `tests_verdicts.py`.
+
+| Jouet | Ce qu'il prouve | Chiffres observés |
+|---|---|---|
+| `j01-seuil` | chaque neurone bat à SON seuil | VIF 40 TIENT, DUR 20 ROMPT |
+| `j02-pas` | pas sur mesure du renforcement et de l'oubli | 35 TIENT, puis 0 ROMPT |
+| `j03-oubli` | l'oubli total, puis la rééducation | 70 → 0 ROMPT → 20 TIENT |
+| `j04-graver-relire` | la photo sauve le souvenir puis le réveille | 70 → 0 → 70 TIENT |
+| `j05-si-sinon` | les deux chemins du choix, sans erreur parasite | `alors` + `sinon`, zéro ERREUR |
+| `j06-motif-sans-liens` | sans liens internes, résonance nulle | 0 et 0, deux ROMPT |
+| `j07-emboitement-plafond` | boucles emboîtées + plafond à 100 | 12 rencontres → 100 TIENT |
+| `j08-repos` | le repos éteint les charges (loi après repos affaiblit) | 50 → 40 ROMPT |
+| `j09-propagation` | l'activité voyage de proche en proche | une vague 95, deux vagues 100 |
+| `j10-erreur` | l'erreur nette : motif inconnu = code 1 + ligne fautive | `ERREUR RATUM` |
 
 ---
 

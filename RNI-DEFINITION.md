@@ -116,7 +116,8 @@ pas encore branché.
 
 ## 7. Feuille de route
 
-- [ ] **v0.1** — stabiliser la spec sur une dizaine de programmes-jouets
+- [x] **v0.1** — stabiliser la spec sur une dizaine de programmes-jouets
+      (livré 6 oct. : seuils actifs par neurone + batterie de 10 jouets, 42/42 contrôles verts)
 - [ ] **v0.2** — motifs de mots vrais (premier vocabulaire tissé à la main)
 - [ ] **v0.3** — mesurer le passage à l'échelle (centaines de nœuds) et publier les chiffres
 - [ ] **v1** — pas asymétriques + seuils adaptatifs, calibrés par mesure

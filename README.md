@@ -18,7 +18,8 @@
 | 🌱 `rni-simple.ratum` | 3 neurones, 5 rencontres | forme apprise 10 → **60/100**, étrangère **0** |
 | 🔥 `rni-complexe.ratum` | 8 neurones, éducation en 4 phases | SOLEIL **90**, LUNE **90**, témoin ORAGE **0** |
 | 🌊 `rni-interference.ratum` | 2 formes sans rien en commun | le nouveau **chasse l'ancien** (70 → 10) |
-| ⚙️ `ratum.py` | interprète de référence | 3/3 programmes, **9/9 verdicts conformes** |
+| 🧪 `jouets/` (v0.1) | 10 jouets, un par recoin du langage | seuils, pas, oubli, photo, choix, plafond, vagues, erreur nette |
+| ⚙️ `ratum.py` | interprète de référence | 13/13 programmes, **42/42 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 
 ---
@@ -31,7 +32,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # vérifie les 9 verdicts
+python3 tests_verdicts.py               # vérifie les 42 contrôles (13 programmes)
 ```
 
 Zéro dépendance : que du Python standard. Déterministe : mêmes entrées, mêmes sorties, toujours.
@@ -79,8 +80,9 @@ RATISS-ONE/
 ├── rni-simple.ratum        # algorithme simplifié (RNI minimal)
 ├── rni-complexe.ratum      # algorithme ultra-complexe (éducation complète)
 ├── rni-interference.ratum  # preuve de l'interférence vraie
+├── jouets/                 # batterie v0.1 : j01..j10
 ├── ratum.py                # interprète de référence (le berceau)
-├── tests_verdicts.py       # vérification automatique des 9 verdicts
+├── tests_verdicts.py       # vérification automatique des 42 contrôles
 ├── preuves/                # sorties d'exécution datées
 ├── MANIFESTE.json          # empreintes SHA-256 de chaque fichier
 └── LICENSE                 # MIT

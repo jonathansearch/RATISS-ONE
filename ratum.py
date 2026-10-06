@@ -56,7 +56,8 @@ class Interprete:
         return tuple(sorted((a, b)))
 
     def actif(self, nom):
-        return self.tissu.neurones[nom]["charge"] >= self.MOITIE
+        n = self.tissu.neurones[nom]
+        return n["charge"] >= n["seuil"]
 
     # ---------- analyse des blocs ----------
 

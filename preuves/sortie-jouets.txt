@@ -1,0 +1,71 @@
+########## jouets/j01-seuil.ratum ##########
+=== tissu Seuils ===
+VIF tient à 40 sur 100
+DUR tient à 20 sur 100
+JUGEMENT VIF : TIENT (40/100, seuil 30)
+JUGEMENT DUR : ROMPT (20/100, seuil 30)
+=== fin du programme ===
+
+########## jouets/j02-pas.ratum ##########
+=== tissu Pas ===
+après un pas de 25 : 35 sur 100
+JUGEMENT M : TIENT (35/100, seuil 30)
+après un oubli de 40 : 0 sur 100
+JUGEMENT M : ROMPT (0/100, seuil 10)
+=== fin du programme ===
+
+########## jouets/j03-oubli.ratum ##########
+=== tissu Renaissance ===
+appris : 70 sur 100
+après la longue nuit : 0 sur 100
+JUGEMENT M : ROMPT (0/100, seuil 10)
+rééduqué : 20 sur 100
+JUGEMENT M : TIENT (20/100, seuil 10)
+=== fin du programme ===
+
+########## jouets/j04-graver-relire.ratum ##########
+=== tissu Photo ===
+tissu gravé dans jouets/mem.scroll
+gravé : 70 sur 100
+après l oubli : 0 sur 100
+tissu relu depuis jouets/mem.scroll
+après relecture : 70 sur 100
+JUGEMENT M : TIENT (70/100, seuil 60)
+=== fin du programme ===
+
+########## jouets/j05-si-sinon.ratum ##########
+=== tissu Choix ===
+branche alors : la forme apprise tient
+branche sinon : l inconnu est rejeté
+=== fin du programme ===
+
+########## jouets/j06-motif-sans-liens.ratum ##########
+=== tissu Silence ===
+JUGEMENT SEUL : ROMPT (0/100, seuil 10)
+JUGEMENT PAIR : ROMPT (0/100, seuil 10)
+=== fin du programme ===
+
+########## jouets/j07-emboitement-plafond.ratum ##########
+=== tissu Plafond ===
+après 12 rencontres : 100 sur 100
+JUGEMENT M : TIENT (100/100, seuil 100)
+=== fin du programme ===
+
+########## jouets/j08-repos.ratum ##########
+=== tissu Repos ===
+après repos puis loi : 40 sur 100
+JUGEMENT M : ROMPT (40/100, seuil 45)
+=== fin du programme ===
+
+########## jouets/j09-propagation.ratum ##########
+=== tissu Vague ===
+après une vague : 95 sur 100
+JUGEMENT ABC : TIENT (95/100, seuil 95)
+après deux vagues : 100 sur 100
+JUGEMENT ABC : TIENT (100/100, seuil 100)
+=== fin du programme ===
+
+########## jouets/j10-erreur.ratum ##########
+=== tissu Erreur ===
+ERREUR RATUM — ligne 4 : usage : rencontre <motif> (motif déclaré)
+
