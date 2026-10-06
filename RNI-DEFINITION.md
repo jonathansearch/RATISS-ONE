@@ -95,6 +95,16 @@ Observation honnête : la présentation séquentielle seule s'efface mutuellemen
 > le cousin tient à moitié, l'inconnu ne tient pas. Et à 12 mots, seule
 > l'éducation commune grave durablement — la présentation isolée s'efface.
 
+### Leçon 4 📏 — L'échelle : à 300 nœuds la loi tient, et l'éducation élague
+*Généré par `outils/tisser_grand.py` (graine 20261006) — mesures : `echelle/MESURES.md`*
+
+300 neurones, 1200 liens, 40 motifs éduqués + 10 témoins : **40/40 TIENT
+(75-85), 10/10 témoins à 0**, en 0,1 seconde. Observation émergente : les liens
+que l'éducation ne visite pas retombent à zéro — **le tissu élague tout seul**.
+
+> **Énoncé :** la loi du RNI passe à l'échelle sans réglage nouveau, et
+> l'éducation commune taille le tissu : ce qu'on ne montre jamais s'efface.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -135,7 +145,8 @@ pas encore branché.
       (livré 6 oct. : seuils actifs par neurone + batterie de 10 jouets, 42/42 contrôles verts)
 - [x] **v0.2** — motifs de mots vrais (premier vocabulaire tissé à la main)
       (livré 6 oct. : 12 mots, 12/12 TIENT, cousin 40, inconnu 0)
-- [ ] **v0.3** — mesurer le passage à l'échelle (centaines de nœuds) et publier les chiffres
+- [x] **v0.3** — mesurer le passage à l'échelle (centaines de nœuds) et publier les chiffres
+      (livré 6 oct. : 300 nœuds, 40/40 à 75-85, témoins 0, 0,1 s)
 - [ ] **v1** — pas asymétriques + seuils adaptatifs, calibrés par mesure
 - [ ] **v1** — brancher Phonon-2 comme porte voix (audio → motifs)
 - [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)

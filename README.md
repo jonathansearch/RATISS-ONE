@@ -20,7 +20,8 @@
 | 🌊 `rni-interference.ratum` | 2 formes sans rien en commun | le nouveau **chasse l'ancien** (70 → 10) |
 | 🧪 `jouets/` (v0.1) | 10 jouets, un par recoin du langage | seuils, pas, oubli, photo, choix, plafond, vagues, erreur nette |
 | 📖 `vocabulaire.ratum` (v0.2) | 12 mots vrais + cousin + inconnu | **12/12 TIENT (80-90)**, cousin 40, inconnu 0 |
-| ⚙️ `ratum.py` | interprète de référence | 14/14 programmes, **49/49 contrôles verts** |
+| 📏 `echelle/` (v0.3) | 300 neurones, 1200 liens, 50 motifs | **40/40 TIENT (75-85)**, témoins 0, 0,1 s |
+| ⚙️ `ratum.py` | interprète de référence | 15/15 programmes, **54/54 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 
 ---
@@ -33,7 +34,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # vérifie les 49 contrôles (14 programmes)
+python3 tests_verdicts.py               # vérifie les 54 contrôles (15 programmes)
 ```
 
 Zéro dépendance : que du Python standard. Déterministe : mêmes entrées, mêmes sorties, toujours.
@@ -82,6 +83,8 @@ RATISS-ONE/
 ├── rni-complexe.ratum      # algorithme ultra-complexe (éducation complète)
 ├── rni-interference.ratum  # preuve de l'interférence vraie
 ├── vocabulaire.ratum       # v0.2 : 12 mots tissés à la main
+├── echelle/                # v0.3 : grand tissu + MESURES.md
+├── outils/                 # tisseurs déterministes
 ├── jouets/                 # batterie v0.1 : j01..j10
 ├── ratum.py                # interprète de référence (le berceau)
 ├── tests_verdicts.py       # vérification automatique des 42 contrôles

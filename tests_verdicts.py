@@ -76,6 +76,11 @@ CAS = {
         "code": 1,
         "attend": ["ERREUR RATUM"],
     },
+    "echelle/grand.ratum": {
+        "code": 0,
+        "attend": ["JUGEMENT C00 : TIENT", "JUGEMENT T09 : ROMPT", "=== fin du programme ==="],
+        "absent": ["ERREUR"],
+    },
     "vocabulaire.ratum": {
         "code": 0,
         "attend": [
