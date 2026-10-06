@@ -1,0 +1,48 @@
+# 🧠 CERVEAU.md — ce qu'on emprunte au cerveau humain (et ce qu'on ne prétend pas)
+
+**RATISS Labs · 6 octobre 2026 · MIT**
+
+> On ne copie pas le cerveau : on lui emprunte son PLAN — des portes bêtes,
+> un cœur qui tient, et deux mémoires (l'éphémère et la persistante).
+> Inspiré du vivant, prouvé par la mesure.
+
+## La carte : du son au son, comme dans la tête
+
+| Cerveau humain | RATISS-ONE | Rôle |
+|---|---|---|
+| Oreille + cochlée (l'onde → signaux) | `jfk.wav` + Phonon-2 | convertir le monde en motifs, SANS comprendre |
+| Cortex auditif (ordre des sons) | timestamps + mots du pont | garder l'ordre temporel des rencontres |
+| Aire de Wernicke (compréhension) | **le TISSU** (`english.ratum`) | comprendre = résonner ; ne pas tenir = ne pas comprendre |
+| Hippocampe (consolidation) | `répéter` + `renforcer` | rejouer pour graver : charges éphémères → forces persistantes |
+| Mémoire long terme (synapses) | **les FORCES des liens** | le souvenir EST le chemin — aucun fichier, aucune donnée stockée |
+| Aire de Broca (production) | verdicts `holds X` | formuler seulement ce qui est tenu |
+| Appareil vocal (poumons, larynx) | Piper + voix onnx | convertir les verdicts en ondes, SANS comprendre |
+
+## Les trois emprunts qui comptent
+
+1. **Deux mémoires, pas une.** Le cerveau distingue le vécu immédiat (qui
+   s'efface) et la trace (qui reste). Nous : `charge` (s'éteint au `repos`) et
+   `force` (persiste). C'est toute notre mission « zéro donnée stockée » : le
+   transcrit vit en RAM le temps d'un run, comme une charge — seules les
+   forces demeurent, comme des synapses.
+2. **La consolidation par répétition.** L'hippocampe rejoue la journée pendant
+   la nuit ; ce qui est rejoué reste. Nous : l'éducation commune + la nuit
+   (`oublier`) — ce qu'on répète ensemble se grave, le reste s'efface.
+3. **Des portes bêtes, un cœur intelligent.** La cochlée ne comprend pas la
+   musique ; le larynx ne comprend pas les mots. Nous : Phonon transcrit sans
+   comprendre, Piper parle sans comprendre — **seul le tissu comprend**
+   (leçon 7 : transcrire n'est pas comprendre).
+
+## Ce qu'on ne prétend PAS (honnêteté)
+
+- Pas de neurones biologiques : nos neurones sont des compteurs à seuil,
+  pas des cellules.
+- Pas de STDP réelle : notre loi est en pas entiers, pas en impulsions
+  temporelles fines (piste future, pas résultat).
+- Pas de sommeil, pas d'émotions, pas de conscience : la « nuit » est une
+  boucle `oublier`, rien de plus.
+- La carte ci-dessus est une INSPIRATION d'architecture, pas une preuve de
+  neuro-mimétisme. Ce qui est prouvé, c'est le comportement mesuré des
+  programmes — ni plus.
+
+*« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

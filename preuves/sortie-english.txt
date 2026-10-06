@@ -1,0 +1,17 @@
+=== tissu English ===
+=== PHASE 1 : presentation (3 fois chaque mot) ===
+=== PHASE 2 : education commune (9 fois) ===
+=== PHASE 3 : nuit (2 fois) ===
+=== VERDICTS ===
+JUGEMENT MAMERICANS : TIENT (83/100, seuil 60)
+JUGEMENT MCOUNTRY : TIENT (81/100, seuil 60)
+JUGEMENT MFELLOW : TIENT (81/100, seuil 60)
+JUGEMENT MASK : TIENT (90/100, seuil 60)
+JUGEMENT MHOME : ROMPT (41/100, seuil 60)
+JUGEMENT MCOMET : ROMPT (0/100, seuil 20)
+the stranger stays outside
+the cousin is half guessed : 41 sur 100
+liens : 26
+force moyenne : 70/100
+liens forts : 22
+=== fin du programme ===

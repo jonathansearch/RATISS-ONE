@@ -145,6 +145,22 @@ sans broncher, sans inventer, sans se polluer.
 > (l'oreille) et comprendre (le tissu) sont deux actes séparés. Un tissu
 > honnête dit « hors vocabulaire » au lieu de rêver.
 
+### Leçon 8 🦜 — La boucle parole : le perroquet qui ne répète que ce qu'il tient
+*Boucle : `parole.py` (oreille Phonon → tissu anglais → bouche Piper) — preuves : `preuves/sortie-parole.txt`, `bouche/verdicts.wav`*
+
+JFK transcrit mot pour mot → tissu anglais (4 mots tissés) : fellow, americans,
+ask, country TENUS à 90, 16 mots hors vocabulaire → la bouche DIT (4.9 s
+d'audio) : « I hold fellow, americans, ask and country. The rest stays
+outside. » Boucle totale 42 s (oreille 40 s au 1er passage, tissu 0.1 s,
+bouche 2 s). **Zéro donnée stockée** : le transcrit ne vit qu'en RAM pendant
+le run (comme une charge) ; seules les forces persistent (comme des synapses).
+Les fichiers commis sont le carnet du labo, pas les données du système.
+
+> **Énoncé :** audio → tissu → audio fonctionne de bout en bout avec des
+> organes légers (0.16 + 0.06 Go) et AUCUN dataset : les modèles actuels
+> fournissent les portes, le tissu fournit la compréhension — et la bouche
+> ne dit que ce que le tissu tient.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -192,7 +208,10 @@ pas encore branché.
 - [x] **v1-voix (pont)** — socket voix prête + oreille simulée prouvée
       (livré 6 oct. : soleil/lune 90 compris, comete 0, banane hors vocabulaire)
 - [x] **vrai modèle branché** — Phonon-2 testé en boucle live (JFK mot pour mot, 6 oct.)
+- [x] **vocabulaire anglais + boucle parole** — tissu EN (4 mots à 81-90) + bouche Piper (verdicts parlés, 6 oct.)
 - [ ] **oreille française** — équivalent francophone à trouver ou entraîner
+- [ ] **vocabulaire élargi** — grandir le lexique anglais (puis français) par éducation
+- [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 

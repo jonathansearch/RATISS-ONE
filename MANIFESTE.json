@@ -1,17 +1,21 @@
 {
  "depot": "RATISS-ONE",
  "date": "2026-10-06",
- "version": "v1-oreille-live",
+ "version": "v1-parole",
  "fichiers": {
+  "CERVEAU.md": "3e449cb5b2b08026a19ba27c12bdac38ce7137a2a56394996248678e0254b1de",
   "LANGAGE-RATUM.md": "7554160bda019d785366c77d62e41050e0d914a50307a28839a4357e302e25a5",
   "LICENSE": "3408e120fb868a0eff7e05eddd965c37a6241d0f73bde46cf282e42e386592da",
-  "README.md": "5e3f86cf9d6e119d03b2952107a48d300f48d35773b55232d5bc832418bb66c8",
-  "RNI-DEFINITION.md": "9d78b66c8ebe86df50d02f8d52083dd28c2d0d9b84615647a25e7a2e61bc6880",
+  "README.md": "3be6e1a7d7e627fc315b8ecaba39f770ffd229500d576e1854e21c4a092bb49f",
+  "RNI-DEFINITION.md": "4d151d02a1656d3190272b5a8a3e8d2f6382582b27e176ede11fe917f57563db",
+  "english.ratum": "c584d9055363084fbdf4a19b7f106fed1375761568529ac4b482ec975ea7e706",
+  "parole-ecoute.ratum": "71e3fa4496f147b458f00d64401b03a30a70eb63349724f3dc7cf7549af54a0b",
+  "parole.py": "2ab759207c35c83b93acb1dc6263eb4aeaeafac453bbdadc97721e76848e8d7e",
   "ratum.py": "b53a1037b8f2d55b8da8b49810c9e46749f951e8706e3bf4305a3544cb0ad431",
   "rni-complexe.ratum": "c0cbd5b53e513ef52623241d2993a4176e3896dc6467fb28110b3702f2464e2f",
   "rni-interference.ratum": "1033449f816695063d1246b1f94ee7675730a0a32c3912449960c13d8f0ce1ae",
   "rni-simple.ratum": "9d5230ff26d8a4cdb4a5ad1498c15f6af36b2bea5e1a88a39013caaae92bad73",
-  "tests_verdicts.py": "022864d1a444381fb0215ac6d3a527d092938f928f0c236ddeef1b0a9757cfe6",
+  "tests_verdicts.py": "7911e948a96c30b15fc56248d12242f6aff649e7acfdd908bd25af5fe4d8c314",
   "v1-coexistence.ratum": "8e70b1f9ab11775d4bac3a99d154bddebc9e41916228f9cf1f755bd24bc9d14c",
   "vocabulaire.ratum": "4881434a6de794413a3a6493fda50dfabdb10bc3ab1ec27954b64d435a2d42d3",
   "echelle/MESURES.md": "e28f13db33f0b29f48aedb635d61360c4c9efbadd136c6a8097be283dbace295",
@@ -41,11 +45,16 @@
   "preuves/sortie-echelle.txt": "aa33fe9c4f78645d4a79214c35729dc53f43684656b123c834d907a66d3a49cb",
   "preuves/sortie-ecoute-live.txt": "8474f85c5f3c96e2911e3f5f6c45d5bcc4984ef21f33fb21d7d84959c8a7e9fe",
   "preuves/sortie-ecoute.txt": "78e112ffac83652662ee6f944bee79a9f1848b47cb985b2a436ea0b33c6a67dc",
+  "preuves/sortie-english.txt": "d8e3ef14a6bb2e5264f4a3fe0f28460cd23cf9bf793a48ae4f90241ece262370",
   "preuves/sortie-interference.txt": "457277ed402eb29cfb3fdde2edfab8d76a6f39b202ad3600176bae422df6b36a",
   "preuves/sortie-jouets.txt": "d8c5a825a818654be288e3e17e543bb549402eb0a7ee8d9273804b46a8c2bc98",
+  "preuves/sortie-parole.txt": "4d6d46bf65a59db27f9cfe1670b8fb4179b1b8b4d160ec0bd08d6f815442ee7d",
   "preuves/sortie-simple.txt": "f3c2e808d21b453a50abb9f1ed551b64f7282afcdd477b4899c8707f743aad89",
   "preuves/sortie-vocabulaire.txt": "a97ed71783ba983e40055bbc19e342e413643aaa3e21745bea78fb5ef5ce54ab",
   "preuves/transcription-jfk.txt": "f3615b7d00a0df1180de3bca1d1589ce69ad0c7f5c48f8e542fdd5bc376b9077",
-  "v1/MESURES-V1.md": "98a1444f8c90bedf032f9bad3c55116786ab5f19abdf60d2615c078685ce0983"
+  "v1/MESURES-V1.md": "98a1444f8c90bedf032f9bad3c55116786ab5f19abdf60d2615c078685ce0983",
+  "bouche/PIPER.md": "c19bbf936636795781cb5c75dc785bae25b92ce182831cfbfce2c6793842d1f0",
+  "bouche/verdicts.wav": "0ac8dae915897fee8250c42d38344fda6ca2b090171715bb2b73f4388f40c95e",
+  "bouche/voix/en_US-lessac-medium.onnx.json": "efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0"
  }
 }

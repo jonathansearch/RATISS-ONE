@@ -23,7 +23,9 @@
 | 📏 `echelle/` (v0.3) | 300 neurones, 1200 liens, 50 motifs | **40/40 TIENT (75-85)**, témoins 0, 0,1 s |
 | ⚖️ `v1-coexistence` (v1) | symétrique vs asymétrique, même tissu | 10/10 ❌❌ → **52/52 ✅✅**, seuils 50→75→37 |
 | 👂 `porte-voix/` (v1) | oreille RÉELLE Phonon-2 + pont → tissu | JFK transcrit **mot pour mot**, tissu : 22x hors vocabulaire (leçon 7) |
-| ⚙️ `ratum.py` | interprète de référence | 19/19 programmes, **70/70 contrôles verts** |
+| 🦜 `parole.py` + `bouche/` | boucle audio → tissu → audio (Piper) | 4 mots **tenus à 90**, verdicts PARLÉS 4.9 s (leçon 8) |
+| 🧠 `CERVEAU.md` | carte d'inspiration : cerveau → organes | portes bêtes, cœur intelligent, 2 mémoires |
+| ⚙️ `ratum.py` | interprète de référence | 20/20 programmes, **77/77 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 
 ---
@@ -36,7 +38,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # vérifie les 70 contrôles (19 programmes)
+python3 tests_verdicts.py               # vérifie les 77 contrôles (20 programmes)
 ```
 
 Zéro dépendance : que du Python standard. Déterministe : mêmes entrées, mêmes sorties, toujours.
@@ -89,6 +91,11 @@ RATISS-ONE/
 ├── v1/                     # v1 : MESURES-V1.md (loi à deux mains)
 ├── v1-coexistence.ratum    # v1 : symétrique vs asymétrique
 ├── porte-voix/             # v1 : pont.py + PHONON.md + ecoute.ratum
+├── english.ratum           # tissu anglais (4 mots JFK)
+├── parole.py               # boucle audio -> tissu -> audio
+├── parole-ecoute.ratum     # généré par parole.py (témoin JFK)
+├── bouche/                 # Piper : PIPER.md + verdicts.wav (voix .onnx ignorée)
+├── CERVEAU.md              # carte d'inspiration cerveau -> organes
 ├── outils/                 # tisseurs déterministes
 ├── jouets/                 # batterie : j01..j12
 ├── ratum.py                # interprète de référence (le berceau)

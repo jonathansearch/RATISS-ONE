@@ -1,0 +1,40 @@
+=== 1. OREILLE : porte-voix/audio/jfk.wav ===
+transcrit (39.5 s) : And so, my fellow Americans, ask not what your country can do for you, ask what you can do for your country.
+=== 2. TISSU ===
+=== tissu Parole ===
+heard fellow : holds at 90 sur 100
+holds fellow
+heard americans : holds at 90 sur 100
+holds americans
+heard ask : holds at 90 sur 100
+holds ask
+heard country : holds at 90 sur 100
+holds country
+heard ask : holds at 90 sur 100
+holds ask
+heard country : holds at 90 sur 100
+holds country
+out of vocabulary : and
+out of vocabulary : so
+out of vocabulary : my
+out of vocabulary : not
+out of vocabulary : what
+out of vocabulary : your
+out of vocabulary : can
+out of vocabulary : do
+out of vocabulary : for
+out of vocabulary : you
+out of vocabulary : what
+out of vocabulary : you
+out of vocabulary : can
+out of vocabulary : do
+out of vocabulary : for
+out of vocabulary : your
+liens : 26
+force moyenne : 76/100
+liens forts : 22
+=== fin du programme ===
+=== 3. BOUCHE ===
+dit : I hold fellow, americans, ask and country. The rest stays outside.
+bouche/verdicts.wav écrit
+=== boucle totale : 41.8 s ===

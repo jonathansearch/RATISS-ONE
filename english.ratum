@@ -1,0 +1,131 @@
+# ============================================================
+# ENGLISH v1 — 4 mots anglais tissés à la main (mots de JFK)
+# RATISS Labs · langage Ratum (la langue reste la nôtre,
+# seul le vocabulaire passe en anglais pour l'oreille)
+#
+# Cousin HOMELAND (jamais présenté) : gradué.
+# Inconnu COMET (nœuds frais) : zéro.
+# ============================================================
+
+tissu English
+
+  # ---------- concepts partagés (6) ----------
+  neurone people seuil 50
+  neurone land seuil 50
+  neurone voice seuil 50
+  neurone duty seuil 50
+  neurone together seuil 50
+  neurone future seuil 50
+
+  # ---------- mots (4 appris + cousin + inconnu) ----------
+  neurone word_americans seuil 50
+  neurone word_country seuil 50
+  neurone word_fellow seuil 50
+  neurone word_ask seuil 50
+  neurone word_homeland seuil 50
+  neurone word_comet seuil 50
+  neurone distant seuil 50
+
+  # ---------- tissage ----------
+  # americans : people land together
+  lien word_americans people force 10
+  lien word_americans land force 10
+  lien word_americans together force 10
+  lien people land force 10
+  lien people together force 10
+  lien land together force 10
+  # country : people land future
+  lien word_country people force 10
+  lien word_country land force 10
+  lien word_country future force 10
+  lien people land force 10
+  lien people future force 10
+  lien land future force 10
+  # fellow : people together voice
+  lien word_fellow people force 10
+  lien word_fellow together force 10
+  lien word_fellow voice force 10
+  lien people together force 10
+  lien people voice force 10
+  lien together voice force 10
+  # ask : voice duty future
+  lien word_ask voice force 10
+  lien word_ask duty force 10
+  lien word_ask future force 10
+  lien voice duty force 10
+  lien voice future force 10
+  lien duty future force 10
+  # homeland (cousin) : land people future
+  lien word_homeland land force 10
+  lien word_homeland people force 10
+  lien word_homeland future force 10
+  lien land people force 10
+  lien land future force 10
+  lien people future force 10
+  # comet (inconnu)
+  lien word_comet distant force 10
+
+  motif MAMERICANS : word_americans people land together
+  motif MCOUNTRY : word_country people land future
+  motif MFELLOW : word_fellow people together voice
+  motif MASK : word_ask voice duty future
+  motif MHOME : word_homeland land people future
+  motif MCOMET : word_comet distant
+  motif TOUT : word_americans word_country word_fellow word_ask people land voice duty together future
+
+  dire === PHASE 1 : presentation (3 fois chaque mot) ===
+  répéter 3
+    rencontre MAMERICANS
+    propager
+    renforcer
+    repos
+    rencontre MCOUNTRY
+    propager
+    renforcer
+    repos
+    rencontre MFELLOW
+    propager
+    renforcer
+    repos
+    rencontre MASK
+    propager
+    renforcer
+    repos
+  fin
+
+  dire === PHASE 2 : education commune (9 fois) ===
+  répéter 9
+    rencontre TOUT
+    propager
+    renforcer
+    repos
+  fin
+
+  dire === PHASE 3 : nuit (2 fois) ===
+  répéter 2
+    oublier
+  fin
+
+  dire === VERDICTS ===
+  juger MAMERICANS 60
+  juger MCOUNTRY 60
+  juger MFELLOW 60
+  juger MASK 60
+  juger MHOME 60
+  juger MCOMET 20
+
+  si MCOMET tient 20 alors
+    dire ALERT : the stranger came in
+  sinon
+    dire the stranger stays outside
+  fin
+
+  si MHOME tient 60 alors
+    dire the cousin is taken for a friend
+  sinon
+    dire the cousin is half guessed : résonance MHOME sur 100
+  fin
+
+  mesurer
+
+fin

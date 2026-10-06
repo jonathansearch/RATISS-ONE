@@ -76,6 +76,17 @@ CAS = {
         "code": 1,
         "attend": ["ERREUR RATUM"],
     },
+    "english.ratum": {
+        "code": 0,
+        "attend": [
+            "JUGEMENT MAMERICANS : TIENT",
+            "JUGEMENT MASK : TIENT",
+            "JUGEMENT MHOME : ROMPT",
+            "JUGEMENT MCOMET : ROMPT",
+            "the stranger stays outside",
+            "the cousin is half guessed : 41 sur 100",
+        ],
+    },
     "porte-voix/ecoute.ratum": {
         "code": 0,
         "attend": [
