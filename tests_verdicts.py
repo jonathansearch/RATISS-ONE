@@ -76,6 +76,23 @@ CAS = {
         "code": 1,
         "attend": ["ERREUR RATUM"],
     },
+    "jouets/j11-asymetrie.ratum": {
+        "code": 0,
+        "attend": ["JUGEMENT A : TIENT", "JUGEMENT B : TIENT"],
+    },
+    "jouets/j12-adapter.ratum": {
+        "code": 0,
+        "attend": ["après le calme : a=37 b=37"],
+    },
+    "v1-coexistence.ratum": {
+        "code": 0,
+        "attend": [
+            "JUGEMENT A : ROMPT",
+            "JUGEMENT A : TIENT",
+            "JUGEMENT B : TIENT",
+            "l asymétrie fait coexister",
+        ],
+    },
     "echelle/grand.ratum": {
         "code": 0,
         "attend": ["JUGEMENT C00 : TIENT", "JUGEMENT T09 : ROMPT", "=== fin du programme ==="],

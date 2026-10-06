@@ -1,0 +1,59 @@
+# ============================================================
+# COEXISTENCE v1 — symétrique contre asymétrique, même tissu
+# RATISS Labs · langage Ratum v1
+#
+# Phase 1 : alternance symétrique -> les deux formes stagnent.
+# Phase 2 : alternance asymétrique (lier 10, délier 3) -> les deux
+# formes grandissent ensemble. La mesure tranche, pas l'avis.
+# ============================================================
+
+tissu Coexistence
+
+  neurone x seuil 50
+  neurone y seuil 50
+  neurone p seuil 50
+  neurone q seuil 50
+  lien x y force 10
+  lien p q force 10
+  motif A : x y
+  motif B : p q
+
+  dire === PHASE 1 : alternance SYMÉTRIQUE (6 tours) ===
+  répéter 6
+    rencontre A
+    propager
+    renforcer
+    repos
+    rencontre B
+    propager
+    renforcer
+    repos
+  fin
+  dire après le symétrique : A à résonance A , B à résonance B
+  juger A 40
+  juger B 40
+
+  dire === PHASE 2 : alternance ASYMÉTRIQUE (6 tours) ===
+  répéter 6
+    rencontre A
+    propager
+    renforcer lie 10 delie 3
+    repos
+    rencontre B
+    propager
+    renforcer lie 10 delie 3
+    repos
+  fin
+  dire après l asymétrique : A à résonance A , B à résonance B
+  juger A 40
+  juger B 40
+
+  si A tient 40 alors
+    dire l asymétrie fait coexister ce que le symétrique figeait
+  sinon
+    dire ALERTE : même l asymétrie n a pas suffi
+  fin
+
+  mesurer
+
+fin

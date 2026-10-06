@@ -21,7 +21,8 @@
 | 🧪 `jouets/` (v0.1) | 10 jouets, un par recoin du langage | seuils, pas, oubli, photo, choix, plafond, vagues, erreur nette |
 | 📖 `vocabulaire.ratum` (v0.2) | 12 mots vrais + cousin + inconnu | **12/12 TIENT (80-90)**, cousin 40, inconnu 0 |
 | 📏 `echelle/` (v0.3) | 300 neurones, 1200 liens, 50 motifs | **40/40 TIENT (75-85)**, témoins 0, 0,1 s |
-| ⚙️ `ratum.py` | interprète de référence | 15/15 programmes, **54/54 contrôles verts** |
+| ⚖️ `v1-coexistence` (v1) | symétrique vs asymétrique, même tissu | 10/10 ❌❌ → **52/52 ✅✅**, seuils 50→75→37 |
+| ⚙️ `ratum.py` | interprète de référence | 18/18 programmes, **64/64 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 
 ---
@@ -34,7 +35,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # vérifie les 54 contrôles (15 programmes)
+python3 tests_verdicts.py               # vérifie les 64 contrôles (18 programmes)
 ```
 
 Zéro dépendance : que du Python standard. Déterministe : mêmes entrées, mêmes sorties, toujours.
@@ -84,8 +85,10 @@ RATISS-ONE/
 ├── rni-interference.ratum  # preuve de l'interférence vraie
 ├── vocabulaire.ratum       # v0.2 : 12 mots tissés à la main
 ├── echelle/                # v0.3 : grand tissu + MESURES.md
+├── v1/                     # v1 : MESURES-V1.md (loi à deux mains)
+├── v1-coexistence.ratum    # v1 : symétrique vs asymétrique
 ├── outils/                 # tisseurs déterministes
-├── jouets/                 # batterie v0.1 : j01..j10
+├── jouets/                 # batterie : j01..j12
 ├── ratum.py                # interprète de référence (le berceau)
 ├── tests_verdicts.py       # vérification automatique des 42 contrôles
 ├── preuves/                # sorties d'exécution datées

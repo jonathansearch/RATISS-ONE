@@ -69,3 +69,18 @@ JUGEMENT ABC : TIENT (100/100, seuil 100)
 === tissu Erreur ===
 ERREUR RATUM — ligne 4 : usage : rencontre <motif> (motif déclaré)
 
+########## jouets/j11-asymetrie.ratum ##########
+=== tissu DeuxMains ===
+A tient à 52 sur 100
+B tient à 52 sur 100
+JUGEMENT A : TIENT (52/100, seuil 40)
+JUGEMENT B : TIENT (52/100, seuil 40)
+=== fin du programme ===
+
+########## jouets/j12-adapter.ratum ##########
+=== tissu SeuilsVivants ===
+naissance : a=50 b=50
+après le feu : a=75 b=75
+après le calme : a=37 b=37
+=== fin du programme ===
+

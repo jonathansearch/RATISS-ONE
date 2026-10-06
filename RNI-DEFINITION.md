@@ -105,6 +105,20 @@ que l'éducation ne visite pas retombent à zéro — **le tissu élague tout se
 > **Énoncé :** la loi du RNI passe à l'échelle sans réglage nouveau, et
 > l'éducation commune taille le tissu : ce qu'on ne montre jamais s'efface.
 
+### Leçon 5 ⚖️ — L'asymétrie : lier fort et délier doux fait coexister
+*Programme : `v1-coexistence.ratum` — mesures : `v1/MESURES-V1.md`*
+
+Deux formes disjointes alternées 6 tours : en symétrique (10/10), les deux
+stagnent à 10 (ROMPT) ; en asymétrique (lier 10, délier 3), les deux montent à
+52 (TIENT). Même tissu, même alternance — seule la balance des deux mains
+change. Bonus v1 : `adapter` rend les seuils vivants (50 → 75 au feu → 37 au
+calme). Calibration honnête : (10, 3) est la première paire qui marche avec
+marge, pas un optimum — le balayage reste à faire.
+
+> **Énoncé :** sous alternance, la loi symétrique fige les disjointes et la loi
+> asymétrique les fait coexister. La coexistence est un RÉGLAGE de la loi, pas
+> un module ajouté.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -147,8 +161,9 @@ pas encore branché.
       (livré 6 oct. : 12 mots, 12/12 TIENT, cousin 40, inconnu 0)
 - [x] **v0.3** — mesurer le passage à l'échelle (centaines de nœuds) et publier les chiffres
       (livré 6 oct. : 300 nœuds, 40/40 à 75-85, témoins 0, 0,1 s)
-- [ ] **v1** — pas asymétriques + seuils adaptatifs, calibrés par mesure
-- [ ] **v1** — brancher Phonon-2 comme porte voix (audio → motifs)
+- [x] **v1-loi** — pas asymétriques + seuils adaptatifs, calibrés par mesure
+      (livré 6 oct. : lie 10 / délie 3, 10 → 52, seuils 50 → 75 → 37)
+- [ ] **v1-voix** — brancher Phonon-2 comme porte voix (audio → motifs)
 - [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 

@@ -153,6 +153,7 @@ class Interprete:
             "motif": self.cmd_motif, "rencontre": self.cmd_rencontre,
             "propager": self.cmd_propager, "renforcer": self.cmd_renforcer,
             "oublier": self.cmd_oublier, "repos": self.cmd_repos,
+            "adapter": self.cmd_adapter,
             "resonance": self.cmd_resonance, "mesurer": self.cmd_mesurer,
             "juger": self.cmd_juger, "dire": self.cmd_dire,
             "graver": self.cmd_graver, "relire": self.cmd_relire,
@@ -225,17 +226,21 @@ class Interprete:
 
     def cmd_renforcer(self, noligne, mots):
         self.exige_tissu(noligne)
-        pas = self.PAS_RENFORCER
-        if len(mots) == 3 and norm(mots[1]) == "pas":
-            pas = self.entier(noligne, mots, 2, "renforcer [pas <n>]")
-        elif len(mots) != 1:
-            self.erreur(noligne, "usage : renforcer [pas <n>]")
+        if len(mots) == 1:
+            haut = bas = self.PAS_RENFORCER
+        elif len(mots) == 3 and norm(mots[1]) == "pas":
+            haut = bas = self.entier(noligne, mots, 2, "renforcer [pas <n>]")
+        elif len(mots) == 5 and norm(mots[1]) == "lie" and norm(mots[3]) == "delie":
+            haut = self.entier(noligne, mots, 2, "renforcer lie <X> delie <Y>")
+            bas = self.entier(noligne, mots, 4, "renforcer lie <X> delie <Y>")
+        else:
+            self.erreur(noligne, "usage : renforcer [pas <n>] ou renforcer lie <X> delie <Y>")
         for cle in self.tissu.liens:
             a, b = cle
             if self.actif(a) and self.actif(b):
-                self.tissu.liens[cle] = borne(self.tissu.liens[cle] + pas)
+                self.tissu.liens[cle] = borne(self.tissu.liens[cle] + haut)
             else:
-                self.tissu.liens[cle] = borne(self.tissu.liens[cle] - pas)
+                self.tissu.liens[cle] = borne(self.tissu.liens[cle] - bas)
 
     def cmd_oublier(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -253,6 +258,16 @@ class Interprete:
             self.erreur(noligne, "usage : repos")
         for v in self.tissu.neurones.values():
             v["charge"] = 0
+
+    def cmd_adapter(self, noligne, mots):
+        self.exige_tissu(noligne)
+        if len(mots) != 1:
+            self.erreur(noligne, "usage : adapter")
+        for v in self.tissu.neurones.values():
+            v["seuil"] = (v["seuil"] + v["charge"]) // 2
+
+    def txt_seuils(self):
+        return " ".join(f"{n}={v['seuil']}" for n, v in sorted(self.tissu.neurones.items()))
 
     def resonance(self, motif):
         t = self.tissu
@@ -296,7 +311,7 @@ class Interprete:
     def cmd_dire(self, noligne, mots):
         self.exige_tissu(noligne)
         if len(mots) < 2:
-            self.erreur(noligne, "usage : dire <mots...> (avec résonance <motif> ou forces)")
+            self.erreur(noligne, "usage : dire <mots...> (avec résonance <motif>, forces ou seuils)")
         out, i = [], 1
         while i < len(mots):
             if norm(mots[i]) == "resonance" and i + 1 < len(mots):
@@ -304,6 +319,9 @@ class Interprete:
                 i += 2
             elif norm(mots[i]) == "forces":
                 out.append(self.txt_forces())
+                i += 1
+            elif norm(mots[i]) == "seuils":
+                out.append(self.txt_seuils())
                 i += 1
             else:
                 out.append(mots[i])

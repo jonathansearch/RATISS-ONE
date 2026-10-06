@@ -1,6 +1,10 @@
-# 📜 LANGAGE RATUM v0 — Spécification : ce que chaque relation veut dire
+# 📜 LANGAGE RATUM v1 — Spécification : ce que chaque relation veut dire
 
 **RATISS Labs · 6 octobre 2026 · MIT**
+
+> Changements v1 : `renforcer` accepte deux mains (`lie`/`delie`), nouvelle
+> relation `adapter` (seuils vivants), `dire` sait montrer les `seuils`.
+> Tout programme v0 reste valide : 42/42 contrôles v0 toujours verts.
 
 > Le Ratum est la langue du tissu. On y parle avec des mots, pas avec des
 > formules : on DÉCLARE des habitants (neurones, liens, formes), puis on fait
@@ -75,8 +79,11 @@
   Pour chaque lien : si les deux bouts battent (chacun a atteint son seuil),
   la force monte d'un pas ; sinon, elle descend d'un pas. Aucune exception,
   aucun pilote : la structure fait le tri toute seule.
-- **Usage :** `renforcer [pas <n>]` (pas 10 par défaut)
-- **Exemple :** `renforcer`
+  Depuis v1, la loi a DEUX MAINS réglables séparément : la main qui LIE (monte)
+  et la main qui DÉLIE (descend). Lier fort et délier doux permet à des formes
+  disjointes de coexister (voir `v1-coexistence.ratum`).
+- **Usage :** `renforcer [pas <n>]` ou `renforcer lie <X> delie <Y>` (10/10 par défaut)
+- **Exemple :** `renforcer lie 10 delie 3`
 
 ### 8. `oublier` — la nuit passe sur le tissu
 - **Sens :** tous les liens perdent un peu de force. Les chemins entretenus
@@ -84,6 +91,14 @@
   un fichier : c'est laisser retomber ce que personne ne revisite.
 - **Usage :** `oublier [pas <n>]` (pas 5 par défaut)
 - **Exemple :** `oublier`
+
+### 9b. `adapter` — les seuils vivants (v1)
+- **Sens :** chaque neurone ajuste SON seuil : le seuil rejoint la charge
+  actuelle à mi-chemin. Un neurone qui bat beaucoup devient exigeant ; un
+  neurone silencieux s'adoucit et se laisse réveiller plus facilement.
+  C'est l'homéostasie du tissu : l'exigence suit le vécu.
+- **Usage :** `adapter`
+- **Exemple :** `adapter` (seuil 50 + charge 100 → 75)
 
 ### 9. `repos` — la fin du cycle
 - **Sens :** toutes les charges retombent à zéro. L'activité est éphémère,
@@ -118,8 +133,9 @@
 
 ### 13. `dire` — la bouche du tissu
 - **Sens :** parle. Imprime des mots, en remplaçant `résonance <motif>` par sa
-  valeur et `forces` par l'état de tous les liens. C'est la seule sortie du
-  langage : tout ce que le tissu sait, il le dit à voix haute — rien de caché.
+  valeur, `forces` par l'état de tous les liens et `seuils` (v1) par les seuils
+  de tous les neurones. C'est la seule sortie du langage : tout ce que le tissu
+  sait, il le dit à voix haute — rien de caché.
 - **Usage :** `dire <mots...>`
 - **Exemple :** `dire SOLEIL tient à résonance SOLEIL sur 100`
 
@@ -205,8 +221,10 @@ Chaque jouet prouve un recoin du langage. Tous rejoués le 6 octobre 2026
 | `j08-repos` | le repos éteint les charges (loi après repos affaiblit) | 50 → 40 ROMPT |
 | `j09-propagation` | l'activité voyage de proche en proche | une vague 95, deux vagues 100 |
 | `j10-erreur` | l'erreur nette : motif inconnu = code 1 + ligne fautive | `ERREUR RATUM` |
+| `j11-asymetrie` (v1) | lier 10 / délier 3 fait coexister deux disjointes | 52 et 52, deux TIENT |
+| `j12-adapter` (v1) | le seuil rejoint la charge à mi-chemin | 50 → 75 → 37 |
 
 ---
 
-*17 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
+*18 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
 *« On ne croit pas. On rejoue. »*
