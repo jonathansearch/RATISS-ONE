@@ -175,7 +175,7 @@ def fig_graphe(c):
     fig, ax = plt.subplots(figsize=(13, 9.5))
     style(ax)
     dessine_graphe(ax, c, annotes_forces=True)
-    ax.set_title("JFK DANS LE CERVEAU — chaque lien porte sa force mesurée (lie 10 / délie 3)",
+    ax.set_title("JFK DANS LE CERVEAU — chaque lien porte sa force mesurée (renforcer 10/10, oublier 5)",
                  color=BLANC, fontsize=11, weight="bold", pad=14)
     ax.text(0, -4.35,
             "centre : 6 concepts (people, land, voice, duty, together, future)  ·  "

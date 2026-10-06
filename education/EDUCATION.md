@@ -1,0 +1,92 @@
+# 📚 EDUCATION.md — grandir par phrases, pas par tissage (route B)
+
+**RATISS Labs · 6 octobre 2026 · MIT**
+
+> On ne tisse plus à la main : on RACONTE des phrases, et le tissu grandit.
+> 37 phrases, 50 mots appris, 6 témoins dehors — et la preuve que chaque
+> régime d'éducation exige son calibrage (leçon 11).
+
+## 1. Le protocole (rejouable en une commande)
+
+```bash
+python3 education/eduquer.py   # 37 phrases x3 rounds + 2 nuits -> vocabulaire50.ratum
+```
+
+1. **Graine** : le Cerveau FR éduqué (13 neurones, 26 liens, 5 mots tenus).
+2. **Naissances** : chaque phrase fait naître ses nœuds et liens manquants
+   (force 10, la naissance — jamais renforcé avant d'exister).
+3. **Round** : pour chaque phrase, `rencontre PHRASE + propager +
+   renforcer lie 10 delie 0 + repos`. Trois rounds.
+4. **Nuits** : `oublier` x2 (le seul effacement du protocole).
+5. **Motifs hérités** : chaque mot tient à son ancre (paire, verdict) et à
+   son compagnon le plus fréquent (triple, richesse). Zéro choix manuel.
+6. **Export** : `vocabulaire50.ratum` — le tissu final en pur Ratum,
+   régénéré avant chaque batterie (déterministe : tout est trié).
+
+Corpus : `education/corpus.txt` — 5 constellations (VILLAGE, DEVOIR, NATURE,
+ESPRIT, PONTS), chaque mot nouveau exactement 3 fois avec son ancre.
+
+## 2. Les mesures
+
+| Expérience | Bilan (seuil 60) | Témoins (seuil 20) |
+|---|---|---|
+| rounds=1, délie 0 | **38/50** | 6/6 dehors |
+| rounds=2, délie 0 | **49/50** (ne manque que MUNIR=58) | 6/6 dehors |
+| rounds=3, délie 0 (protocole) | **50/50** | 6/6 dehors |
+| rounds=4, délie 0 | 50/50 (plafond atteint) | 6/6 dehors |
+| rounds=3, **délie 3** (loi j11) | **0/50** (tout effacé) | 6/6 dehors |
+| rounds=3, **délie 10** (défaut) | **0/50** (tout effacé) | 6/6 dehors |
+| rounds=3, nuits=5 (érosion) | 49/50 (MUNIR 60→47 tombe) | 6/6 dehors |
+
+Preuves : `preuves/sortie-education.txt` (protocole),
+`preuves/sortie-education-controles.txt` (toutes les variantes),
+`preuves/sortie-vocabulaire50.txt` (export rejoué).
+Tissu final : 63 neurones, 273 liens, force moyenne 86, 261 liens forts.
+
+Courbe d'apprentissage : les mots à ancres partagées (ponts : soleil, livre,
+porte, feu, nuit, matin, main, chemin, temps…) apprennent en 2 rounds ; le
+cousin MUNIR met 3 rounds (51 → 58 → 60) — *le cousin rejoint les amis*.
+
+## 3. Trois calibrages, trois usages (résultat central)
+
+La loi Ratum n'a pas UNE bonne valeur : chaque régime exige la sienne,
+et les contrôles le prouvent par l'échec :
+
+| Calibrage | Usage | Preuve |
+|---|---|---|
+| `renforcer` 10/10 (défaut) | éducation COMMUNE (tout actif ensemble) | EN/FR : 81-90, témoins 0 |
+| `renforcer lie 10 delie 3` | COEXISTENCE de 2 formes (j11) | 52/52 TIENT (leçon 5) |
+| `renforcer lie 10 delie 0` | éducation SÉLECTIVE (phrases) | 50/50 (cette route) |
+
+Avec délie 3 ou 10, chaque phrase efface les 36 autres (0/50) : l'oubli
+catastrophique, mesuré, pas théorisé. Règle : *le jour grave, la nuit
+efface — jamais l'inverse.* La loi j11 (10,3) n'est pas universelle :
+c'est le calibrage de SON régime, pas de tous.
+
+## 4. La saturation, publiée telle quelle (honnêteté)
+
+Au round 3, les 50 paires valent EXACTEMENT 90 et les 5 familles aussi :
+la propagation (+10 aux voisins actifs) pousse tout au plafond 100, les
+2 nuits ramènent à 90. Le tissu juge juste (50/50, témoins 0) mais ne
+nuance plus : tout ce qui est appris vaut 90.
+
+Ce n'est pas caché, c'est mesuré (histogramme des forces dans le log :
+261 liens à 80-100, 5 à 20-39, 7 à 0-19). Deux causes : corpus uniforme
+(chaque mot x3 → mêmes forces) et propagation sans concurrence. Pistes
+route C : érosion du marbre, compétition entre liens, fréquences variées.
+
+## 5. Rejouer et voir
+
+```bash
+python3 education/eduquer.py --delie 10    # le wipe-out (0/50)
+python3 education/eduquer.py --rounds 1    # l'enfance (38/50)
+python3 education/figures_vocab.py          # images/constellation.png
+```
+
+## 6. Limites dites à voix haute
+
+1. Corpus artisanal (37 phrases écrites à la main) : l'éducation est réelle,
+   le monde ne l'est pas encore.
+2. Fenêtres = phrases prédécoupées : le découpage libre viendra en route C.
+3. Saturation uniforme à 90 (section 4) : le défaut publié de cette route.
+4. 50 mots, 1 langue : l'échelle et le bilinguisme restent devant.

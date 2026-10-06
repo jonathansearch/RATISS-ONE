@@ -201,6 +201,24 @@ côtés. L'anglais n'était qu'un détour technique ; Ratum parle français.
 > témoin 0, sanctuaire f92) — la compréhension est dans la structure,
 > pas dans les mots.
 
+### Leçon 11 📚 — Grandir par phrases : chaque régime a sa loi
+*Route B : `education/corpus.txt` (37 phrases) + `education/eduquer.py` —
+preuves : `preuves/sortie-education.txt`, `preuves/sortie-education-controles.txt`,
+`education/vocabulaire50.ratum`, `images/constellation.png`, `education/EDUCATION.md`*
+
+Fini le tissage à la main : 37 phrases font naître 50 neurones et 247 liens,
+et après 3 rounds + 2 nuits, **50 mots sur 50 tiennent** (paires à 90),
+6 témoins dehors à 0 — courbe d'apprentissage 38 → 49 → 50, le cousin MUNIR
+rejoint les amis au 3e round (51 → 58 → 60). Le contrôle tue : avec délie 3
+(loi j11) ou délie 10 (défaut), chaque phrase efface les autres (**0/50**).
+Donc trois calibrages, trois usages : (10,10) éducation commune, (10,3)
+coexistence, (10,0) éducation sélective. Défaut publié : saturation
+uniforme à 90 (cause : propagation sans concurrence) — piste route C.
+
+> **Énoncé :** le lexique grandit par éducation sélective (phrases +
+> `renforcer lie 10 delie 0`) : 6 → 50 mots sans tissage manuel — et la loi
+> n'a pas de valeur universelle, chaque régime d'éducation exige la sienne.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -250,7 +268,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
       (livré 6 oct. : JFK live → 1 sanctuaire f92, résumé parlé 6 s, 81/81 contrôles verts)
 - [x] **oreille française (route A)** — faster-whisper small : 21/21 mot pour mot, tissu FR 81-90, sanctuaire f92, boucle 8.5 s
       (livré 6 oct. : leçon 10, 89/89 contrôles verts)
-- [ ] **vocabulaire élargi (route B)** — grandir le lexique par éducation, 6 → 50 mots (choix du chef, 6 oct.)
+- [x] **vocabulaire élargi (route B)** — 37 phrases, 6 → 50 mots par éducation, courbe 38→49→50, contrôles 0/50
+      (livré 6 oct. : leçon 11, 93/93 contrôles verts)
 - [ ] **cerveau v2 (route C)** — érosion du marbre, phrases libres, anti-saturation (choix du chef, 6 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)

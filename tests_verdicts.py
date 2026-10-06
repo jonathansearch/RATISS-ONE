@@ -140,6 +140,13 @@ CAS = {
             "le cousin est devine a moitie : 40 sur 100",
         ],
     },
+    "education/vocabulaire50.ratum": {
+        "code": 0,
+        "attend": [
+            "BILAN : 50 mots sur 50 tiennent (seuil 60)",
+            "TEMOINS : 6 dehors sur 6 (seuil 20)",
+        ],
+    },
     "jouets/j13-sequences.ratum": {
         "code": 0,
         "attend": [
@@ -154,6 +161,15 @@ def reconstruire_ecoute():
     """Régénère ecoute.ratum via le pont (déterministe) avant les contrôles."""
     proc = subprocess.run(
         [sys.executable, "porte-voix/pont.py", "--texte", "soleil lune comete banane"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    return proc.returncode == 0
+
+
+def regenerer_vocabulaire():
+    """Régénère vocabulaire50.ratum via l'éducateur (déterministe) avant les contrôles."""
+    proc = subprocess.run(
+        [sys.executable, "education/eduquer.py"],
         capture_output=True, text=True, encoding="utf-8",
     )
     return proc.returncode == 0
@@ -175,6 +191,12 @@ def main():
         print("OK : pont voix régénéré (ecoute.ratum)")
     else:
         print("ÉCHEC : le pont voix ne tourne pas")
+        return 1
+    controles += 1
+    if regenerer_vocabulaire():
+        print("OK : vocabulaire régénéré (vocabulaire50.ratum)")
+    else:
+        print("ÉCHEC : l'éducateur ne tourne pas")
         return 1
     controles += 1
     if autotest_cerveau():
