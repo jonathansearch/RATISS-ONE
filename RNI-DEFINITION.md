@@ -80,6 +80,21 @@ la seconde monte à 60 (TENUE).
 > et la raison d'être de l'ÉDUCATION (répéter ensemble, phase 3 du complexe),
 > qui est le mécanisme de coexistence du RNI.
 
+### Leçon 3 📖 — Le vocabulaire : les mots tissés se reconnaissent, le cousin est deviné, l'inconnu reste dehors
+*Programme : `vocabulaire.ratum` — preuve : `preuves/sortie-vocabulaire.txt`*
+
+12 mots français tissés à la main (mot + 3 concepts partagés), présentés 3 fois
+chacun puis éduqués en commun 9 fois, nuit 2 fois : **12/12 TIENT (80-90,
+seuil 60)**. Le cousin AURORE (jamais présenté, 3 concepts sur 4 connus) :
+**40 — rejeté au seuil 60 mais deviné à moitié**. L'inconnu COMETE (nœuds
+frais) : **0 — reste dehors**. 65 liens, force moyenne 76, 61 liens forts.
+Observation honnête : la présentation séquentielle seule s'efface mutuellement
+(mots à 30 avant commune) ; c'est l'éducation commune qui grave uniformément.
+
+> **Énoncé :** dans un RNI, la reconnaissance est GRADUÉE : le connu tient fort,
+> le cousin tient à moitié, l'inconnu ne tient pas. Et à 12 mots, seule
+> l'éducation commune grave durablement — la présentation isolée s'efface.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -118,7 +133,8 @@ pas encore branché.
 
 - [x] **v0.1** — stabiliser la spec sur une dizaine de programmes-jouets
       (livré 6 oct. : seuils actifs par neurone + batterie de 10 jouets, 42/42 contrôles verts)
-- [ ] **v0.2** — motifs de mots vrais (premier vocabulaire tissé à la main)
+- [x] **v0.2** — motifs de mots vrais (premier vocabulaire tissé à la main)
+      (livré 6 oct. : 12 mots, 12/12 TIENT, cousin 40, inconnu 0)
 - [ ] **v0.3** — mesurer le passage à l'échelle (centaines de nœuds) et publier les chiffres
 - [ ] **v1** — pas asymétriques + seuils adaptatifs, calibrés par mesure
 - [ ] **v1** — brancher Phonon-2 comme porte voix (audio → motifs)

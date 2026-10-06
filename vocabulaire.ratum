@@ -1,0 +1,254 @@
+# ============================================================
+# VOCABULAIRE v0.2 — 12 mots vrais tissés à la main
+# RATISS Labs · langage Ratum · programme 100 % Ratum
+#
+# Chaque mot = son nœud + 3 concepts partagés. Le cousin AURORE
+# (jamais présenté) doit résonner à moitié ; l'inconnu COMETE
+# (nœuds frais) doit rester à zéro.
+# ============================================================
+
+tissu Vocabulaire
+
+  # ---------- 1. LES CONCEPTS (12, partagés) ----------
+  neurone chaud seuil 50
+  neurone froid seuil 50
+  neurone lumiere seuil 50
+  neurone obscurite seuil 50
+  neurone haut seuil 50
+  neurone bas seuil 50
+  neurone liquide seuil 50
+  neurone solide seuil 50
+  neurone bouge seuil 50
+  neurone dort seuil 50
+  neurone brille seuil 50
+  neurone leger seuil 50
+
+  # ---------- 2. LES MOTS (12 nœuds + cousin + inconnu) ----------
+  neurone mot_soleil seuil 50
+  neurone mot_lune seuil 50
+  neurone mot_etoile seuil 50
+  neurone mot_nuage seuil 50
+  neurone mot_mer seuil 50
+  neurone mot_pluie seuil 50
+  neurone mot_riviere seuil 50
+  neurone mot_glace seuil 50
+  neurone mot_pierre seuil 50
+  neurone mot_feu seuil 50
+  neurone mot_terre seuil 50
+  neurone mot_vent seuil 50
+  neurone mot_aurore seuil 50
+  neurone mot_comete seuil 50
+  neurone lointain seuil 50
+
+  # ---------- 3. LE TISSAGE (chaque mot : 6 liens) ----------
+  # soleil : chaud lumiere brille
+  lien mot_soleil chaud force 10
+  lien mot_soleil lumiere force 10
+  lien mot_soleil brille force 10
+  lien chaud lumiere force 10
+  lien chaud brille force 10
+  lien lumiere brille force 10
+  # lune : froid lumiere obscurite
+  lien mot_lune froid force 10
+  lien mot_lune lumiere force 10
+  lien mot_lune obscurite force 10
+  lien froid lumiere force 10
+  lien froid obscurite force 10
+  lien lumiere obscurite force 10
+  # etoile : lumiere brille haut
+  lien mot_etoile lumiere force 10
+  lien mot_etoile brille force 10
+  lien mot_etoile haut force 10
+  lien lumiere brille force 10
+  lien lumiere haut force 10
+  lien brille haut force 10
+  # nuage : froid haut bouge
+  lien mot_nuage froid force 10
+  lien mot_nuage haut force 10
+  lien mot_nuage bouge force 10
+  lien froid haut force 10
+  lien froid bouge force 10
+  lien haut bouge force 10
+  # mer : froid liquide bouge
+  lien mot_mer froid force 10
+  lien mot_mer liquide force 10
+  lien mot_mer bouge force 10
+  lien froid liquide force 10
+  lien froid bouge force 10
+  lien liquide bouge force 10
+  # pluie : froid liquide bas
+  lien mot_pluie froid force 10
+  lien mot_pluie liquide force 10
+  lien mot_pluie bas force 10
+  lien froid liquide force 10
+  lien froid bas force 10
+  lien liquide bas force 10
+  # riviere : liquide bouge bas
+  lien mot_riviere liquide force 10
+  lien mot_riviere bouge force 10
+  lien mot_riviere bas force 10
+  lien liquide bouge force 10
+  lien liquide bas force 10
+  lien bouge bas force 10
+  # glace : froid solide dort
+  lien mot_glace froid force 10
+  lien mot_glace solide force 10
+  lien mot_glace dort force 10
+  lien froid solide force 10
+  lien froid dort force 10
+  lien solide dort force 10
+  # pierre : solide bas froid
+  lien mot_pierre solide force 10
+  lien mot_pierre bas force 10
+  lien mot_pierre froid force 10
+  lien solide bas force 10
+  lien solide froid force 10
+  lien bas froid force 10
+  # feu : chaud lumiere bouge
+  lien mot_feu chaud force 10
+  lien mot_feu lumiere force 10
+  lien mot_feu bouge force 10
+  lien chaud lumiere force 10
+  lien chaud bouge force 10
+  lien lumiere bouge force 10
+  # terre : solide bas dort
+  lien mot_terre solide force 10
+  lien mot_terre bas force 10
+  lien mot_terre dort force 10
+  lien solide bas force 10
+  lien solide dort force 10
+  lien bas dort force 10
+  # vent : froid bouge leger
+  lien mot_vent froid force 10
+  lien mot_vent bouge force 10
+  lien mot_vent leger force 10
+  lien froid bouge force 10
+  lien froid leger force 10
+  lien bouge leger force 10
+  # aurore (cousin, jamais présenté) : lumiere brille haut
+  lien mot_aurore lumiere force 10
+  lien mot_aurore brille force 10
+  lien mot_aurore haut force 10
+  lien lumiere brille force 10
+  lien lumiere haut force 10
+  lien brille haut force 10
+  # comete (inconnu, nœuds frais)
+  lien mot_comete lointain force 10
+
+  # ---------- 4. LES FORMES ----------
+  motif MSOLEIL : mot_soleil chaud lumiere brille
+  motif MLUNE : mot_lune froid lumiere obscurite
+  motif METOILE : mot_etoile lumiere brille haut
+  motif MNUAGE : mot_nuage froid haut bouge
+  motif MMER : mot_mer froid liquide bouge
+  motif MPLUIE : mot_pluie froid liquide bas
+  motif MRIVIERE : mot_riviere liquide bouge bas
+  motif MGLACE : mot_glace froid solide dort
+  motif MPIERRE : mot_pierre solide bas froid
+  motif MFEU : mot_feu chaud lumiere bouge
+  motif MTERRE : mot_terre solide bas dort
+  motif MVENT : mot_vent froid bouge leger
+  motif MAURORE : mot_aurore lumiere brille haut
+  motif MCOMETE : mot_comete lointain
+  motif TOUT : mot_soleil mot_lune mot_etoile mot_nuage mot_mer mot_pluie mot_riviere mot_glace mot_pierre mot_feu mot_terre mot_vent chaud froid lumiere obscurite haut bas liquide solide bouge dort brille leger
+
+  # ---------- 5. PHASE 1 : chaque mot présenté 3 fois ----------
+  dire === PHASE 1 : présentation (3 fois chaque mot) ===
+  répéter 3
+    rencontre MSOLEIL
+    propager
+    renforcer
+    repos
+    rencontre MLUNE
+    propager
+    renforcer
+    repos
+    rencontre METOILE
+    propager
+    renforcer
+    repos
+    rencontre MNUAGE
+    propager
+    renforcer
+    repos
+    rencontre MMER
+    propager
+    renforcer
+    repos
+    rencontre MPLUIE
+    propager
+    renforcer
+    repos
+    rencontre MRIVIERE
+    propager
+    renforcer
+    repos
+    rencontre MGLACE
+    propager
+    renforcer
+    repos
+    rencontre MPIERRE
+    propager
+    renforcer
+    repos
+    rencontre MFEU
+    propager
+    renforcer
+    repos
+    rencontre MTERRE
+    propager
+    renforcer
+    repos
+    rencontre MVENT
+    propager
+    renforcer
+    repos
+  fin
+
+  # ---------- 6. PHASE 2 : éducation commune ----------
+  dire === PHASE 2 : éducation commune (9 fois) ===
+  répéter 9
+    rencontre TOUT
+    propager
+    renforcer
+    repos
+  fin
+
+  # ---------- 7. PHASE 3 : nuit ----------
+  dire === PHASE 3 : nuit (2 fois) ===
+  répéter 2
+    oublier
+  fin
+
+  # ---------- 8. VERDICTS (seuils calibrés sur mesures, voir preuves) ----------
+  dire === VERDICTS ===
+  juger MSOLEIL 60
+  juger MLUNE 60
+  juger METOILE 60
+  juger MNUAGE 60
+  juger MMER 60
+  juger MPLUIE 60
+  juger MRIVIERE 60
+  juger MGLACE 60
+  juger MPIERRE 60
+  juger MFEU 60
+  juger MTERRE 60
+  juger MVENT 60
+  juger MAURORE 60
+  juger MCOMETE 20
+
+  si MCOMETE tient 20 alors
+    dire ALERTE : l inconnu est entré
+  sinon
+    dire l inconnu reste dehors
+  fin
+
+  si MAURORE tient 60 alors
+    dire le cousin est pris pour un ami
+  sinon
+    dire le cousin est deviné à moitié : résonance MAURORE sur 100
+  fin
+
+  mesurer
+
+fin

@@ -76,6 +76,17 @@ CAS = {
         "code": 1,
         "attend": ["ERREUR RATUM"],
     },
+    "vocabulaire.ratum": {
+        "code": 0,
+        "attend": [
+            "JUGEMENT MSOLEIL : TIENT",
+            "JUGEMENT MVENT : TIENT",
+            "JUGEMENT MAURORE : ROMPT",
+            "JUGEMENT MCOMETE : ROMPT",
+            "l inconnu reste dehors",
+            "le cousin est deviné à moitié : 40 sur 100",
+        ],
+    },
 }
 
 
