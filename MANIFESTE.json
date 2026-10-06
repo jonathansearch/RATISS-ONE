@@ -14,6 +14,7 @@
   "bouche/cerveau.wav": "88c0d4e3228013e32b85c44bc68c358ab136992f95f87f380de8a46adee8e2e0",
   "bouche/verdicts.wav": "0ac8dae915897fee8250c42d38344fda6ca2b090171715bb2b73f4388f40c95e",
   "bouche/voix/en_US-lessac-medium.onnx.json": "efe19c417bed055f2d69908248c6ba650fa135bc868b0e6abb3da181dab690a0",
+  "bouche/voix/fr_FR-siwis-medium.onnx.json": "39479916c2db192b5ac9764daddd0c744d83e023ad890c6976c0633ae4df8959",
   "cerveau-demo-fr.py": "ccbf06028462cf4c0b6cfed49d61c299388a1c57afebe092dc3a40f179e24d49",
   "cerveau-demo.py": "78ac81bf1c0689f17ab26fc9c67e62aea3e698344c7e6a822c30f6acb808956c",
   "cerveau/MESURES-CERVEAU.md": "959bf7c92d9275ae1dbb8492d13dd256d2ce58acea55d0dede96efd98a91c89e",
