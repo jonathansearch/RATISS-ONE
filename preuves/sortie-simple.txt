@@ -1,0 +1,12 @@
+=== tissu Eveil ===
+--- avant les rencontres ---
+la forme ABC tient à 10 sur 100
+JUGEMENT ABC : ROMPT (10/100, seuil 60)
+--- après 5 rencontres ---
+la forme ABC tient à 60 sur 100
+JUGEMENT ABC : TIENT (60/100, seuil 60)
+JUGEMENT ETRANGER : ROMPT (0/100, seuil 60)
+liens : 3
+force moyenne : 60/100
+liens forts : 0
+=== fin du programme ===

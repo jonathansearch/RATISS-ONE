@@ -1,0 +1,22 @@
+=== tissu Education ===
+=== PHASE 1 : EVEIL (le soleil, 6 fois) ===
+après l éveil : SOLEIL à 70 , LUNE à 0
+=== PHASE 2 : DECOUVERTE (la lune, 6 fois) ===
+après la découverte : SOLEIL à 100 , LUNE à 60
+leçon : la lune fortifie le soleil via la lumière partagée (intrication naturelle)
+=== PHASE 3 : EDUCATION (la journée entière, 2 x 2 fois) ===
+après l éducation : SOLEIL à 100 , LUNE à 100
+=== PHASE 4 : NUIT (l oubli, 2 fois) ===
+après la nuit : SOLEIL à 90 , LUNE à 90
+=== VERDICTS ===
+JUGEMENT SOLEIL : TIENT (90/100, seuil 30)
+JUGEMENT LUNE : TIENT (90/100, seuil 60)
+JUGEMENT ORAGE : ROMPT (0/100, seuil 20)
+le premier souvenir a survécu à l oubli
+le témoin inconnu est rejeté : le tissu ne rêve pas
+liens : 10
+force moyenne : 63/100
+liens forts : 7
+voici les chaud-jour=90 chaud-lumiere=90 froid-lumiere=90 froid-nuit=90 jour-lumiere=90 jour-nuit=90 lumiere-nuit=90 pluie-tonnerre=0 pluie-vent=0 tonnerre-vent=0 finales : chaud-jour=90 chaud-lumiere=90 froid-lumiere=90 froid-nuit=90 jour-lumiere=90 jour-nuit=90 lumiere-nuit=90 pluie-tonnerre=0 pluie-vent=0 tonnerre-vent=0
+tissu gravé dans tissu-educ.scroll
+=== fin du programme ===

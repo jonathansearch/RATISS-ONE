@@ -1,0 +1,109 @@
+# ============================================================
+# RNI ULTRA-COMPLEXE — éduquer un tissu : soleil, lune, orage
+# RATISS Labs · langage Ratum v0 · programme 100 % Ratum
+#
+# Leçon : les formes qui partagent un nœud se fortifient mutuellement
+# (intrication naturelle). Le témoin ORAGE, jamais rencontré, doit
+# rester à zéro : le tissu ne rêve pas ce qu'il n'a jamais vu.
+# (L'interférence vraie — deux formes sans rien en commun — est
+# prouvée séparément dans rni-interference.ratum.)
+# ============================================================
+
+tissu Education
+
+  # ---------- 1. LES HABITANTS : 8 neurones ----------
+  neurone chaud seuil 50
+  neurone lumiere seuil 50
+  neurone jour seuil 50
+  neurone froid seuil 50
+  neurone nuit seuil 50
+  neurone vent seuil 50
+  neurone pluie seuil 50
+  neurone tonnerre seuil 50
+
+  # ---------- 2. LES LIENS : tout naît faible ----------
+  # triangle SOLEIL
+  lien chaud lumiere force 10
+  lien lumiere jour force 10
+  lien chaud jour force 10
+  # triangle LUNE (partage 'lumiere' : intrication naturelle)
+  lien froid lumiere force 10
+  lien lumiere nuit force 10
+  lien froid nuit force 10
+  # triangle ORAGE (le témoin : jamais rencontré)
+  lien vent pluie force 10
+  lien pluie tonnerre force 10
+  lien vent tonnerre force 10
+  # pont entre les deux mondes
+  lien jour nuit force 10
+
+  # ---------- 3. LES FORMES ----------
+  motif SOLEIL : chaud lumiere jour
+  motif LUNE : froid lumiere nuit
+  motif ORAGE : vent pluie tonnerre
+  motif JOURNEE : chaud lumiere jour froid nuit
+
+  # ---------- 4. PHASE EVEIL : le soleil seul ----------
+  dire === PHASE 1 : EVEIL (le soleil, 6 fois) ===
+  répéter 6
+    rencontre SOLEIL
+    propager
+    renforcer
+    repos
+  fin
+  dire après l éveil : SOLEIL à résonance SOLEIL , LUNE à résonance LUNE
+
+  # ---------- 5. PHASE DECOUVERTE : la lune seule ----------
+  dire === PHASE 2 : DECOUVERTE (la lune, 6 fois) ===
+  répéter 6
+    rencontre LUNE
+    propager
+    renforcer
+    repos
+  fin
+  dire après la découverte : SOLEIL à résonance SOLEIL , LUNE à résonance LUNE
+  dire leçon : la lune fortifie le soleil via la lumière partagée (intrication naturelle)
+
+  # ---------- 6. PHASE EDUCATION : répéter ensemble ----------
+  dire === PHASE 3 : EDUCATION (la journée entière, 2 x 2 fois) ===
+  répéter 2
+    répéter 2
+      rencontre JOURNEE
+      propager
+      renforcer
+      repos
+    fin
+  fin
+  dire après l éducation : SOLEIL à résonance SOLEIL , LUNE à résonance LUNE
+
+  # ---------- 7. PHASE NUIT : l oubli passe ----------
+  dire === PHASE 4 : NUIT (l oubli, 2 fois) ===
+  répéter 2
+    oublier
+  fin
+  dire après la nuit : SOLEIL à résonance SOLEIL , LUNE à résonance LUNE
+
+  # ---------- 8. LES VERDICTS ----------
+  dire === VERDICTS ===
+  juger SOLEIL 30
+  juger LUNE 60
+  juger ORAGE 20
+
+  si SOLEIL tient 30 alors
+    dire le premier souvenir a survécu à l oubli
+  sinon
+    dire ALERTE : le premier souvenir s est effacé
+  fin
+
+  si ORAGE tient 10 alors
+    dire ALERTE : le tissu rêve ce qu il n a jamais vu
+  sinon
+    dire le témoin inconnu est rejeté : le tissu ne rêve pas
+  fin
+
+  # ---------- 9. L ETAT FINAL ----------
+  mesurer
+  dire voici les forces finales : forces
+  graver tissu-educ.scroll
+
+fin

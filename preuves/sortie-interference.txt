@@ -1,0 +1,11 @@
+=== tissu Oubli ===
+=== on apprend le PREMIER (6 fois) ===
+PREMIER tient à 70 sur 100
+JUGEMENT PREMIER : TIENT (70/100, seuil 60)
+=== on apprend le SECOND (6 fois), sans revoir le premier ===
+PREMIER tient à 10 sur 100
+SECOND tient à 60 sur 100
+JUGEMENT PREMIER : ROMPT (10/100, seuil 60)
+JUGEMENT SECOND : TIENT (60/100, seuil 60)
+leçon confirmée : le nouveau a chassé l ancien
+=== fin du programme ===
