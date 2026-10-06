@@ -133,6 +133,18 @@ installable dans ce bac à sable et attend une machine avec audio (voir
 > convertit le monde en motifs, et c'est le TISSU qui comprend (ou pas).
 > L'inconnu entendu ne pollue pas le connu — il est rejeté proprement.
 
+### Leçon 7 🎙️ — Transcrire n'est pas comprendre (oreille RÉELLE)
+*Boucle live : `porte-voix/oreille.py` — preuves : `preuves/transcription-jfk.txt`, `preuves/sortie-ecoute-live.txt`*
+
+Phonon-2 branché pour de vrai (installation minimale, modèle 0.16 Go vérifié
+SHA-256) transcrit le discours JFK de 11 s **mot pour mot**. Mais le tissu,
+éduqué en français, rejette les 22 mots anglais comme HORS VOCABULAIRE —
+sans broncher, sans inventer, sans se polluer.
+
+> **Énoncé :** l'oreille parfaite ne fait pas la compréhension : transcrire
+> (l'oreille) et comprendre (le tissu) sont deux actes séparés. Un tissu
+> honnête dit « hors vocabulaire » au lieu de rêver.
+
 Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
@@ -179,7 +191,8 @@ pas encore branché.
       (livré 6 oct. : lie 10 / délie 3, 10 → 52, seuils 50 → 75 → 37)
 - [x] **v1-voix (pont)** — socket voix prête + oreille simulée prouvée
       (livré 6 oct. : soleil/lune 90 compris, comete 0, banane hors vocabulaire)
-- [ ] **vrai modèle branché** — Phonon-2 sur machine audio + oreille française
+- [x] **vrai modèle branché** — Phonon-2 testé en boucle live (JFK mot pour mot, 6 oct.)
+- [ ] **oreille française** — équivalent francophone à trouver ou entraîner
 - [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 

@@ -34,14 +34,16 @@ audio elle-même (voir statut).
 
 | Point | Statut |
 |---|---|
-| Existence | ✅ modèle ouvert Fermion Research, sept. 2026, 164 Mo |
+| Existence | ✅ modèle ouvert Fermion Research, sept. 2026, 0.16 Go |
 | Rôle | oreille (reconnaissance vocale), PAS outil d'entraînement |
 | Langue | ⚠️ anglais seul — une oreille française reste à trouver/faire |
-| Installation ici (6 oct.) | ❌ échec : disque du bac à sable plein ; aucun périphérique audio de toute façon |
-| Branchement réel | ⏳ attend une machine avec audio + modèle téléchargé |
+| Installation minimale | ✅ fermion-research --no-deps + torch CPU + 6 petites libs (pas de CUDA) |
+| Transcription réelle (6 oct.) | ✅ JFK 11 s transcrit mot pour mot (preuve : `preuves/transcription-jfk.txt`) |
+| Vitesse mesurée ici | 42 s au 1er passage (téléchargement + compilation), 15-17 s à chaud |
+| Boucle live complète | ✅ `oreille.py` : audio → Phonon-2 → pont → tissu (protocole : `PROTOCOLE-OREILLE.md`) |
 
 ## Reste à faire
 
-- [ ] Installer Phonon-2 sur une machine avec de l'audio et rejouer la démo avec un vrai fichier vocal
 - [ ] Trouver ou entraîner l'équivalent français (l'oreille du labo parle français)
 - [ ] Élargir le vocabulaire du pont au-delà des mots de démo
+- [ ] Tester sur micro live quand une machine avec audio sera disponible

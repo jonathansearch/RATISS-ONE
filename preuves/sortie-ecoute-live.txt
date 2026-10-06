@@ -1,0 +1,34 @@
+=== 1. L'OREILLE ÉCOUTE : porte-voix/audio/jfk.wav ===
+transcription (15.7 s) : And so, my fellow Americans, ask not what your country can do for you, ask what you can do for your country.
+=== 2. LE PONT CONVERTIT ===
+écoute générée : porte-voix/ecoute-live.ratum
+=== 3. LE TISSU ÉCOUTE ===
+=== tissu Ecoute ===
+=== EDUCATION (commune x9, nuit x2) ===
+=== ECOUTE ===
+mot hors vocabulaire : and
+mot hors vocabulaire : so,
+mot hors vocabulaire : my
+mot hors vocabulaire : fellow
+mot hors vocabulaire : americans,
+mot hors vocabulaire : ask
+mot hors vocabulaire : not
+mot hors vocabulaire : what
+mot hors vocabulaire : your
+mot hors vocabulaire : country
+mot hors vocabulaire : can
+mot hors vocabulaire : do
+mot hors vocabulaire : for
+mot hors vocabulaire : you,
+mot hors vocabulaire : ask
+mot hors vocabulaire : what
+mot hors vocabulaire : you
+mot hors vocabulaire : can
+mot hors vocabulaire : do
+mot hors vocabulaire : for
+mot hors vocabulaire : your
+mot hors vocabulaire : country.
+liens : 7
+force moyenne : 77/100
+liens forts : 6
+=== fin du programme ===

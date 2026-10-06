@@ -1,0 +1,13 @@
+PREUVE OREILLE RÉELLE — RATISS Labs · 6 octobre 2026
+Modèle : FermionResearch/Phonon-2, profil five-value, 0.16 Go, SHA-256 vérifié
+Machine : Linux x86_64, 2 coeurs Xeon 2.60 GHz, palier avx512-vnni
+Audio : porte-voix/audio/jfk.wav (11 s, 16 kHz mono, discours JFK connu)
+
+Transcription Phonon-2 :
+"And so, my fellow Americans, ask not what your country can do for you, ask what you can do for your country."
+
+Référence connue : identique à une virgule près (transcription essentially parfaite).
+
+Temps mesurés :
+- 1er passage (téléchargement modèle + compilation runtime) : 42 s
+- Passages suivants (cache chaud) : 15-17 s pour 11 s d'audio (~0.7x temps réel sur ce petit CPU)

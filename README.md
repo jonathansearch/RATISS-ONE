@@ -22,7 +22,7 @@
 | 📖 `vocabulaire.ratum` (v0.2) | 12 mots vrais + cousin + inconnu | **12/12 TIENT (80-90)**, cousin 40, inconnu 0 |
 | 📏 `echelle/` (v0.3) | 300 neurones, 1200 liens, 50 motifs | **40/40 TIENT (75-85)**, témoins 0, 0,1 s |
 | ⚖️ `v1-coexistence` (v1) | symétrique vs asymétrique, même tissu | 10/10 ❌❌ → **52/52 ✅✅**, seuils 50→75→37 |
-| 👂 `porte-voix/` (v1) | pont transcription → motifs, oreille simulée | soleil/lune **compris (90)**, comete 0, banane hors vocabulaire |
+| 👂 `porte-voix/` (v1) | oreille RÉELLE Phonon-2 + pont → tissu | JFK transcrit **mot pour mot**, tissu : 22x hors vocabulaire (leçon 7) |
 | ⚙️ `ratum.py` | interprète de référence | 19/19 programmes, **70/70 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 

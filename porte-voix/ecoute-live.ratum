@@ -1,0 +1,66 @@
+# ============================================================
+# ECOUTE — généré par porte-voix/pont.py (déterministe)
+# Transcription reçue : and so, my fellow americans, ask not what your country can do for you, ask what you can do for your country.
+# Régénérer : python3 porte-voix/pont.py --texte "..."
+# ============================================================
+
+tissu Ecoute
+
+  neurone chaud seuil 50
+  neurone froid seuil 50
+  neurone lointain seuil 50
+  neurone lumiere seuil 50
+  neurone mot_comete seuil 50
+  neurone mot_lune seuil 50
+  neurone mot_soleil seuil 50
+
+  lien mot_soleil chaud force 10
+  lien mot_soleil lumiere force 10
+  lien chaud lumiere force 10
+  lien mot_lune froid force 10
+  lien mot_lune lumiere force 10
+  lien froid lumiere force 10
+  lien mot_comete lointain force 10
+
+  motif MSOLEIL : mot_soleil chaud lumiere
+  motif MLUNE : mot_lune froid lumiere
+  motif MCOMETE : mot_comete lointain
+  motif TOUT : mot_soleil mot_lune chaud froid lumiere
+
+  dire === EDUCATION (commune x9, nuit x2) ===
+  répéter 9
+    rencontre TOUT
+    propager
+    renforcer
+    repos
+  fin
+  répéter 2
+    oublier
+  fin
+
+  dire === ECOUTE ===
+  dire mot hors vocabulaire : and
+  dire mot hors vocabulaire : so,
+  dire mot hors vocabulaire : my
+  dire mot hors vocabulaire : fellow
+  dire mot hors vocabulaire : americans,
+  dire mot hors vocabulaire : ask
+  dire mot hors vocabulaire : not
+  dire mot hors vocabulaire : what
+  dire mot hors vocabulaire : your
+  dire mot hors vocabulaire : country
+  dire mot hors vocabulaire : can
+  dire mot hors vocabulaire : do
+  dire mot hors vocabulaire : for
+  dire mot hors vocabulaire : you,
+  dire mot hors vocabulaire : ask
+  dire mot hors vocabulaire : what
+  dire mot hors vocabulaire : you
+  dire mot hors vocabulaire : can
+  dire mot hors vocabulaire : do
+  dire mot hors vocabulaire : for
+  dire mot hors vocabulaire : your
+  dire mot hors vocabulaire : country.
+  mesurer
+
+fin
