@@ -129,6 +129,13 @@ CAS = {
             "le cousin est deviné à moitié : 40 sur 100",
         ],
     },
+    "jouets/j13-sequences.ratum": {
+        "code": 0,
+        "attend": [
+            "chaîne liée : a-b=70 b-c=70 d-e=30",
+            "chaîne déliée : a-b=60 b-c=60 d-e=20",
+        ],
+    },
 }
 
 
@@ -141,6 +148,15 @@ def reconstruire_ecoute():
     return proc.returncode == 0
 
 
+def autotest_cerveau():
+    """L'autotest du cerveau est déterministe et hors-ligne : un contrôle comme les autres."""
+    proc = subprocess.run(
+        [sys.executable, "cerveau/autotest.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    return proc.returncode == 0 and "CERVEAU OK" in proc.stdout
+
+
 def main():
     echecs, controles = 0, 0
     controles += 1
@@ -149,6 +165,12 @@ def main():
     else:
         print("ÉCHEC : le pont voix ne tourne pas")
         return 1
+    controles += 1
+    if autotest_cerveau():
+        print("OK : autotest du cerveau (secteurs + sanctuaire + chaînes)")
+    else:
+        print("ÉCHEC : l'autotest du cerveau ne passe pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

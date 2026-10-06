@@ -46,6 +46,7 @@ class Interprete:
 
     def __init__(self):
         self.tissu = None
+        self.bavard = True  # le cerveau met False : il garde les verdicts, pas les rouages
 
     # ---------- utilitaires ----------
 
@@ -176,7 +177,8 @@ class Interprete:
         if self.tissu is not None:
             self.erreur(noligne, "v0 : un seul tissu par programme")
         self.tissu = Tissu(mots[1])
-        print(f"=== tissu {mots[1]} ===")
+        if self.bavard:
+            print(f"=== tissu {mots[1]} ===")
 
     def cmd_neurone(self, noligne, mots):
         self.exige_tissu(noligne)

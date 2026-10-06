@@ -165,6 +165,24 @@ Ces deux leçons sont des sorties du modèle v0, rejouables en une commande.
 Elles ne prouvent pas le passage à l'échelle : elles prouvent que le modèle
 se comporte comme sa loi le dit — ni plus, ni moins.
 
+### Leçon 9 🧠 — Le cerveau : un entonnoir qui oublie bien
+*Cerveau : `cerveau/` (Python = crâne, Ratum = pensée) + `jouets/j13-sequences.ratum` —
+preuves : `preuves/sortie-cerveau-demo.txt`, `bouche/cerveau.wav`, `cerveau/MESURES-CERVEAU.md`*
+
+Le tissu est enfermé dans un crâne à trois secteurs : VIF (l'instant, meurt
+vite), REFRAIN (le chant, exige 4 rencontres), SANCTUAIRE (le marbre, −1 par
+nuit, jamais mort). Chaque entrée devient une TRACE (quels mots, quel ordre,
+combien de fois, quelle force) — jamais la donnée brute. Les mots qui se
+SUIVENT se lient en chaînes mesurables (j13 : chaîne liée 70/70, déliée 20).
+Démo live JFK : 20 séquences entrent, 1 atteint le sanctuaire
+(`fellow americans ask`, f92), le cerveau le DIT (6 s d'audio, boucle 46 s).
+Plan inspiré de l'univers FOCAL (condensateur/porteurs/conteneur), adapté au
+RNI — sans aucune physique quantique : des compteurs, des seuils, des nuits.
+
+> **Énoncé :** la mémoire relationnelle intriquée fonctionne en entonnoir
+> (VIF→REFRAIN→SANCTUAIRE) en conditions live : ce qui survit, c'est le plus
+> répété — et l'ordre des mots survit comme chaînes de liens qui tiennent.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -175,8 +193,8 @@ annonce officielle, dépôt GitHub `fermionresearch/phonon`, poids sur HuggingFa
 Précision honnête : Phonon-2 transcrit la parole, il n'entraîne rien.
 Son rôle dans notre chantier : **la porte « voix »** — convertir la parole en
 motifs branchés sur les MÊMES nœuds que le texte, pour que la voix renforce les
-concepts au lieu d'en créer de doublons (leçon 1 appliquée). Statut : prévu,
-pas encore branché.
+concepts au lieu d'en créer de doublons (leçon 1 appliquée). Statut : branché
+le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 
 ---
 
@@ -188,8 +206,9 @@ pas encore branché.
    alternance stricte, deux formes se neutralisent. Piste v1 : pas asymétriques
    à calibrer par mesure, pas par décret.
 3. **Seuils fixes.** Tous les neurones battent à 50. Piste v1 : seuils adaptatifs.
-4. **Pas de portes sensorielles.** Texte simulé par motifs nommés ; voix et vision
-   à construire (Phonon-2 pour l'oreille).
+4. **Portes encore étroites.** L'oreille est branchée (Phonon-2) et la bouche
+   parle (Piper), mais le tissu ne comprend que 6 mots anglais ; la vision
+   n'existe pas encore.
 5. **Berceau Python.** L'interprète de référence prouve la spec ; l'implémentation
    bas niveau viendra quand la spec sera stable.
 
@@ -209,6 +228,8 @@ pas encore branché.
       (livré 6 oct. : soleil/lune 90 compris, comete 0, banane hors vocabulaire)
 - [x] **vrai modèle branché** — Phonon-2 testé en boucle live (JFK mot pour mot, 6 oct.)
 - [x] **vocabulaire anglais + boucle parole** — tissu EN (4 mots à 81-90) + bouche Piper (verdicts parlés, 6 oct.)
+- [x] **cerveau v1 (option 3)** — crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE, séquences temporelles
+      (livré 6 oct. : JFK live → 1 sanctuaire f92, résumé parlé 6 s, 81/81 contrôles verts)
 - [ ] **oreille française** — équivalent francophone à trouver ou entraîner
 - [ ] **vocabulaire élargi** — grandir le lexique anglais (puis français) par éducation
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable

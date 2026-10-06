@@ -45,4 +45,23 @@
   neuro-mimétisme. Ce qui est prouvé, c'est le comportement mesuré des
   programmes — ni plus.
 
+## Le cerveau v1 : le crâne et la pensée (6 oct. 2026)
+
+La carte ci-dessus est devenue du code (`cerveau/`, décision du chef :
+Ratum + Python). L'architecture :
+
+- **Python = le crâne** : il TIENT le graphe persistant (mots → voisins →
+  forces) et les **secteurs** (VIF → REFRAIN → SANCTUAIRE). Il conserve,
+  il ne pense pas.
+- **Ratum = la pensée** : à chaque écoute, le crâne réécrit le graphe en
+  source Ratum et le fait BATTRE. Les verdicts sont la pensée du moment.
+- **La trace, pas la donnée** : chaque entrée devient quels-mots / quel-ordre
+  / combien-de-fois / quelle-force. Le brut meurt en RAM ; la trace persiste.
+
+Preuve live : JFK (20 séquences) → 1 sanctuaire (`fellow americans ask`,
+f92) → résumé parlé 6 s (`cerveau/MESURES-CERVEAU.md`, `bouche/cerveau.wav`).
+Inspiré de FOCAL (condensateur → VIF, porteurs → REFRAIN, conteneur →
+SANCTUAIRE), adapté au RNI — et toujours pas de physique quantique :
+des compteurs, des seuils et des nuits.
+
 *« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

@@ -25,7 +25,8 @@
 | 👂 `porte-voix/` (v1) | oreille RÉELLE Phonon-2 + pont → tissu | JFK transcrit **mot pour mot**, tissu : 22x hors vocabulaire (leçon 7) |
 | 🦜 `parole.py` + `bouche/` | boucle audio → tissu → audio (Piper) | 4 mots **tenus à 90**, verdicts PARLÉS 4.9 s (leçon 8) |
 | 🧠 `CERVEAU.md` | carte d'inspiration : cerveau → organes | portes bêtes, cœur intelligent, 2 mémoires |
-| ⚙️ `ratum.py` | interprète de référence | 20/20 programmes, **77/77 contrôles verts** |
+| 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire f92, résumé parlé 6 s (leçon 9) |
+| ⚙️ `ratum.py` | interprète de référence | 21/21 programmes, **81/81 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 17 relations, chacune expliquée |
 
 ---
@@ -38,7 +39,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # vérifie les 77 contrôles (20 programmes)
+python3 tests_verdicts.py               # vérifie les 81 contrôles (21 programmes + autotest cerveau)
 ```
 
 Zéro dépendance : que du Python standard. Déterministe : mêmes entrées, mêmes sorties, toujours.

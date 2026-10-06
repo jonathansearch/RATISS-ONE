@@ -1,0 +1,24 @@
+=== 1. OREILLE (mots horodatés) ===
+(clés JSON Phonon : ['backend', 'decode_seconds', 'duration_seconds', 'engine', 'model', 'profile', 'segment_count', 'segments', 'text', 'truncated', 'wall_seconds', 'words'])
+22 mots : and so my fellow americans ask not what your country can do for you ask what you can do for your country
+20 séquences de 3 mots
+=== 2. CERVEAU (éducation + écoute) ===
+3 séquences riches (>= 2 mots connus), répétées x2
+focus répété x6 : fellow americans ask
+=== 3. NUIT 1 ===
+promus VIF->REFRAIN : 4, morts VIF : 0
+=== 4. NUIT 2 ===
+promus REFRAIN->SANCTUAIRE : 1
+=== 5. RAPPORT ===
+VIF : 0 traces
+REFRAIN : 3 traces
+  - americans+ask+not x1 f42
+  - my+fellow+americans x1 f42
+  - can+do+for x1 f32
+SANCTUAIRE : 1 traces
+  - fellow+americans+ask x1 f92
+tissu : americans=95 country=95 fellow=95 ask=95
+liens : 28 (chaînes vivantes : 2)
+dit : I heard 20 sequences. 3 sleep in the refrain. 1 reached the sanctuary : fellow americans ask.
+bouche/cerveau.wav écrit
+=== boucle totale : 46.3 s ===
