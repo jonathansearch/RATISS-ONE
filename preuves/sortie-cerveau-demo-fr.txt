@@ -1,0 +1,20 @@
+=== 1. OREILLE FR (mots horodatés) ===
+21 mots en 1.4 s : amis du peuple ne demandez pas ce que votre pays fera pour vous demandez ce que vous ferez pour la patrie
+19 séquences de 3 mots
+=== 2. CERVEAU FR (éducation + écoute) ===
+1 séquence riche (>= 2 mots connus), répétée x2
+focus répété x6 : amis du peuple
+=== 3. NUIT 1 ===
+promus VIF->REFRAIN : 1, morts VIF : 0
+=== 4. NUIT 2 ===
+promus REFRAIN->SANCTUAIRE : 1
+=== 5. RAPPORT ===
+VIF : 0 traces
+REFRAIN : 0 traces
+SANCTUAIRE : 1 traces
+  - amis+du+peuple x1 f92
+tissu : amis=95 peuple=95 pays=95 patrie=95
+liens : 27 (chaînes vivantes : 1)
+dit : J'ai entendu 19 séquences. 0 dort au refrain. 1 a atteint le sanctuaire : amis du peuple.
+bouche/cerveau-fr.wav écrit
+=== boucle totale : 8.5 s ===

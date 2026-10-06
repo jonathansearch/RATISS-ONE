@@ -129,6 +129,17 @@ CAS = {
             "le cousin est deviné à moitié : 40 sur 100",
         ],
     },
+    "francais.ratum": {
+        "code": 0,
+        "attend": [
+            "JUGEMENT MAMIS : TIENT",
+            "JUGEMENT MPATRIE : TIENT",
+            "JUGEMENT MUNIR : ROMPT",
+            "JUGEMENT MAVENIR : ROMPT",
+            "l etranger reste dehors",
+            "le cousin est devine a moitie : 40 sur 100",
+        ],
+    },
     "jouets/j13-sequences.ratum": {
         "code": 0,
         "attend": [
@@ -170,6 +181,16 @@ def main():
         print("OK : autotest du cerveau (secteurs + sanctuaire + chaînes)")
     else:
         print("ÉCHEC : l'autotest du cerveau ne passe pas")
+        echecs += 1
+    controles += 1
+    proc_fr = subprocess.run(
+        [sys.executable, "cerveau/autotest_fr.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_fr.returncode == 0 and "CERVEAU FR OK" in proc_fr.stdout:
+        print("OK : autotest du cerveau FR (discours rejoué hors-ligne)")
+    else:
+        print("ÉCHEC : l'autotest du cerveau FR ne passe pas")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

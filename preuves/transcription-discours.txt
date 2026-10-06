@@ -1,0 +1,17 @@
+PREUVE OREILLE FR — RATISS Labs · 6 octobre 2026 (route A)
+Modèle : faster-whisper small (~244 Mo), int8 CPU, langue forcée fr
+Machine : Linux x86_64, 2 coeurs Xeon 2.60 GHz
+Audio : porte-voix/audio/discours.wav (5.5 s, 22050 Hz mono, voix Piper fr_FR-siwis-medium)
+
+Texte de référence (connu, servi à générer l'audio) :
+"Amis du peuple, ne demandez pas ce que votre pays fera pour vous. Demandez ce que vous ferez pour la patrie."
+
+Transcription faster-whisper small (mots horodatés) :
+"Amis du peuple, ne demandez pas ce que votre pays fera pour vous. Demandez ce que vous ferez pour la patrie."
+
+Référence connue : identique au mot près (transcription parfaite, 21/21).
+
+Modèle tiny (essayé d'abord) : 3 erreurs ("A mis", "nous", "feriez") — écarté, small retenu.
+Temps mesurés (5.5 s d'audio) :
+- 1er passage (téléchargement 244 Mo + transcription) : 10.9 s
+- Passages suivants (cache chaud) : ~1.5 s (~0.3x temps réel sur ce petit CPU)

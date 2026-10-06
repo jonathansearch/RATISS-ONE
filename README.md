@@ -7,10 +7,10 @@
 **Un tissu vivant qui apprend par rencontres, un cerveau qui oublie bien, une bouche qui ne dit que ce qu'elle tient.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
-[![Tests](https://img.shields.io/badge/Tests-81%2F81-teal.svg)](tests_verdicts.py)
-[![Programmes](https://img.shields.io/badge/Programmes-21-teal.svg)](tests_verdicts.py)
+[![Tests](https://img.shields.io/badge/Tests-89%2F89-teal.svg)](tests_verdicts.py)
+[![Programmes](https://img.shields.io/badge/Programmes-22-teal.svg)](tests_verdicts.py)
 [![Ratum](https://img.shields.io/badge/Ratum-v1-teal.svg)](LANGAGE-RATUM.md)
-[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-9-teal.svg)](RNI-DEFINITION.md)
+[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-10-teal.svg)](RNI-DEFINITION.md)
 [![Données stockées](https://img.shields.io/badge/Donn%C3%A9es%20stock%C3%A9es-z%C3%A9ro-orange.svg)](RNI-DEFINITION.md)
 
 *Par **RATISS Labs** — Jonathan Evina · Yaoundé 🇨🇲 · Licence MIT · reproductibilité publique voulue*
@@ -25,8 +25,8 @@
 > rencontres sous une seule loi (ce qui se tient ensemble se renforce, ce qui
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à trois secteurs, et ne redit que ce
-> qu'il tient — par une vraie bouche (Piper). 21 programmes, 81 contrôles
-> verts, 9 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
+> qu'il tient — par une vraie bouche (Piper). 22 programmes, 89 contrôles
+> verts, 10 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
 > se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -35,7 +35,7 @@
 > encounters under a single law (what holds together strengthens, what comes
 > apart fades), hears the world through a real ear (Phonon-2), files memories
 > in a three-sector brain, and only speaks what it holds — through a real
-> mouth (Piper). 21 programs, 81 green checks, 9 measured lessons, zero stored
+> mouth (Piper). 22 programs, 89 green checks, 10 measured lessons, zero stored
 > data. Every claim below replays in one command, or it does not exist.*
 
 > *« On ne croit pas. On rejoue. » — le chef. (Et quand la mesure déplaît,
@@ -86,7 +86,8 @@ prouvée par des programmes qui tournent.
 | 👂 `porte-voix/` (v1) | oreille RÉELLE Phonon-2 + pont → tissu | JFK transcrit **mot pour mot**, tissu : 22× hors vocabulaire (leçon 7) |
 | 🦜 `parole.py` + `bouche/` | boucle audio → tissu → audio (Piper) | 4 mots **tenus à 90**, verdicts PARLÉS 4.9 s (leçon 8) |
 | 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire **f92**, résumé parlé 6 s (leçon 9) |
-| ⚙️ `ratum.py` | interprète de référence | 21/21 programmes, **81/81 contrôles verts** |
+| 🇫🇷 `francais.ratum` + `cerveau-demo-fr.py` | route A : tissu + cerveau + bouche FRANÇAIS | 21/21 mot pour mot, sanctuaire **f92**, boucle 8.5 s (leçon 10) |
+| ⚙️ `ratum.py` | interprète de référence | 22/22 programmes, **89/89 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 18 relations, chacune expliquée |
 
 ---
@@ -185,7 +186,7 @@ cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal : 3 neurones
 python3 ratum.py rni-complexe.ratum      # l'éducation complète
 python3 ratum.py rni-interference.ratum  # la vraie interférence
-python3 tests_verdicts.py               # 81 contrôles (21 programmes + autotest cerveau)
+python3 tests_verdicts.py               # 89 contrôles (22 programmes + 2 autotests cerveau)
 python3 cerveau/autotest.py             # le cerveau seul, hors-ligne : CERVEAU OK
 ```
 
@@ -208,21 +209,22 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `ratum.py` | interprète de référence (le berceau Python) | 21/21 programmes |
 | `LANGAGE-RATUM.md` | spec : 18 relations expliquées en mots | — |
 | `rni-*.ratum`, `jouets/`, `vocabulaire.ratum`, `echelle/` | les 3 âges : minimal → jouets → mots → échelle | `preuves/sortie-*.txt` |
-| `porte-voix/` | l'oreille : Phonon-2 + pont → tissu | `preuves/transcription-jfk.txt` |
+| `porte-voix/` | l'oreille : Phonon-2 (EN) + faster-whisper (FR) + pont → tissu | `preuves/transcription-jfk.txt`, `-discours.txt` |
 | `parole.py`, `bouche/` | la bouche : Piper + verdicts parlés | `bouche/verdicts.wav`, `cerveau.wav` |
-| `cerveau/`, `cerveau-demo.py` | le crâne : graphe + secteurs + nuits | `preuves/sortie-cerveau-demo.txt` |
-| `RNI-DEFINITION.md` | la fiche scientifique : définition + 9 leçons + roadmap | — |
+| `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : graphe + secteurs + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
+| `RNI-DEFINITION.md` | la fiche scientifique : définition + 10 leçons + roadmap | — |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `outils/figures.py` | régénère les figures du README depuis les mesures | `images/*.png` |
-| `tests_verdicts.py` | la batterie : 81 contrôles | `81/81 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 89 contrôles | `89/89 CONTRÔLES VERTS` |
 | `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **81/81 contrôles verts**, 21 programmes, 9 leçons (v0.1 → v1-cerveau)
+- **89/89 contrôles verts**, 22 programmes, 10 leçons (v0.1 → route A)
+- **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
 - **JFK mot pour mot** : 42 s à froid, 15-17 s à chaud, ~0.7× temps réel (oreille)
 - **46 s** de son à son : oreille 40 s, pensée 0.1 s, bouche 2 s (cerveau)
@@ -233,7 +235,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📖 Ordre de lecture
 
-1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 9 leçons)
+1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 10 leçons)
 2. `LANGAGE-RATUM.md` (les 18 relations) → 4. `jouets/` (10 histoires d'éducation)
 3. `CERVEAU.md` (la carte cerveau → organes) → 6. `cerveau/SECTEURS.md` (la doctrine)
 4. `preuves/` (le carnet du labo : chaque sortie rejouable en une commande)
@@ -264,9 +266,10 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **v1-voix** — oreille simulée puis RÉELLE (JFK mot pour mot)
 - [x] **v1-parole** — tissu anglais + bouche (verdicts parlés 4.9 s)
 - [x] **v1-cerveau** — crâne + secteurs + séquences (sanctuaire f92, 81/81 verts)
-- [ ] **oreille française** — équivalent francophone à trouver ou entraîner
-- [ ] **vocabulaire élargi** — grandir le lexique par éducation
-- [ ] **v2** — quitter le berceau : interprète bas niveau, érosion du marbre
+- [x] **route A : français** — oreille faster-whisper + tissu + bouche FR (21/21, f92, 89/89 verts)
+- [ ] **route B : vocabulaire élargi** — grandir le lexique par éducation, 6 → 50 mots
+- [ ] **route C : cerveau v2** — érosion du marbre, phrases libres, anti-saturation
+- [ ] **route D : v2 bas niveau** — interprète C, mêmes sorties au caractère près
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
 Feuille détaillée : `RNI-DEFINITION.md` §7.
@@ -278,12 +281,12 @@ Feuille détaillée : `RNI-DEFINITION.md` §7.
 ```
 RATISS-ONE/
 ├── README.md                  # vous êtes ici
-├── RNI-DEFINITION.md          # fiche scientifique + 9 leçons + roadmap
+├── RNI-DEFINITION.md          # fiche scientifique + 10 leçons + roadmap
 ├── LANGAGE-RATUM.md           # spec Ratum : 18 relations
 ├── CERVEAU.md                 # carte cerveau → organes
 ├── MANIFESTE.json             # SHA-256 de chaque fichier
 ├── ratum.py                   # interprète de référence
-├── tests_verdicts.py          # batterie : 81 contrôles
+├── tests_verdicts.py          # batterie : 89 contrôles
 ├── rni-simple / complexe / interference.ratum
 ├── vocabulaire.ratum  english.ratum  v1-coexistence.ratum
 ├── jouets/                    # j01 → j13 (seuils… séquences)

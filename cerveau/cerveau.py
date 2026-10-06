@@ -56,6 +56,48 @@ LIENS_TISSES = [
     ("word_homeland", "land"), ("word_homeland", "people"), ("word_homeland", "future"),
     ("word_comet", "distant"),
 ]
+ENTENDUS_EN = ("americans", "country", "fellow", "ask")
+
+# --- vocabulaire français (miroir de francais.ratum, route A) ---
+CONCEPTS_FR = ["monde", "terre", "voix", "devoir", "ensemble", "destin"]
+MOTS_FR = {
+    "amis": "MAMIS",
+    "peuple": "MPEUPLE",
+    "pays": "MPAYS",
+    "patrie": "MPATRIE",
+    "unir": "MUNIR",
+    "avenir": "MAVENIR",
+}
+MOTIFS_FR = {
+    "MAMIS": ["word_amis", "monde", "ensemble", "voix"],
+    "MPEUPLE": ["word_peuple", "monde", "terre", "ensemble"],
+    "MPAYS": ["word_pays", "monde", "terre", "destin"],
+    "MPATRIE": ["word_patrie", "terre", "monde", "destin"],
+    "MUNIR": ["word_unir", "voix", "devoir", "destin"],
+    "MAVENIR": ["word_avenir", "lointain"],
+    "TOUT": ["word_amis", "word_peuple", "word_pays", "word_patrie"] + CONCEPTS_FR,
+}
+LIENS_TISSES_FR = [
+    ("word_amis", "monde"), ("word_amis", "ensemble"), ("word_amis", "voix"),
+    ("monde", "ensemble"), ("monde", "voix"), ("ensemble", "voix"),
+    ("word_peuple", "monde"), ("word_peuple", "terre"), ("word_peuple", "ensemble"),
+    ("monde", "terre"), ("monde", "ensemble"), ("terre", "ensemble"),
+    ("word_pays", "monde"), ("word_pays", "terre"), ("word_pays", "destin"),
+    ("monde", "terre"), ("monde", "destin"), ("terre", "destin"),
+    ("word_patrie", "terre"), ("word_patrie", "monde"), ("word_patrie", "destin"),
+    ("terre", "monde"), ("terre", "destin"), ("monde", "destin"),
+    ("word_unir", "voix"), ("word_unir", "devoir"), ("word_unir", "destin"),
+    ("voix", "devoir"), ("voix", "destin"), ("devoir", "destin"),
+    ("word_avenir", "lointain"),
+]
+ENTENDUS_FR = ("amis", "peuple", "pays", "patrie")
+
+LANGUES = {
+    "EN": {"concepts": CONCEPTS, "mots": MOTS, "motifs": MOTIFS,
+           "liens": LIENS_TISSES, "entendus": ENTENDUS_EN},
+    "FR": {"concepts": CONCEPTS_FR, "mots": MOTS_FR, "motifs": MOTIFS_FR,
+           "liens": LIENS_TISSES_FR, "entendus": ENTENDUS_FR},
+}
 
 
 def cle(a, b):
@@ -63,13 +105,18 @@ def cle(a, b):
 
 
 class Cerveau:
-    def __init__(self):
-        neurones = set(CONCEPTS)
-        for mb in MOTIFS.values():
+    def __init__(self, langue="EN"):
+        pack = LANGUES[langue]
+        self.langue = langue
+        self.mots_connus = pack["mots"]
+        self.motifs = pack["motifs"]
+        self.entendus = pack["entendus"]
+        neurones = set(pack["concepts"])
+        for mb in self.motifs.values():
             neurones.update(mb)
         self.graph = {
             "neurones": {n: 50 for n in neurones},
-            "liens": {cle(a, b): 10 for a, b in LIENS_TISSES},
+            "liens": {cle(a, b): 10 for a, b in pack["liens"]},
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE")}
@@ -87,7 +134,7 @@ class Cerveau:
         for (a, b), f in sorted(self.graph["liens"].items()):
             L.append(f"  lien {a} {b} force {f}")
         L.append("")
-        for nom, mb in MOTIFS.items():
+        for nom, mb in self.motifs.items():
             L.append(f"  motif {nom} : " + " ".join(mb))
         L.append("fin")
         return "\n".join(L) + "\n"
@@ -126,7 +173,7 @@ class Cerveau:
                 self.secteurs["VIF"].ordre.remove(tuple(mots))
                 trace, _ = self.secteurs[nom].deposer(mots)
                 break
-        connus = [m for m in mots if m in MOTS]
+        connus = [m for m in mots if m in self.mots_connus]
         noeuds = ["word_" + m for m in connus]
         for i in range(len(noeuds) - 1):
             c = cle(noeuds[i], noeuds[i + 1])
@@ -135,7 +182,7 @@ class Cerveau:
                 self.chaines.add(c)
         self._reconstruire()
         if connus:
-            src = "".join(f"rencontre {MOTS[m]}\n" for m in connus)
+            src = "".join(f"rencontre {self.mots_connus[m]}\n" for m in connus)
             src += "propager\nrenforcer\nrepos\n"
             self._exec(src)
         self._sync()
@@ -162,6 +209,6 @@ class Cerveau:
             for t in s.top(3):
                 lignes.append(f"  - {t}")
         lignes.append("tissu : " + " ".join(
-            f"{m}={self.resonance(MOTS[m])}" for m in ("americans", "country", "fellow", "ask")))
+            f"{m}={self.resonance(self.mots_connus[m])}" for m in self.entendus))
         lignes.append(f"liens : {len(self.graph['liens'])} (chaînes vivantes : {len(self.chaines)})")
         return "\n".join(lignes)

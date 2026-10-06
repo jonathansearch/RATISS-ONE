@@ -1,0 +1,130 @@
+# ============================================================
+# FRANCAIS v1 — 4 mots français tissés à la main (mots du discours)
+# RATISS Labs · le tissu parle enfin la langue de son créateur.
+#
+# Cousin UNIR (jamais présenté) : gradué.
+# Inconnu AVENIR (nœuds frais) : zéro.
+# ============================================================
+
+tissu Francais
+
+  # ---------- concepts partagés (6) ----------
+  neurone monde seuil 50
+  neurone terre seuil 50
+  neurone voix seuil 50
+  neurone devoir seuil 50
+  neurone ensemble seuil 50
+  neurone destin seuil 50
+
+  # ---------- mots (4 appris + cousin + inconnu) ----------
+  neurone word_amis seuil 50
+  neurone word_peuple seuil 50
+  neurone word_pays seuil 50
+  neurone word_patrie seuil 50
+  neurone word_unir seuil 50
+  neurone word_avenir seuil 50
+  neurone lointain seuil 50
+
+  # ---------- tissage ----------
+  # amis : monde ensemble voix
+  lien word_amis monde force 10
+  lien word_amis ensemble force 10
+  lien word_amis voix force 10
+  lien monde ensemble force 10
+  lien monde voix force 10
+  lien ensemble voix force 10
+  # peuple : monde terre ensemble
+  lien word_peuple monde force 10
+  lien word_peuple terre force 10
+  lien word_peuple ensemble force 10
+  lien monde terre force 10
+  lien monde ensemble force 10
+  lien terre ensemble force 10
+  # pays : monde terre destin
+  lien word_pays monde force 10
+  lien word_pays terre force 10
+  lien word_pays destin force 10
+  lien monde terre force 10
+  lien monde destin force 10
+  lien terre destin force 10
+  # patrie : terre monde destin
+  lien word_patrie terre force 10
+  lien word_patrie monde force 10
+  lien word_patrie destin force 10
+  lien terre monde force 10
+  lien terre destin force 10
+  lien monde destin force 10
+  # unir (cousin) : voix devoir destin
+  lien word_unir voix force 10
+  lien word_unir devoir force 10
+  lien word_unir destin force 10
+  lien voix devoir force 10
+  lien voix destin force 10
+  lien devoir destin force 10
+  # avenir (inconnu)
+  lien word_avenir lointain force 10
+
+  motif MAMIS : word_amis monde ensemble voix
+  motif MPEUPLE : word_peuple monde terre ensemble
+  motif MPAYS : word_pays monde terre destin
+  motif MPATRIE : word_patrie terre monde destin
+  motif MUNIR : word_unir voix devoir destin
+  motif MAVENIR : word_avenir lointain
+  motif TOUT : word_amis word_peuple word_pays word_patrie monde terre voix devoir ensemble destin
+
+  dire === PHASE 1 : presentation (3 fois chaque mot) ===
+  répéter 3
+    rencontre MAMIS
+    propager
+    renforcer
+    repos
+    rencontre MPEUPLE
+    propager
+    renforcer
+    repos
+    rencontre MPAYS
+    propager
+    renforcer
+    repos
+    rencontre MPATRIE
+    propager
+    renforcer
+    repos
+  fin
+
+  dire === PHASE 2 : education commune (9 fois) ===
+  répéter 9
+    rencontre TOUT
+    propager
+    renforcer
+    repos
+  fin
+
+  dire === PHASE 3 : nuit (2 fois) ===
+  répéter 2
+    oublier
+  fin
+
+  dire === VERDICTS ===
+  juger MAMIS 60
+  juger MPEUPLE 60
+  juger MPAYS 60
+  juger MPATRIE 60
+  juger MUNIR 60
+  juger MAVENIR 20
+
+  si MAVENIR tient 20 alors
+    dire ALERTE : l etranger est entre
+  sinon
+    dire l etranger reste dehors
+  fin
+
+  si MUNIR tient 60 alors
+    dire le cousin est pris pour un ami
+  sinon
+    dire le cousin est devine a moitie : résonance MUNIR sur 100
+  fin
+
+  mesurer
+
+fin

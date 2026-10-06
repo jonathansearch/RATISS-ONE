@@ -183,6 +183,24 @@ RNI — sans aucune physique quantique : des compteurs, des seuils, des nuits.
 > (VIF→REFRAIN→SANCTUAIRE) en conditions live : ce qui survit, c'est le plus
 > répété — et l'ordre des mots survit comme chaînes de liens qui tiennent.
 
+### Leçon 10 🇫🇷 — Le retour au français : la loi ne parle aucune langue
+*Route A : `francais.ratum` + `porte-voix/oreille_fr.py` (faster-whisper small) +
+`Cerveau("FR")` + `cerveau-demo-fr.py` — preuves : `preuves/transcription-discours.txt`,
+`preuves/sortie-cerveau-demo-fr.txt`, `bouche/cerveau-fr.wav`, `cerveau/MESURES-FR.md`*
+
+Le pipeline complet est devenu bilingue : oreille faster-whisper small (21
+mots FR mot pour mot, 10.9 s à froid, ~1.5 s à chaud), tissu français
+(81/85/85/90, cousin 40, témoin 0 — miroir de l'anglais à 1 point près),
+cerveau FR (19 séquences → sanctuaire `amis du peuple` f92, tissu 4×95),
+bouche Piper FR (résumé parlé 6 s, boucle totale 8.5 s). Même crâne, même
+loi, deux langues — et les nombres coïncident : sanctuaire f92 des deux
+côtés. L'anglais n'était qu'un détour technique ; Ratum parle français.
+
+> **Énoncé :** la loi du RNI est indépendante de la langue : à structure
+> égale, deux langues donnent les mêmes verdicts (appris 81-90, cousin ~40,
+> témoin 0, sanctuaire f92) — la compréhension est dans la structure,
+> pas dans les mots.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -230,10 +248,12 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **vocabulaire anglais + boucle parole** — tissu EN (4 mots à 81-90) + bouche Piper (verdicts parlés, 6 oct.)
 - [x] **cerveau v1 (option 3)** — crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE, séquences temporelles
       (livré 6 oct. : JFK live → 1 sanctuaire f92, résumé parlé 6 s, 81/81 contrôles verts)
-- [ ] **oreille française** — équivalent francophone à trouver ou entraîner
-- [ ] **vocabulaire élargi** — grandir le lexique anglais (puis français) par éducation
+- [x] **oreille française (route A)** — faster-whisper small : 21/21 mot pour mot, tissu FR 81-90, sanctuaire f92, boucle 8.5 s
+      (livré 6 oct. : leçon 10, 89/89 contrôles verts)
+- [ ] **vocabulaire élargi (route B)** — grandir le lexique par éducation, 6 → 50 mots (choix du chef, 6 oct.)
+- [ ] **cerveau v2 (route C)** — érosion du marbre, phrases libres, anti-saturation (choix du chef, 6 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
-- [ ] **v2** — implémentation bas niveau de l'interprète (quitter le berceau)
+- [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

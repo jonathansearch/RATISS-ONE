@@ -1,0 +1,17 @@
+=== tissu Francais ===
+=== PHASE 1 : presentation (3 fois chaque mot) ===
+=== PHASE 2 : education commune (9 fois) ===
+=== PHASE 3 : nuit (2 fois) ===
+=== VERDICTS ===
+JUGEMENT MAMIS : TIENT (81/100, seuil 60)
+JUGEMENT MPEUPLE : TIENT (85/100, seuil 60)
+JUGEMENT MPAYS : TIENT (85/100, seuil 60)
+JUGEMENT MPATRIE : TIENT (90/100, seuil 60)
+JUGEMENT MUNIR : ROMPT (40/100, seuil 60)
+JUGEMENT MAVENIR : ROMPT (0/100, seuil 20)
+l etranger reste dehors
+le cousin est devine a moitie : 40 sur 100
+liens : 26
+force moyenne : 70/100
+liens forts : 22
+=== fin du programme ===
