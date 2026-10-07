@@ -92,6 +92,18 @@ LIENS_TISSES_FR = [
 ]
 ENTENDUS_FR = ("amis", "peuple", "pays", "patrie")
 
+# ⑩ ÉTIQUETTES (gelées 7 oct. 2026 — choix du labo, validé par le chef) :
+# le noyau inné, 5 EN + 5 FR : (mot entendu, motif). Au-delà (comet,
+# avenir...) : mots d'école — ils grandissent, ils ne sont pas gelés.
+MOTIFS_FIXES = (
+    ("EN", (("fellow", "MFELLOW"), ("americans", "MAMERICANS"),
+            ("ask", "MASK"), ("country", "MCOUNTRY"),
+            ("homeland", "MHOME"))),
+    ("FR", (("amis", "MAMIS"), ("peuple", "MPEUPLE"),
+            ("pays", "MPAYS"), ("patrie", "MPATRIE"),
+            ("unir", "MUNIR"))),
+)
+
 # v2, principe des ponts uniques : un concept porté par UN SEUL mot ne reçoit
 # qu'un seul écho (moitié perdue dans l'ombre, 44 < 50, à jamais sourd).
 # On abaisse son seuil à 40 — pas la règle, le monde : il écoute plus fort.
@@ -135,6 +147,7 @@ class Cerveau:
         self.chaines = set()  # liens nés des séquences (élaguables)
         self.tampon = []  # v5 : l'antichambre — le jour écoute, la nuit consolide
         self.reve = True  # v6 : on rêve chaque nuit (désactivable : chaos témoin)
+        self.ecoutes = 0  # R5 : séquences venues du dehors (le rêve ne compte pas)
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR")}
         self._cise_lus = 0  # v3 : étincelles déjà lues au journal du tissu
         self._reconstruire()
@@ -203,6 +216,8 @@ class Cerveau:
         au secteur — elle ne passe pas par les oreilles. Retourne la trace
         (interne) ou None (tamponnée : elle n'existe qu'à la nuit)."""
         mots = [m for m in mots if m]
+        if mots and not interne:
+            self.ecoutes += 1  # R5 : seules les oreilles font tourner le compteur
         self._entendre_tissu(mots)
         if interne:
             return self._deposer_trace(mots)
@@ -300,5 +315,6 @@ class Cerveau:
                         + (" (PRESSION : la soupape coule)" if self.tampon and len(self.tampon) >= TAMPON_CAP else ""))
         lignes.append("tissu : " + " ".join(
             f"{m}={self.resonance(self.mots_connus[m])}" for m in self.entendus))
+        lignes.append(f"écoutes : {self.ecoutes} séquences entendues (R5)")
         lignes.append(f"liens : {len(self.graph['liens'])} (chaînes vivantes : {len(self.chaines)})")
         return "\n".join(lignes)

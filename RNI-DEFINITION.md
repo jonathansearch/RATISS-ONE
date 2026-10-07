@@ -389,6 +389,22 @@ théorème — mais le tissu et l'univers parlent enfin la même langue.
 > **Énoncé :** l'ordre se mesure au calme qu'il projette — un tissu
 > sanctuaire fait moins de vagues topologiques que le chaos (6,23 < 6,40).
 
+### Leçon 20 🏷️ — Les dix étiquettes et le compteur honnête
+*R5 + noyau gelé : `ecoutes` (`cerveau/cerveau.py`), R-COMPTES
+(`bouche/regles.py`), `MOTIFS_FIXES` — preuves : 7 wav régénérés,
+`BOUCHE OK — 5 phrases exactes R5`, 109/109.*
+
+Le tissu sait désormais dire ce qu'il a entendu : « J'ai entendu N
+séquences » ouvre chaque phrase — dehors seul, répétitions comprises
+(JFK 35, discours FR 30, tempête 82), la voix intérieure ne triche pas
+(3 relectures, compteur fixe à 12/24). La démo EN abandonne son compte
+fait main pour la règle unique. Et le vocabulaire a son noyau gelé :
+10 couples mot→motif (4 innés + 1 d'école par langue, `unir`/`homeland`),
+sha pinné en batterie — au-delà, les mots d'école grandissent librement.
+
+> **Énoncé :** une bouche honnête compte ses écoutes avant de parler —
+> et un vocabulaire sain a un noyau gelé et une banlieue qui grandit.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -452,6 +468,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [x] **second berceau C (route D)** — 24/24 sorties identiques + scroll identique, zéro warning (livré 7 oct. : leçon 18, 107/107)
 - [x] **pont FOCAL** — tissu → 2048 bits → P_sig : sanctuaire 6,2301 < chaos 6,3970, porteurs ×31,6 (livré 7 oct. : leçon 19, 108/108)
+- [x] **R5 + ⑩ étiquettes** — « J'ai entendu N » (JFK 35, FR 30, tempête 82), noyau 5+5 gelé sha pinné (livré 7 oct. : leçon 20, 109/109)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

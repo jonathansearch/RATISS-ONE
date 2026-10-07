@@ -6,19 +6,24 @@
 3 séquences riches (>= 2 mots connus), répétées x2
 focus répété x6 : fellow americans ask
 === 3. NUIT 1 ===
+nettoyage : 4 liens morts, 0 neurones morts
 promus VIF->REFRAIN : 4, morts VIF : 0
 === 4. NUIT 2 ===
+nettoyage : 0 liens morts, 0 neurones morts
 promus REFRAIN->SANCTUAIRE : 1
 === 5. RAPPORT ===
 VIF : 0 traces
 REFRAIN : 3 traces
-  - americans+ask+not x1 f42
-  - my+fellow+americans x1 f42
+  - americans+ask+not x2 f77
+  - my+fellow+americans x2 f77
   - can+do+for x1 f32
 SANCTUAIRE : 1 traces
   - fellow+americans+ask x1 f92
-tissu : americans=95 country=95 fellow=95 ask=95
-liens : 28 (chaînes vivantes : 2)
-dit : I heard 20 sequences. 3 sleep in the refrain. 1 reached the sanctuary : fellow americans ask.
+ULTRA-SECTEUR : 0 traces
+tampon : 0 en attente
+tissu : americans=94 country=93 fellow=90 ask=90
+écoutes : 35 séquences entendues (R5)
+liens : 24 (chaînes vivantes : 2)
+dit : I heard 35 sequences. In the sanctuary: fellow americans ask. I hold americans, country, fellow and ask. The rest stays outside.
 bouche/cerveau.wav écrit
-=== boucle totale : 46.3 s ===
+=== boucle totale : 8.1 s ===

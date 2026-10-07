@@ -32,7 +32,7 @@ def main():
     assert sanctuaire(c, a).force == 92, sanctuaire(c, a)
     assert sanctuaire(c, b).force == 92, sanctuaire(c, b)
     phrases = [c.redire()[0] for _ in range(3)]
-    assert all(p.startswith("In the sanctuary: fellow americans ask.") for p in phrases), phrases
+    assert all(p.startswith("I heard 24 sequences. In the sanctuary: fellow americans ask.") for p in phrases), phrases
     gravee = sanctuaire(c, a)
     assert gravee.grave and gravee.redites == 3, gravee
     assert not sanctuaire(c, b).grave, "le témoin ne doit pas graver !"
@@ -53,7 +53,7 @@ def main():
     f.nuit()
     for _ in range(3):
         pf, tf = f.redire()
-    assert pf.startswith("Au sanctuaire : amis du peuple."), pf
+    assert pf.startswith("J'ai entendu 12 séquences. Au sanctuaire : amis du peuple."), pf
     assert tf.grave and tf.force == 100, tf
     for _ in range(2):
         f.nuit()

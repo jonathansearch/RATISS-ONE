@@ -31,7 +31,7 @@ def main():
     assert san[tuple(a)].force == 92 and san[tuple(b)].force == 92
     for _ in range(3):
         phrase, _ = c.redire()
-    assert phrase.startswith("In the sanctuary: fellow americans ask."), phrase
+    assert phrase.startswith("I heard 24 sequences. In the sanctuary: fellow americans ask."), phrase
     assert san[tuple(a)].grave, "A devrait être gravée !"
     # LA TEMPÊTE : 70 inconnues en un jour
     tempete = [[f"mot{i}", f"bruit{i}", f"vague{i}"] for i in range(70)]

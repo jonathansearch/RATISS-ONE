@@ -34,6 +34,7 @@ def lire_etat(c):
         "sanctuaire": list(c.secteurs["SANCTUAIRE"].top(1)[0].mots)
         if c.secteurs["SANCTUAIRE"].traces else None,
         "refrain_n": len(c.secteurs["REFRAIN"].traces),
+        "ecoutes": c.ecoutes,
         "tissu": {m: c.resonance(c.mots_connus[m]) for m in c.entendus},
     }
 
@@ -60,10 +61,18 @@ def formuler_tissu(tenus, langue):
     return f"I hold {joindre(tenus, langue)}. The rest stays outside."
 
 
+def formuler_comptes(n, langue):
+    if langue == "FR":
+        nom = "séquence" if n <= 1 else "séquences"
+        return f"J'ai entendu {n} {nom}."
+    nom = "sequence" if n == 1 else "sequences"
+    return f"I heard {n} {nom}."
+
+
 def formuler(etat, langue=None):
-    """R-ULTRA + R-SANCT + R-TISSU/R-VIDE, dans cet ordre, vides sautés."""
+    """R-COMPTES + R-ULTRA + R-SANCT + R-TISSU/R-VIDE, dans cet ordre."""
     langue = langue or etat["langue"]
-    parts = []
+    parts = [formuler_comptes(etat["ecoutes"], langue)]
     if etat["ultra"]:
         noms = [mot_de(t["mots"][1], langue) for t in etat["ultra"]]
         parts.append((f"Je tiens pour sûr : {joindre(noms, langue)}." if langue == "FR"

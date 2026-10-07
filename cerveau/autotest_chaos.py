@@ -59,7 +59,7 @@ def main():
     assert len(c.secteurs["REFRAIN"].traces) == 0
     for _ in range(3):
         phrase, _ = c.redire()
-    assert phrase.startswith("Au sanctuaire : amis du peuple."), phrase
+    assert phrase.startswith("J'ai entendu 19 séquences. Au sanctuaire : amis du peuple."), phrase
     assert san[elue].grave, "l'élue devrait être gravée !"
     for _ in range(2):
         c.nuit()
@@ -85,7 +85,7 @@ def main():
     assert refrain[("can", "do", "for")].force == 16, refrain
     for _ in range(3):
         phrase_en, _ = j.redire()
-    assert phrase_en.startswith("In the sanctuary: americans ask not."), phrase_en
+    assert phrase_en.startswith("I heard 20 sequences. In the sanctuary: americans ask not."), phrase_en
     assert san_en[tuple(top.mots)].grave
     for _ in range(2):
         j.nuit()

@@ -26,10 +26,11 @@ Refrain final : `americans+ask+not f42`, `my+fellow+americans f42`,
 
 ## Sortie (bouche)
 
-- Phrase : « I heard 20 sequences. 3 sleep in the refrain. 1 reached the
-  sanctuary : fellow americans ask. »
-- `bouche/cerveau.wav` : 6.0 s, 22050 Hz, mono — boucle totale **46.3 s**
-  (oreille ~40 s à chaud, cerveau 0.1 s, bouche ~2 s).
+- Phrase (règle unique v1, R5) : « I heard 35 sequences. In the
+  sanctuary: fellow americans ask. I hold americans, country, fellow and
+  ask. » (l'ancien compte fait main « 20 sequences » est abandonné)
+- `bouche/cerveau.wav` : 9.0 s, 22050 Hz, mono — boucle totale **~8 s**
+  (mesuré 7 oct. 2026, modèle Phonon en cache ; ~46 s au tout premier passage)
 
 ## Autotest (hors-ligne, déterministe)
 

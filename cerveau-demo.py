@@ -14,6 +14,7 @@ import subprocess
 import sys
 import time
 
+from bouche.regles import formuler, lire_etat
 from cerveau.cerveau import Cerveau, MOTS  # lancé depuis la racine du dépôt
 
 
@@ -92,12 +93,7 @@ def main():
 
     print("=== 5. RAPPORT ===")
     print(c.rapport())
-    nv = len(c.secteurs["VIF"].traces)
-    nr = len(c.secteurs["REFRAIN"].traces)
-    san = c.secteurs["SANCTUAIRE"].traces
-    top = " ".join(c.secteurs["SANCTUAIRE"].top(1)[0].mots) if san else "nothing"
-    phrase = (f"I heard {len(wins)} sequences. {nr} sleep in the refrain. "
-              f"{len(san)} reached the sanctuary : {top}.")
+    phrase = formuler(lire_etat(c))  # règle unique v1 (R5 : le compteur du tissu)
     print(f"dit : {phrase}")
     print("bouche/cerveau.wav écrit" if parler(phrase) else "ÉCHEC bouche")
     print(f"=== boucle totale : {time.time() - t0:.1f} s ===")

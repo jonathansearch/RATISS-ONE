@@ -4,7 +4,7 @@
 horodatés FR) → fenêtres de 3 mots → `Cerveau("FR")` (éducation + écoute +
 répétitions) → nuit 1 → nuit 2 → `rapport()` → Piper FR (résumé parlé).
 **Preuves :** `preuves/transcription-discours.txt`,
-`preuves/sortie-cerveau-demo-fr.txt`, `bouche/cerveau-fr.wav` (6.8 s,
+`preuves/sortie-cerveau-demo-fr.txt`, `bouche/cerveau-fr.wav` (8.6 s,
 restauré 7 oct. 2026).
 
 ## Installation (vivante, non persistée — rejouer par session)
@@ -55,10 +55,10 @@ vers l'unique séquence répétée — entonnoir honnête, pas de remplissage.
 ## Sortie (bouche FR)
 
 - Rapport : secteurs + tissu + liens (ex. `amis+du+peuple x1 f92`),
-  puis phrase dite : « Au sanctuaire : amis du peuple. Je tiens amis,
+  puis phrase dite : « J'ai entendu 30 séquences. Au sanctuaire : amis du peuple. Je tiens amis,
   peuple, pays et patrie. » (le compteur « J'ai entendu N séquences »
-  reste à faire : TOKENIZER.md R5)
-- `bouche/cerveau-fr.wav` : 6.8 s — boucle totale **~8-13 s** selon cache
+  compteur R5 livré 7 oct. : 19 fenêtres + 2 riches + 9 focus = 30)
+- `bouche/cerveau-fr.wav` : 8.6 s — boucle totale **~8-13 s** selon cache
   (oreille ~1.5 s à chaud, reste cerveau + bouche ; restauré 7 oct. 2026)
 
 ## Autotest FR (hors-ligne, déterministe)

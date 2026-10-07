@@ -8,6 +8,8 @@ Usage : python3 tests_verdicts.py
 Sortie 0 = tous les contrôles verts, 1 = écart détecté.
 """
 
+import hashlib
+import json
 import os
 import subprocess
 import sys
@@ -312,6 +314,19 @@ def main():
         print("OK : pont FOCAL (3 tissus -> bits stables + preuve P_sig)")
     else:
         print("ÉCHEC : le pont FOCAL ne tient pas (régénérer la preuve ?)")
+        echecs += 1
+    controles += 1
+    from cerveau.cerveau import MOTIFS_FIXES, MOTS, MOTS_FR  # noqa: E402
+    canon_etiquettes = json.dumps(MOTIFS_FIXES, ensure_ascii=False).encode()
+    sha_etiquettes = hashlib.sha256(canon_etiquettes).hexdigest()[:16]
+    tables = {"EN": MOTS, "FR": MOTS_FR}
+    if (sha_etiquettes == "3165ae68528bc9d4"
+            and sum(len(m) for _, m in MOTIFS_FIXES) == 10
+            and all(tables[lg][mot] == motif for lg, mots in MOTIFS_FIXES
+                    for mot, motif in mots)):
+        print("OK : 10 étiquettes gelées (5 EN + 5 FR, sha pinné)")
+    else:
+        print("ÉCHEC : le noyau des motifs a bougé")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

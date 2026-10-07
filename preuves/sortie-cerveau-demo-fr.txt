@@ -1,5 +1,6 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 === 1. OREILLE FR (mots horodatés) ===
-21 mots en 1.4 s : amis du peuple ne demandez pas ce que votre pays fera pour vous demandez ce que vous ferez pour la patrie
+21 mots en 5.0 s : amis du peuple ne demandez pas ce que votre pays fera pour vous demandez ce que vous ferez pour la patrie
 19 séquences de 3 mots
 === 2. CERVEAU FR (éducation + écoute) ===
 1 séquence riche (>= 2 mots connus), répétée x2
@@ -18,7 +19,8 @@ SANCTUAIRE : 1 traces
 ULTRA-SECTEUR : 0 traces
 tampon : 0 en attente
 tissu : amis=91 peuple=97 pays=97 patrie=97
+écoutes : 30 séquences entendues (R5)
 liens : 23 (chaînes vivantes : 1)
-dit : Au sanctuaire : amis du peuple. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+dit : J'ai entendu 30 séquences. Au sanctuaire : amis du peuple. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
 bouche/cerveau-fr.wav écrit
-=== boucle totale : 8.2 s ===
+=== boucle totale : 11.0 s ===
