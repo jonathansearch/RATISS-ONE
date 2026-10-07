@@ -3,7 +3,7 @@
  "date": "2026-10-07",
  "version": "route-d-v1",
  "fichiers": {
-  ".gitignore": "45419401525ed8ae",
+  ".gitignore": "84cef3e92f7314e2",
   "CERVEAU.md": "24c584cabda63a9b",
   "LANGAGE-RATUM.md": "c0fad1976baa6a03",
   "LICENSE": "3408e120fb868a0e",
@@ -103,7 +103,7 @@
   "bouche/preuve-tokenizer.wav": "57005e411c9265c3",
   "donnees/generer.py": "8b3d39e02529e3f0",
   "donnees/paires.jsonl": "37eb9222e3af2b3f",
-  "entrainer-colab.ipynb": "333712a337117dd8",
+  "entrainer-colab.ipynb": "4de58ff38ae75a1f",
   "TOKENIZER.md": "b0bfcde77124cdf4",
   "preuves/sortie-bouche.txt": "5e99211b55076d14",
   "cerveau/autotest_marbre.py": "0cd89de2f6c08fe3",
