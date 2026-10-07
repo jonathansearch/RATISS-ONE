@@ -90,3 +90,30 @@ python3 education/figures_vocab.py          # images/constellation.png
 2. Fenêtres = phrases prédécoupées : le découpage libre viendra en route C.
 3. Saturation uniforme à 90 (section 4) : le défaut publié de cette route.
 4. 50 mots, 1 langue : l'échelle et le bilinguisme restent devant.
+
+## 7. Recalibrage route C (7 oct. 2026) — on ajuste le monde, pas la règle
+
+Le cœur v2 ((10,3) partout, élasticité, ombre, `nettoyer`) a fait tomber B
+à 42/50. Règle du chef : on ne touche pas la loi, on ajuste le monde.
+Monde ajusté : corpus 39 phrases (+2 COEUR où les 4 ancres + unir battent
+ensemble — la sommation multi-sources traverse l'ombre), 5 rounds,
+graine 30×TOUT (ponts à 89), seuil 40 pour voix (pont unique),
+UNE SEULE vague par phrase (trois vagues = tout co-actif, 45 paires à 94
+pile, sélectivité morte), motifs nommés AVANT la nuit (nommer protège de
+la faucheuse), nuits via `cerveau.nuit()` (oublier + `nettoyer`).
+
+Résultat : **50/50 + 6/6**, MUNIR 39 → **74**, paires 74-94 (3 à 74,
+2 à 76, 40 à 92-94), témoins à 4, familles 12-85, forces 7/0/4/32/235.
+Courbe d'apprentissage v2 : 4 → 20 → 43 → 50 (rounds 1/2/3/5 —
+progressive, l'élasticité ralentit le départ). Érosion : 5 nuits (oublier 3)
+tiennent encore 50/50 — les nuits douces pardonnent. La faucheuse passe :
+2 liens morts nuit 1, 0 nuit 2.
+
+**La falaise délie** (mesurée 7 oct., `--delie D`) : délie 0 → 50/50 ;
+délie 1 → 0/50 (202 liens fauchés) ; 2, 3, 5, 10 → 0/50. Entre 0 et 1 il
+n'y a pas de pente : l'éducation sélective exige délie 0, aucun compromis
+« doux » ne survit. Zéro neurones morts même sous délie 10 : tous nommés,
+tous protégés. Décision du chef en attente (régime école conservé).
+
+Saturation : atténuée (74-94 au lieu de 90 pile, familles 12-85) mais pas
+vaincue — 235 liens au sommet. Le marbre (phase 3) viendra creuser.

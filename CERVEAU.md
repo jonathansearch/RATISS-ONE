@@ -64,4 +64,15 @@ Inspiré de FOCAL (condensateur → VIF, porteurs → REFRAIN, conteneur →
 SANCTUAIRE), adapté au RNI — et toujours pas de physique quantique :
 des compteurs, des seuils et des nuits.
 
+## Le cerveau v2 : la graine longue et la faucheuse (7 oct. 2026)
+
+Route C phases 1-2, sans toucher la règle : graine éduquée 30×TOUT (les
+ponts à 89 portent l'écho malgré l'ombre), **principe des ponts uniques**
+(un concept porté par un seul mot écoute plus fort : seuil 40 — voix en
+FR, duty en EN), et la nuit fait passer la **faucheuse** (`nettoyer` :
+liens à 0 arrachés, isolés anonymes morts, nommés protégés). Le pont
+Python ↔ Ratum est devenu un miroir complet (forces, seuils adaptés,
+suppressions). Preuves : `cerveau/autotest.py` + `autotest_fr.py` dans
+la batterie (93/93), sanctuaire FR toujours à f92.
+
 *« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

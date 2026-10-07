@@ -1,14 +1,14 @@
 === tissu Coexistence ===
 === PHASE 1 : alternance SYMÉTRIQUE (6 tours) ===
-après le symétrique : A à 10 , B à 10
-JUGEMENT A : ROMPT (10/100, seuil 40)
-JUGEMENT B : ROMPT (10/100, seuil 40)
+après le symétrique : A à 36 , B à 37
+JUGEMENT A : ROMPT (36/100, seuil 40)
+JUGEMENT B : ROMPT (37/100, seuil 40)
 === PHASE 2 : alternance ASYMÉTRIQUE (6 tours) ===
-après l asymétrique : A à 52 , B à 52
-JUGEMENT A : TIENT (52/100, seuil 40)
+après l asymétrique : A à 50 , B à 52
+JUGEMENT A : TIENT (50/100, seuil 40)
 JUGEMENT B : TIENT (52/100, seuil 40)
 l asymétrie fait coexister ce que le symétrique figeait
 liens : 2
-force moyenne : 52/100
+force moyenne : 51/100
 liens forts : 0
 === fin du programme ===

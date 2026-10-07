@@ -20,8 +20,8 @@ tissu Oubli
   motif PREMIER : x y
   motif SECOND : p q
 
-  dire === on apprend le PREMIER (6 fois) ===
-  répéter 6
+  dire === on apprend le PREMIER (10 fois) ===
+  répéter 10
     rencontre PREMIER
     propager
     renforcer
@@ -30,8 +30,8 @@ tissu Oubli
   dire PREMIER tient à résonance PREMIER sur 100
   juger PREMIER 60
 
-  dire === on apprend le SECOND (6 fois), sans revoir le premier ===
-  répéter 6
+  dire === on apprend le SECOND (10 fois), sans revoir le premier ===
+  répéter 10
     rencontre SECOND
     propager
     renforcer

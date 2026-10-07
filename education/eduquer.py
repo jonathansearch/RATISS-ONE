@@ -6,7 +6,7 @@ RATISS Labs · MIT.
 
 Protocole : graine = Cerveau FR éduqué (13 neurones) ; chaque phrase fait
 naître ses nœuds/liens manquants (force 10, la naissance), puis
-rencontre + propager + `renforcer lie 10 delie D` + repos. D = 0 par défaut :
+rencontre + propager x3 + `renforcer lie 10 delie D` + repos. D = 0 par défaut :
 l'éducation SÉLECTIVE exige délie 0 (sinon chaque phrase efface les autres —
 le prouver : --delie 10, le témoin catastrophique). Nuits : oublier x2.
 
@@ -50,14 +50,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--export", default=os.path.join(ICI, "vocabulaire50.ratum"))
     ap.add_argument("--delie", type=int, default=0)
-    ap.add_argument("--rounds", type=int, default=3)
+    ap.add_argument("--rounds", type=int, default=5)
     ap.add_argument("--nuits", type=int, default=2)
     args = ap.parse_args()
 
     phrases = charger_corpus(os.path.join(ICI, "corpus.txt"))
     couv = Counter(w for p in phrases for w in p)
     mots = sorted(couv)
-    assert len(phrases) == 37 and len(mots) == 50, (len(phrases), len(mots))
+    assert len(phrases) == 39 and len(mots) == 50, (len(phrases), len(mots))
     for w in mots:
         if w not in ANCIENS and w not in ("soleil", "livre"):
             assert couv[w] == 3, (w, couv[w])
@@ -106,15 +106,14 @@ def main():
             for i in range(len(ns)):
                 for j in range(i + 1, len(ns)):
                     relier(ns[i], ns[j])
+            # v2 : UNE SEULE vague par phrase. Trois vagues + délie 0 = tout
+            # co-actif partout, sélectivité morte (45 paires à 94 pile).
+            # L'ombre protège la sélectivité ; unir apprend par la graine.
             c._exec(f"motif PHRASE : {' '.join(ns)}\nrencontre PHRASE\npropager\n"
                     f"renforcer lie 10 delie {args.delie}\nrepos\n")
         c._sync()
-    for _ in range(args.nuits):
-        c._exec("oublier\n")
-    c._sync()
-    print(f"naissances : {naiss_n} neurones, {naiss_l} liens "
-          f"(rounds={args.rounds}, delie={args.delie}, nuits={args.nuits})")
-
+    # v2 : on NOMME avant la nuit — les nommés (membres d'un motif) survivent
+    # isolés à la faucheuse ; les anonymes meurent. Nommer, c'est protéger.
     # motifs hérités : ancre + compagnon les plus fréquents
     ancres, compagnons = {}, {}
     for w in mots:
@@ -127,6 +126,11 @@ def main():
                 f"motif T_{w.upper()} : word_{w} word_{a} word_{k}\n")
     for t in TEMOINS:
         c._exec(f"motif TEMOIN_{t.upper()} : word_{t} lointain\n")
+    for _ in range(args.nuits):
+        c.nuit()  # v2 : oublier + nettoyer (la faucheuse élague les liens à 0)
+    c._sync()
+    print(f"naissances : {naiss_n} neurones, {naiss_l} liens "
+          f"(rounds={args.rounds}, delie={args.delie}, nuits={args.nuits})")
 
     # verdicts
     paires, triples = {}, {}
@@ -179,7 +183,7 @@ def main():
     # export déterministe : le tissu final rejouable en pur Ratum
     # (neurones lus sur le tissu VIVANT — le graphe Python ne suit pas les naissances)
     L = ["# VOCABULAIRE50 — tissu éduqué par phrases (généré, voir education/eduquer.py)",
-         "# graine FR + 37 phrases x3 rounds + 2 nuits. Régénéré avant chaque batterie.",
+         f"# graine FR + 39 phrases x{args.rounds} rounds + 2 nuits. Régénéré avant chaque batterie.",
          "", "tissu Vocabulaire", ""]
     for n in sorted(tiss.neurones):
         L.append(f"  neurone {n} seuil {tiss.neurones[n]['seuil']}")

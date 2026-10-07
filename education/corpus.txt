@@ -1,4 +1,4 @@
-# CORPUS v1 — 37 phrases, 50 mots (5 ancres + 45 nouveaux).
+# CORPUS v2 — 39 phrases, 50 mots (5 ancres + 45 nouveaux + 2 phrases COEUR).
 # RATISS Labs · route B : chaque mot nouveau apparaît EXACTEMENT 3 fois,
 # toujours avec son ancre (éducation sélective, pas commune).
 # Format : une phrase par ligne, mots séparés par des espaces, ascii pur.
@@ -45,3 +45,9 @@ livre idee ecole maitre chemin
 # --- PONTS (relient les constellations) ---
 amis pays porte nuit matin
 amis soleil livre feu chemin
+# --- COEUR (v2 : unir rejoint les quatre ancres) ---
+# L'ombre (route C) tue l'écho à un saut : unir ne peut plus apprendre
+# ses concepts par un seul pont. Deux phrases où les quatre ancres battent
+# ensemble : la sommation multi-sources rallume voix et destin, unir suit.
+amis peuple pays patrie unir
+amis patrie pays peuple unir

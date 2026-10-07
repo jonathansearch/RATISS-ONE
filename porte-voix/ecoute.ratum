@@ -27,8 +27,8 @@ tissu Ecoute
   motif MCOMETE : mot_comete lointain
   motif TOUT : mot_soleil mot_lune chaud froid lumiere
 
-  dire === EDUCATION (commune x9, nuit x2) ===
-  répéter 9
+  dire === EDUCATION (commune x15, nuit x2) ===
+  répéter 15
     rencontre TOUT
     propager
     renforcer

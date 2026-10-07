@@ -92,11 +92,18 @@ LIENS_TISSES_FR = [
 ]
 ENTENDUS_FR = ("amis", "peuple", "pays", "patrie")
 
+# v2, principe des ponts uniques : un concept porté par UN SEUL mot ne reçoit
+# qu'un seul écho (moitié perdue dans l'ombre, 44 < 50, à jamais sourd).
+# On abaisse son seuil à 40 — pas la règle, le monde : il écoute plus fort.
+# FR : voix (amis seul la porte). EN : duty (ask seul la porte).
+SEUILS_EN = {"duty": 40}
+SEUILS_FR = {"voix": 40}
+
 LANGUES = {
     "EN": {"concepts": CONCEPTS, "mots": MOTS, "motifs": MOTIFS,
-           "liens": LIENS_TISSES, "entendus": ENTENDUS_EN},
+           "liens": LIENS_TISSES, "entendus": ENTENDUS_EN, "seuils": SEUILS_EN},
     "FR": {"concepts": CONCEPTS_FR, "mots": MOTS_FR, "motifs": MOTIFS_FR,
-           "liens": LIENS_TISSES_FR, "entendus": ENTENDUS_FR},
+           "liens": LIENS_TISSES_FR, "entendus": ENTENDUS_FR, "seuils": SEUILS_FR},
 }
 
 
@@ -115,13 +122,15 @@ class Cerveau:
         for mb in self.motifs.values():
             neurones.update(mb)
         self.graph = {
-            "neurones": {n: 50 for n in neurones},
+            "neurones": {n: pack["seuils"].get(n, 50) for n in neurones},
             "liens": {cle(a, b): 10 for a, b in pack["liens"]},
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE")}
         self._reconstruire()
-        self._exec("répéter 9\nrencontre TOUT\npropager\nrenforcer\nrepos\nfin\n"
+        # v2 : enfance longue (30 x TOUT) — l'ombre exige des ponts solides :
+        # un lien à 90 porte l'écho à 45, deux ponts à 90 rallument un concept.
+        self._exec("répéter 30\nrencontre TOUT\npropager\nrenforcer\nrepos\nfin\n"
                    "répéter 2\noublier\nfin\n")
         self._sync()
 
@@ -151,9 +160,16 @@ class Cerveau:
         self.itp.executer(instr, 0, len(instr))
 
     def _sync(self):
-        """Remonte les forces du tissu vers le graphe persistant."""
-        for (a, b), f in self.itp.tissu.liens.items():
-            self.graph["liens"][cle(a, b)] = f
+        """Remonte le tissu vers le graphe persistant (miroir complet :
+        forces, seuils adaptés, ET suppressions de `nettoyer`)."""
+        t = self.itp.tissu
+        self.graph["liens"] = {cle(a, b): f for (a, b), f in t.liens.items()}
+        for n, v in t.neurones.items():
+            if n in self.graph["neurones"]:
+                self.graph["neurones"][n] = v["seuil"]
+        for c in list(self.chaines):
+            if c not in self.graph["liens"]:
+                self.chaines.discard(c)
 
     def _elaguer(self):
         morts = [c for c in self.chaines if self.graph["liens"].get(c, 0) <= 0]
@@ -189,8 +205,9 @@ class Cerveau:
         return trace
 
     def nuit(self):
-        """La nuit : le tissu oublie, les secteurs consolident."""
+        """La nuit : le tissu oublie, la faucheuse élague, les secteurs consolident."""
         self._exec("oublier\n")
+        self._exec("nettoyer\n")
         self._sync()
         elagues = self._elaguer()
         r_san = self.secteurs["SANCTUAIRE"].nuit(None)

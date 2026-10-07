@@ -219,6 +219,30 @@ uniforme à 90 (cause : propagation sans concurrence) — piste route C.
 > `renforcer lie 10 delie 0`) : 6 → 50 mots sans tissage manuel — et la loi
 > n'a pas de valeur universelle, chaque régime d'éducation exige la sienne.
 
+### Leçon 12 🧬 — Route C : on ajuste le monde, pas la règle
+*Route C phases 1-2 : cœur v2 (`ratum.py`) + nuits faucheuses (`cerveau.py`) —
+preuves : `tests_verdicts.py` (93/93), `education/EDUCATION.md` (§ recalibrage),
+`LANGAGE-RATUM.md` (v2), ce fichier.*
+
+Le cœur v2 : loi universelle **(10, 3)** partout par défaut, gains **élastiques**
+(pleins au départ, fondants avec la force), **ombre** à la propagation (moitié
+perdue par saut), oubli adouci à 3, résonance comptant les paires manquantes
+comme 0, et `nettoyer` (19e relation : la faucheuse arrache les liens à 0, les
+neurones isolés meurent SAUF les nommés). Batterie tombée à 62/93, remontée à
+**93/93 sans toucher une seule règle** : fréquences ×1.5-2 (5 → 10 rencontres
+minimales — le prix de l'élasticité), corpus 39 phrases (+2 COEUR), graine
+30×TOUT, seuils 40 pour les ponts uniques (voix/duty). Trouvailles : l'ombre
+tue les vagues lointaines (j09 : 65 → 64) mais la sommation multi-sources la
+traverse (MUNIR 39 → 74) ; **la falaise délie** — entre délie 0 (50/50) et
+délie 1 (0/50) il n'y a pas de pente, l'éducation sélective exige délie 0
+(décision du chef en attente — régime école conservé en intérim) ; nommer c'est protéger
+(0 neurones morts sous délie 10, tous nommés). Reste : saturation atténuée
+(B : 74-94) mais pas vaincue — le marbre (phase 3) viendra creuser.
+
+> **Énoncé :** la loi universelle (10, 3) + élasticité + ombre tient les 12
+> leçons (93/93) en ajustant le monde (fréquence, corpus, seuils) —
+> et l'éducation sélective vit sous régime d'exception (délie 0, l'école).
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -270,7 +294,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
       (livré 6 oct. : leçon 10, 89/89 contrôles verts)
 - [x] **vocabulaire élargi (route B)** — 37 phrases, 6 → 50 mots par éducation, courbe 38→49→50, contrôles 0/50
       (livré 6 oct. : leçon 11, 93/93 contrôles verts)
-- [ ] **cerveau v2 (route C)** — érosion du marbre, phrases libres, anti-saturation (choix du chef, 6 oct.)
+- [x] **cerveau v2 phases 1-2 (route C)** — cœur (10,3)+élastique+ombre, nuits faucheuses, 93/93 (livré 7 oct. : leçon 12)
+- [ ] **cerveau v2 phases 3-6 (route C)** — marbre + rétroaction, buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas

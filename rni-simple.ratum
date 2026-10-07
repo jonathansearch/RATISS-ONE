@@ -26,14 +26,14 @@ tissu Eveil
   juger ABC 60
 
   # --- le cœur minimal : rencontre → propagation → loi → repos ---
-  répéter 5
+  répéter 10
     rencontre ABC
     propager
     renforcer
     repos
   fin
 
-  dire --- après 5 rencontres ---
+  dire --- après 10 rencontres ---
   dire la forme ABC tient à résonance ABC sur 100
   juger ABC 60
   juger ETRANGER 60

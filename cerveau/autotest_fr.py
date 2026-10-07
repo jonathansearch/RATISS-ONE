@@ -43,8 +43,9 @@ def main():
     top = c.secteurs["SANCTUAIRE"].top(1)[0]
     assert list(top.mots) == ["amis", "du", "peuple"] and top.force == 92, top
     tissus = [c.resonance(MOTS_FR[m]) for m in ("amis", "peuple", "pays", "patrie")]
-    assert tissus == [95, 95, 95, 95], tissus
-    assert len(c.graph["liens"]) == 27 and len(c.chaines) == 1
+    assert tissus == [91, 97, 97, 97], tissus
+    # v2 : 26 − 4 fauchés (les 3 liens d'unir + avenir, tous à 0) + 1 chaîne
+    assert len(c.graph["liens"]) == 23 and len(c.chaines) == 1
     print(f"CERVEAU FR OK — sanctuaire : {top}, tissu : {' '.join(map(str, tissus))}, "
           f"chaînes : {len(c.chaines)}")
     return 0

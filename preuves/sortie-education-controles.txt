@@ -1,14 +1,13 @@
-=== CONTROLE delie 3 (loi j11) ===
-BILAN : 0 mots sur 50 tiennent (seuil 60)
-TEMOINS : 6 dehors sur 6 (seuil 20)
-=== CONTROLE delie 10 (defaut) ===
-BILAN : 0 mots sur 50 tiennent (seuil 60)
-TEMOINS : 6 dehors sur 6 (seuil 20)
+=== FALAISE delie (route C, 7 oct.) ===
+delie=0 : BILAN : 50 mots sur 50 tiennent (seuil 60)
+delie=1 : BILAN : 0 mots sur 50 tiennent (seuil 60)
+delie=3 : BILAN : 0 mots sur 50 tiennent (seuil 60)
+delie=10 : BILAN : 0 mots sur 50 tiennent (seuil 60)
 === COURBE rounds (delie 0) ===
-rounds=1 : BILAN : 38 mots sur 50 tiennent (seuil 60)
-rounds=2 : BILAN : 49 mots sur 50 tiennent (seuil 60)
-rounds=3 : BILAN : 50 mots sur 50 tiennent (seuil 60)
-rounds=4 : BILAN : 50 mots sur 50 tiennent (seuil 60)
-=== EROSION nuits=5 ===
---- anciens : 4/5 MAMIS=75 MPATRIE=75 MPAYS=75 MPEUPLE=75 MUNIR=47 ---
-BILAN : 49 mots sur 50 tiennent (seuil 60)
+rounds=1 : BILAN : 4 mots sur 50 tiennent (seuil 60)
+rounds=2 : BILAN : 20 mots sur 50 tiennent (seuil 60)
+rounds=3 : BILAN : 43 mots sur 50 tiennent (seuil 60)
+rounds=5 : BILAN : 50 mots sur 50 tiennent (seuil 60)
+=== EROSION nuits=5 (oublier 3) ===
+BILAN : 50 mots sur 50 tiennent (seuil 60)
+TEMOINS : 6 dehors sur 6 (seuil 20)

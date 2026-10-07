@@ -1,25 +1,25 @@
 === tissu Vocabulaire ===
 === PHASE 1 : présentation (3 fois chaque mot) ===
-=== PHASE 2 : éducation commune (9 fois) ===
+=== PHASE 2 : éducation commune (15 fois) ===
 === PHASE 3 : nuit (2 fois) ===
 === VERDICTS ===
-JUGEMENT MSOLEIL : TIENT (80/100, seuil 60)
-JUGEMENT MLUNE : TIENT (80/100, seuil 60)
-JUGEMENT METOILE : TIENT (80/100, seuil 60)
-JUGEMENT MNUAGE : TIENT (81/100, seuil 60)
-JUGEMENT MMER : TIENT (81/100, seuil 60)
-JUGEMENT MPLUIE : TIENT (80/100, seuil 60)
-JUGEMENT MRIVIERE : TIENT (80/100, seuil 60)
-JUGEMENT MGLACE : TIENT (80/100, seuil 60)
-JUGEMENT MPIERRE : TIENT (80/100, seuil 60)
-JUGEMENT MFEU : TIENT (80/100, seuil 60)
-JUGEMENT MTERRE : TIENT (80/100, seuil 60)
-JUGEMENT MVENT : TIENT (90/100, seuil 60)
-JUGEMENT MAURORE : ROMPT (40/100, seuil 60)
+JUGEMENT MSOLEIL : TIENT (70/100, seuil 60)
+JUGEMENT MLUNE : TIENT (70/100, seuil 60)
+JUGEMENT METOILE : TIENT (70/100, seuil 60)
+JUGEMENT MNUAGE : TIENT (70/100, seuil 60)
+JUGEMENT MMER : TIENT (70/100, seuil 60)
+JUGEMENT MPLUIE : TIENT (70/100, seuil 60)
+JUGEMENT MRIVIERE : TIENT (70/100, seuil 60)
+JUGEMENT MGLACE : TIENT (70/100, seuil 60)
+JUGEMENT MPIERRE : TIENT (70/100, seuil 60)
+JUGEMENT MFEU : TIENT (70/100, seuil 60)
+JUGEMENT MTERRE : TIENT (71/100, seuil 60)
+JUGEMENT MVENT : TIENT (72/100, seuil 60)
+JUGEMENT MAURORE : ROMPT (35/100, seuil 60)
 JUGEMENT MCOMETE : ROMPT (0/100, seuil 20)
 l inconnu reste dehors
-le cousin est deviné à moitié : 40 sur 100
+le cousin est deviné à moitié : 35 sur 100
 liens : 65
-force moyenne : 76/100
+force moyenne : 66/100
 liens forts : 61
 === fin du programme ===

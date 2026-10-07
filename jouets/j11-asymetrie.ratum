@@ -10,7 +10,7 @@ tissu DeuxMains
   lien p q force 10
   motif A : x y
   motif B : p q
-  répéter 6
+  répéter 12
     rencontre A
     propager
     renforcer lie 10 delie 3

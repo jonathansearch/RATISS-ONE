@@ -47,7 +47,9 @@ nuit(secteur) :
 
 La nuit ne comprend rien : elle efface. C'est l'oubli qui fait la mémoire —
 comme l'hippocampe qui rejoue la journée pendant le sommeil (voir CERVEAU.md).
-Une nuit = un appel à `oublier` sur chaque secteur, dans l'ordre.
+Une nuit = un appel à `oublier` sur chaque secteur, dans l'ordre — plus,
+depuis v2, la faucheuse côté tissu (`nettoyer` : liens à 0 arrachés,
+neurones isolés morts sauf les nommés — *nommer, c'est protéger*).
 
 ## 4. Le crâne et la pensée (Ratum + Python, décision du chef)
 

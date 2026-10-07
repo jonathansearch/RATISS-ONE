@@ -206,8 +206,8 @@ tissu Vocabulaire
   fin
 
   # ---------- 6. PHASE 2 : éducation commune ----------
-  dire === PHASE 2 : éducation commune (9 fois) ===
-  répéter 9
+  dire === PHASE 2 : éducation commune (15 fois) ===
+  répéter 15
     rencontre TOUT
     propager
     renforcer

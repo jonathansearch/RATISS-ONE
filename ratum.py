@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-RATUM v0 — interprète de référence (LE BERCEAU).
+RATUM v2 — interprète de référence (LE BERCEAU).
 RATISS Labs · Jonathan Evina · MIT.
+
+v2 (route C, idées du chef) : loi universelle (renforcer 10/3, oublier 3),
+élasticité asymptotique (le gain fond quand la force monte), ombre
+(propagation divisée par 2 — l'inhibition latérale), résonance sur toutes
+les paires (lien manquant = 0), commande nettoyer (élagage).
 
 Ce fichier n'est PAS le langage : c'est l'établi qui exécute les programmes
 écrits en Ratum. Le langage lui-même est défini dans LANGAGE-RATUM.md :
@@ -39,7 +44,8 @@ class Tissu:
 
 class Interprete:
     PAS_RENFORCER = 10
-    PAS_OUBLIER = 5
+    PAS_DELIE = 3  # v2 : la loi universelle (Renfort, Oubli) = (10, 3)
+    PAS_OUBLIER = 3  # v2 : un seul Oubli partout (nuits comprises)
     SEUIL_DEFAUT = 50
     FORCE_NAISSANCE = 10
     MOITIE = 50  # charge minimale pour "battre"
@@ -154,7 +160,7 @@ class Interprete:
             "motif": self.cmd_motif, "rencontre": self.cmd_rencontre,
             "propager": self.cmd_propager, "renforcer": self.cmd_renforcer,
             "oublier": self.cmd_oublier, "repos": self.cmd_repos,
-            "adapter": self.cmd_adapter,
+            "adapter": self.cmd_adapter, "nettoyer": self.cmd_nettoyer,
             "resonance": self.cmd_resonance, "mesurer": self.cmd_mesurer,
             "juger": self.cmd_juger, "dire": self.cmd_dire,
             "graver": self.cmd_graver, "relire": self.cmd_relire,
@@ -221,15 +227,16 @@ class Interprete:
         t = self.tissu
         nouv = {n: v["charge"] for n, v in t.neurones.items()}
         for (a, b), force in t.liens.items():
-            nouv[b] = borne(nouv[b] + force * t.neurones[a]["charge"] // 100)
-            nouv[a] = borne(nouv[a] + force * t.neurones[b]["charge"] // 100)
+            # v2, l'ombre : moitié de l'énergie perdue à chaque saut (//200).
+            nouv[b] = borne(nouv[b] + force * t.neurones[a]["charge"] // 200)
+            nouv[a] = borne(nouv[a] + force * t.neurones[b]["charge"] // 200)
         for n, c in nouv.items():
             t.neurones[n]["charge"] = c
 
     def cmd_renforcer(self, noligne, mots):
         self.exige_tissu(noligne)
         if len(mots) == 1:
-            haut = bas = self.PAS_RENFORCER
+            haut, bas = self.PAS_RENFORCER, self.PAS_DELIE  # v2 : (10, 3) partout
         elif len(mots) == 3 and norm(mots[1]) == "pas":
             haut = bas = self.entier(noligne, mots, 2, "renforcer [pas <n>]")
         elif len(mots) == 5 and norm(mots[1]) == "lie" and norm(mots[3]) == "delie":
@@ -240,7 +247,11 @@ class Interprete:
         for cle in self.tissu.liens:
             a, b = cle
             if self.actif(a) and self.actif(b):
-                self.tissu.liens[cle] = borne(self.tissu.liens[cle] + haut)
+                # v2, élasticité : le gain fond quand la force monte
+                # (10->20 en 1 rencontre, 90->95 en ~5). L'historique survit.
+                f = self.tissu.liens[cle]
+                gain = max(1, haut * (100 - f) // 100)
+                self.tissu.liens[cle] = borne(f + gain)
             else:
                 self.tissu.liens[cle] = borne(self.tissu.liens[cle] - bas)
 
@@ -268,6 +279,23 @@ class Interprete:
         for v in self.tissu.neurones.values():
             v["seuil"] = (v["seuil"] + v["charge"]) // 2
 
+    def cmd_nettoyer(self, noligne, mots):
+        self.exige_tissu(noligne)
+        if len(mots) != 1:
+            self.erreur(noligne, "usage : nettoyer")
+        # v2, élagage : les liens à 0 sont arrachés ; les neurones isolés
+        # meurent, SAUF les nommés (membres d'un motif) qui attendent.
+        t = self.tissu
+        nommes = {n for mb in t.motifs.values() for n in mb}
+        morts_l = [c for c, f in t.liens.items() if f <= 0]
+        for c in morts_l:
+            del t.liens[c]
+        relies = {n for c in t.liens for n in c}
+        morts_n = [n for n in t.neurones if n not in relies and n not in nommes]
+        for n in morts_n:
+            del t.neurones[n]
+        print(f"nettoyage : {len(morts_l)} liens morts, {len(morts_n)} neurones morts")
+
     def txt_seuils(self):
         return " ".join(f"{n}={v['seuil']}" for n, v in sorted(self.tissu.neurones.items()))
 
@@ -275,9 +303,14 @@ class Interprete:
         t = self.tissu
         if motif not in t.motifs:
             raise ErreurRatum(f"motif inconnu '{motif}'")
-        dedans = set(t.motifs[motif])
-        internes = [f for (a, b), f in t.liens.items() if a in dedans and b in dedans]
-        return sum(internes) // len(internes) if internes else 0
+        # v2 : toutes les paires comptent, lien manquant = 0.
+        # Un motif troué (élagage) résonne moins — le sens ne survit pas au mot.
+        membres = sorted(set(t.motifs[motif]))
+        paires = [self.cle_lien(membres[i], membres[j])
+                  for i in range(len(membres)) for j in range(i + 1, len(membres))]
+        if not paires:
+            return 0
+        return sum(t.liens.get(p, 0) for p in paires) // len(paires)
 
     def cmd_resonance(self, noligne, mots):
         self.exige_tissu(noligne)

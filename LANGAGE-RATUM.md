@@ -1,21 +1,33 @@
-# 📜 LANGAGE RATUM v1 — Spécification : ce que chaque relation veut dire
+# 📜 LANGAGE RATUM v2 — Spécification : ce que chaque relation veut dire
 
-**RATISS Labs · 6 octobre 2026 · MIT**
+**RATISS Labs · 7 octobre 2026 · MIT**
 
+> Changements v2 (route C) : la loi universelle (10, 3) PARTOUT par défaut,
+> gains ÉLASTIQUES (le gain fond quand la force monte), OMBRE à la propagation
+> (moitié de l'énergie perdue à chaque saut), `oublier` adouci à 3,
+> `résonance` compte les paires manquantes comme 0, nouvelle relation
+> `nettoyer` (19e). Les leçons v1 tiennent toujours (93/93 verts après
+> ré-étalonnage : on a ajusté le monde — fréquences, corpus, seuils —
+> jamais la règle).
+>
 > Changements v1 : `renforcer` accepte deux mains (`lie`/`delie`), nouvelle
 > relation `adapter` (seuils vivants), `dire` sait montrer les `seuils`.
-> Tout programme v0 reste valide : 42/42 contrôles v0 toujours verts.
 
 > Le Ratum est la langue du tissu. On y parle avec des mots, pas avec des
 > formules : on DÉCLARE des habitants (neurones, liens, formes), puis on fait
 > ARRIVER le monde (rencontres), on laisse la LOI travailler (renforcement),
 > et on ÉCOUTE le verdict (résonance, juge).
 >
-> Règles du jeu v0 : tout niveau vit entre 0 et 100, en nombres entiers.
+> Règles du jeu v2 : tout niveau vit entre 0 et 100, en nombres entiers.
 > Tout lien naît faible (10). Chaque neurone bat quand sa charge atteint
-> son seuil (50 par défaut, réglable par neurone depuis v0.1).
-> Le pas du renforcement vaut 10, celui de l'oubli 5.
-> Tout programme est déterministe : rejoué, il redit la même chose.
+> son seuil (50 par défaut, réglable par neurone).
+> La loi vaut (10, 3) PARTOUT par défaut : main qui lie 10, main qui délie 3.
+> Le gain est ÉLASTIQUE : plein au départ (10 → 19 en une rencontre),
+> il fond quand la force monte (90 → 95 coûte ~5 rencontres) — l'historique
+> survit, les chemins très battus restent devant sans tout écraser.
+> La propagation porte une OMBRE : à chaque saut, la moitié de l'énergie
+> se perd — un écho lointain compte moins qu'une présence.
+> L'oubli vaut 3. Tout programme est déterministe : rejoué, il redit la même chose.
 
 ---
 
@@ -65,31 +77,37 @@
 - **Usage :** `rencontre <motif>`
 - **Exemple :** `rencontre SOLEIL`
 
-### 6. `propager` — le frémissement voyage (PROPAGATION)
+### 6. `propager` — le frémissement voyage, l'ombre le suit (PROPAGATION)
 - **Sens :** chaque lien verse au voisin une part de la charge qu'il reçoit,
   d'autant plus grande que le lien est fort (part entière, plafonnée à 100).
-  Les liens forts portent loin ; les liens faibles portent à peine.
-  C'est ainsi qu'une forme allumée RÉVEILLE ses voisines liées —
-  le mécanisme de l'intrication naturelle.
+  Mais depuis v2, l'OMBRE prélève sa moitié à chaque saut : un lien à 100
+  porte 50 au voisin direct, 25 au suivant — puis l'écho meurt sous les seuils.
+  Les liens forts portent loin ; les vagues lointaines meurent (voir `j09`).
+  Conséquence : un concept porté par UN SEUL mot ne s'allume plus par un seul
+  écho — les ponts uniques écoutent plus fort (seuil 40, voir le cerveau).
 - **Usage :** `propager`
 - **Exemple :** `propager`
 
 ### 7. `renforcer` — LA LOI (RENFORCEMENT)
 - **Sens :** *ce qui se tient ensemble se renforce, ce qui se disjoint s'efface.*
   Pour chaque lien : si les deux bouts battent (chacun a atteint son seuil),
-  la force monte d'un pas ; sinon, elle descend d'un pas. Aucune exception,
-  aucun pilote : la structure fait le tri toute seule.
-  Depuis v1, la loi a DEUX MAINS réglables séparément : la main qui LIE (monte)
-  et la main qui DÉLIE (descend). Lier fort et délier doux permet à des formes
-  disjointes de coexister (voir `v1-coexistence.ratum`).
-- **Usage :** `renforcer [pas <n>]` ou `renforcer lie <X> delie <Y>` (10/10 par défaut)
-- **Exemple :** `renforcer lie 10 delie 3`
+  la force monte ; sinon, elle descend. Aucune exception, aucun pilote :
+  la structure fait le tri toute seule. La loi a DEUX MAINS : la main qui LIE
+  (10 par défaut) et la main qui DÉLIE (3 par défaut) — l'asymétrie prouvée
+  en v1 (voir `v1-coexistence.ratum`) est devenue la loi universelle.
+  Depuis v2, le gain est ÉLASTIQUE : il vaut plein quand le lien est jeune
+  et fond quand le lien vieillit — 10 rencontres portent un lien à 66,
+  12 rencontres à 72 : la montée s'écrase, l'asymptote protège l'historique.
+  Régimes d'exception (l'école) : `renforcer lie 10 delie 0` pour l'éducation
+  sélective, où chaque phrase effacerait sinon toutes les autres (voir route B).
+- **Usage :** `renforcer [pas <n>]` ou `renforcer lie <X> delie <Y>` ((10, 3) par défaut)
+- **Exemple :** `renforcer` (nu : la loi universelle)
 
 ### 8. `oublier` — la nuit passe sur le tissu
 - **Sens :** tous les liens perdent un peu de force. Les chemins entretenus
   survivent ; les sentiers abandonnés s'aplanissent. Oublier n'est pas effacer
   un fichier : c'est laisser retomber ce que personne ne revisite.
-- **Usage :** `oublier [pas <n>]` (pas 5 par défaut)
+- **Usage :** `oublier [pas <n>]` (pas 3 par défaut depuis v2 : la nuit douce)
 - **Exemple :** `oublier`
 
 ### 9b. `adapter` — les seuils vivants (v1)
@@ -113,10 +131,12 @@
 
 ### 10. `résonance` — le tissu reconnaît-il cette forme ?
 - **Sens :** demande au tissu : « tiens-tu cette forme ? » La réponse est la
-  force moyenne des liens INTERNES au motif (ceux dont les deux bouts en font
-  partie), de 0 (inconnu) à 100 (gravé). Se souvenir, c'est résonner — pas relire.
+  force moyenne sur TOUTES les paires du motif, de 0 (inconnu) à 100 (gravé).
+  Depuis v2, une paire sans lien compte 0 : un motif troué (élagué par la
+  faucheuse) résonne moins — le sens ne survit pas au mot arraché.
+  Se souvenir, c'est résonner — pas relire.
 - **Usage :** `résonance <motif>`
-- **Exemple :** `résonance SOLEIL` → `résonance SOLEIL = 90/100`
+- **Exemple :** `résonance SOLEIL` → `résonance SOLEIL = 63/100`
 
 ### 11. `mesurer` — l'état de santé du tissu
 - **Sens :** dit le nombre de liens, leur force moyenne, et combien sont forts
@@ -190,6 +210,14 @@
 - **Usage :** `relire <fichier>`
 - **Exemple :** `relire tissu-educ.scroll`
 
+### 18. `nettoyer` — la faucheuse de la nuit (v2)
+- **Sens :** arrache les liens à 0 (morts) et fait mourir les neurones isolés
+  (sans aucun lien) — SAUF les nommés : tout neurone membre d'un motif survit,
+  même isolé, et attend. *Nommer, c'est protéger.* La faucheuse passe la nuit
+  (voir `nuit` du cerveau) : le tissu reste propre, les formes nommées persistent.
+- **Usage :** `nettoyer`
+- **Exemple :** `nettoyer` → `nettoyage : 2 liens morts, 0 neurones morts`
+
 ---
 
 ## F. 📏 Règles de grammaire v0
@@ -213,18 +241,19 @@ Chaque jouet prouve un recoin du langage. Tous rejoués le 6 octobre 2026
 |---|---|---|
 | `j01-seuil` | chaque neurone bat à SON seuil | VIF 40 TIENT, DUR 20 ROMPT |
 | `j02-pas` | pas sur mesure du renforcement et de l'oubli | 35 TIENT, puis 0 ROMPT |
-| `j03-oubli` | l'oubli total, puis la rééducation | 70 → 0 ROMPT → 20 TIENT |
-| `j04-graver-relire` | la photo sauve le souvenir puis le réveille | 70 → 0 → 70 TIENT |
+| `j03-oubli` | l'oubli total, puis la rééducation | 51 → 0 ROMPT → 19 TIENT (v2) |
+| `j04-graver-relire` | la photo sauve le souvenir puis le réveille | 66 → 24 → 66 TIENT (v2) |
 | `j05-si-sinon` | les deux chemins du choix, sans erreur parasite | `alors` + `sinon`, zéro ERREUR |
 | `j06-motif-sans-liens` | sans liens internes, résonance nulle | 0 et 0, deux ROMPT |
-| `j07-emboitement-plafond` | boucles emboîtées + plafond à 100 | 12 rencontres → 100 TIENT |
-| `j08-repos` | le repos éteint les charges (loi après repos affaiblit) | 50 → 40 ROMPT |
-| `j09-propagation` | l'activité voyage de proche en proche | une vague 95, deux vagues 100 |
+| `j07-emboitement-plafond` | boucles emboîtées + l'asymptote remplace le plafond | 12 rencontres → 72 ROMPT à 100 (v2) |
+| `j08-repos` | le repos éteint les charges (loi après repos affaiblit) | 50 → 47 ROMPT à 50 (v2) |
+| `j09-propagation` | l'ombre tue les vagues lointaines | une vague 65, deux vagues 64 (v2) |
 | `j10-erreur` | l'erreur nette : motif inconnu = code 1 + ligne fautive | `ERREUR RATUM` |
-| `j11-asymetrie` (v1) | lier 10 / délier 3 fait coexister deux disjointes | 52 et 52, deux TIENT |
+| `j11-asymetrie` (v1) | lier 10 / délier 3 fait coexister deux disjointes | 50 et 52, deux TIENT (v2) |
 | `j12-adapter` (v1) | le seuil rejoint la charge à mi-chemin | 50 → 75 → 37 |
+| `j13-sequences` (v1) | la trace de l'ordre : lié tient, délié retombe | liée 52/52/44, déliée 43/43/35 (v2) |
 
 ---
 
-*18 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
+*19 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
 *« On ne croit pas. On rejoue. »*

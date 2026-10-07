@@ -1,86 +1,79 @@
-########## jouets/j01-seuil.ratum ##########
+===== jouets/j01-seuil.ratum
 === tissu Seuils ===
-VIF tient à 40 sur 100
-DUR tient à 20 sur 100
-JUGEMENT VIF : TIENT (40/100, seuil 30)
-JUGEMENT DUR : ROMPT (20/100, seuil 30)
+VIF tient à 37 sur 100
+DUR tient à 27 sur 100
+JUGEMENT VIF : TIENT (37/100, seuil 30)
+JUGEMENT DUR : ROMPT (27/100, seuil 30)
 === fin du programme ===
-
-########## jouets/j02-pas.ratum ##########
+===== jouets/j02-pas.ratum
 === tissu Pas ===
-après un pas de 25 : 35 sur 100
-JUGEMENT M : TIENT (35/100, seuil 30)
+après un pas de 25 : 32 sur 100
+JUGEMENT M : TIENT (32/100, seuil 30)
 après un oubli de 40 : 0 sur 100
 JUGEMENT M : ROMPT (0/100, seuil 10)
 === fin du programme ===
-
-########## jouets/j03-oubli.ratum ##########
+===== jouets/j03-oubli.ratum
 === tissu Renaissance ===
-appris : 70 sur 100
+appris : 51 sur 100
 après la longue nuit : 0 sur 100
 JUGEMENT M : ROMPT (0/100, seuil 10)
-rééduqué : 20 sur 100
-JUGEMENT M : TIENT (20/100, seuil 10)
+rééduqué : 19 sur 100
+JUGEMENT M : TIENT (19/100, seuil 10)
 === fin du programme ===
-
-########## jouets/j04-graver-relire.ratum ##########
+===== jouets/j04-graver-relire.ratum
 === tissu Photo ===
 tissu gravé dans jouets/mem.scroll
-gravé : 70 sur 100
-après l oubli : 0 sur 100
+gravé : 66 sur 100
+après l oubli : 24 sur 100
 tissu relu depuis jouets/mem.scroll
-après relecture : 70 sur 100
-JUGEMENT M : TIENT (70/100, seuil 60)
+après relecture : 66 sur 100
+JUGEMENT M : TIENT (66/100, seuil 60)
 === fin du programme ===
-
-########## jouets/j05-si-sinon.ratum ##########
+===== jouets/j05-si-sinon.ratum
 === tissu Choix ===
 branche alors : la forme apprise tient
 branche sinon : l inconnu est rejeté
 === fin du programme ===
-
-########## jouets/j06-motif-sans-liens.ratum ##########
+===== jouets/j06-motif-sans-liens.ratum
 === tissu Silence ===
 JUGEMENT SEUL : ROMPT (0/100, seuil 10)
 JUGEMENT PAIR : ROMPT (0/100, seuil 10)
 === fin du programme ===
-
-########## jouets/j07-emboitement-plafond.ratum ##########
+===== jouets/j07-emboitement-plafond.ratum
 === tissu Plafond ===
-après 12 rencontres : 100 sur 100
-JUGEMENT M : TIENT (100/100, seuil 100)
+après 12 rencontres : 72 sur 100
+JUGEMENT M : ROMPT (72/100, seuil 100)
 === fin du programme ===
-
-########## jouets/j08-repos.ratum ##########
+===== jouets/j08-repos.ratum
 === tissu Repos ===
-après repos puis loi : 40 sur 100
-JUGEMENT M : ROMPT (40/100, seuil 45)
+après repos puis loi : 47 sur 100
+JUGEMENT M : ROMPT (47/100, seuil 50)
 === fin du programme ===
-
-########## jouets/j09-propagation.ratum ##########
+===== jouets/j09-propagation.ratum
 === tissu Vague ===
-après une vague : 95 sur 100
-JUGEMENT ABC : TIENT (95/100, seuil 95)
-après deux vagues : 100 sur 100
-JUGEMENT ABC : TIENT (100/100, seuil 100)
+après une vague : 65 sur 100
+JUGEMENT ABC : ROMPT (65/100, seuil 95)
+après deux vagues : 64 sur 100
+JUGEMENT ABC : ROMPT (64/100, seuil 100)
 === fin du programme ===
-
-########## jouets/j10-erreur.ratum ##########
+===== jouets/j10-erreur.ratum
 === tissu Erreur ===
 ERREUR RATUM — ligne 4 : usage : rencontre <motif> (motif déclaré)
-
-########## jouets/j11-asymetrie.ratum ##########
+===== jouets/j11-asymetrie.ratum
 === tissu DeuxMains ===
-A tient à 52 sur 100
+A tient à 50 sur 100
 B tient à 52 sur 100
-JUGEMENT A : TIENT (52/100, seuil 40)
+JUGEMENT A : TIENT (50/100, seuil 40)
 JUGEMENT B : TIENT (52/100, seuil 40)
 === fin du programme ===
-
-########## jouets/j12-adapter.ratum ##########
+===== jouets/j12-adapter.ratum
 === tissu SeuilsVivants ===
 naissance : a=50 b=50
 après le feu : a=75 b=75
 après le calme : a=37 b=37
 === fin du programme ===
-
+===== jouets/j13-sequences.ratum
+=== tissu Suite ===
+chaîne liée : a-b=52 b-c=52 d-e=44
+chaîne déliée : a-b=43 b-c=43 d-e=35
+=== fin du programme ===

@@ -4,7 +4,7 @@ tissu Photo
   neurone b seuil 50
   lien a b force 10
   motif M : a b
-  répéter 6
+  répéter 10
     rencontre M
     propager
     renforcer

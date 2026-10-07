@@ -5,7 +5,7 @@ tissu Choix
   lien a b force 10
   motif M : a b
   motif VIDE : a
-  répéter 6
+  répéter 10
     rencontre M
     propager
     renforcer

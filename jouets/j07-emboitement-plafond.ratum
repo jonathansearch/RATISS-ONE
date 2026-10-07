@@ -1,4 +1,5 @@
-# j07 — boucles emboîtées et plafond à 100
+# j07 — boucles emboîtées et l'asymptote : 12 rencontres portent à 72,
+# jamais à 100 — l'élasticité (v2) remplace le plafond, la montée s'écrase
 tissu Plafond
   neurone a seuil 50
   neurone b seuil 50

@@ -26,11 +26,13 @@ tissu Suite
   repos
   dire chaîne liée : forces
   # avec repos entre : même la force 50 retombe
-  rencontre D
-  repos
-  rencontre E
-  propager
-  renforcer
-  repos
+  répéter 3
+    rencontre D
+    repos
+    rencontre E
+    propager
+    renforcer
+    repos
+  fin
   dire chaîne déliée : forces
 fin
