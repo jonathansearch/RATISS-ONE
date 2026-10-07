@@ -1,0 +1,14 @@
+=== ÉDUCATION MASSIVE (streaming, une nuit par lot) ===
+nettoyage : 1 liens morts, 0 neurones morts
+lot 50000 : liens=40 neurones=13 écoutes=50000 RAM=12 Mo t=16s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 100000 : liens=40 neurones=13 écoutes=100000 RAM=12 Mo t=32s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 150000 : liens=40 neurones=13 écoutes=150000 RAM=12 Mo t=48s
+nettoyage : 3 liens morts, 0 neurones morts
+lot 200000 : liens=37 neurones=13 écoutes=200000 RAM=12 Mo t=65s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 250000 : liens=37 neurones=13 écoutes=250000 RAM=12 Mo t=80s
+=== BILAN ===
+dit : J'ai entendu 250000 séquences. Au sanctuaire : amis peuple enfants. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+MASSE OK — 250000 séquences, 37 liens, 13 neurones, RAM max 12 Mo, 80 s

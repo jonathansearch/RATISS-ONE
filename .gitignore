@@ -7,3 +7,5 @@ __pycache__/
 # Modeles voix + photos écloses (regenerables en local)
 bouche/voix/*.onnx*
 tissu-educ.scroll
+# Fichiers de masse locaux (Colab les regenere, jamais commis)
+education-massive/*.jsonl

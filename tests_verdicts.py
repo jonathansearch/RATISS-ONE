@@ -352,6 +352,51 @@ def main():
     else:
         print("ÉCHEC : le direct ne se rejoue pas (régénérer la preuve ?)")
         echecs += 1
+    controles += 1
+    sys.path.insert(0, "dialogue")
+    from conversation import CONVERSATIONS  # noqa: E402
+    from dialogue import repondre  # noqa: E402
+    from cerveau.cerveau import Cerveau as CerveauDialogue  # noqa: E402
+    dores_dialogue = {
+        "FR": ["Bonjour ! Moi c'est RATISS. Je t'écoute.",
+               "Je suis RATISS-ONE, un tissu de neurones intriqués. Je tiens ce que je comprends.",
+               "J'ai entendu 3 séquences. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.",
+               "J'ai entendu 5 séquences.",
+               "Je ne comprends pas encore « merci beaucoup ». Apprends-moi des mots !",
+               "Au revoir ! Le tissu garde ce qu'il a compris."],
+        "EN": ["Hello! I am RATISS. I am listening.",
+               "I am RATISS-ONE, a tissue of entangled neurons. I hold what I understand.",
+               "I heard 4 sequences. I hold americans, country, fellow and ask. The rest stays outside.",
+               "I heard 7 sequences.",
+               "I do not understand « thanks a lot » yet. Teach me words!",
+               "Goodbye! The tissue keeps what it understood."],
+    }
+    ok_dialogue = True
+    for langue, questions in CONVERSATIONS.items():
+        cerveau = CerveauDialogue(langue)
+        for q, attendu in zip(questions, dores_dialogue[langue]):
+            if repondre(cerveau, q)[2] != attendu:
+                ok_dialogue = False
+    try:
+        with open("preuves/sortie-dialogue.txt", encoding="utf-8") as fh:
+            preuve_dialogue = fh.read()
+    except OSError:
+        preuve_dialogue = ""
+    if ok_dialogue and "DIALOGUE OK" in preuve_dialogue:
+        print("OK : dialogue (12 répliques FR+EN + preuve)")
+    else:
+        print("ÉCHEC : le dialogue ne répond plus pareil")
+        echecs += 1
+    controles += 1
+    sys.path.insert(0, "education-massive")
+    from generer_masse import generer  # noqa: E402
+    canon_masse = json.dumps(generer(2000, seed=7), ensure_ascii=False).encode()
+    sha_masse = hashlib.sha256(canon_masse).hexdigest()[:16]
+    if sha_masse == "cd1f94780dd2dd49":
+        print("OK : générateur de masse déterministe (seed 7 pinné)")
+    else:
+        print("ÉCHEC : le générateur de masse a changé")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

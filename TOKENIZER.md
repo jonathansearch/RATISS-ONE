@@ -51,6 +51,7 @@ sert l'échelle.
 python3 bouche/autotest_bouche.py        # BOUCHE OK (5 phrases)
 python3 bouche/regles.py --demo EN      # dit : I hold as certain...
 python3 donnees/generer.py --verifier   # 20/20 reproduites
+python3 dialogue/conversation.py        # DIALOGUE OK (12 répliques, 7 intents)
 ```
 
 ## 6. Roadmap tokenizer
@@ -87,3 +88,9 @@ même), comptes 3→4→8→13→20→21, puis 4 nuits : l'élue du chaos
 « americans ask not » est RETROUVÉE en direct. `--micro N` écoute N
 secondes au micro (échec propre sans périphérique). Rejoué sans Phonon
 par la batterie (contrôle 110, `tranches-jfk.json` pinnées).
+
+## 9. Le dialogue v1 (les règles répondent)
+
+7 intents pinnés FR+EN (`dialogue/` : DIALOGUE.md) : l'état et les
+comptes sortent du vrai tissu, l'inconnu est honnête. Sonde avant
+travaux : « bonjour » → « J'ai entendu 1 séquence… » (leçon 22).

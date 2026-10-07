@@ -1,0 +1,28 @@
+=== DIALOGUE FR ===
+Q : bonjour
+R [saluer/FR] : Bonjour ! Moi c'est RATISS. Je t'écoute.
+Q : qui es-tu ?
+R [identite/FR] : Je suis RATISS-ONE, un tissu de neurones intriqués. Je tiens ce que je comprends.
+Q : tu tiens quoi ?
+R [etat/FR] : J'ai entendu 3 séquences. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+Q : tu as entendu combien ?
+R [comptes/FR] : J'ai entendu 5 séquences.
+Q : merci beaucoup
+R [inconnu/FR] : Je ne comprends pas encore « merci beaucoup ». Apprends-moi des mots !
+Q : au revoir
+R [aurevoir/FR] : Au revoir ! Le tissu garde ce qu'il a compris.
+=== DIALOGUE EN ===
+Q : hello
+R [saluer/EN] : Hello! I am RATISS. I am listening.
+Q : who are you?
+R [identite/EN] : I am RATISS-ONE, a tissue of entangled neurons. I hold what I understand.
+Q : what do you hold?
+R [etat/EN] : I heard 4 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+Q : how many did you hear?
+R [comptes/EN] : I heard 7 sequences.
+Q : thanks a lot
+R [inconnu/EN] : I do not understand « thanks a lot » yet. Teach me words!
+Q : goodbye
+R [aurevoir/EN] : Goodbye! The tissue keeps what it understood.
+DIALOGUE OK — 12 répliques (FR x6, EN x6)
+bouche/dialogue.wav écrit (12 répliques cousues)

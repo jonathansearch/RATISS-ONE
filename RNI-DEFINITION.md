@@ -421,6 +421,37 @@ sur 3 passes. Le téléphone est décroché : `--micro N` écoute vraiment.
 > **Énoncé :** comprendre en direct, c'est tenir pendant qu'on écoute —
 > le tissu parle à t+2 s et l'élue arrive quand même à l'aube.
 
+### Leçon 22 💬 — Bonjour : le standardiste honnête (dialogue v1)
+*Dialogue : `dialogue/dialogue.py` (7 intents FR+EN pinnés) +
+`dialogue/conversation.py` — preuves : `preuves/sortie-dialogue.txt`
+(12 répliques), `bouche/dialogue.wav` (43,5 s), 111/111.*
+
+Sonde avant travaux : « bonjour » → « J'ai entendu 1 séquence… » — le
+tissu décrivait, ne répondait pas. v1 : saluer/identité/état/comptes/
+aide/au-revoir/inconnu — « bonjour » → « Bonjour ! Moi c'est RATISS »,
+« tu tiens quoi » → le VRAI `formuler()`, « combien » → le VRAI
+compteur, « merci » → « Je ne comprends pas encore » (l'honnêteté est
+une réponse). Chaque phrase nourrit le tissu : converser, c'est écouter.
+
+> **Énoncé :** avant de généraliser comme un LLM, on répond comme un
+> standardiste honnête — 7 intents pinnés valent mieux qu'un bluff.
+
+### Leçon 23 🏋️ — 250 000 écoutes, 12 Mo : le tissu porte la masse
+*Masse : `education-massive/generer_masse.py` (seed 7) +
+`eduquer_masse.py` (streaming + nuit/lot) — preuves :
+`preuves/sortie-masse-250k.txt`, notebook §2b (5M sur Colab), 112/112.*
+
+250 000 séquences (50 mots vrais, moitié fenêtres moitié recombinaisons)
+en ~70 s, RAM stable à 12 Mo, mémoire bornée par construction (caps +
+faucheuse) : « J'ai entendu 250000 séquences. Au sanctuaire : amis
+peuple enfants » — un mot d'école AU SANCTUAIRE. Extrapolé Colab : 5
+millions ≈ 25 min. Et la leçon d'humilité : le tissu reste compact (13
+neurones) — les mots d'école vivent aux secteurs ; les câbler au tissu,
+c'est la piste v2. Les millions, chez nous, ce sont des écoutes.
+
+> **Énoncé :** l'échelle ne se décrète pas, elle se mesure — 250 000
+> écoutes prouvent que 5 millions passeront (25 min, 12 Mo).
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -486,6 +517,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **pont FOCAL** — tissu → 2048 bits → P_sig : sanctuaire 6,2301 < chaos 6,3970, porteurs ×31,6 (livré 7 oct. : leçon 19, 108/108)
 - [x] **R5 + ⑩ étiquettes** — « J'ai entendu N » (JFK 35, FR 30, tempête 82), noyau 5+5 gelé sha pinné (livré 7 oct. : leçon 20, 109/109)
 - [x] **oreille en direct** — tranches 2 s → règles, élue « americans ask not » retrouvée, `--micro` (livré 7 oct. : leçon 21, 110/110)
+- [x] **dialogue v1** — 7 intents FR+EN pinnés, « bonjour » répondu, inconnu honnête, 12 voix cousues (livré 7 oct. : leçon 22, 111/111)
+- [x] **masse 250k → 5M** — 250 000 écoutes en ~70 s (12 Mo), sanctuaire conquis, notebook §2b Colab (livré 7 oct. : leçon 23, 112/112)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

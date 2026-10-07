@@ -8,10 +8,10 @@
 
 [![License: MIT](https://img.shields.io/badge/Code-MIT-teal.svg)](LICENSE)
 [![Livre: CC-BY-SA](https://img.shields.io/badge/Livre-CC--BY--SA-blue.svg)](livre/LICENCE.md)
-[![Tests](https://img.shields.io/badge/Tests-110%2F110-brightgreen.svg)](tests_verdicts.py)
+[![Tests](https://img.shields.io/badge/Tests-112%2F112-brightgreen.svg)](tests_verdicts.py)
 [![Programmes](https://img.shields.io/badge/Programmes-24-teal.svg)](tests_verdicts.py)
 [![Ratum](https://img.shields.io/badge/Ratum-v2-teal.svg)](LANGAGE-RATUM.md)
-[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-21-teal.svg)](RNI-DEFINITION.md)
+[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-23-teal.svg)](RNI-DEFINITION.md)
 [![Données stockées](https://img.shields.io/badge/Donn%C3%A9es%20stock%C3%A9es-z%C3%A9ro-orange.svg)](RNI-DEFINITION.md)
 
 *Par **RATISS Labs** — Jonathan Evina · Yaoundé 🇨🇲 · code MIT + livre CC-BY-SA · reproductibilité publique voulue*
@@ -27,7 +27,7 @@
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à secteurs (tampon, entonnoir, rêve),
 > et ne redit que ce qu'il tient — par une vraie bouche (Piper). 24 programmes,
-> 110 contrôles verts, 21 leçons mesurées, zéro donnée stockée. Chaque affirmation
+> 112 contrôles verts, 23 leçons mesurées, zéro donnée stockée. Chaque affirmation
 > ci-dessous se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -36,7 +36,7 @@
 > encounters under a single law (what holds together strengthens, what comes
 > apart fades), hears the world through a real ear (Phonon-2), files memories
 > in a sector brain (buffer, funnel, dream), and only speaks what it holds —
-> through a real mouth (Piper). 24 programs, 110 green checks, 21 measured
+> through a real mouth (Piper). 24 programs, 112 green checks, 23 measured
 > lessons, zero stored data. Every claim below replays in one command, or it
 > does not exist.*
 
@@ -48,7 +48,7 @@
 ## 📚 LIRE LE LIVRE (le complet)
 
 > **👉 [`livre/index.html`](livre/index.html) — Le Livre Complet** (ouvrir en local : fichier unique, zéro internet) :
-> les 21 leçons, **20 figures**, **4 audios jouables**, les 110 contrôles un par un —
+> les 23 leçons, **20 figures**, **4 audios jouables**, les 112 contrôles un par un —
 > sous licence **CC-BY-SA-4.0** (ouverte, partage à l'identique).
 > **🎤 [`livre/presentation.html`](livre/presentation.html)** — les 12 slides des sommets (flèches ←/→).
 > Reconstruit en une commande : `python3 livre/construire.py` → `LIVRE OK`.
@@ -64,7 +64,7 @@
 9. [Le tokenizer](#-le-tokenizer--la-pensée-devient-phrase) — 10. [L'éclair et la rivière](#-léclair-et-la-rivière) —
 11. [La marée](#-la-marée--le-jour-écoute-la-nuit-consolide) — 12. [Le rêve](#-le-rêve--garder-ce-quon-comprend) —
 13. [Le second berceau](#-le-second-berceau--le-c-qui-chante-pareil-leçon-18) — 14. [Le pont FOCAL](#-le-pont-focal--mesurer-lordre-leçon-19) —
-15. [Les mesures](#-les-mesures--rien-dinventé) — 16. [Les voix](#-les-voix--7-preuves-audio) —
+15. [Les mesures](#-les-mesures--rien-dinventé) — 16. [Les voix](#-les-voix--8-preuves-audio) —
 17. [Démarrage rapide](#-démarrage-rapide) — 18. [Carte du dépôt](#-carte-du-dépôt) —
 19. [Chiffres clés](#-chiffres-clés) — 20. [Ordre de lecture](#-ordre-de-lecture) —
 21. [La méthode](#-la-méthode) — 22. [Feuille de route](#-feuille-de-route) —
@@ -106,7 +106,7 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 📚 `education/` (route B) | 37 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
 | 🧬 `ratum.py` v2 (route C) | loi universelle (10,3) + élastique + ombre + faucheuse | 62/93 → **93/93 sans toucher une règle** (leçon 12) |
 | 💥 CISE (leçon 13) | vitesse ≥ 10 → étincelle → neurones mémoire figés + ULTRA-SECTEUR | **MAMERICANS=100 figé**, 3 nuits sans bouger, « 20 nuits : 69! » |
-| 🗣️ tokenizer (leçon 14) | 4 règles sortie FR/EN + robinet à données + notebook Colab | 5 phrases pinnées, **20 paires 20/20**, Python validé |
+| 🗣️ tokenizer (leçon 14) | 5 règles sortie FR/EN + robinet à données + notebook Colab | 5 phrases pinnées, **20 paires 20/20**, Python validé |
 | 🪨 marbre (leçon 15) | boucle fermée `redire()` + gravure à la 3ᵉ relecture | **f100 MARBRE**, 5 nuits, relief 13 → 35 |
 | 🌊 marée (leçon 16) | tampon 50 (zéro perte) + homéostasie (mer 60) | **tempête de 70 tenue**, mer calme 0/0 |
 | 💭 rêve (leçon 17) | discours réels ×1 écoute, rêve = rejoue le compris (≥ 2 mots) | sans rêve **0/0/0**, avec rêve sanctuaire en 4 nuits, élue **f91** |
@@ -114,8 +114,10 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 🌌 pont FOCAL (leçon 19) | tissu → 2048 bits → tore+sphère, P_sig (numpy+ripser, organes inchangés) | sanctuaire **6,23** < chaos 6,40, porteurs ×31,6 |
 | 🏷️ R5 + étiquettes (leçon 20) | « J'ai entendu N » (dehors seul, rêve exclu) + noyau 5+5 gelé, sha pinné | JFK **35**, FR 30, tempête 82 ; 7 wavs régénérés |
 | 🎧 direct (leçon 21) | JFK en tranches 2 s → Cerveau → règles, fenêtres chevauchantes + `--micro` | comptes **3→21**, élue « ask not » retrouvée en 4 nuits |
-| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 21 leçons, 20 figures, 4 audios, slides, CC-BY-SA |
-| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **110/110 contrôles verts** |
+| 💬 dialogue (leçon 22) | 7 intents pinnés FR+EN, état+comptes enracinés tissu, inconnu honnête | « bonjour » répondu, 12 voix cousues **43,5 s** |
+| 🏋️ masse (leçon 23) | 250k séquences streaming + nuit/lot, 50 mots vrais, seed 7 | **~70 s**, 12 Mo, sanctuaire conquis ; 5M ≈ 25 min sur Colab |
+| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 23 leçons, 20 figures, 4 audios, slides, CC-BY-SA |
+| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **112/112 contrôles verts** |
 
 ---
 
@@ -245,9 +247,9 @@ Preuves : `education/EDUCATION.md`, `preuves/sortie-education*.txt`.
 
 ## 🗣️ Le tokenizer : la pensée devient phrase
 
-<img src="livre/figures/tokenizer.svg" width="100%" alt="Le tokenizer : 4 règles FR/EN"/>
+<img src="livre/figures/tokenizer.svg" width="100%" alt="Le tokenizer : 5 règles FR/EN"/>
 
-La sortie est une **traduction, pas une génération** : 4 règles ordonnées,
+La sortie est une **traduction, pas une génération** : 5 règles ordonnées,
 déterministes, zéro singulier — **5 phrases exactes pinnées** (EN×3, FR×2).
 Le vrai problème (la DONNÉE) est résolu par construction : le tissu
 déterministe **fabrique ses propres paires** — `donnees/generer.py` :
@@ -353,14 +355,14 @@ Preuve : [`preuves/sortie-pont-focal.txt`](preuves/sortie-pont-focal.txt) — co
 <img src="livre/figures/g_batterie.svg" width="100%" alt="La batterie : 42 → 106 avec le creux honnête"/>
 <img src="livre/figures/g_saturation.svg" width="100%" alt="La saturation : désert 90 → bande 74-94 → statue 100 + mer 60"/>
 
-**110 contrôles** : 97 (24 programmes : codes + phrases pinnées + interdits
-absents) + 13 (pont voix, éducateur, 6 autotests cerveau/bouche/marbre/marée/
-chaos, livre, conformité C, pont FOCAL, étiquettes, direct). Le creux 62/93 de la route C est publié comme le reste.
+**112 contrôles** : 97 (24 programmes : codes + phrases pinnées + interdits
+absents) + 15 (pont voix, éducateur, 6 autotests cerveau/bouche/marbre/marée/
+chaos, livre, conformité C, pont FOCAL, étiquettes, direct, dialogue, masse). Le creux 62/93 de la route C est publié comme le reste.
 Détail un par un : **livre §10** + `tests_verdicts.py`.
 
 ---
 
-## 🎙️ Les voix : 7 preuves audio
+## 🎙️ Les voix : 8 preuves audio
 
 | Fichier | Ce qu'on entend |
 |---|---|
@@ -371,6 +373,7 @@ Détail un par un : **livre §10** + `tests_verdicts.py`.
 | [🔊 `bouche/preuve-marbre.wav`](bouche/preuve-marbre.wav) | « I heard 12 sequences… » dite par le gravé après 5 nuits (9.3 s, compteur fixe) |
 | [🔊 `bouche/preuve-tempete.wav`](bouche/preuve-tempete.wav) | « I heard 82 sequences… » — la tempête entendue, la voix stable (8.6 s) |
 | [🔊 `bouche/preuve-chaos.wav`](bouche/preuve-chaos.wav) | « I heard 20 sequences. In the sanctuary: americans ask not… » — l'élue du chaos (8.8 s) |
+| [🔊 `bouche/dialogue.wav`](bouche/dialogue.wav) | « Bonjour ! Moi c'est RATISS… » — 12 répliques FR+EN cousues (43,5 s) |
 
 Voix EN : Piper lessac-medium (hors-ligne). Voix FR : siwis-medium restaurée,
 [`cerveau-fr.wav`](bouche/cerveau-fr.wav) 8.6 s, « J'ai entendu 30 séquences » (R5).
@@ -384,7 +387,7 @@ git clone https://github.com/jonathansearch/RATISS-ONE.git
 cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal : 3 neurones
 python3 ratum.py english.ratum          # le tissu : TIENT / ROMPT / cousin 36
-python3 tests_verdicts.py               # 110 contrôles (24 programmes + 13 système)
+python3 tests_verdicts.py               # 112 contrôles (24 programmes + 15 système)
 python3 cerveau/autotest_chaos.py       # le chaos : 0/0/0 puis élues f91
 python3 livre/construire.py             # LE LIVRE : courbes + livre + slides
 python3 bouche/regles.py --chaos       # l'élue parle (+ --wav f.wav)
@@ -410,12 +413,12 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `LANGAGE-RATUM.md` | spec : une vingtaine de relations en mots | — |
 | `rni-*.ratum`, `jouets/` (j01-j14), `vocabulaire.ratum`, `echelle/` | les 4 âges : minimal → jouets → mots → échelle | `preuves/sortie-*.txt` |
 | `porte-voix/` | l'oreille : Phonon-2 (EN) + faster-whisper (FR) + pont → tissu + **direct** (tranches 2 s + `--micro`) | `preuves/transcription-jfk.txt`, `-discours.txt`, `sortie-oreille-direct.txt` |
-| `parole.py`, `bouche/` | le tokenizer (4 règles) + bouche Piper + 7 voix | `bouche/preuve-*.wav` |
+| `parole.py`, `bouche/` | le tokenizer (5 règles) + bouche Piper + 8 voix | `bouche/preuve-*.wav` |
 | `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : tampon + secteurs + rêve + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
 | `education/` | l'école : corpus 39 phrases + éducateur → 50 mots | `vocabulaire50.ratum`, `images/constellation.png` |
 | `donnees/` + `TOKENIZER.md` | le robinet : paires état→phrase + règles + notebook Colab | 20 paires, 20/20 |
-| `RNI-DEFINITION.md` | la fiche scientifique : définition + 21 leçons + roadmap | — |
-| 📚 `livre/index.html` | **LE LIVRE** : tout (21 leçons, 20 figures, 4 audios jouables, CC-BY-SA) | `livre/presentation.html` (slides) |
+| `RNI-DEFINITION.md` | la fiche scientifique : définition + 23 leçons + roadmap | — |
+| 📚 `livre/index.html` | **LE LIVRE** : tout (23 leçons, 20 figures, 4 audios jouables, CC-BY-SA) | `livre/presentation.html` (slides) |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `route-d/` | le second berceau : Ratum en C, mêmes sorties au caractère près | `preuves/sortie-conformite.txt` (24/24) |
@@ -423,14 +426,16 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `README-figures/` | les 2 images du README, générées (pas dessinées) | `fabriquer.py` |
 | `outils/figures.py` | régénère les figures PNG depuis les mesures | `images/*.png` |
 | `livre/construire.py` | régénère courbes + livre + slides (déterministe) | `LIVRE OK` |
-| `tests_verdicts.py` | la batterie : 110 contrôles | `110/110 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 112 contrôles | `112/112 CONTRÔLES VERTS` |
+| `dialogue/` | on lui parle, il répond (7 intents + conversation scriptée) | `preuves/sortie-dialogue.txt`, `bouche/dialogue.wav` |
+| `education-massive/` | générateur seed 7 + éducateur streaming (masse sur Colab) | `preuves/sortie-masse-250k.txt` |
 | `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **110/110 contrôles verts**, 24 programmes, 21 leçons (v0.1 → livre v1 → focal-v1)
+- **112/112 contrôles verts**, 24 programmes, 23 leçons (v0.1 → livre v1 → focal-v1)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -445,10 +450,10 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📖 Ordre de lecture
 
-1. 📚 `livre/index.html` (le complet : 21 leçons, 20 figures, 4 audios) → 2. ce README (la carte)
-2. `RNI-DEFINITION.md` (la fiche : définition + 21 énoncés) → 4. `LANGAGE-RATUM.md` (les relations)
+1. 📚 `livre/index.html` (le complet : 23 leçons, 20 figures, 4 audios) → 2. ce README (la carte)
+2. `RNI-DEFINITION.md` (la fiche : définition + 23 énoncés) → 4. `LANGAGE-RATUM.md` (les relations)
 3. `jouets/` (14 histoires d'éducation) → 6. `CERVEAU.md` (cerveau → organes)
-4. `cerveau/SECTEURS.md` (la doctrine) → 8. `TOKENIZER.md` (les 4 règles)
+4. `cerveau/SECTEURS.md` (la doctrine) → 8. `TOKENIZER.md` (les 5 règles)
 5. `preuves/` (le carnet du labo : chaque sortie rejouable en une commande)
 
 ---
@@ -494,6 +499,8 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **pont FOCAL** — tissu → bits → P_sig : sanctuaire 6,23 < chaos 6,40, porteurs ×31,6 (108/108)
 - [x] **R5 + ⑩ étiquettes** — compteur d'écoutes (JFK 35, FR 30) + noyau 5+5 gelé (109/109)
 - [x] **oreille en direct** — JFK en tranches 2 s → règles, élue retrouvée + `--micro` (110/110)
+- [x] **dialogue v1** — 7 intents pinnés, « bonjour » répondu + 12 voix cousues 43,5 s (111/111)
+- [x] **masse 250k → 5M** — 250 000 écoutes ~70 s, 12 Mo, notebook Colab §2b (112/112)
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
 Feuille détaillée : `RNI-DEFINITION.md` §7.
@@ -505,20 +512,20 @@ Feuille détaillée : `RNI-DEFINITION.md` §7.
 ```
 RATISS-ONE/
 ├── README.md                  # vous êtes ici (la carte illustrée)
-├── RNI-DEFINITION.md          # fiche scientifique + 21 leçons + roadmap
+├── RNI-DEFINITION.md          # fiche scientifique + 23 leçons + roadmap
 ├── LANGAGE-RATUM.md           # spec Ratum : une vingtaine de relations
-├── TOKENIZER.md               # les 4 règles + robinet + notebook Colab
+├── TOKENIZER.md               # les 5 règles + robinet + notebook Colab
 ├── CERVEAU.md                 # carte cerveau → organes (v1 → v6)
-├── MANIFESTE.json             # SHA-256 de chaque fichier (147 fichiers)
+├── MANIFESTE.json             # SHA-256 de chaque fichier (155 fichiers)
 ├── ratum.py                   # interprète de référence (495 lignes)
-├── tests_verdicts.py          # batterie : 110 contrôles
+├── tests_verdicts.py          # batterie : 112 contrôles
 ├── rni-simple / complexe / interference.ratum
 ├── vocabulaire.ratum  english.ratum  francais.ratum  v1-coexistence.ratum
 ├── jouets/                    # j01 → j14 (seuils… CISE)
 ├── echelle/  v1/              # mesures v0.3 et v1-loi
 ├── porte-voix/                # oreilles + pont (PHONON.md, PROTOCOLE)
 ├── parole.py  parole-ecoute.ratum
-├── bouche/                    # tokenizer + 7 voix + preuves audio
+├── bouche/                    # tokenizer + 8 voix + preuves audio
 ├── cerveau/                   # crâne : secteurs, tampon, rêve, 4 autotests
 ├── cerveau-demo.py  -fr.py    # démos live JFK → sanctuaire → résumé parlé
 ├── education/                 # route B : corpus + éducateur + vocabulaire50
@@ -528,6 +535,8 @@ RATISS-ONE/
 ├── route-d/                   # second berceau : ratum.c + conformite.py (24/24)
 ├── pont-focal/                # tissu → bits → P_sig (sanctuaire 6,23 < chaos 6,40)
 ├── README-figures/            # 2 images du README (fabriquer.py, générées)
+├── dialogue/                  # 7 intents + conversation (12 répliques)
+├── education-massive/         # générateur + éducateur (250k local, 5M Colab)
 ├── outils/                    # tisser_grand.py, figures.py
 ├── images/                    # logo + 5 figures régénérées
 └── preuves/                   # carnet du labo : 25 sorties rejouables

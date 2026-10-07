@@ -117,3 +117,11 @@ tous protégés. Tranché (a) le 7 oct. : deux maisons (école délie 0, vie (10
 
 Saturation : atténuée (74-94 au lieu de 90 pile, familles 12-85) mais pas
 vaincue — 235 liens au sommet. Le marbre (phase 3) viendra creuser.
+
+## 6. La masse (7 oct., leçon 23)
+
+L'école monte à l'échelle Colab : `education-massive/generer_masse.py`
+(50 mots vrais, seed 7) + `eduquer_masse.py` (streaming + nuit/lot).
+Mesuré : 250 000 séquences en ~70 s, RAM 12 Mo stables, sanctuaire
+« amis peuple enfants ». 5M ≈ 25 min sur Colab (notebook §2b). Les
+fichiers lourds ne sont jamais commis (doctrine : la masse vit sur Colab).
