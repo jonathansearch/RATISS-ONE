@@ -18,6 +18,8 @@ Lois (simples, documentées, pinnées par la batterie) :
 - l'école ajoute du savoir (neurones), pas des oreilles (mots_connus intacts).
 - l'école de l'oreille (leçon 34) apprend à part (oreille + formes),
   mots_connus intact, priorité à l'école.
+- l'école de la bouche (leçon 35) apprend à part (constructions + natures),
+  tissu intact : comment chaque lien tenu se parle.
 
 Usage :
   python3 education-manuelle/convertisseur_ud.py --conllu fr.conllu --topk 5
@@ -219,6 +221,67 @@ def ecole_cli(args):
     return 0
 
 
+def extraire_natures(conllu):
+    """Lit le CoNLL-U : lemme -> nature (POS le plus fréquent, égalité -> A-Z)."""
+    from collections import Counter, defaultdict
+    votes = defaultdict(Counter)
+    with open(conllu, encoding="utf-8") as fh:
+        for ligne in fh:
+            ligne = ligne.strip()
+            if not ligne or ligne.startswith("#"):
+                continue
+            p = ligne.split("\t")
+            if "-" in p[0] or "." in p[0]:
+                continue
+            lemme = normaliser(p[2])
+            if lemme:
+                votes[lemme][p[3]] += 1
+    return {l: sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+            for l, c in votes.items()}
+
+
+def ecole_bouche(c, conllu):
+    """L'ÉCOLE DE LA BOUCHE (leçon 35) : comment chaque lien tenu se parle.
+
+    constructions : paire de noeuds -> (relation la plus prouvée, dépendant)
+    (même règle que le fond du verre) ; natures : noeud -> POS. Que du tenu :
+    paire sans lien au tissu = non apprise. Idempotent."""
+    arcs, _ = extraire(conllu, None)
+    reserve = {}
+    for (a, b, r), n in arcs.items():
+        clef = tuple(sorted((a, b)))
+        if clef not in reserve or reserve[clef][2] < n:
+            reserve[clef] = (r, a, n)
+    paires, sans_lien = 0, 0
+    for (a, b), (r, dep, n) in sorted(reserve.items()):
+        na = noeud_pour(c.graph["neurones"], a)
+        nb = noeud_pour(c.graph["neurones"], b)
+        paire = tuple(sorted((na, nb))) if na is not None and nb is not None else None
+        if paire is None or paire not in c.graph["liens"]:
+            sans_lien += 1
+            continue
+        c.constructions[paire] = (r, noeud_pour(c.graph["neurones"], dep))
+        paires += 1
+    natures = extraire_natures(conllu)
+    mots = 0
+    for lemme, pos in sorted(natures.items()):
+        noeud = noeud_pour(c.graph["neurones"], lemme)
+        if noeud is not None:
+            c.natures[noeud] = pos
+            mots += 1
+    return {"paires": paires, "sans_lien": sans_lien, "natures": mots}
+
+
+def bouche_cli(args):
+    c = Cerveau.relire(args.injecter)
+    stats = ecole_bouche(c, args.conllu)
+    c.graver(args.sortie)
+    print(f"BOUCHE — {stats['paires']} paires parlables, {stats['sans_lien']} sans lien, "
+          f"{stats['natures']} natures")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
+
+
 def injecter(c, fragment):
     """Pousse le fragment au cerveau (soudure, pas d'écoutes)."""
     stats = {"neurones": 0, "liens": 0, "motifs": 0, "marbre_epargne": 0}
@@ -351,7 +414,13 @@ def main(argv):
                     help="vide TOUT le réservoir par vagues (s'arrête à 0 restant)")
     ap.add_argument("--oreille", action="store_true",
                     help="école de l'oreille : apprend les mots du conllu déjà en nerfs")
+    ap.add_argument("--bouche", action="store_true",
+                    help="école de la bouche : apprend comment chaque lien tenu se parle")
     args = ap.parse_args(argv)
+    if args.bouche:
+        assert args.tours == 0 and not args.jusquau_fond and not args.oreille, "--bouche seul"
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés"
+        return bouche_cli(args)
     if args.oreille:
         assert args.tours == 0 and not args.jusquau_fond, "--oreille seul"
         assert args.injecter and args.sortie, "--injecter + --sortie exigés"

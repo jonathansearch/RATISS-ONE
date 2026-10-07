@@ -145,6 +145,8 @@ class Cerveau:
         self.entendus = pack["entendus"]
         self.oreille = {}  # leçon 34 : mot appris -> [neurone qui le porte]
         self.formes = {}  # leçon 34 : forme fléchie (minuscule) -> lemme appris
+        self.constructions = {}  # leçon 35 : (a, b) trié -> (relation, dépendant)
+        self.natures = {}  # leçon 35 : noeud -> POS (VERB, NOUN...)
         neurones = set(pack["concepts"])
         for mb in self.motifs.values():
             neurones.update(mb)
@@ -370,6 +372,15 @@ class Cerveau:
         trace.redire()
         return phrase, trace
 
+    def dire(self, mot):
+        """DIRE (leçon 35) : le constructeur — la bouche assemble un noyau
+        tenu (sujet-verbe-objet + épithète) autour du mot. Retourne le
+        résultat (phrase télégraphique : lemmes, pas de petits mots) ou
+        None (la bouche se tait quand elle ne tient rien).
+        Import paresseux : comme redire, la bouche dépend du crâne au chargement."""
+        from bouche.construire import construire
+        return construire(self, mot)
+
     def rever(self):
         """LE RÊVE (v6, phase 5) : l'hippocampe rejoue ce que le tissu a compris.
         Chaque trace VIF/REFRAIN riche (≥ 2 mots connus) est ravivée sur place
@@ -494,6 +505,9 @@ class Cerveau:
             "motifs": {nom: list(mb) for nom, mb in self.motifs.items()},
             "oreille": {mot: list(mb) for mot, mb in self.oreille.items()},
             "formes": dict(self.formes),
+            "constructions": [[a, b, r, d] for (a, b), (r, d)
+                              in sorted(self.constructions.items())],
+            "natures": {n: self.natures[n] for n in sorted(self.natures)},
             "secteurs": {
                 nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
                        "redites": t.redites, "grave": t.grave}
@@ -536,6 +550,8 @@ class Cerveau:
             c.motifs = {nom: list(mb) for nom, mb in photo["motifs"].items()}
         c.oreille = {mot: list(mb) for mot, mb in photo.get("oreille", {}).items()}
         c.formes = dict(photo.get("formes", {}))
+        c.constructions = {(a, b): (r, d) for a, b, r, d in photo.get("constructions", [])}
+        c.natures = dict(photo.get("natures", {}))
         for nom, traces in photo["secteurs"].items():
             s = c.secteurs[nom]
             s.traces = {}

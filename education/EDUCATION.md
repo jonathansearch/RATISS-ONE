@@ -204,3 +204,11 @@ l'ordre des vagues ne change rien (même graphe final).
 la priorité (`mots_connus` intact) ; battement par motifs temporaires
 (jamais figés, jamais gravés) ; nerf mort = sourd (garde anti-fantôme).
 24 638 mots + 16 370 formes en 5 s — et le rêve comprend les nouveaux.
+
+## 16. L'école de la bouche (7 oct., leçon 35)
+
+`--bouche` : le cerveau apprend comment chaque lien tenu se parle
+(relation + dépendant + natures), tissu intact. Le constructeur assemble
+des noyaux sujet-verbe-objet (+ épithète), ordre français, style
+télégraphique (zéro LLM) : R-CONSTRUCTEUR — chaque lien parlé est tenu
+(force >= 20), sinon la bouche se tait. 884/2067 verbes parlent.

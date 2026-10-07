@@ -703,6 +703,54 @@ def main():
     else:
         print("ÉCHEC : l'oreille est mauvaise")
         echecs += 1
+    controles += 1
+    from convertisseur_ud import ecole_bouche as _bouche
+    from bouche.construire import construire as _construire, tenue as _tenue
+    _ok_bou = False
+    try:
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _vi = _tf.mktemp(suffix=".json.gz")
+            _Cerveau("FR").graver(_vi)
+            _a = _A()
+            _a.conllu = "education-manuelle/echantillon-ud.conllu"
+            _a.graines = 7
+            _a.paires = 500
+            _a.injecter = _vi
+            _a.sortie = _tf.mktemp(suffix=".json.gz")
+            _boire(_a)
+            os.remove(_vi)
+            _x = _Cerveau.relire(_a.sortie)
+            os.remove(_a.sortie)
+            _ecole(_x, "education-manuelle/echantillon-ud.conllu")
+            _stb = _bouche(_x, "education-manuelle/echantillon-ud.conllu")
+            _ph10 = _construire(_x, "accuser", seuil=10)
+            _cb = _Cerveau.relire("cerveau/fige-300M-bouche.json.gz")
+            _ph = _cb.dire("dire")
+            _or2 = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
+            _sd2 = _Cerveau.relire("cerveau/fige-300M-soude.json.gz")
+        _ok_bou = (_stb == {"paires": 1747, "sans_lien": 0, "natures": 1421}
+                   and _ph10 is not None and _ph10["phrase"] == "stephen accuser adeang"
+                   and _tenue(_x, _ph10, seuil=10)
+                   and _x.dire("aborder") is None
+                   and _construire(_x, "blorpt", seuil=10) is None
+                   and (len(_cb.graph["neurones"]), len(_cb.graph["liens"]),
+                        len(_cb.motifs)) == (24639, 105350, 20)
+                   and len(_cb.oreille) == 24638 and len(_cb.formes) == 16370
+                   and len(_cb.constructions) == 105313 and len(_cb.natures) == 24638
+                   and _cb.ecoutes == 300000000
+                   and _ph is not None
+                   and _ph["phrase"] == "empereur byzantin dire verite tout"
+                   and _tenue(_cb, _ph)
+                   and _cb.dire("manger") is None and _cb.dire("blorpt") is None
+                   and _or2.dire("dire") is None and _sd2.dire("manger") is None
+                   and _sd2.dire("amis") is None)
+    except Exception:
+        _ok_bou = False
+    if _ok_bou:
+        print("OK : bouche (SVO tenu, empereur pinné, silences honnêtes)")
+    else:
+        print("ÉCHEC : la bouche est mauvaise")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

@@ -633,6 +633,20 @@ sans lemme (il entend via les formes). Limite honnête : porte -> porter
 > **Énoncé :** l'oreille apprend à part — l'école d'abord, les formes
 > ensuite, et jamais un fantôme.
 
+### Leçon 35 🗣️ — L'école de la bouche : le bébé assemble (SVO tenu)
+*Ordre du chef : l'oreille entend 24 638 mots mais la bouche ne dit que
+le bilan. Design : tables à part (constructions : paire -> (relation,
+dépendant), natures : noeud -> POS), tissu intact. R-CONSTRUCTEUR :
+chaque lien parlé est TENU (force >= 20 : une fois = remarqué, deux fois
+= tenu). Noyau sujet-verbe-objet (+ épithète), ordre français, style
+télégraphique (lemmes, pas de petits mots, pas d'accord — le bébé parle
+vrai, pas joli). Sans noyau, la bouche se tait (manger, ami : silence
+honnête). Résultat : 105 313 paires parlables en 9 s, 884/2067 verbes
+parlent — « empereur byzantin dire verite tout » (124/124).*
+
+> **Énoncé :** la bouche assemble, elle n'invente pas — chaque lien
+> parlé est tenu, sinon silence.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -711,6 +725,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **fond du verre** — 105 313/105 313 bues, 24 639 nerfs figés, ordre indifférent (livré 7 oct. : leçon 32, 121/121)
 - [x] **soudure-amis** — pont-jumeau 100 figé, écho 0->50, ULTRA intact (livré 7 oct. : leçon 33, 122/122)
 - [x] **école de l'oreille** — 24 638 mots + 16 370 formes, lent=rapide, rêve élargi (livré 7 oct. : leçon 34, 123/123)
+- [x] **école de la bouche** — 105 313 paires parlables, SVO tenu, silences honnêtes (livré 7 oct. : leçon 35, 124/124)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

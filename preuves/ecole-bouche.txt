@@ -1,0 +1,14 @@
+=== L'ÉCOLE DE LA BOUCHE : le bébé assemble (SVO tenu, style télégraphique) ===
+tissu/oreille intacts : True
+constructions : 105313 paires parlables | natures : 24638
+  dire -> « empereur byzantin dire verite tout » tenu=True
+  faire -> « nom vrai faire apparition premier » tenu=True
+  prendre -> « employe prendre nom vrai » tenu=True
+  enfant -> « armee francais mettre enfant autre » tenu=True
+  chien -> « population actif elever animal domestique » tenu=True
+  manger -> silence (rien de tenu)
+  amis -> silence (rien de tenu)
+  blorpt -> silence (rien de tenu)
+bilan (inchangé) : J'ai entendu 300000000 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+nuit 0 perte : True
+artefact : 3920339 octets
