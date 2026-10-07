@@ -179,3 +179,12 @@ motifs-relations, loi force = min(100, 10 x rencontres)), poussé au
 cerveau figé puis figé à l'éclair : 247 nerfs, 260 filaments, 300M
 d'écoutes et sanctuaire intacts. Règles : topk=5/mot, marbre non
 réécrit, R5 (pas d'écoutes), pas de nouvelles oreilles.
+
+## 13. Le remix (7 oct., leçon 31)
+
+`--tours 100 --paires 500` : chaque tour brasse TOUT le réservoir UD
+(108 855 paires, graine reproductible), en boit 500, soude (motifs en
+UNION, marbre épargné) et fige. En 88 s : 15 549 nerfs, 39 785 filaments,
+36 % du réservoir bu, 300M et sanctuaire intacts. La saturation (épargnés
+croissants) mesure l'absorption. Bonus : R-ULTRA ne nomme que les motifs
+nommables (« la bouche ne dit que ce qu'elle peut nommer »).

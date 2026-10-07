@@ -51,8 +51,8 @@ def courbe(points, x0, y0, x1, y1, vmax, couleur, largeur=3, points_ronds=True, 
 
 
 def g_batterie():
-    # Sources : roadmap RNI-DEFINITION.md §7 + sorties batterie (42 → 119).
-    L = cadre(780, 320, "📈 La batterie : 42 → 119 contrôles (avec le creux honnête)")
+    # Sources : roadmap RNI-DEFINITION.md §7 + sorties batterie (42 → 120).
+    L = cadre(780, 320, "📈 La batterie : 42 → 120 contrôles (avec le creux honnête)")
     pts = [("v0.1", 42), ("cerveau", 81), ("route A", 89), ("route B", 93),
            ("creux C", 62), ("route C", 93), ("CISE", 101), ("tok", 102),
            ("marbre", 103), ("marée", 104), ("chaos", 105), ("livre", 106),
@@ -65,9 +65,10 @@ def g_batterie():
            ("relais", 116),
            ("retour", 117),
            ("fige", 118),
-           ("ecole", 119)]
+           ("ecole", 119),
+           ("remix", 120)]
     L += courbe(pts, 50, 60, 730, 250, 110, VERT, etiquettes=
-                ["6 oct."] * 5 + ["7 oct."] * 20)
+                ["6 oct."] * 5 + ["7 oct."] * 21)
     L.append(f'<text x="390" y="300" font-size="11" font-style="italic" fill="{PIERRE}" text-anchor="middle">'
              "Le creux (62/93) : la loi v2 casse tout, le monde s'ajuste, tout remonte — sans toucher une règle.</text>")
     return L

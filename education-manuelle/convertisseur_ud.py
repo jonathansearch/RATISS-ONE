@@ -60,7 +60,10 @@ def normaliser(lemme):
 
 
 def extraire(conllu, nos):
-    """Lit le CoNLL-U : arcs (dépendant, tête, relation) touchant nos mots."""
+    """Lit le CoNLL-U : arcs (dépendant, tête, relation).
+
+    nos = ensemble de mots (secteur : arcs qui les touchent) ou None
+    (TOUT le réservoir, pour le remix)."""
     arcs, racines = Counter(), set()
     toks = []
 
@@ -79,7 +82,7 @@ def extraire(conllu, nos):
                 continue
             if pos not in CONTENU or idx[head][2] not in CONTENU:
                 continue
-            if l1 in nos or l2 in nos:
+            if nos is None or l1 in nos or l2 in nos:
                 arcs[(l1, l2, rel.split(":")[0])] += 1
 
     with open(conllu, encoding="utf-8") as fh:
@@ -168,10 +171,75 @@ def injecter(c, fragment):
         c.chaines.add(cle)
         stats["liens"] += 1
     for nom, membres in fragment["motifs"].items():
-        c.motifs[nom] = [conv[m] for m in membres]
+        vieux = set(c.motifs.get(nom, []))
+        c.motifs[nom] = sorted(vieux | {conv[m] for m in membres})
         stats["motifs"] += 1
     c._tissu_sale = True  # le graphe a pris de l'avance : l'interprète reconstruira
     return stats
+
+
+def echantillonner(arcs, racines, graine, k):
+    """Un tour de remix : K paires brassées (graine -> reproductible).
+
+    Même schéma que convertir (liens, loi 10x, motifs-relations) : le tour
+    est un fragment comme un autre, la graine change, le code non."""
+    import random
+    items = sorted(arcs.items())
+    ordre = list(range(len(items)))
+    random.Random(graine).shuffle(ordre)
+    gardes = {}
+    for i in ordre[:k]:
+        (a, b, r), n = items[i]
+        if (a, b) not in gardes or gardes[(a, b)][1] < n:
+            gardes[(a, b)] = (r, n)
+    liens, motifs = [], {}
+    for (a, b) in sorted(gardes):
+        r, n = gardes[(a, b)]
+        liens.append({"a": a, "b": b, "force": min(100, 10 * n), "n": n, "rel": r})
+        motifs.setdefault(REL_MOTIF.get(r, MOTIF_DIVERS), set()).update((a, b))
+    mots = sorted({w for l in liens for w in (l["a"], l["b"])})
+    racines_ici = sorted(w for w in mots if w in racines)
+    if racines_ici:
+        motifs[MOTIF_RACINE] = set(racines_ici)
+    return {
+        "format": "fragment-cise-ud-v1",
+        "source": "UD_French-GSD train (remix)",
+        "loi": "force = min(100, 10 x rencontres)",
+        "graine": graine,
+        "mots_touches": mots,
+        "neurones": mots,
+        "liens": liens,
+        "motifs": {k2: sorted(v) for k2, v in sorted(motifs.items())},
+        "stats": {"paires_gardees": len(liens)},
+    }
+
+
+def remix(args):
+    """LE REMIX : N tours graineés sur tout le réservoir, figé à chaque tour."""
+    import contextlib
+    import io
+    arcs, racines = extraire(args.conllu, None)
+    print(f"RÉSERVOIR — {sum(arcs.values())} arcs, {len(arcs)} paires uniques")
+    c = Cerveau.relire(args.injecter)
+    absorbees = set()
+    for r in range(args.tours):
+        frag = echantillonner(arcs, racines, args.graines + r, args.paires)
+        stats = injecter(c, frag)
+        with contextlib.redirect_stdout(io.StringIO()):
+            res = c.figer()
+        for l in frag["liens"]:
+            absorbees.add((l["a"], l["b"]))
+        print(f"tour {r + 1}/{args.tours} : +{stats['neurones']} neurones "
+              f"+{stats['liens']} liens (épargné {stats['marbre_epargne']}) | "
+              f"total {len(c.graph['neurones'])} neurones {len(c.graph['liens'])} liens, "
+              f"{len(res['figes'])} figés", flush=True)
+    c.graver(args.sortie)
+    print(f"REMIX FINI — {len(c.graph['neurones'])} neurones, {len(c.graph['liens'])} liens, "
+          f"{len(c.motifs)} motifs, écoutes {c.ecoutes}")
+    print(f"COUVERTURE — {len(absorbees)}/{len(arcs)} paires bues "
+          f"({100 * len(absorbees) // len(arcs)} % du réservoir)")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
 
 
 def main(argv):
@@ -181,7 +249,14 @@ def main(argv):
     ap.add_argument("--fragment", default="education-manuelle/fragment-ud-fr.json")
     ap.add_argument("--injecter", default=None, help="cerveau gravé à pousser")
     ap.add_argument("--sortie", default=None, help="cerveau poussé + figé, gravé ici")
+    ap.add_argument("--tours", type=int, default=0,
+                    help="remix : N tours sur TOUT le réservoir (0 = un seul fragment topk)")
+    ap.add_argument("--graines", type=int, default=1000, help="graine de base des tours")
+    ap.add_argument("--paires", type=int, default=500, help="paires brassées par tour")
     args = ap.parse_args(argv)
+    if args.tours > 0:
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés avec --tours"
+        return remix(args)
     _, mots = charger()
     nos = set(mots)
     arcs, racines = extraire(args.conllu, nos)

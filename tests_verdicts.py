@@ -549,6 +549,36 @@ def main():
     else:
         print("ÉCHEC : le convertisseur UD est mauvais")
         echecs += 1
+    controles += 1
+    from convertisseur_ud import echantillonner as _ech, extraire as _ext
+    _ok_rx = False
+    try:
+        _arcs, _rac = _ext("education-manuelle/echantillon-ud.conllu", None)
+        _t1 = _ech(_arcs, _rac, 7, 30)
+        _t2 = _ech(_arcs, _rac, 7, 30)
+        _t3 = _ech(_arcs, _rac, 8, 30)
+        _loi3 = all(l["force"] == min(100, 10 * l["n"])
+                    for _t in (_t1, _t3) for l in _t["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cr = _Cerveau("FR")
+            for _g in (7, 8, 9):
+                _injecter(_cr, _ech(_arcs, _rac, _g, 30))
+            _rr = _cr.figer()
+            _rx = _Cerveau.relire("cerveau/fige-300M-remix100.json.gz")
+        _ok_rx = (_t1["liens"] == _t2["liens"] and _t1["liens"] != _t3["liens"]
+                  and _loi3 and _cr.ecoutes == 0
+                  and len(_rr["figes"]) == len(_cr.graph["neurones"])
+                  and (len(_rx.graph["neurones"]), len(_rx.graph["liens"]),
+                       len(_rx.motifs)) == (15549, 39785, 19)
+                  and _rx.ecoutes == 300000000
+                  and len(_rx.graph["types"]) == 15549)
+    except Exception:
+        _ok_rx = False
+    if _ok_rx:
+        print("OK : remix (tours déterministes, 15549/39785/19 pinnés)")
+    else:
+        print("ÉCHEC : le remix est mauvais")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

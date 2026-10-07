@@ -6,7 +6,9 @@ RATISS Labs · MIT.
 
 Le tissu résonne, les secteurs gardent : ici on TRADUIT l'état en phrase,
 puis la bouche (Piper) la parle. Quatre règles tiny, déterministes, hors-ligne :
-  R-ULTRA : des convictions ? → "Je tiens pour sûr : ..."
+  R-ULTRA : des convictions NOMMABLES ? → "Je tiens pour sûr : ..."
+  (la bouche ne dit que ce qu'elle peut nommer : motif sans mot
+  français = il reste au tableau de bord, la phrase l'ignore)
   R-SANCT : un sanctuaire ? → "Au sanctuaire : ..."
   R-TISSU : des mots tenus ? → "Je tiens A et B. Le reste reste dehors."
   R-VIDE  : rien ? → "Je ne tiens rien. Tout reste dehors."
@@ -73,8 +75,9 @@ def formuler(etat, langue=None):
     """R-COMPTES + R-ULTRA + R-SANCT + R-TISSU/R-VIDE, dans cet ordre."""
     langue = langue or etat["langue"]
     parts = [formuler_comptes(etat["ecoutes"], langue)]
-    if etat["ultra"]:
-        noms = [mot_de(t["mots"][1], langue) for t in etat["ultra"]]
+    noms = [mot_de(t["mots"][1], langue) for t in etat["ultra"]
+            if len(t["mots"]) > 1 and t["mots"][1] in INV[langue]]
+    if noms:
         parts.append((f"Je tiens pour sûr : {joindre(noms, langue)}." if langue == "FR"
                       else f"I hold as certain: {joindre(noms, langue)}."))
     if etat["sanctuaire"]:

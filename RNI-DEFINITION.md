@@ -567,6 +567,23 @@ ne chantent pas — le chant viendra du constructeur.
 > **Énoncé :** pas besoin d'emprunter une bouche quand on sait souder —
 > 14 450 phrases bues en une seconde, 234 nerfs posés à la main.
 
+### Leçon 31 🔀 — Le remix : 100 tours, le réservoir se vide
+*Ordre du chef : reprendre la même base et la remixer 20x, 100x — explorer
+TOUT, pas un secteur. Chaque tour brasse les 108 855 paires (graine =
+reproductible), en boit 500, soude et fige : 247 -> 15 549 nerfs, 260 ->
+39 785 filaments, 300M et sanctuaire intacts, 36 % du réservoir bu en
+88 secondes. Pinné : tours déterministes + 15549/39785/19 (120/120).*
+
+La courbe de saturation raconte l'absorption : tour 1 (+754 nerfs, +500
+liens, 0 épargné — la gorge ouverte), tour 100 (+60, +325, 175 épargnés —
+le tiers déjà su). Le marbre épargné MESURE le savoir : plus il monte,
+plus la base est sue. Bonus attrapé : la bouche disait « mappos mappos »
+(convictions innommables) — règle gravée : la bouche ne dit que ce
+qu'elle peut nommer (bouche OK, 5 phrases intactes).
+
+> **Énoncé :** remixer, c'est boire sans se noyer — 100 tours graineés,
+> 15 549 nerfs, et la bouche reste propre.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -641,6 +658,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **retour 300M vérifié** — zip du chef relu (300M pile, sanctuaire pinné), voix archivée (livré 7 oct. : leçon 28, 117/117)
 - [x] **figement CISE du 300M** — 13 nerfs + 40 filaments, 20 nuits intactes, marbre gravé (livré 7 oct. : leçon 29, 118/118)
 - [x] **école manuelle UD** — convertisseur 14 450 phrases -> 247 nerfs figés, loi 10x, 300M intactes (livré 7 oct. : leçon 30, 119/119)
+- [x] **remix 100 tours** — 108k paires brassées, 15 549 nerfs figés, bouche renommée (livré 7 oct. : leçon 31, 120/120)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
