@@ -123,6 +123,14 @@ def cle(a, b):
     return tuple(sorted((a, b)))
 
 
+def noeud_pour(neurones, lemme):
+    """Un lemme -> le nom du neurone qui le porte, ou None (pas de nerf : sourd)."""
+    if lemme in neurones:
+        return lemme
+    nom = "word_" + lemme
+    return nom if nom in neurones else None
+
+
 # v5 (MARÉE, phase 4) : le tampon tient 50 écoutes — une grosse journée.
 # Au-delà, soupape : le plus ancien entre au VIF (zéro perte, jamais).
 TAMPON_CAP = 50
@@ -135,6 +143,8 @@ class Cerveau:
         self.mots_connus = pack["mots"]
         self.motifs = pack["motifs"]
         self.entendus = pack["entendus"]
+        self.oreille = {}  # leçon 34 : mot appris -> [neurone qui le porte]
+        self.formes = {}  # leçon 34 : forme fléchie (minuscule) -> lemme appris
         neurones = set(pack["concepts"])
         for mb in self.motifs.values():
             neurones.update(mb)
@@ -245,18 +255,57 @@ class Cerveau:
                 break
         return trace
 
+    def _oreille(self, mots):
+        """L'OREILLE (leçon 34) : l'école d'abord (priorité, comportement
+        intact), puis les mots appris (lemme direct ou via les formes
+        fléchies). Retourne (mots_école, lemmes_appris, noeuds_dans_l_ordre).
+        Un mot appris dont le nerf est mort reste sourd (garde anti-fantôme :
+        `motif` exige des neurones vivants, `nettoyer` peut en tuer)."""
+        ecole, nouveau, noeuds = [], [], []
+        for m in mots:
+            if m in self.mots_connus:
+                ecole.append(m)
+                noeuds.append("word_" + m)
+                continue
+            lemme = m if m in self.oreille else self.formes.get(m.lower())
+            if lemme in self.oreille and self.oreille[lemme][0] in self.graph["neurones"]:
+                nouveau.append(lemme)
+                noeuds.append(self.oreille[lemme][0])
+        return ecole, nouveau, noeuds
+
+    def _compris(self, mot):
+        """Le rêve ne ravive que ce qu'on comprend : école + mots appris."""
+        if mot in self.mots_connus:
+            return True
+        lemme = mot if mot in self.oreille else self.formes.get(mot.lower())
+        return lemme in self.oreille
+
     def _entendre_tissu(self, mots):
         """Co-activation immédiate : chaînes mot-à-mot + battement Ratum."""
-        connus = [m for m in mots if m in self.mots_connus]
-        noeuds = ["word_" + m for m in connus]
+        ecole, nouveau, noeuds = self._oreille(mots)
         for i in range(len(noeuds) - 1):
             c = cle(noeuds[i], noeuds[i + 1])
             if c not in self.graph["liens"]:
                 self.graph["liens"][c] = 10
                 self.chaines.add(c)
+        if nouveau:  # l'oreille : motifs temporaires (jamais figés, jamais gravés)
+            sauves = self.motifs
+            self.motifs = dict(sauves)
+            for l in dict.fromkeys(nouveau):
+                self.motifs["OREILLE_" + l] = list(self.oreille[l])
+            self._tissu_sale = True  # reconstruire AVEC les temporaires
+            try:
+                src = "".join(f"rencontre {self.mots_connus[m]}\n" for m in ecole)
+                src += "".join(f"rencontre OREILLE_{l}\n" for l in nouveau)
+                self._exec(src + "propager\nrenforcer\nrepos\n")
+            finally:
+                self.motifs = sauves
+                self._tissu_sale = True  # fantômes dehors : reconstruire au prochain battement
+            self._sync()
+            return
         self._reconstruire()
-        if connus:
-            src = "".join(f"rencontre {self.mots_connus[m]}\n" for m in connus)
+        if ecole:
+            src = "".join(f"rencontre {self.mots_connus[m]}\n" for m in ecole)
             src += "propager\nrenforcer\nrepos\n"
             self._exec(src)
         self._sync()
@@ -274,17 +323,19 @@ class Cerveau:
         L = self.graph["liens"]
         S = self.graph["neurones"]
         G = self.graph["geles"]
-        connus = [m for m in mots if m in self.mots_connus]
-        noeuds = ["word_" + m for m in connus]
+        ecole, nouveau, noeuds = self._oreille(mots)
         for i in range(len(noeuds) - 1):  # chaînes mot-à-mot (naissance à 10)
             c = cle(noeuds[i], noeuds[i + 1])
             if c not in L:
                 L[c] = 10
                 self.chaines.add(c)
-        if connus:
+        if ecole or nouveau:
             ch = {}
-            for m in connus:  # rencontre : chaque motif battu à 100
+            for m in ecole:  # rencontre : chaque motif battu à 100
                 for n in self.motifs[self.mots_connus[m]]:
+                    ch[n] = 100
+            for l in nouveau:  # l'oreille : chaque mot appris battu à 100
+                for n in self.oreille[l]:
                     ch[n] = 100
             old = dict(ch)  # propager lit les charges D'AVANT (un seul saut, pas de cascade)
             for (a, b), f in L.items():  # l'ombre divise par 2 (//200)
@@ -328,7 +379,7 @@ class Cerveau:
         n = 0
         for nom in ("VIF", "REFRAIN"):
             for mots in list(self.secteurs[nom].traces):
-                if sum(1 for m in mots if m in self.mots_connus) >= 2:
+                if sum(1 for m in mots if self._compris(m)) >= 2:
                     self.secteurs[nom].deposer(list(mots))
                     n += 1
         return n
@@ -441,6 +492,8 @@ class Cerveau:
             },
             "chaines": [[a, b] for a, b in self.chaines],
             "motifs": {nom: list(mb) for nom, mb in self.motifs.items()},
+            "oreille": {mot: list(mb) for mot, mb in self.oreille.items()},
+            "formes": dict(self.formes),
             "secteurs": {
                 nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
                        "redites": t.redites, "grave": t.grave}
@@ -481,6 +534,8 @@ class Cerveau:
         c.chaines = {(a, b) for a, b in photo["chaines"]}
         if "motifs" in photo:  # photos v1 (sans motifs) : on garde ceux du pack
             c.motifs = {nom: list(mb) for nom, mb in photo["motifs"].items()}
+        c.oreille = {mot: list(mb) for mot, mb in photo.get("oreille", {}).items()}
+        c.formes = dict(photo.get("formes", {}))
         for nom, traces in photo["secteurs"].items():
             s = c.secteurs[nom]
             s.traces = {}

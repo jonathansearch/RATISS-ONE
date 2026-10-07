@@ -1,0 +1,11 @@
+=== L'ÉCOLE DE L'OREILLE : 24638 mots appris, l'école d'abord ===
+tissu identique au soudé : True
+oreille : 24638 mots | formes : 16370 | sourds : 1586 | écoutes : 300000000
+formes : amis-> ami | chevaux-> cheval | porte-> porter (le plus fréquent gagne)
+seul nerf sans lemme appris : word_amis (il entend via les formes)
+écho inverse (le pont à l'envers) : word_ami=100 -> word_amis=50 ✅
+phrase mixte : + 1 chaîne (blorpt ignoré), temporaires restants : aucun
+rêve comprend les nouveaux : 1 ravivé
+dit : J'ai entendu 300000001 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+nuit 0 perte : True
+artefact : 2960945 octets

@@ -643,6 +643,66 @@ def main():
     else:
         print("ÉCHEC : la soudure est mauvaise")
         echecs += 1
+    controles += 1
+    from convertisseur_ud import ecole_oreille as _ecole
+    _ok_or = False
+    try:
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _vi = _tf.mktemp(suffix=".json.gz")
+            _Cerveau("FR").graver(_vi)
+            _a = _A()
+            _a.conllu = "education-manuelle/echantillon-ud.conllu"
+            _a.graines = 7
+            _a.paires = 500
+            _a.injecter = _vi
+            _a.sortie = _tf.mktemp(suffix=".json.gz")
+            _boire(_a)
+            os.remove(_vi)
+            _seqs = [["amis", "aborder"], ["absides", "peuple"], ["blorpt"],
+                     ["unir", "aborder", "aborder"]]
+            _fx = []
+            for _rap in (False, True):
+                _x = _Cerveau.relire(_a.sortie)
+                _st = _ecole(_x, "education-manuelle/echantillon-ud.conllu")
+                _x.rapide = _rap
+                for _s in _seqs:
+                    _x.entendre_sequence(_s)
+                _fx.append(_x)
+            _xr = _Cerveau.relire(_a.sortie)
+            _ecole(_xr, "education-manuelle/echantillon-ud.conllu")
+            _xr.entendre_sequence(["abordable", "aborder"], interne=True)
+            _xr.entendre_sequence(["abordable", "aborder"], interne=True)
+            _reves = _xr.rever()
+            os.remove(_a.sortie)
+            _or = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
+            _sd = _Cerveau.relire("cerveau/fige-300M-soude.json.gz")
+        _x0 = _fx[0]
+        _nd = _x0.oreille["abordable"][0]
+        _x0.graph["neurones"].pop(_nd)
+        _ok_or = (_st == {"mots": 1421, "sourds": 142, "formes": 829}
+                  and _x0.formes.get("amis") == "ami"
+                  and _x0.formes.get("absides") == "abside"
+                  and _x0._oreille(["amis"]) == (["amis"], [], ["word_amis"])
+                  and dict(_fx[0].graph["liens"]) == dict(_fx[1].graph["liens"])
+                  and _fx[0].chaines == _fx[1].chaines
+                  and _reves == 1
+                  and _x0._oreille(["abordable"])[1] == []
+                  and (len(_or.graph["neurones"]), len(_or.graph["liens"]),
+                       len(_or.motifs)) == (24639, 105350, 20)
+                  and _or.ecoutes == 300000000
+                  and len(_or.oreille) == 24638 and len(_or.formes) == 16370
+                  and _or.formes.get("chevaux") == "cheval"
+                  and "amis" not in _or.oreille
+                  and dict(_or.graph["liens"]) == dict(_sd.graph["liens"])
+                  and dict(_or.graph["neurones"]) == dict(_sd.graph["neurones"])
+                  and _or.motifs == _sd.motifs)
+    except Exception:
+        _ok_or = False
+    if _ok_or:
+        print("OK : oreille (1421 mots, lent=rapide, 24638/16370 pinnés)")
+    else:
+        print("ÉCHEC : l'oreille est mauvaise")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

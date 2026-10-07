@@ -617,6 +617,22 @@ leçon 4) — l'école UD lui a rendu 21 liens (122/122).*
 > **Énoncé :** un jumeau se soude, pas s'efface — un pont à 100,
 > et l'écho traverse.
 
+### Leçon 34 👂 — L'école de l'oreille : 24 638 mots appris, l'école d'abord
+*Ordre du chef : les nouveaux sont sourds-muets — l'oreille n'apprend que
+6 mots. Design : `mots_connus` INTACT (l'école garde la priorité,
+comportement inchangé), table à part (oreille : lemme -> [nerf], formes :
+fléchi -> lemme, le plus fréquent gagne, égalité -> alphabétique).
+Battement : motifs temporaires OREILLE_x (jamais figés, jamais gravés,
+try/finally), garde anti-fantôme (nerf mort = sourd, `nettoyer` peut
+tuer). Résultat : 24 638 mots + 16 370 formes en 5 s, tissu identique
+au soudé, lent = rapide prouvé, écho inverse ami -> école = 50 (le pont
+marche à l'envers !), le rêve comprend les nouveaux. Seul `word_amis`
+sans lemme (il entend via les formes). Limite honnête : porte -> porter
+(le plus fréquent gagne, pas le sens) (123/123).*
+
+> **Énoncé :** l'oreille apprend à part — l'école d'abord, les formes
+> ensuite, et jamais un fantôme.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -694,6 +710,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **remix 100 tours** — 108k paires brassées, 15 549 nerfs figés, bouche renommée (livré 7 oct. : leçon 31, 120/120)
 - [x] **fond du verre** — 105 313/105 313 bues, 24 639 nerfs figés, ordre indifférent (livré 7 oct. : leçon 32, 121/121)
 - [x] **soudure-amis** — pont-jumeau 100 figé, écho 0->50, ULTRA intact (livré 7 oct. : leçon 33, 122/122)
+- [x] **école de l'oreille** — 24 638 mots + 16 370 formes, lent=rapide, rêve élargi (livré 7 oct. : leçon 34, 123/123)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

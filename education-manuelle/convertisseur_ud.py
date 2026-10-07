@@ -16,6 +16,8 @@ Lois (simples, documentées, pinnées par la batterie) :
 - le marbre ne se réécrit pas : lien existant = on ne touche pas.
 - R5 : l'injection manuelle n'est pas une écoute (compteur inchangé).
 - l'école ajoute du savoir (neurones), pas des oreilles (mots_connus intacts).
+- l'école de l'oreille (leçon 34) apprend à part (oreille + formes),
+  mots_connus intact, priorité à l'école.
 
 Usage :
   python3 education-manuelle/convertisseur_ud.py --conllu fr.conllu --topk 5
@@ -31,7 +33,7 @@ from collections import Counter
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                                 "education-massive"))
-from cerveau.cerveau import Cerveau  # noqa: E402
+from cerveau.cerveau import Cerveau, noeud_pour  # noqa: E402
 from generer_masse import charger  # noqa: E402
 
 CONTENU = {"NOUN", "VERB", "ADJ", "ADV", "PROPN"}
@@ -153,12 +155,68 @@ def convertir(arcs, racines, nos, topk):
 
 def neurone_pour(c, lemme):
     """Un lemme -> neurone existant (concept ou word_X) ou neuf (word_X)."""
-    if lemme in c.graph["neurones"]:
-        return lemme
-    nom = "word_" + lemme
-    if nom not in c.graph["neurones"]:
+    nom = noeud_pour(c.graph["neurones"], lemme)
+    if nom is None:
+        nom = "word_" + lemme
         c.graph["neurones"][nom] = 50
     return nom
+
+
+def extraire_formes(conllu):
+    """Lit le CoNLL-U : formes fléchies -> lemme (le plus fréquent gagne),
+    + l'ensemble des lemmes normalisés vus. Mêmes gardes qu'extraire
+    (commentaires, vides, mots composés sautés)."""
+    from collections import Counter, defaultdict
+    votes = defaultdict(Counter)
+    lemmes = set()
+    with open(conllu, encoding="utf-8") as fh:
+        for ligne in fh:
+            ligne = ligne.strip()
+            if not ligne or ligne.startswith("#"):
+                continue
+            p = ligne.split("\t")
+            if "-" in p[0] or "." in p[0]:
+                continue
+            lemme = normaliser(p[2])
+            if not lemme:
+                continue
+            lemmes.add(lemme)
+            forme = p[1].lower()
+            if forme != lemme:
+                votes[forme][lemme] += 1
+    formes = {}
+    for forme, cpt in votes.items():
+        formes[forme] = sorted(cpt.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+    return formes, lemmes
+
+
+def ecole_oreille(c, conllu):
+    """L'ÉCOLE DE L'OREILLE (leçon 34) : le cerveau apprend les mots qu'il
+    a déjà en nerfs — lemme direct + formes fléchies (la plus fréquente
+    gagne, égalité -> premier alphabétique). Un lemme sans nerf reste
+    sourd (on n'apprend que ce qu'on porte). Idempotent."""
+    formes, lemmes = extraire_formes(conllu)
+    mots, sourds = 0, 0
+    for lemme in sorted(lemmes):
+        noeud = noeud_pour(c.graph["neurones"], lemme)
+        if noeud is None:
+            sourds += 1
+            continue
+        c.oreille[lemme] = [noeud]
+        mots += 1
+    gardees = {f: l for f, l in formes.items() if l in c.oreille}
+    c.formes.update(gardees)
+    return {"mots": mots, "sourds": sourds, "formes": len(gardees)}
+
+
+def ecole_cli(args):
+    c = Cerveau.relire(args.injecter)
+    stats = ecole_oreille(c, args.conllu)
+    c.graver(args.sortie)
+    print(f"OREILLE — {stats['mots']} mots appris, {stats['sourds']} sourds (sans nerf), "
+          f"{stats['formes']} formes fléchies")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
 
 
 def injecter(c, fragment):
@@ -291,7 +349,13 @@ def main(argv):
     ap.add_argument("--paires", type=int, default=500, help="paires brassées par tour")
     ap.add_argument("--jusquau-fond", action="store_true",
                     help="vide TOUT le réservoir par vagues (s'arrête à 0 restant)")
+    ap.add_argument("--oreille", action="store_true",
+                    help="école de l'oreille : apprend les mots du conllu déjà en nerfs")
     args = ap.parse_args(argv)
+    if args.oreille:
+        assert args.tours == 0 and not args.jusquau_fond, "--oreille seul"
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés"
+        return ecole_cli(args)
     if args.jusquau_fond:
         assert args.tours == 0, "--tours et --jusquau-fond sont exclusifs"
         assert args.injecter and args.sortie, "--injecter + --sortie exigés"

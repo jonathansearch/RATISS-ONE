@@ -196,3 +196,11 @@ respecté), le reste est brassé (graine) puis vidé par vagues jusqu'à 0
 restant (terminaison garantie). 33 vagues en 48 s : 24 639 nerfs,
 105 349 filaments, 105 313/105 313 recomptées indépendamment. Prouvé :
 l'ordre des vagues ne change rien (même graphe final).
+
+## 15. L'école de l'oreille (7 oct., leçon 34)
+
+`--oreille` : le cerveau apprend les mots qu'il a déjà en nerfs
+(lemme direct + formes fléchies, la plus fréquente gagne). L'école garde
+la priorité (`mots_connus` intact) ; battement par motifs temporaires
+(jamais figés, jamais gravés) ; nerf mort = sourd (garde anti-fantôme).
+24 638 mots + 16 370 formes en 5 s — et le rêve comprend les nouveaux.
