@@ -22,4 +22,5 @@ le cousin est deviné à moitié : 35 sur 100
 liens : 65
 force moyenne : 66/100
 liens forts : 61
+cise : 0 neurone, 0 filament
 === fin du programme ===

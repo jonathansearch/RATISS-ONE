@@ -37,8 +37,9 @@ def borne(n):
 class Tissu:
     def __init__(self, nom):
         self.nom = nom
-        self.neurones = {}   # nom -> {"seuil": int, "charge": int}
+        self.neurones = {}   # nom -> {"seuil", "charge", "coups", "type"}
         self.liens = {}      # (a, b) trié -> force int
+        self.geles = set()   # v3 (CISE) : clés des filaments (liens gelés)
         self.motifs = {}     # nom -> [neurones]
 
 
@@ -49,6 +50,7 @@ class Interprete:
     SEUIL_DEFAUT = 50
     FORCE_NAISSANCE = 10
     MOITIE = 50  # charge minimale pour "battre"
+    VITESSE_CISE = 10  # v3 : hyper-vitesse = battements + énergie en mains de 20
 
     def __init__(self):
         self.tissu = None
@@ -161,6 +163,7 @@ class Interprete:
             "propager": self.cmd_propager, "renforcer": self.cmd_renforcer,
             "oublier": self.cmd_oublier, "repos": self.cmd_repos,
             "adapter": self.cmd_adapter, "nettoyer": self.cmd_nettoyer,
+            "cise": self.cmd_cise,
             "resonance": self.cmd_resonance, "mesurer": self.cmd_mesurer,
             "juger": self.cmd_juger, "dire": self.cmd_dire,
             "graver": self.cmd_graver, "relire": self.cmd_relire,
@@ -188,21 +191,40 @@ class Interprete:
 
     def cmd_neurone(self, noligne, mots):
         self.exige_tissu(noligne)
-        if len(mots) not in (2, 4) or (len(mots) == 4 and norm(mots[2]) != "seuil"):
-            self.erreur(noligne, "usage : neurone <nom> [seuil <n>]")
+        # v3 (CISE) : neurone <nom> [seuil <n>] [cise|transporteur]
+        if len(mots) < 2 or len(mots) > 5:
+            self.erreur(noligne, "usage : neurone <nom> [seuil <n>] [cise]")
         nom = mots[1]
-        seuil = borne(self.entier(noligne, mots, 3, "neurone <nom> seuil <n>")) if len(mots) == 4 else self.SEUIL_DEFAUT
-        self.tissu.neurones[nom] = {"seuil": seuil, "charge": 0}
+        seuil = self.SEUIL_DEFAUT
+        type_n = "transporteur"
+        reste = [norm(w) for w in mots[2:]]
+        if "seuil" in reste:
+            i = reste.index("seuil")
+            if i + 1 >= len(reste):
+                self.erreur(noligne, "usage : neurone <nom> [seuil <n>] [cise]")
+            seuil = borne(self.entier(noligne, mots, 2 + i + 1, "neurone <nom> seuil <n>"))
+            reste = reste[:i] + reste[i + 2:]
+        if reste == ["cise"]:
+            type_n = "cise"
+        elif reste not in ([], ["transporteur"]):
+            self.erreur(noligne, "usage : neurone <nom> [seuil <n>] [cise]")
+        self.tissu.neurones[nom] = {"seuil": seuil, "charge": 0, "coups": 0, "type": type_n}
 
     def cmd_lien(self, noligne, mots):
         self.exige_tissu(noligne)
-        if len(mots) not in (3, 5) or (len(mots) == 5 and norm(mots[3]) != "force"):
-            self.erreur(noligne, "usage : lien <a> <b> [force <n>]")
-        a, b = mots[1], mots[2]
+        # v3 (CISE) : lien <a> <b> [force <n>] [gelé]
+        gele = len(mots) > 3 and norm(mots[-1]) == "gele"
+        corps = mots[:-1] if gele else mots
+        if len(corps) not in (3, 5) or (len(corps) == 5 and norm(corps[3]) != "force"):
+            self.erreur(noligne, "usage : lien <a> <b> [force <n>] [gelé]")
+        a, b = corps[1], corps[2]
         self.exige_neurone(noligne, a)
         self.exige_neurone(noligne, b)
-        force = borne(self.entier(noligne, mots, 4, "lien <a> <b> force <n>")) if len(mots) == 5 else self.FORCE_NAISSANCE
-        self.tissu.liens[self.cle_lien(a, b)] = force
+        force = borne(self.entier(noligne, mots, 4, "lien <a> <b> force <n>")) if len(corps) == 5 else self.FORCE_NAISSANCE
+        cle = self.cle_lien(a, b)
+        self.tissu.liens[cle] = force
+        if gele:
+            self.tissu.geles.add(cle)
 
     def cmd_motif(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -219,6 +241,7 @@ class Interprete:
             self.erreur(noligne, "usage : rencontre <motif> (motif déclaré)")
         for n in self.tissu.motifs[mots[1]]:
             self.tissu.neurones[n]["charge"] = 100
+            self.tissu.neurones[n]["coups"] += 1  # v3 : bombardé une fois de plus
 
     def cmd_propager(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -246,6 +269,8 @@ class Interprete:
             self.erreur(noligne, "usage : renforcer [pas <n>] ou renforcer lie <X> delie <Y>")
         for cle in self.tissu.liens:
             a, b = cle
+            if cle in self.tissu.geles:
+                continue  # v3 : filament — la loi ne touche pas au gelé
             if self.actif(a) and self.actif(b):
                 # v2, élasticité : le gain fond quand la force monte
                 # (10->20 en 1 rencontre, 90->95 en ~5). L'historique survit.
@@ -263,7 +288,10 @@ class Interprete:
         elif len(mots) != 1:
             self.erreur(noligne, "usage : oublier [pas <n>]")
         for cle in self.tissu.liens:
-            self.tissu.liens[cle] = borne(self.tissu.liens[cle] - pas)
+            if cle not in self.tissu.geles:
+                self.tissu.liens[cle] = borne(self.tissu.liens[cle] - pas)
+        for v in self.tissu.neurones.values():
+            v["coups"] = 0  # v3 : la nuit efface la fréquence (les battements du jour)
 
     def cmd_repos(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -277,7 +305,8 @@ class Interprete:
         if len(mots) != 1:
             self.erreur(noligne, "usage : adapter")
         for v in self.tissu.neurones.values():
-            v["seuil"] = (v["seuil"] + v["charge"]) // 2
+            if v.get("type", "transporteur") != "cise":  # v3 : le CISE est figé, même son seuil
+                v["seuil"] = (v["seuil"] + v["charge"]) // 2
 
     def cmd_nettoyer(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -287,14 +316,47 @@ class Interprete:
         # meurent, SAUF les nommés (membres d'un motif) qui attendent.
         t = self.tissu
         nommes = {n for mb in t.motifs.values() for n in mb}
-        morts_l = [c for c, f in t.liens.items() if f <= 0]
+        morts_l = [c for c, f in t.liens.items() if f <= 0 and c not in t.geles]
         for c in morts_l:
             del t.liens[c]
         relies = {n for c in t.liens for n in c}
-        morts_n = [n for n in t.neurones if n not in relies and n not in nommes]
+        morts_n = [n for n in t.neurones if n not in relies and n not in nommes
+                   and t.neurones[n].get("type", "transporteur") != "cise"]
         for n in morts_n:
             del t.neurones[n]
         print(f"nettoyage : {len(morts_l)} liens morts, {len(morts_n)} neurones morts")
+
+    def cmd_cise(self, noligne, mots):
+        self.exige_tissu(noligne)
+        if len(mots) != 2 or mots[1] not in self.tissu.motifs:
+            self.erreur(noligne, "usage : cise <motif> (motif déclaré)")
+        # v3 (CISE) : l'étincelle — vitesse = battements + énergie en mains de 20.
+        # À 10 (la main qui lie !) alors qu'il bat : le transporteur se fige en
+        # neurone CISE ; les liens entre deux CISE deviennent des filaments (gelés).
+        t = self.tissu
+        figes = []
+        for n in dict.fromkeys(t.motifs[mots[1]]):
+            v = t.neurones[n]
+            if v.get("type", "transporteur") == "cise":
+                continue
+            vitesse = v.get("coups", 0) + v["charge"] // 20
+            if vitesse >= self.VITESSE_CISE and v["charge"] >= v["seuil"]:
+                v["type"] = "cise"
+                figes.append(n)
+        fils = 0
+        for cle in t.liens:
+            a, b = cle
+            if (cle not in t.geles
+                    and t.neurones[a].get("type") == "cise"
+                    and t.neurones[b].get("type") == "cise"):
+                t.geles.add(cle)
+                fils += 1
+        if figes:
+            pl_n = "s" if len(figes) > 1 else ""
+            pl_f = "s" if fils > 1 else ""
+            print(f"étincelle : {' '.join(figes)} figé{pl_n}, {fils} filament{pl_f}")
+        else:
+            print("étincelle : rien d'assez rapide")
 
     def txt_seuils(self):
         return " ".join(f"{n}={v['seuil']}" for n, v in sorted(self.tissu.neurones.items()))
@@ -328,6 +390,10 @@ class Interprete:
         print(f"liens : {len(forces)}")
         print(f"force moyenne : {moy}/100")
         print(f"liens forts : {forts}")
+        ncise = sum(1 for v in self.tissu.neurones.values() if v.get("type") == "cise")
+        nfil = len(self.tissu.geles)
+        print(f"cise : {ncise} neurone{'s' if ncise > 1 else ''}, "
+              f"{nfil} filament{'s' if nfil > 1 else ''}")
 
     def cmd_juger(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -341,7 +407,8 @@ class Interprete:
     def txt_forces(self):
         if not self.tissu.liens:
             return "(aucun lien)"
-        return " ".join(f"{a}-{b}={f}" for (a, b), f in sorted(self.tissu.liens.items()))
+        return " ".join(f"{a}-{b}={f}" + ("!" if (a, b) in self.tissu.geles else "")
+                         for (a, b), f in sorted(self.tissu.liens.items()))
 
     def cmd_dire(self, noligne, mots):
         self.exige_tissu(noligne)
@@ -370,8 +437,12 @@ class Interprete:
         t = self.tissu
         photo = {
             "tissu": t.nom,
-            "neurones": {n: {"seuil": v["seuil"], "charge": v["charge"]} for n, v in t.neurones.items()},
+            "neurones": {n: {"seuil": v["seuil"], "charge": v["charge"],
+                             "coups": v.get("coups", 0),
+                             "type": v.get("type", "transporteur")}
+                         for n, v in t.neurones.items()},
             "liens": [{"a": a, "b": b, "force": f} for (a, b), f in t.liens.items()],
+            "geles": [[a, b] for (a, b) in t.geles],
             "motifs": t.motifs,
         }
         with open(mots[1], "w", encoding="utf-8") as fh:
@@ -384,8 +455,12 @@ class Interprete:
         with open(mots[1], encoding="utf-8") as fh:
             photo = json.load(fh)
         t = Tissu(photo["tissu"])
-        t.neurones = {n: {"seuil": v["seuil"], "charge": v["charge"]} for n, v in photo["neurones"].items()}
+        t.neurones = {n: {"seuil": v["seuil"], "charge": v["charge"],
+                         "coups": v.get("coups", 0),
+                         "type": v.get("type", "transporteur")}
+                     for n, v in photo["neurones"].items()}
         t.liens = {self.cle_lien(l["a"], l["b"]): l["force"] for l in photo["liens"]}
+        t.geles = {self.cle_lien(a, b) for a, b in photo.get("geles", [])}
         t.motifs = photo["motifs"]
         self.tissu = t
         print(f"tissu relu depuis {mots[1]}")

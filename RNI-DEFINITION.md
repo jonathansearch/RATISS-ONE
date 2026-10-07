@@ -235,13 +235,34 @@ minimales — le prix de l'élasticité), corpus 39 phrases (+2 COEUR), graine
 tue les vagues lointaines (j09 : 65 → 64) mais la sommation multi-sources la
 traverse (MUNIR 39 → 74) ; **la falaise délie** — entre délie 0 (50/50) et
 délie 1 (0/50) il n'y a pas de pente, l'éducation sélective exige délie 0
-(décision du chef en attente — régime école conservé en intérim) ; nommer c'est protéger
+(tranché (a) le 7 oct. : deux maisons — école délie 0, vie (10,3)) ; nommer c'est protéger
 (0 neurones morts sous délie 10, tous nommés). Reste : saturation atténuée
 (B : 74-94) mais pas vaincue — le marbre (phase 3) viendra creuser.
 
 > **Énoncé :** la loi universelle (10, 3) + élasticité + ombre tient les 12
 > leçons (93/93) en ajustant le monde (fréquence, corpus, seuils) —
 > et l'éducation sélective vit sous régime d'exception (délie 0, l'école).
+
+---
+
+### Leçon 13 💥 — Le CISE : la saturation devient de la mémoire
+*Vision du chef (7 oct.) + `cise` (20e relation, `ratum.py`) + `jouets/j14-cise.ratum` —
+preuves : batterie 101/101, `LANGAGE-RATUM.md` (v3).*
+
+Le plafond de 100 n'est plus un mur : c'est un point d'ignition. La vitesse
+d'un neurone = ses battements depuis la nuit (fréquence) + son énergie en
+mains de 20 (charge) ; à 10 — la main qui lie ! — alors qu'il bat, `cise`
+provoque l'étincelle : le transporteur se fige en neurone CISE (mémoire,
+comme les paramètres d'un LLM) et les liens entre CISE deviennent des
+filaments gelés (ni loi, ni oubli, ni faucheuse ne les touche). Preuve j14 :
+4 rencontres chaudes (vitesse 9) = rien ; 11 battements (vitesse 16) = 2 CISE
++ 1 filament à 69 ; 20 nuits + faucheuse = 69 inchangé, TIENT. L'ultra-secteur
+(le marbre absolu) = l'ensemble des CISE du tissu, soudés en dur. Deux maisons
+tranchées (a) : école délie 0, vie (10,3). Tokenisation externe : plus tard.
+
+> **Énoncé :** le trop-plein ne déborde plus, il SE FIGE : vitesse ≥ 10 + il bat
+> → neurones CISE + filaments gelés — la saturation est le mécanisme de la
+> mémoire à long terme, pas son bug.
 
 ---
 
@@ -295,7 +316,9 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **vocabulaire élargi (route B)** — 37 phrases, 6 → 50 mots par éducation, courbe 38→49→50, contrôles 0/50
       (livré 6 oct. : leçon 11, 93/93 contrôles verts)
 - [x] **cerveau v2 phases 1-2 (route C)** — cœur (10,3)+élastique+ombre, nuits faucheuses, 93/93 (livré 7 oct. : leçon 12)
+- [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
 - [ ] **cerveau v2 phases 3-6 (route C)** — marbre + rétroaction, buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
+- [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas

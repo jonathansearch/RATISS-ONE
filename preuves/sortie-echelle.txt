@@ -56,4 +56,5 @@ JUGEMENT T09 : ROMPT (0/100, seuil 30)
 liens : 1200
 force moyenne : 27/100
 liens forts : 0
+cise : 0 neurone, 0 filament
 === fin du programme ===

@@ -17,6 +17,7 @@ le témoin inconnu est rejeté : le tissu ne rêve pas
 liens : 10
 force moyenne : 40/100
 liens forts : 0
+cise : 0 neurone, 0 filament
 voici les chaud-jour=57 chaud-lumiere=57 froid-lumiere=63 froid-nuit=63 jour-lumiere=57 jour-nuit=40 lumiere-nuit=63 pluie-tonnerre=0 pluie-vent=0 tonnerre-vent=0 finales : chaud-jour=57 chaud-lumiere=57 froid-lumiere=63 froid-nuit=63 jour-lumiere=57 jour-nuit=40 lumiere-nuit=63 pluie-tonnerre=0 pluie-vent=0 tonnerre-vent=0
 tissu gravé dans tissu-educ.scroll
 === fin du programme ===

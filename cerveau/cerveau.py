@@ -124,6 +124,8 @@ class Cerveau:
         self.graph = {
             "neurones": {n: pack["seuils"].get(n, 50) for n in neurones},
             "liens": {cle(a, b): 10 for a, b in pack["liens"]},
+            "types": set(),   # v3 (CISE) : noms des neurones figés
+            "geles": set(),   # v3 (CISE) : clés des filaments
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE")}
@@ -138,10 +140,10 @@ class Cerveau:
     def _source_tissu(self):
         L = ["tissu Cerveau", ""]
         for n, s in sorted(self.graph["neurones"].items()):
-            L.append(f"  neurone {n} seuil {s}")
+            L.append(f"  neurone {n} seuil {s}" + (" cise" if n in self.graph["types"] else ""))
         L.append("")
         for (a, b), f in sorted(self.graph["liens"].items()):
-            L.append(f"  lien {a} {b} force {f}")
+            L.append(f"  lien {a} {b} force {f}" + (" gelé" if (a, b) in self.graph["geles"] else ""))
         L.append("")
         for nom, mb in self.motifs.items():
             L.append(f"  motif {nom} : " + " ".join(mb))
@@ -164,6 +166,8 @@ class Cerveau:
         forces, seuils adaptés, ET suppressions de `nettoyer`)."""
         t = self.itp.tissu
         self.graph["liens"] = {cle(a, b): f for (a, b), f in t.liens.items()}
+        self.graph["types"] = {n for n, v in t.neurones.items() if v.get("type") == "cise"}
+        self.graph["geles"] = {cle(a, b) for (a, b) in t.geles if (a, b) in t.liens}
         for n, v in t.neurones.items():
             if n in self.graph["neurones"]:
                 self.graph["neurones"][n] = v["seuil"]

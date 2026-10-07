@@ -1,7 +1,11 @@
-# 📜 LANGAGE RATUM v2 — Spécification : ce que chaque relation veut dire
+# 📜 LANGAGE RATUM v3 — Spécification : ce que chaque relation veut dire
 
 **RATISS Labs · 7 octobre 2026 · MIT**
 
+> Changements v3 (CISE, vision du chef) : deux types de neurones
+> (transporteurs + CISE figés), nouvelle relation `cise` (20e : l'étincelle),
+> liens `gelé` (filaments, marqués `!`), vitesse = battements + énergie.
+>
 > Changements v2 (route C) : la loi universelle (10, 3) PARTOUT par défaut,
 > gains ÉLASTIQUES (le gain fond quand la force monte), OMBRE à la propagation
 > (moitié de l'énergie perdue à chaque saut), `oublier` adouci à 3,
@@ -27,7 +31,10 @@
 > survit, les chemins très battus restent devant sans tout écraser.
 > La propagation porte une OMBRE : à chaque saut, la moitié de l'énergie
 > se perd — un écho lointain compte moins qu'une présence.
-> L'oubli vaut 3. Tout programme est déterministe : rejoué, il redit la même chose.
+> L'oubli vaut 3. La vitesse d'un neurone = ses battements depuis la nuit +
+> son énergie en mains de 20 ; à 10 (la main qui lie !) alors qu'il bat :
+> étincelle, il se fige en CISE. Tout programme est déterministe : rejoué,
+> il redit la même chose.
 
 ---
 
@@ -48,15 +55,19 @@
 - **Sens :** un point du tissu. Il porte une CHARGE (éphémère : ce qu'il vit
   maintenant) et un SEUIL (la charge à partir de laquelle on dit qu'il bat).
   La charge s'éteint au repos ; rien d'autre ne persiste dans le neurone —
-  la mémoire vit dans les LIENS, pas dans les habitants.
-- **Usage :** `neurone <nom> [seuil <n>]` (seuil 50 par défaut)
+  la mémoire vit dans les LIENS, pas dans les habitants. Il compte ses
+  battements depuis la nuit (sa fréquence) et porte un type (v3) :
+  transporteur (vit, oublie — le défaut) ou cise (figé, immortel).
+- **Usage :** `neurone <nom> [seuil <n>] [cise]` (seuil 50, transporteur par défaut)
 - **Exemple :** `neurone lumiere seuil 50`
 
 ### 3. `lien` — une intrication entre deux neurones
 - **Sens :** le destin lié. Un lien porte une FORCE (persistante : c'est elle,
   la mémoire). Plus le lien est fort, plus l'activité passe d'un bout à l'autre.
   Tout lien naît faible : la confiance se gagne par rencontres, elle ne se donne pas.
-- **Usage :** `lien <a> <b> [force <n>]` (force 10 par défaut)
+  Un lien `gelé` (v3 : filament CISE, marqué `!`) est verrouillé : ni loi,
+  ni oubli, ni faucheuse ne le touche plus.
+- **Usage :** `lien <a> <b> [force <n>] [gelé]` (force 10 par défaut)
 - **Exemple :** `lien chaud lumiere force 10`
 
 ### 4. `motif` — une forme nommée (un visage du monde)
@@ -73,7 +84,8 @@
 ### 5. `rencontre` — le monde frappe à la porte (ACTIVATION)
 - **Sens :** allume à plein (100) tous les neurones d'un motif. C'est l'arrivée
   du monde : une rencontre, pas une donnée importée. Rien n'est copié nulle part :
-  le tissu lui-même s'illumine.
+  le tissu lui-même s'illumine. Chaque rencontre compte un battement
+  de plus (v3 : la fréquence monte).
 - **Usage :** `rencontre <motif>`
 - **Exemple :** `rencontre SOLEIL`
 
@@ -106,7 +118,9 @@
 ### 8. `oublier` — la nuit passe sur le tissu
 - **Sens :** tous les liens perdent un peu de force. Les chemins entretenus
   survivent ; les sentiers abandonnés s'aplanissent. Oublier n'est pas effacer
-  un fichier : c'est laisser retomber ce que personne ne revisite.
+  un fichier : c'est laisser retomber ce que personne ne revisite. La nuit
+  remet aussi les battements à zéro (v3 : la fréquence est du jour,
+  les forces sont de toujours).
 - **Usage :** `oublier [pas <n>]` (pas 3 par défaut depuis v2 : la nuit douce)
 - **Exemple :** `oublier`
 
@@ -114,7 +128,8 @@
 - **Sens :** chaque neurone ajuste SON seuil : le seuil rejoint la charge
   actuelle à mi-chemin. Un neurone qui bat beaucoup devient exigeant ; un
   neurone silencieux s'adoucit et se laisse réveiller plus facilement.
-  C'est l'homéostasie du tissu : l'exigence suit le vécu.
+  C'est l'homéostasie du tissu : l'exigence suit le vécu. Les neurones
+  CISE sont figés (v3) : leur seuil ne bouge plus.
 - **Usage :** `adapter`
 - **Exemple :** `adapter` (seuil 50 + charge 100 → 75)
 
@@ -218,6 +233,18 @@
 - **Usage :** `nettoyer`
 - **Exemple :** `nettoyer` → `nettoyage : 2 liens morts, 0 neurones morts`
 
+### 19. `cise` — l'étincelle qui fige (v3)
+- **Sens :** *le trop-plein ne déborde plus, il SE FIGE.* Pour chaque neurone
+  transporteur du motif : sa VITESSE = ses battements depuis la nuit
+  (fréquence) + son énergie en mains de 20 (charge ÷ 20). À 10 — la main qui
+  lie ! — alors qu'il bat (charge ≥ seuil) : COLLISION. Le neurone devient
+  CISE (mémoire figée, comme les paramètres d'un LLM) et les liens entre deux
+  CISE deviennent des filaments gelés (marqués `!`). Ni la loi, ni l'oubli,
+  ni la faucheuse, ni `adapter` ne touchent au gelé. L'ultra-secteur (le marbre
+  absolu) = l'ensemble des CISE du tissu, soudés en dur sur l'orée des neurones.
+- **Usage :** `cise <motif>` (à chaud, avant `repos` !)
+- **Exemple :** `cise M` → `étincelle : a b figés, 1 filament`
+
 ---
 
 ## F. 📏 Règles de grammaire v0
@@ -232,9 +259,9 @@
 
 ---
 
-## G. 🧪 Batterie v0.1 — les 10 jouets qui verrouillent la spec
+## G. 🧪 Batterie — les jouets qui verrouillent la spec
 
-Chaque jouet prouve un recoin du langage. Tous rejoués le 6 octobre 2026
+Chaque jouet prouve un recoin du langage. Tous rejoués le 7 octobre 2026
 (preuve : `preuves/sortie-jouets.txt`), tous vérifiés par `tests_verdicts.py`.
 
 | Jouet | Ce qu'il prouve | Chiffres observés |
@@ -252,8 +279,9 @@ Chaque jouet prouve un recoin du langage. Tous rejoués le 6 octobre 2026
 | `j11-asymetrie` (v1) | lier 10 / délier 3 fait coexister deux disjointes | 50 et 52, deux TIENT (v2) |
 | `j12-adapter` (v1) | le seuil rejoint la charge à mi-chemin | 50 → 75 → 37 |
 | `j13-sequences` (v1) | la trace de l'ordre : lié tient, délié retombe | liée 52/52/44, déliée 43/43/35 (v2) |
+| `j14-cise` (v3) | l'étincelle : trop lent = rien, hyper-vitesse = figé | 9 → rien, 16 → 2 CISE + 69! survit 20 nuits |
 
 ---
 
-*19 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
+*20 relations. Zéro formule. Que des mots qui font ce qu'ils disent.*
 *« On ne croit pas. On rejoue. »*

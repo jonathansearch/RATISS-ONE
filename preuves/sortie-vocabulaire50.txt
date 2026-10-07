@@ -59,6 +59,7 @@ JUGEMENT TEMOIN_TAMBOUR : ROMPT (4/100, seuil 20)
 liens : 276
 force moyenne : 87/100
 liens forts : 263
+cise : 0 neurone, 0 filament
 BILAN : 50 mots sur 50 tiennent (seuil 60)
 TEMOINS : 6 dehors sur 6 (seuil 20)
 === fin du programme ===

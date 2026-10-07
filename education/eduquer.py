@@ -6,9 +6,9 @@ RATISS Labs · MIT.
 
 Protocole : graine = Cerveau FR éduqué (13 neurones) ; chaque phrase fait
 naître ses nœuds/liens manquants (force 10, la naissance), puis
-rencontre + propager x3 + `renforcer lie 10 delie D` + repos. D = 0 par défaut :
-l'éducation SÉLECTIVE exige délie 0 (sinon chaque phrase efface les autres —
-le prouver : --delie 10, le témoin catastrophique). Nuits : oublier x2.
+rencontre + propager (UNE vague : la sélectivité) + `renforcer lie 10 delie D`
++ repos. D = 0 : RÉGIME ÉCOLE sanctuarisé (décision (a) du chef, 7 oct. —
+deux maisons : école délie 0, vie (10,3)). Nuits : oublier x2 + faucheuse.
 
 Motifs hérités : chaque mot nouveau tient à son ancre (motif paire) et à son
 compagnon le plus fréquent (motif triple). Zéro tissage manuel au-delà.
@@ -186,10 +186,12 @@ def main():
          f"# graine FR + 39 phrases x{args.rounds} rounds + 2 nuits. Régénéré avant chaque batterie.",
          "", "tissu Vocabulaire", ""]
     for n in sorted(tiss.neurones):
-        L.append(f"  neurone {n} seuil {tiss.neurones[n]['seuil']}")
+        L.append(f"  neurone {n} seuil {tiss.neurones[n]['seuil']}"
+                 + (" cise" if tiss.neurones[n].get("type") == "cise" else ""))
     L.append("")
     for (a, b) in sorted(c.graph["liens"]):
-        L.append(f"  lien {a} {b} force {c.graph['liens'][(a, b)]}")
+        L.append(f"  lien {a} {b} force {c.graph['liens'][(a, b)]}"
+                 + (" gelé" if (a, b) in c.graph["geles"] else ""))
     L.append("")
     for nom in sorted(tiss.motifs):
         if nom == "PHRASE":

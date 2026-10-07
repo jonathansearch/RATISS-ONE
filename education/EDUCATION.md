@@ -113,7 +113,7 @@ tiennent encore 50/50 — les nuits douces pardonnent. La faucheuse passe :
 délie 1 → 0/50 (202 liens fauchés) ; 2, 3, 5, 10 → 0/50. Entre 0 et 1 il
 n'y a pas de pente : l'éducation sélective exige délie 0, aucun compromis
 « doux » ne survit. Zéro neurones morts même sous délie 10 : tous nommés,
-tous protégés. Décision du chef en attente (régime école conservé).
+tous protégés. Tranché (a) le 7 oct. : deux maisons (école délie 0, vie (10,3)).
 
 Saturation : atténuée (74-94 au lieu de 90 pile, familles 12-85) mais pas
 vaincue — 235 liens au sommet. Le marbre (phase 3) viendra creuser.

@@ -11,4 +11,5 @@ l asymétrie fait coexister ce que le symétrique figeait
 liens : 2
 force moyenne : 51/100
 liens forts : 0
+cise : 0 neurone, 0 filament
 === fin du programme ===

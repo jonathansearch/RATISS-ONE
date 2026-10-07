@@ -154,6 +154,18 @@ CAS = {
             "chaîne déliée : a-b=43 b-c=43 d-e=35",
         ],
     },
+    "jouets/j14-cise.ratum": {
+        "code": 0,
+        "attend": [
+            "étincelle : rien d'assez rapide",
+            "trop tôt : a-b=40 c-d=0",
+            "étincelle : a b figés, 1 filament",
+            "cise : 2 neurones, 1 filament",
+            "nettoyage : 1 liens morts, 2 neurones morts",
+            "après 20 nuits : a-b=69!",
+            "JUGEMENT M : TIENT",
+        ],
+    },
 }
 
 
