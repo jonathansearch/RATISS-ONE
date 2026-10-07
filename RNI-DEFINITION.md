@@ -309,6 +309,29 @@ la gravure est la STATUE.
 > le reste s'efface — le répété reste en haut, l'oublié descend : le relief
 > naît de l'oubli sélectif, pas d'un réglage.
 
+### Leçon 16 🌊 — La marée : le tampon absorbe, la mer garde le niveau
+*Route C phase 4 : `cerveau/cerveau.py` (tampon 50 + flush) +
+`cerveau/secteurs.py` (v5 : repos 60, rappel 4) + `cerveau/autotest_maree.py` —
+preuves : `preuves/sortie-maree.txt`, `bouche/preuve-tempete.wav`, 104/104.*
+
+Le jour on ÉCOUTE, la nuit on CONSOLIDE : le tissu entend tout de suite, mais
+les traces attendent au TAMPON (50 écoutes — une grosse journée) et ne
+descendent au VIF que le soir, dans l'ordre. Tampon plein → soupape : le plus
+ancien entre au VIF — zéro perte, jamais. La voix intérieure (`redire`)
+dépose directement : elle ne passe pas par les oreilles. Et le sanctuaire a
+désormais un NIVEAU DE LA MER (⚖️ homéostasie) : perte = 1 + (force−60)//4,
+plancher 60 — plus une trace est haute sans être répétée, plus fort elle
+redescend ; les gravées restent à 100. Mesuré : tempête de 70 inconnues →
+tampon 50 + pression 20, nuit → VIF = les 20 dernières à f10, 5 nuits → A
+f100 MARBRE, B f65 (était f87 : le relief passe de 13 à 35 !), VIF 0,
+REFRAIN 0 — mer calme, statue debout. La même phrase est parlée avant et
+après la tempête : la stabilité incarnée. Trois destins : l'entonnoir OUBLIE,
+la mer GARDE LE NIVEAU, le marbre est ÉTERNEL.
+
+> **Énoncé :** un cerveau tient la tempête par deux organes — le tampon qui
+> absorbe le choc (sans rien perdre) et l'homéostasie qui ramène le bruit
+> au niveau de la mer pendant que le gravé reste au sommet.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -364,7 +387,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, ULTRA-SECTEUR Python, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
 - [x] **tokenizer v1 (vision du chef)** — 4 règles sortie FR/EN, robinet à données, notebook Colab (livré 7 oct. : leçon 14, 102/102)
 - [x] **cerveau v2 phase 3 (route C)** — marbre + rétroaction : gravure à la 3e relecture, relief 13 mesuré (livré 7 oct. : leçon 15, 103/103)
-- [ ] **cerveau v2 phases 4-6 (route C)** — buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
+- [x] **cerveau v2 phase 4 (route C)** — marée : tampon 50 + homéostasie (mer 60), tempête 70 tenue (livré 7 oct. : leçon 16, 104/104)
+- [ ] **cerveau v2 phases 5-6 (route C)** — chaos, docs (choix du chef, 6 oct.)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable

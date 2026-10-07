@@ -78,4 +78,13 @@ la batterie (93/93), sanctuaire FR toujours à f92.
 *(v3, CISE : + ULTRA-SECTEUR — le crâne observe les étincelles du tissu et
 garde chaque conviction à 100, immortelle. Batterie 101/101.)*
 
+*(v4, MARBRE (phase 3) : + `redire()` — la boucle se ferme (la bouche parle,
+l'oreille ré-entend) ; 3e relecture = GRAVÉE (nuit 0). Le répété reste en
+haut, le reste s'efface : relief 13 mesuré. Batterie 103/103.)*
+
+*(v5, MARÉE (phase 4) : + TAMPON 50 (le jour écoute, la nuit consolide ;
+soupape zéro-perte) + HOMÉOSTASIE (sanctuaire : niveau de la mer 60, rappel 4).
+Tempête de 70 inconnues tenue : statue f100 debout, mer calme, relief 35.
+Batterie 104/104.)*
+
 *« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

@@ -246,6 +246,16 @@ def main():
     else:
         print("ÉCHEC : l'autotest du marbre ne passe pas")
         echecs += 1
+    controles += 1
+    proc_maree = subprocess.run(
+        [sys.executable, "cerveau/autotest_maree.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_maree.returncode == 0 and "MAREE OK" in proc_maree.stdout:
+        print("OK : autotest de la marée (tampon + tempête + homéostasie)")
+    else:
+        print("ÉCHEC : l'autotest de la marée ne passe pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

@@ -26,7 +26,7 @@
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à trois secteurs, et ne redit que ce
 > qu'il tient — par une vraie bouche (Piper). 23 programmes, 93 contrôles
-> verts, 15 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
+> verts, 16 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
 > se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -88,7 +88,7 @@ prouvée par des programmes qui tournent.
 | 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire **f92**, résumé parlé 6 s (leçon 9) |
 | 🇫🇷 `francais.ratum` + `cerveau-demo-fr.py` | route A : tissu + cerveau + bouche FRANÇAIS | 21/21 mot pour mot, sanctuaire **f92**, boucle 8.5 s (leçon 10) |
 | 📚 `education/` (route B) | 37 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
-| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **103/103 contrôles verts** |
+| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **104/104 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 18 relations, chacune expliquée |
 
 ---
@@ -214,18 +214,18 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `parole.py`, `bouche/` | la bouche : Piper + verdicts parlés | `bouche/verdicts.wav`, `cerveau.wav` |
 | `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : graphe + secteurs + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
 | `education/` | l'école : corpus 37 phrases + éducateur → 50 mots | `vocabulaire50.ratum`, `images/constellation.png` |
-| `RNI-DEFINITION.md` | la fiche scientifique : définition + 15 leçons + roadmap | — |
+| `RNI-DEFINITION.md` | la fiche scientifique : définition + 16 leçons + roadmap | — |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `outils/figures.py` | régénère les figures du README depuis les mesures | `images/*.png` |
-| `tests_verdicts.py` | la batterie : 103 contrôles | `103/103 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 104 contrôles | `104/104 CONTRÔLES VERTS` |
 | `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **103/103 contrôles verts**, 24 programmes, 15 leçons (v0.1 → marbre v1)
+- **104/104 contrôles verts**, 24 programmes, 16 leçons (v0.1 → marée v1)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -238,7 +238,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📖 Ordre de lecture
 
-1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 15 leçons)
+1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 16 leçons)
 2. `LANGAGE-RATUM.md` (les 18 relations) → 4. `jouets/` (10 histoires d'éducation)
 3. `CERVEAU.md` (la carte cerveau → organes) → 6. `cerveau/SECTEURS.md` (la doctrine)
 4. `preuves/` (le carnet du labo : chaque sortie rejouable en une commande)
@@ -274,8 +274,9 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **route C phases 1-2 : cœur v2** — (10,3) + élastique + ombre, nuits faucheuses
 - [x] **CISE (vision du chef)** — vitesse = battements + énergie, étincelle, neurones mémoire figés, ULTRA-SECTEUR, (a) deux maisons
 - [x] **tokenizer v1** — 4 règles sortie FR/EN, bouche testée, robinet à données, notebook Colab
-- [x] **route C phase 3 : marbre + rétroaction** — gravure à la 3e relecture, relief 13, boucle fermée (103/103)
-- [ ] **route C phases 4-6** — buffer + homéostasie, chaos, docs
+- [x] **route C phase 3 : marbre + rétroaction** — gravure à la 3e relecture, relief 13, boucle fermée (104/104)
+- [x] **route C phase 4 : marée** — tampon 50 + homéostasie (mer 60), tempête 70, relief 35 (104/104)
+- [ ] **route C phases 5-6** — chaos, docs
 - [ ] **route D : v2 bas niveau** — interprète C, mêmes sorties au caractère près
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
@@ -288,7 +289,7 @@ Feuille détaillée : `RNI-DEFINITION.md` §7.
 ```
 RATISS-ONE/
 ├── README.md                  # vous êtes ici
-├── RNI-DEFINITION.md          # fiche scientifique + 15 leçons + roadmap
+├── RNI-DEFINITION.md          # fiche scientifique + 16 leçons + roadmap
 ├── LANGAGE-RATUM.md           # spec Ratum : 18 relations
 ├── CERVEAU.md                 # carte cerveau → organes
 ├── MANIFESTE.json             # SHA-256 de chaque fichier

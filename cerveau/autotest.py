@@ -13,13 +13,15 @@ def main():
     # éducation vérifiée : les 4 mots tiennent comme dans english.ratum
     for m in ("MAMERICANS", "MCOUNTRY", "MFELLOW", "MASK"):
         assert c.resonance(m) >= 60, f"tissu faible : {m}={c.resonance(m)}"
-    # écoute : 6 séquences factices
+    # écoute : 6 séquences factices (v5 : elles attendent au tampon,
+    # le VIF reste vide — le jour écoute, la nuit consolide)
     seqs = [["fellow", "americans", "ask"], ["ask", "country", "fellow"],
             ["country", "ask", "now"], ["long", "time", "ago"],
             ["fellow", "citizens", "here"], ["ask", "again", "later"]]
     for s in seqs:
         c.entendre_sequence(s)
-    assert len(c.secteurs["VIF"].traces) == 6, "VIF devrait tenir 6 traces"
+    assert len(c.tampon) == 6, "le tampon devrait tenir 6 écoutes"
+    assert len(c.secteurs["VIF"].traces) == 0, "le VIF devrait rester vide le jour"
     # répétition ciblée -> promotion à la nuit
     for _ in range(6):
         c.entendre_sequence(["fellow", "americans", "ask"])

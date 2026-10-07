@@ -115,6 +115,22 @@ identique. L'éclair (CISE) fige par la vitesse, la rivière (MARBRE) grave par
 la répétition — ne pas confondre avec le « marbre absolu » (ULTRA-SECTEUR,
 convictions CISE à 100, sans répétition).
 
+## 6ter. Le tampon et l'homéostasie (v5, phase 4 route C — leçon 16 🌊)
+
+Le jour on ÉCOUTE, la nuit on CONSOLIDE. `Cerveau.tampon` (cap 50 — une grosse
+journée) retient les traces entendues ; le tissu, lui, s'active tout de suite
+(on entend tout, on consolide la nuit). Le soir, `nuit()` vide le tampon vers
+le VIF dans l'ordre ; tampon plein → soupape (le plus ancien entre au VIF :
+zéro perte, jamais). La voix intérieure (`redire`, `interne=True`) dépose
+directement — elle ne passe pas par les oreilles. Et le sanctuaire a un
+niveau de la mer (homéostasie : `repos 60, rappel 4`) : perte par nuit =
+1 + (force−60)//4, plancher 60 — le bruit redescend, les gravées restent à
+100 (le relief marbre passe de 13 à 35). Trois destins : l'entonnoir OUBLIE
+(VIF/REFRAIN), la mer GARDE LE NIVEAU (sanctuaire), le marbre est ÉTERNEL
+(gravées). Tempête mesurée (`cerveau/autotest_maree.py`) : 70 inconnues →
+tampon 50 + pression 20 → nuit → VIF = 20 dernières à f10 → 5 nuits → mer
+calme (VIF 0, REFRAIN 0), statue f100 MARBRE debout.
+
 ## 7. Rejouer
 
 ```bash

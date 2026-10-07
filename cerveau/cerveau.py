@@ -111,6 +111,11 @@ def cle(a, b):
     return tuple(sorted((a, b)))
 
 
+# v5 (MARÉE, phase 4) : le tampon tient 50 écoutes — une grosse journée.
+# Au-delà, soupape : le plus ancien entre au VIF (zéro perte, jamais).
+TAMPON_CAP = 50
+
+
 class Cerveau:
     def __init__(self, langue="EN"):
         pack = LANGUES[langue]
@@ -128,6 +133,7 @@ class Cerveau:
             "geles": set(),   # v3 (CISE) : clés des filaments
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
+        self.tampon = []  # v5 : l'antichambre — le jour écoute, la nuit consolide
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR")}
         self._cise_lus = 0  # v3 : étincelles déjà lues au journal du tissu
         self._reconstruire()
@@ -189,9 +195,23 @@ class Cerveau:
         return len(morts)
 
     # ----- vie du cerveau -----
-    def entendre_sequence(self, mots):
-        """Une mini-séquence entendue : trace au secteur + co-activation au tissu."""
+    def entendre_sequence(self, mots, interne=False):
+        """Une mini-séquence entendue : co-activation immédiate au tissu
+        (on entend tout de suite) + trace au TAMPON (on consolide la nuit).
+        v5 : `interne=True` (voix intérieure, rétroaction) dépose directement
+        au secteur — elle ne passe pas par les oreilles. Retourne la trace
+        (interne) ou None (tamponnée : elle n'existe qu'à la nuit)."""
         mots = [m for m in mots if m]
+        self._entendre_tissu(mots)
+        if interne:
+            return self._deposer_trace(mots)
+        if len(self.tampon) >= TAMPON_CAP:
+            self._deposer_trace(self.tampon.pop(0))  # soupape : zéro perte
+        self.tampon.append(mots)
+        return None
+
+    def _deposer_trace(self, mots):
+        """Dépose une séquence au secteur où elle vit déjà (VIF par défaut)."""
         trace, _ = self.secteurs["VIF"].deposer(mots)
         for nom in ("REFRAIN", "SANCTUAIRE"):  # la trace vit là où elle est déjà
             if tuple(mots) in self.secteurs[nom].traces:
@@ -199,6 +219,10 @@ class Cerveau:
                 self.secteurs["VIF"].ordre.remove(tuple(mots))
                 trace, _ = self.secteurs[nom].deposer(mots)
                 break
+        return trace
+
+    def _entendre_tissu(self, mots):
+        """Co-activation immédiate : chaînes mot-à-mot + battement Ratum."""
         connus = [m for m in mots if m in self.mots_connus]
         noeuds = ["word_" + m for m in connus]
         for i in range(len(noeuds) - 1):
@@ -212,7 +236,6 @@ class Cerveau:
             src += "propager\nrenforcer\nrepos\n"
             self._exec(src)
         self._sync()
-        return trace
 
     def redire(self):
         """RÉTROACTION (v4, phase 3) : la boucle se ferme — le crâne formule
@@ -225,12 +248,17 @@ class Cerveau:
             return None, None
         from bouche.regles import formuler, lire_etat
         phrase = formuler(lire_etat(self))
-        trace = self.entendre_sequence(list(tops[0].mots))
+        trace = self.entendre_sequence(list(tops[0].mots), interne=True)
         trace.redire()
         return phrase, trace
 
     def nuit(self):
-        """La nuit : le tissu oublie, la faucheuse élague, les secteurs consolident."""
+        """La nuit : le tampon se vide (dans l'ordre), puis le tissu oublie,
+        la faucheuse élague, les secteurs consolident."""
+        videes = 0
+        while self.tampon:  # v5 : le soir, l'antichambre se vide au VIF
+            self._deposer_trace(self.tampon.pop(0))
+            videes += 1
         self._exec("oublier\n")
         self._exec("nettoyer\n")
         self._sync()
@@ -239,7 +267,8 @@ class Cerveau:
         r_ref = self.secteurs["REFRAIN"].nuit(self.secteurs["SANCTUAIRE"])
         r_vif = self.secteurs["VIF"].nuit(self.secteurs["REFRAIN"])
         r_ult = self.secteurs["ULTRA-SECTEUR"].nuit(None)
-        return {"vif": r_vif, "refrain": r_ref, "sanctuaire": r_san, "ultra": r_ult, "elagues": elagues}
+        return {"vif": r_vif, "refrain": r_ref, "sanctuaire": r_san, "ultra": r_ult,
+                "elagues": elagues, "videes": videes}
 
     def resonance(self, motif):
         return self.itp.resonance(motif)
@@ -251,6 +280,8 @@ class Cerveau:
             lignes.append(f"{nom} : {len(s.traces)} traces")
             for t in s.top(3):
                 lignes.append(f"  - {t}")
+        lignes.append(f"tampon : {len(self.tampon)} en attente"
+                        + (" (PRESSION : la soupape coule)" if self.tampon and len(self.tampon) >= TAMPON_CAP else ""))
         lignes.append("tissu : " + " ".join(
             f"{m}={self.resonance(self.mots_connus[m])}" for m in self.entendus))
         lignes.append(f"liens : {len(self.graph['liens'])} (chaînes vivantes : {len(self.chaines)})")

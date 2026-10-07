@@ -19,7 +19,12 @@ brute (ni audio, ni transcrit archivé). Stocker la relation, pas la donnée.
 REGIMES = {
     "VIF":        {"entree": 30, "pas": 20, "nuit": 20, "cap": 20,  "coups": 2,    "vers": "REFRAIN"},
     "REFRAIN":    {"entree": 40, "pas": 15, "nuit": 8,  "cap": 50,  "coups": 4,    "vers": "SANCTUAIRE"},
-    "SANCTUAIRE": {"entree": 60, "pas": 10, "nuit": 1,  "cap": 200, "coups": None, "vers": None},
+    "SANCTUAIRE": {"entree": 60, "pas": 10, "nuit": 1,  "cap": 200, "coups": None, "vers": None,
+                   # v5 (MARÉE, phase 4) : HOMÉOSTASIE — le sanctuaire a un niveau
+                   # de la mer (repos 60) : plus une trace est haute sans être
+                   # répétée, plus fort elle redescend (rappel 4) ; elle ne passe
+                   # JAMAIS sous la mer (immortel — le code rejoint enfin la doc).
+                   "repos": 60, "rappel": 4},
     # v3 (CISE) : l'ultra-secteur OBSERVE (pas de répétition) — chaque étincelle
     # du tissu y dépose sa conviction à 100, immortelle. Le tableau de bord du marbre.
     "ULTRA-SECTEUR": {"entree": 100, "pas": 0, "nuit": 0, "cap": 500, "coups": None, "vers": None},
@@ -90,7 +95,14 @@ class Secteur:
             trace = self.traces[mots]
             if trace.grave:
                 continue  # v4 : le marbre traverse la nuit intact
-            trace.force -= self.regime["nuit"]
+            perte = self.regime["nuit"]
+            repos = self.regime.get("repos")
+            if repos is not None and trace.force > repos:
+                # v5 : le ressort — chute proportionnelle au-dessus de la mer
+                perte += (trace.force - repos) // self.regime.get("rappel", 4)
+            trace.force -= perte
+            if repos is not None and trace.force < repos:
+                trace.force = repos  # v5 : jamais sous le niveau de la mer
             if trace.force <= 0:
                 morts.append(mots)
                 del self.traces[mots]

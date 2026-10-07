@@ -107,6 +107,8 @@ def main():
     ap.add_argument("--wav", default=None)
     ap.add_argument("--marbre", action="store_true",
                     help="phase 3 : 3 relectures (gravure) + 5 nuits avant de parler")
+    ap.add_argument("--tempete", action="store_true",
+                    help="phase 4 : gravure + tempête de 70 inconnues + 5 nuits avant de parler")
     args = ap.parse_args()
     c = demo(args.demo)
     if args.marbre:
@@ -116,6 +118,18 @@ def main():
             c.nuit()
         top = c.secteurs["SANCTUAIRE"].top(1)[0]
         print(f"gravé : {top} (3 relectures + 5 nuits)")
+    if args.tempete:
+        for _ in range(3):
+            c.redire()
+        for i in range(70):
+            c.entendre_sequence([f"mot{i}", f"bruit{i}", f"vague{i}"])
+        pression = len(c.secteurs["VIF"].traces)
+        for _ in range(5):
+            c.nuit()
+        top = c.secteurs["SANCTUAIRE"].top(1)[0]
+        nv = len(c.secteurs["VIF"].traces)
+        print(f"tempête : 70 inconnues, pression {pression}, mer calme (VIF {nv})")
+        print(f"statue : {top} (parle encore après la tempête)")
     phrase = formuler(lire_etat(c))
     print(f"dit : {phrase}")
     if args.wav:
