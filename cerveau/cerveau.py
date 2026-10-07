@@ -148,6 +148,8 @@ class Cerveau:
         self.tampon = []  # v5 : l'antichambre — le jour écoute, la nuit consolide
         self.reve = True  # v6 : on rêve chaque nuit (désactivable : chaos témoin)
         self.ecoutes = 0  # R5 : séquences venues du dehors (le rêve ne compte pas)
+        self.rapide = False  # PUISSANCE : battement fusionné (même maths, sans interprète)
+        self._tissu_sale = False  # le graphe a bougé sans l'interprète -> reconstruire avant _exec
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR")}
         self._cise_lus = 0  # v3 : étincelles déjà lues au journal du tissu
         self._reconstruire()
@@ -180,6 +182,9 @@ class Cerveau:
         self.itp.executer(instr, 0, len(instr))
 
     def _exec(self, source):
+        if self._tissu_sale:  # le graphe a pris de l'avance : on resynchronise l'interprète
+            self._reconstruire()
+            self._tissu_sale = False
         instr = self.itp.decoupage(source.splitlines())
         self.itp.executer(instr, 0, len(instr))
 
@@ -218,7 +223,10 @@ class Cerveau:
         mots = [m for m in mots if m]
         if mots and not interne:
             self.ecoutes += 1  # R5 : seules les oreilles font tourner le compteur
-        self._entendre_tissu(mots)
+        if self.rapide and not interne:
+            self._entendre_tissu_rapide(mots)
+        else:
+            self._entendre_tissu(mots)
         if interne:
             return self._deposer_trace(mots)
         if len(self.tampon) >= TAMPON_CAP:
@@ -252,6 +260,49 @@ class Cerveau:
             src += "propager\nrenforcer\nrepos\n"
             self._exec(src)
         self._sync()
+
+    def _entendre_tissu_rapide(self, mots):
+        """PUISSANCE : le même battement que _entendre_tissu, sans interprète.
+
+        Équivalence exacte (prouvée 7 oct., preuves/equivalence-rapide.txt) :
+        charges et coups repartent de zéro à chaque séquence (reconstruire),
+        aucun `cise` sur ce chemin, `oublier`/`nettoyer` ne lisent jamais les
+        coups — le cycle (rencontre/propager/renforcer/repos) est donc une
+        fonction pure du graphe, recalculée ici directement. La nuit appelle
+        _exec, qui reconstruit si le graphe a pris de l'avance (_tissu_sale).
+        """
+        L = self.graph["liens"]
+        S = self.graph["neurones"]
+        G = self.graph["geles"]
+        connus = [m for m in mots if m in self.mots_connus]
+        noeuds = ["word_" + m for m in connus]
+        for i in range(len(noeuds) - 1):  # chaînes mot-à-mot (naissance à 10)
+            c = cle(noeuds[i], noeuds[i + 1])
+            if c not in L:
+                L[c] = 10
+                self.chaines.add(c)
+        if connus:
+            ch = {}
+            for m in connus:  # rencontre : chaque motif battu à 100
+                for n in self.motifs[self.mots_connus[m]]:
+                    ch[n] = 100
+            old = dict(ch)  # propager lit les charges D'AVANT (un seul saut, pas de cascade)
+            for (a, b), f in L.items():  # l'ombre divise par 2 (//200)
+                ca = old.get(a, 0)
+                cb = old.get(b, 0)
+                if ca:
+                    ch[b] = min(100, ch.get(b, 0) + f * ca // 200)
+                if cb:
+                    ch[a] = min(100, ch.get(a, 0) + f * cb // 200)
+            for c, f in L.items():  # renforcer : loi (10, 3) + élasticité
+                if c in G:
+                    continue
+                a, b = c
+                if ch.get(a, 0) >= S[a] and ch.get(b, 0) >= S[b]:
+                    L[c] = min(100, f + max(1, 10 * (100 - f) // 100))
+                else:
+                    L[c] = f - 3 if f > 3 else 0
+            self._tissu_sale = True
 
     def redire(self):
         """RÉTROACTION (v4, phase 3) : la boucle se ferme — le crâne formule
@@ -302,6 +353,9 @@ class Cerveau:
                 "elagues": elagues, "videes": videes, "reves": reves}
 
     def resonance(self, motif):
+        if self._tissu_sale:
+            self._reconstruire()
+            self._tissu_sale = False
         return self.itp.resonance(motif)
 
     def rapport(self):

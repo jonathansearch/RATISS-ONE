@@ -402,15 +402,34 @@ def main():
         nb_lourd = json.load(open("colab-1h.ipynb", encoding="utf-8"))
         src_lourd = json.dumps(nb_lourd)
         ok_lourd = (len(nb_lourd["cells"]) == 8
-                    and "complement 5000000" in src_lourd
-                    and "b68585abcff40eb37ee86bdff463a50c47a5e47598ef36e4d49ff6a702fac7e5" in src_lourd
-                    and "bilan.txt" in src_lourd)
+                    and "epoques 3" in src_lourd
+                    and "100000000" in src_lourd
+                    and "11c17ba5948c4e6f5a486dad2014782bb9f6d70dfff714dd2c3d90d4738080ad" in src_lourd
+                    and "--rapide --binaire --ram" in src_lourd)
     except (OSError, ValueError):
         ok_lourd = False
     if ok_lourd:
-        print("OK : notebook 1h valide (8 cellules, sha fichier, 5M+5M)")
+        print("OK : notebook puissance valide (8 cellules, sha 100M, 3 époques)")
     else:
-        print("ÉCHEC : le notebook 1h est cassé")
+        print("ÉCHEC : le notebook puissance est cassé")
+        echecs += 1
+    controles += 1
+    sys.path.insert(0, ".")
+    import contextlib as _ctx
+    import io as _io
+    from cerveau.cerveau import Cerveau as _Cerveau
+    from generer_masse import iterer as _iterer
+    _c = _Cerveau("FR")
+    _c.rapide = True
+    with _ctx.redirect_stdout(_io.StringIO()):
+        for _s in _iterer(1000, seed=7):
+            _c.entendre_sequence(_s["mots"])
+        _c.nuit()
+    _h = hashlib.sha256(repr(sorted(_c.graph["liens"].items())).encode()).hexdigest()[:16]
+    if _h == "305e8b21042704bb" and _c.ecoutes == 1000:
+        print("OK : battement rapide pinné (1k seed 7 = 305e8b21042704bb)")
+    else:
+        print(f"ÉCHEC : le battement rapide a changé ({_h})")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

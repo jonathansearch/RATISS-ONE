@@ -132,3 +132,14 @@ fichiers lourds ne sont jamais commis (doctrine : la masse vit sur Colab).
 notebook) + `colab-1h.ipynb` : 5M du fichier + 5M fraîches seed 8, lots
 200k, ~55 min sur Colab gratuit, bilan parlé en option. Validé 1M en
 local (327 s, 13 Mo). Le GPU est déclaré inutile par écrit : CPU pur.
+
+## 8. Le programme puissance 300M (7 oct., leçon 25)
+
+Profilage : 88 % du temps partait dans l'interprète Ratum reconstruit à
+chaque séquence. Le battement est fusionné (`Cerveau.rapide` : rencontre /
+propager / renforcer calculés directement — MÊMES maths, prouvé identique
+sur 50k : `preuves/equivalence-rapide.txt`, pin batterie `305e8b21042704bb`).
+Données en binaire (3 octets/séquence, même flux seed 7 : `binaire_masse.py`),
+100M en RAM (300 Mo), 3 époques : 300M écoutes ≈ 56 min, ~100 000/s.
+Validé 30M : 318 s, 98 Mo (`preuves/sortie-masse-30M.txt`). Fichier lourd
+30M (58,3 Mo, sha pinné au rapport) : régénérable, hors dépôt.

@@ -467,6 +467,23 @@ stocke rien : 10M de lignes passent, seules les forces restent.
 > **Énoncé :** une heure bien remplie vaut mieux qu'un GPU décoratif —
 > 10 millions d'écoutes prouvées à 3 000 par seconde.
 
+### Leçon 25 🔥 — La puissance : profiler d'abord, 300M ensuite
+*Le chef rit : 13 Mo sur 24 Go, c'est boire l'océan avec une paille —
+profilage : 88 % du temps dans l'interprète reconstruit par séquence.
+Battement fusionné (mêmes maths, x33, équivalence exacte sur 50k) +
+binaire 3 octets + 3 époques = 300M écoutes en ~1h (114/114).*
+
+La RAM n'est pas la vitesse (une grande table ne rend pas les mains plus
+rapides) : elle tient les 100M d'un coup (300 Mo), le CPU battu x33 fait
+le reste (~100 000/s). Chasse au ralentissement : l'époque 2 s'écroulait
+— `redire` avalée par la fusion, attrapée à la stack trace, réparée,
+re-prouvée. Les époques répètent comme l'enfance (30x TOUT) : redire,
+c'est graver. Fichier lourd : 30M binaire (90 Mo → 58,3 Mo, sha pinné),
+régénérable — le notebook régénère 100M sur place (sha pinné aussi).
+
+> **Énoncé :** la puissance ne se décrète pas, elle se profile — 88 %
+> dans l'interprète, x33 en fusionnant, 300 millions à l'heure.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -535,6 +552,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **dialogue v1** — 7 intents FR+EN pinnés, « bonjour » répondu, inconnu honnête, 12 voix cousues (livré 7 oct. : leçon 22, 111/111)
 - [x] **masse 250k → 5M** — 250 000 écoutes en ~70 s (12 Mo), sanctuaire conquis, notebook §2b Colab (livré 7 oct. : leçon 23, 112/112)
 - [x] **programme 1h Colab** — fichier 5M (sha pinné) + 5M fraîches, 1M validé 327 s, GPU déclaré inutile (livré 7 oct. : leçon 24, 113/113)
+- [x] **programme puissance 300M** — battement fusionné x33 + binaire 3o + 3 époques, 30M validé 318 s (livré 7 oct. : leçon 25, 114/114)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

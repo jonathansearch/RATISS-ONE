@@ -1,0 +1,7 @@
+PREUVE D'ÉQUIVALENCE — battement lent (interprète) vs rapide (fusionné)
+50 000 séquences seed 7, nuit tous les 10 000 — 7 oct. 2026 (code corrigé)
+liens : True (37 liens) | seuils : True | chaînes : True
+écoutes : 50000 = 50000 | secteurs : True
+sanctuaire non vide : True (['pays', 'unir', 'justice'])
+lent = 17.4s, rapide = 0.5s -> x32.7
+ÉQUIVALENCE EXACTE ✅ — même maths, zéro approximation

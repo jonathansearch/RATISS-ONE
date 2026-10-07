@@ -7,6 +7,8 @@ __pycache__/
 # Modeles voix + photos écloses (regenerables en local)
 bouche/voix/*.onnx*
 tissu-educ.scroll
-# JSONL lourds : jamais commis (regenerables). EXCEPTION : le .gz 5M EST commis
-# (35,7 Mo < limite GitHub, telechargeable par le notebook 1h).
+# Lourds regenerables : jamais commis (le notebook regenere sur place).
+# (Le 5M.jsonl.gz a vecu sur GitHub de f3e171a a ce commit : archeologie.)
 education-massive/*.jsonl
+education-massive/*.bin
+education-massive/*.gz

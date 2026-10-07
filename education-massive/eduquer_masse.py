@@ -8,6 +8,9 @@ Lit le JSONL au fil de l'eau (jamais tout en RAM), entend par lots,
 une nuit par lot (consolidation), mesure tout : liens, neurones,
 écoutes, RAM, temps. Mémoire bornée (caps secteurs + paires de mots).
 
+PUISSANCE : --rapide (battement fusionné, équivalence exacte prouvée),
+--binaire (3 octets/séquence), --ram (tout en mémoire d'un coup).
+
 Usage : python3 education-massive/eduquer_masse.py --entree masse.jsonl --lot 50000
 """
 import argparse
@@ -19,6 +22,7 @@ import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from binaire_masse import lire_iter, lire_ram, table  # noqa: E402
 from bouche.regles import formuler, lire_etat  # noqa: E402
 from cerveau.cerveau import Cerveau  # noqa: E402
 from generer_masse import iterer  # noqa: E402
@@ -49,17 +53,38 @@ def main(argv):
                     help="séquences fraîches générées sur place (seed 8, sans disque)")
     ap.add_argument("--bilan", default=None,
                     help="fichier où écrire la phrase finale (pour la faire parler)")
+    ap.add_argument("--rapide", action="store_true",
+                    help="battement fusionné (même maths, x35, équivalence prouvée)")
+    ap.add_argument("--binaire", action="store_true",
+                    help="l'entrée est un .bin (3 octets/séquence, même flux que JSONL)")
+    ap.add_argument("--ram", action="store_true",
+                    help="charge le binaire en RAM d'un coup (100M = 300 Mo)")
+    ap.add_argument("--epoques", type=int, default=1,
+                    help="nombre de passages sur les données (la répétition grave, comme l'enfance)")
     args = ap.parse_args(argv)
     t0 = time.time()
     c = Cerveau("FR")
+    c.rapide = args.rapide
     n = 0
-    print("=== ÉDUCATION MASSIVE (streaming, une nuit par lot) ===")
-    with open(args.entree, encoding="utf-8") as fh:
-        n = entendre_lot(c, (json.loads(l)["mots"] for l in fh), n, args.lot, t0)
-    if args.complement:
-        print(f"=== COMPLÉMENT : {args.complement} fraîches (seed 8) ===")
-        n = entendre_lot(c, (s["mots"] for s in iterer(args.complement, seed=8)),
-                         n, args.lot, t0)
+    print(f"=== ÉDUCATION MASSIVE ({'RAPIDE' if args.rapide else 'lent'}, "
+          f"{'binaire' + ('+RAM' if args.ram else '') if args.binaire else 'JSONL'}, "
+          f"{args.epoques} époque(s), une nuit par lot) ===")
+    for ep in range(1, args.epoques + 1):
+        if args.epoques > 1:
+            print(f"--- époque {ep}/{args.epoques} ---", flush=True)
+        if args.binaire:
+            mots, _ = table()
+            if args.ram:
+                n = entendre_lot(c, lire_ram(args.entree, mots), n, args.lot, t0)
+            else:
+                n = entendre_lot(c, lire_iter(args.entree, mots), n, args.lot, t0)
+        else:
+            with open(args.entree, encoding="utf-8") as fh:
+                n = entendre_lot(c, (json.loads(l)["mots"] for l in fh), n, args.lot, t0)
+        if args.complement:
+            print(f"=== COMPLÉMENT : {args.complement} fraîches (seed 8) ===")
+            n = entendre_lot(c, (s["mots"] for s in iterer(args.complement, seed=8)),
+                             n, args.lot, t0)
     print("=== BILAN ===")
     phrase = formuler(lire_etat(c))
     print(f"dit : {phrase}")

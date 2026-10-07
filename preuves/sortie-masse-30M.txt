@@ -1,0 +1,16 @@
+=== ÉDUCATION MASSIVE (RAPIDE, binaire+RAM, 1 époque(s), une nuit par lot) ===
+nettoyage : 1 liens morts, 0 neurones morts
+lot 5000000 : liens=40 neurones=13 écoutes=5000000 RAM=98 Mo t=52s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 10000000 : liens=40 neurones=13 écoutes=10000000 RAM=98 Mo t=103s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 15000000 : liens=40 neurones=13 écoutes=15000000 RAM=98 Mo t=160s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 20000000 : liens=40 neurones=13 écoutes=20000000 RAM=98 Mo t=214s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 25000000 : liens=40 neurones=13 écoutes=25000000 RAM=98 Mo t=265s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 30000000 : liens=40 neurones=13 écoutes=30000000 RAM=98 Mo t=318s
+=== BILAN ===
+dit : J'ai entendu 30000000 séquences. Au sanctuaire : patrie unir drapeau. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+MASSE OK — 30000000 séquences, 40 liens, 13 neurones, RAM max 98 Mo, 318 s
