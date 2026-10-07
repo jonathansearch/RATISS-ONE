@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="Segoe UI, Verdana, sans-serif">
+  <rect x="2" y="2" width="716" height="436" rx="16" fill="#FAF7F0" stroke="#E8E0D0" stroke-width="2"/>
+  <text x="360" y="34" font-size="20" font-weight="bold" fill="#1A1A2E" text-anchor="middle">🌀 L'entonnoir qui oublie bien</text>
+  <g text-anchor="middle" font-size="13">
+    <polygon points="120,60 600,60 540,160 180,160" fill="#1B6CA8" rx="10"/>
+    <text x="360" y="95" font-weight="bold" fill="#fff">⚡ VIF — l'instant (entrée 30, +20, −20/nuit, cap 20, 2 coups)</text>
+    <text x="360" y="118" font-size="12" fill="#EAF3FA">tout entre · presque tout meurt · le tampon le nourrit la nuit</text>
+    <text x="360" y="140" font-size="12" fill="#EAF3FA">ex. 6 séquences → 0 trace le jour, tout au tampon (leçon 16)</text>
+    <polygon points="180,175 540,175 490,275 230,275" fill="#7C3AED"/>
+    <text x="360" y="210" font-weight="bold" fill="#fff">🎵 REFRAIN — le chant (entrée 40, +15, −8/nuit, cap 50, 4 coups)</text>
+    <text x="360" y="233" font-size="12" fill="#F1EAFE">pardonne (−8) mais exige (4 rencontres) · le rêve ravive les riches</text>
+    <text x="360" y="255" font-size="12" fill="#F1EAFE">ex. « can do for » ×2 y monte… puis y meurt (leçon 17)</text>
+    <polygon points="230,290 490,290 450,375 270,375" fill="#C9A227"/>
+    <text x="360" y="322" font-weight="bold" fill="#1A1A2E">🏛️ SANCTUAIRE — le marbre (entrée 60, +10, MER 60)</text>
+    <text x="360" y="344" font-size="12" fill="#1A1A2E">le bruit redescend à 60 · les gravées ★ restent à 100</text>
+    <text x="360" y="363" font-size="12" fill="#1A1A2E">ex. fellow+americans+ask x4 f100 MARBRE</text>
+  </g>
+  <rect x="560" y="290" width="140" height="85" rx="12" fill="#1A1A2E"/>
+  <text x="630" y="314" font-size="12" font-weight="bold" fill="#C9A227" text-anchor="middle">💎 ULTRA-SECTEUR</text>
+  <text x="630" y="332" font-size="11" fill="#FAF7F0" text-anchor="middle">convictions CISE f100</text>
+  <text x="630" y="348" font-size="11" fill="#FAF7F0" text-anchor="middle">immortelles, sans répétition</text>
+  <text x="630" y="364" font-size="11" fill="#9AA0B4" text-anchor="middle">le marbre absolu</text>
+  <text x="100" y="314" font-size="12" font-weight="bold" fill="#1E9E6A" text-anchor="middle">💭 RÊVE</text>
+  <text x="100" y="332" font-size="11" fill="#1A1A2E" text-anchor="middle">ravive les riches</text>
+  <text x="100" y="348" font-size="11" fill="#1A1A2E" text-anchor="middle">≥ 2 mots compris</text>
+  <text x="360" y="412" font-size="12" font-style="italic" fill="#6B7280" text-anchor="middle">L'entonnoir OUBLIE · la mer GARDE LE NIVEAU · le marbre est ÉTERNEL (leçon 16)</text>
+</svg>

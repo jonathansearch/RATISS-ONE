@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 310" font-family="Segoe UI, Verdana, sans-serif">
+<rect x="2" y="2" width="716" height="306" rx="16" fill="#FAF7F0" stroke="#E8E0D0" stroke-width="2"/>
+<text x="360" y="34" font-size="19" font-weight="bold" fill="#1A1A2E" text-anchor="middle">🌊 L'homéostasie : le témoin coule à la mer, la statue reste</text>
+<circle cx="60.0" cy="87.8" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="60.0" y="77.8" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">92</text>
+<text x="60.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n0</text>
+<line x1="60.0" y1="87.8" x2="135.0" y2="101.7" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="135.0" cy="101.7" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="135.0" y="91.7" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">83</text>
+<text x="135.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n1</text>
+<line x1="135.0" y1="101.7" x2="210.0" y2="111.0" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="210.0" cy="111.0" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="210.0" y="101.0" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">77</text>
+<text x="210.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n2</text>
+<line x1="210.0" y1="111.0" x2="285.0" y2="118.7" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="285.0" cy="118.7" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="285.0" y="108.7" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">72</text>
+<text x="285.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n3</text>
+<line x1="285.0" y1="118.7" x2="360.0" y2="124.9" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="360.0" cy="124.9" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="360.0" y="114.9" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">68</text>
+<text x="360.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n4</text>
+<line x1="360.0" y1="124.9" x2="435.0" y2="129.5" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="435.0" cy="129.5" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="435.0" y="119.5" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">65</text>
+<text x="435.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n5</text>
+<line x1="435.0" y1="129.5" x2="510.0" y2="132.6" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="510.0" cy="132.6" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="510.0" y="122.6" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">63</text>
+<text x="510.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n6</text>
+<line x1="510.0" y1="132.6" x2="585.0" y2="134.2" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="585.0" cy="134.2" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="585.0" y="124.2" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">62</text>
+<text x="585.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n7</text>
+<line x1="585.0" y1="134.2" x2="660.0" y2="135.7" stroke="#1B6CA8" stroke-width="3"/>
+<circle cx="660.0" cy="135.7" r="5" fill="#1B6CA8" stroke="#fff" stroke-width="2"/>
+<text x="660.0" y="125.7" font-size="11" font-weight="bold" fill="#1B6CA8" text-anchor="middle">61</text>
+<text x="660.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n8</text>
+<text x="60.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="135.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="210.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="285.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="360.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="435.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="510.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="585.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="660.0" y="262" font-size="9" fill="#6B7280" text-anchor="middle"></text>
+<text x="60.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="60.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n0</text>
+<line x1="60.0" y1="75.5" x2="135.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="135.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="135.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n1</text>
+<line x1="135.0" y1="75.5" x2="210.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="210.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="210.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n2</text>
+<line x1="210.0" y1="75.5" x2="285.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="285.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="285.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n3</text>
+<line x1="285.0" y1="75.5" x2="360.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="360.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="360.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n4</text>
+<line x1="360.0" y1="75.5" x2="435.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="435.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="435.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n5</text>
+<line x1="435.0" y1="75.5" x2="510.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="510.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="510.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n6</text>
+<line x1="510.0" y1="75.5" x2="585.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="585.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="585.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n7</text>
+<line x1="585.0" y1="75.5" x2="660.0" y2="75.5" stroke="#C9A227" stroke-width="3"/>
+<text x="660.0" y="65.5" font-size="11" font-weight="bold" fill="#C9A227" text-anchor="middle">100</text>
+<text x="660.0" y="248" font-size="10" fill="#1A1A2E" text-anchor="middle">n8</text>
+<line x1="60" y1="137" x2="660" y2="137" stroke="#1E9E6A" stroke-width="2" stroke-dasharray="7 5"/>
+<text x="480" y="76" font-size="11" font-weight="bold" fill="#C9A227">★ statue gravée f100 (nuit 0)</text>
+<text x="480" y="96" font-size="11" font-weight="bold" fill="#1B6CA8">● témoin B : 92 → 60 (la mer)</text>
+<text x="480" y="116" font-size="11" font-weight="bold" fill="#1E9E6A">- - niveau de la mer : 60, jamais en dessous</text>
+<text x="360" y="292" font-size="11" font-style="italic" fill="#6B7280" text-anchor="middle">Courbe rejouée depuis la loi (pas de chiffres tapés à la main) — B touche la mer à la 8e nuit.</text>
+</svg>

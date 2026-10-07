@@ -88,7 +88,7 @@ prouvée par des programmes qui tournent.
 | 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire **f92**, résumé parlé 6 s (leçon 9) |
 | 🇫🇷 `francais.ratum` + `cerveau-demo-fr.py` | route A : tissu + cerveau + bouche FRANÇAIS | 21/21 mot pour mot, sanctuaire **f92**, boucle 8.5 s (leçon 10) |
 | 📚 `education/` (route B) | 37 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
-| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **105/105 contrôles verts** |
+| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **106/106 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 18 relations, chacune expliquée |
 
 ---
@@ -215,17 +215,18 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : graphe + secteurs + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
 | `education/` | l'école : corpus 37 phrases + éducateur → 50 mots | `vocabulaire50.ratum`, `images/constellation.png` |
 | `RNI-DEFINITION.md` | la fiche scientifique : définition + 17 leçons + roadmap | — |
+| 📚 `livre/index.html` | **LE LIVRE** : tout (17 leçons, 20 figures, 4 audios jouables, CC-BY-SA) | `livre/presentation.html` (slides) |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `outils/figures.py` | régénère les figures du README depuis les mesures | `images/*.png` |
-| `tests_verdicts.py` | la batterie : 105 contrôles | `105/105 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 106 contrôles | `106/106 CONTRÔLES VERTS` |
 | `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **105/105 contrôles verts**, 24 programmes, 17 leçons (v0.1 → chaos v1)
+- **106/106 contrôles verts**, 24 programmes, 17 leçons (v0.1 → livre v1)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -277,7 +278,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **route C phase 3 : marbre + rétroaction** — gravure à la 3e relecture, relief 13, boucle fermée (103/103)
 - [x] **route C phase 4 : marée** — tampon 50 + homéostasie (mer 60), tempête 70, relief 35 (104/104)
 - [x] **route C phase 5 : chaos + rêve** — oubli honnête, émergence en 4 nuits, double dissociation (105/105)
-- [ ] **route C phase 6** — docs
+- [x] **route C phase 6 : le livre** — doc complète (17 leçons, 20 figures, 4 audios, slides, CC-BY-SA) — route C TERMINÉE 🎉 (106/106)
 - [ ] **route D : v2 bas niveau** — interprète C, mêmes sorties au caractère près
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 

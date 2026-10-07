@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>RATISS-ONE — Présentation des sommets</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#1A1A2E;color:#FAF7F0;font-family:"Segoe UI",Verdana,sans-serif}
+.slide{display:none;min-height:100vh;padding:40px 60px;text-align:center}
+.slide.act{display:flex;flex-direction:column;justify-content:center;align-items:center}
+h1{font-size:46px;margin:10px 0}h2{font-size:32px;color:#C9A227;margin:6px 0 14px}
+.sub{font-size:18px;color:#9AA0B4}.badges span{display:inline-block;background:#fff;color:#1A1A2E;border-radius:20px;padding:5px 16px;margin:4px;font-weight:bold}
+.badges .v{background:#1E9E6A;color:#fff}.cards{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:1000px}
+.cards div{background:#fff;color:#1A1A2E;border-radius:14px;padding:16px 20px;width:220px;font-size:15px}
+.cards b{font-size:30px;display:block}.fig svg,.fig img{max-width:860px;width:100%;height:auto;border-radius:12px}
+.nav{position:fixed;bottom:14px;width:100%;text-align:center;color:#9AA0B4;font-size:13px}
+button{background:#C9A227;border:0;border-radius:10px;padding:8px 22px;font-size:16px;margin:0 8px;cursor:pointer;font-weight:bold}
+.grand{font-size:22px;max-width:820px}.pic{font-size:14px;color:#9AA0B4}
+</style>
+</head>
+<body>
+
+<div class="slide act"><div class="fig">{{IMG:logo-ratiss-labs}}</div><h1>RATISS-ONE</h1>
+<h2>📚 Présentation des sommets</h2><p class="sub">17 leçons · 106/106 verts · 7 octobre 2026 · Ratiss Labs</p>
+<div class="badges"><span class="v">● 106/106</span><span>🗻 relief 35</span><span>🌪️ chaos → marbre</span><span>⚖️ CC-BY-SA</span></div></div>
+
+<div class="slide"><h2>🎯 Les 4 sommets</h2><div class="cards">
+<div><b>💚 106</b>contrôles verts, zéro écart. Chaque chiffre est pinné.</div>
+<div><b>🗻 35</b>points de relief : statue f100, mer à 60. Creusé !</div>
+<div><b>🌪️ 0→91</b>du chaos (1 écoute) au marbre, sans aide.</div>
+<div><b>⏱️ 0.1s</b>le cerveau bat en 0.1 s. Léger par nature.</div></div></div>
+
+<div class="slide"><h2>🧠 La carte : portes bêtes, cœur intelligent</h2>
+<div class="fig">{{FIG:archi}}</div><p class="pic">Seul le tissu comprend — tout le reste convertit, garde ou traduit.</p></div>
+
+<div class="slide"><h2>🌀 L'entonnoir qui oublie bien</h2>
+<div class="fig">{{FIG:entonnoir}}</div></div>
+
+<div class="slide"><h2>🦜 La boucle : 46 secondes du son au son</h2>
+<div class="fig">{{IMG:boucle}}</div><p class="pic">La bouche ne dit que ce que le tissu tient.</p></div>
+
+<div class="slide"><h2>🗣️ Le tokenizer : traduire, pas générer</h2>
+<div class="fig">{{FIG:tokenizer}}</div><p class="pic">+ le robinet à données : 20 paires, 20/20 vérifiées.</p></div>
+
+<div class="slide"><h2>⚡ L'éclair et 🌊 la rivière</h2>
+<div class="fig">{{FIG:cise-marbre}}</div></div>
+
+<div class="slide"><h2>🌊 La marée : tempête de 70 tenue</h2>
+<div class="fig">{{FIG:maree}}</div></div>
+
+<div class="slide"><h2>💭 Le rêve : garder ce qu'on comprend</h2>
+<div class="fig">{{FIG:reve}}</div></div>
+
+<div class="slide"><h2>📊 Les mesures (rien d'inventé)</h2>
+<div class="fig">{{FIG:g_batterie}}</div><div class="fig">{{FIG:g_relief}}</div></div>
+
+<div class="slide"><h2>🚀 Ensuite : l'autonomie (Colab en dernier 🏁)</h2>
+<div class="fig">{{FIG:timeline}}</div>
+<p class="grand">Ordre du chef : <b>l'entraînement quand tout est prêt et stable</b>.<br>Éduquer (relations), calibrer (100 %), pas de gradient en Go.</p></div>
+
+<div class="slide"><div class="fig">{{FIG:logo}}</div><h2>⚖️ Livre sous CC-BY-SA-4.0 · code sous MIT</h2>
+<p class="grand"><i>« On ne croit pas. On rejoue. »</i><br><span class="pic">python3 tests_verdicts.py → 106/106 · python3 livre/construire.py → ce livre</span></p></div>
+
+<div class="nav"><button onclick="go(-1)">◀</button><span id="c">1 / 12</span><button onclick="go(1)">▶</button></div>
+<script>
+let i=0;const S=document.querySelectorAll('.slide');
+function go(d){S[i].classList.remove('act');i=(i+d+S.length)%S.length;S[i].classList.add('act');document.getElementById('c').textContent=(i+1)+' / '+S.length;}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(1);if(e.key==='ArrowLeft')go(-1);});
+</script>
+</body></html>

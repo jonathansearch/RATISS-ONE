@@ -412,7 +412,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **cerveau v2 phase 3 (route C)** — marbre + rétroaction : gravure à la 3e relecture, relief 13 mesuré (livré 7 oct. : leçon 15, 103/103)
 - [x] **cerveau v2 phase 4 (route C)** — marée : tampon 50 + homéostasie (mer 60), tempête 70 tenue (livré 7 oct. : leçon 16, 104/104)
 - [x] **cerveau v2 phase 5 (route C)** — chaos + rêve : oubli honnête, émergence en 4 nuits, double dissociation (livré 7 oct. : leçon 17, 105/105)
-- [ ] **cerveau v2 phase 6 (route C)** — docs (choix du chef, 6 oct.)
+- [x] **cerveau v2 phase 6 (route C)** — LE LIVRE : doc complète + 20 figures + slides + licence CC-BY-SA — route C TERMINÉE 🎉 (livré 7 oct., 106/106)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable

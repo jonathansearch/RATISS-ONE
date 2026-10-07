@@ -266,6 +266,17 @@ def main():
     else:
         print("ÉCHEC : l'autotest du chaos ne passe pas")
         echecs += 1
+    controles += 1
+    proc_livre = subprocess.run(
+        [sys.executable, "livre/construire.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if (proc_livre.returncode == 0 and "LIVRE OK" in proc_livre.stdout
+            and os.path.exists("livre/index.html")):
+        print("OK : le livre se reconstruit (courbes + livre + présentation)")
+    else:
+        print("ÉCHEC : le livre ne se construit pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

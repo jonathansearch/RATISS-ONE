@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 290" font-family="Segoe UI, Verdana, sans-serif">
+<rect x="2" y="2" width="656" height="286" rx="16" fill="#FAF7F0" stroke="#E8E0D0" stroke-width="2"/>
+<text x="330" y="34" font-size="19" font-weight="bold" fill="#1A1A2E" text-anchor="middle">⚖️ La saturation : du désert plat au paysage</text>
+<rect x="70" y="77" width="120" height="123" rx="10" fill="#D64545"/>
+<text x="130" y="60" font-size="13" font-weight="bold" fill="#1A1A2E" text-anchor="middle">v1 : 90 partout</text>
+<text x="130" y="222" font-size="11" fill="#6B7280" text-anchor="middle">le désert plat</text>
+<rect x="270" y="72" width="120" height="27" rx="10" fill="#7C3AED"/>
+<text x="330" y="60" font-size="13" font-weight="bold" fill="#1A1A2E" text-anchor="middle">v2 : 74 – 94</text>
+<text x="330" y="222" font-size="11" fill="#6B7280" text-anchor="middle">atténuée, pas vaincue</text>
+<rect x="470" y="64" width="60" height="136" rx="8" fill="#C9A227"/>
+<text x="500" y="54" font-size="12" font-weight="bold" fill="#1A1A2E" text-anchor="middle">100</text>
+<rect x="540" y="118" width="60" height="82" rx="8" fill="#1B6CA8"/>
+<text x="570" y="108" font-size="12" font-weight="bold" fill="#1A1A2E" text-anchor="middle">60</text>
+<text x="530" y="60" font-size="13" font-weight="bold" fill="#1A1A2E" text-anchor="middle">v5 : 100 / 60</text>
+<text x="530" y="222" font-size="11" fill="#6B7280" text-anchor="middle">la statue + la mer</text>
+<text x="330" y="268" font-size="11" font-style="italic" fill="#6B7280" text-anchor="middle">Le relief naît de l'oubli sélectif, pas d'un réglage (leçons 11 → 12 → 16).</text>
+</svg>

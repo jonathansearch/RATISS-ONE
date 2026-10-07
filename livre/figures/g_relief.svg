@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 290" font-family="Segoe UI, Verdana, sans-serif">
+<rect x="2" y="2" width="556" height="286" rx="16" fill="#FAF7F0" stroke="#E8E0D0" stroke-width="2"/>
+<text x="280" y="34" font-size="19" font-weight="bold" fill="#1A1A2E" text-anchor="middle">🗻 Le relief : 13 → 35 (le creusement)</text>
+<rect x="90" y="171" width="130" height="49" rx="10" fill="#6B7280"/>
+<text x="155" y="159" font-size="22" font-weight="bold" fill="#1A1A2E" text-anchor="middle">13</text>
+<text x="155" y="242" font-size="12" font-weight="bold" fill="#1A1A2E" text-anchor="middle">marbre (v4)</text>
+<text x="155" y="260" font-size="11" fill="#6B7280" text-anchor="middle">A f100 · B f87</text>
+<rect x="310" y="89" width="130" height="131" rx="10" fill="#C9A227"/>
+<text x="375" y="77" font-size="22" font-weight="bold" fill="#1A1A2E" text-anchor="middle">35</text>
+<text x="375" y="242" font-size="12" font-weight="bold" fill="#1A1A2E" text-anchor="middle">marée (v5)</text>
+<text x="375" y="260" font-size="11" fill="#6B7280" text-anchor="middle">A f100 · B f65</text>
+</svg>
