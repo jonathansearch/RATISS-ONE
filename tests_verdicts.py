@@ -277,42 +277,6 @@ def main():
     else:
         print("ÉCHEC : le livre ne se construit pas")
         echecs += 1
-    controles += 1
-    proc_conf = subprocess.run(
-        [sys.executable, "route-d/conformite.py"],
-        capture_output=True, text=True, encoding="utf-8",
-    )
-    if proc_conf.returncode == 0 and "CONFORMITE OK" in proc_conf.stdout:
-        print("OK : conformité C (24/24 sorties identiques + scroll)")
-    else:
-        print("ÉCHEC : le second berceau diverge du premier")
-        echecs += 1
-    controles += 1
-    sys.path.insert(0, "pont-focal")
-    from encodeur import (sha16, tissu_chaos, tissu_frais,  # noqa: E402
-                          tissu_sanctuaire, tissu_vers_bits)
-    etats = {"frais": tissu_frais(), "chaos": tissu_chaos(),
-             "sanctuaire": tissu_sanctuaire()}
-    bits = {nom: tissu_vers_bits(etat) for nom, etat in etats.items()}
-    dores = {"frais": "e098de14fc25fbed", "chaos": "f29a73ec25dbdb98",
-             "sanctuaire": "f555dd714bc1bf0b"}
-    try:
-        with open("preuves/sortie-pont-focal.txt", encoding="utf-8") as fh:
-            preuve_pont = fh.read()
-    except OSError:
-        preuve_pont = ""
-    if (all(tissu_vers_bits(etat) == bits[nom] for nom, etat in etats.items())
-            and len(set(bits.values())) == 3
-            and all(sha16(bits[n]) == d for n, d in dores.items())
-            and "PONT FOCAL OK" in preuve_pont
-            and all(d in preuve_pont for d in dores.values())
-            and "P_sig = 6.3887" in preuve_pont
-            and "P_sig = 6.3970" in preuve_pont
-            and "P_sig = 6.2301" in preuve_pont):
-        print("OK : pont FOCAL (3 tissus -> bits stables + preuve P_sig)")
-    else:
-        print("ÉCHEC : le pont FOCAL ne tient pas (régénérer la preuve ?)")
-        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

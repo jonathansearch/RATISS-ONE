@@ -1,9 +1,3 @@
-# Binaire construit (route D) — se régénère : gcc -O2 -o route-d/ratum-c route-d/ratum.c
-route-d/ratum-c
-# Photos éphémères + caches Python (jamais versionnés)
-jouets/mem.scroll
+*.scroll
 __pycache__/
-*.pyc
-# Modeles voix + photos écloses (regenerables en local)
-bouche/voix/*.onnx*
-tissu-educ.scroll
+bouche/voix/*.onnx

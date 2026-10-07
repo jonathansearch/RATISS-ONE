@@ -1,8 +1,0 @@
-nettoyage : 4 liens morts, 0 neurones morts
-nettoyage : 0 liens morts, 0 neurones morts
-fond seul (tore+sphère) : P_sig = 5.7599
-tissu frais      : sha=e098de14fc25fbed P_sig = 6.3887
-tissu chaos      : sha=f29a73ec25dbdb98 P_sig = 6.3970
-tissu sanctuaire : sha=f555dd714bc1bf0b P_sig = 6.2301
-porteurs : Phi 27.1036 -> 855.6408 (x31.6, 4 transports)
-PONT FOCAL OK — 3 tissus projetés, delta max = 0.1668

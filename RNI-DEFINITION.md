@@ -355,40 +355,6 @@ sont devenus une loi émergente. Batterie intacte : 104/104 avant comme après.
 > rejoue chaque nuit ce que le tissu tient (≥ 2 mots connus), et ce seul
 > filtre fait émerger le sanctuaire du chaos en 4 nuits.
 
-### Leçon 18 🔬 — Le second berceau : une spec saine a deux voix
-*Route D : `route-d/ratum.c` (~1000 lignes, libc seule) + `route-d/conformite.py` —
-preuves : `preuves/sortie-conformite.txt`, 107/107.*
-
-Portage fidèle de l'interprète en C : loi (10,3), élasticité, ombre //200,
-`borne` à chaque pas dans l'ordre d'insertion, tris partout, pluriels, JSON
-`indent=1` de `graver` répliqué à l'octet. Mesuré : **24/24 sorties identiques
-au caractère près** (codes de sortie inclus) + scroll `mem.scroll` identique —
-compilation `-O2 -Wall -Wextra` zéro warning, du premier coup. Cinq
-divergences hors corpus documentées (`route-d/LISEZ-MOI.md`), jamais
-déclenchées par les 24 programmes. Le langage a son conformance test : deux
-berceaux indépendants, une seule voix.
-
-> **Énoncé :** une spécification est saine quand deux implémentations
-> indépendantes sortent les mêmes octets — le C prouve le Python, et le
-> Python prouve le C.
-
-### Leçon 19 🌌 — Le calme du sanctuaire : le pont FOCAL mesure l'ordre
-*Pont : `pont-focal/encodeur.py` (stdlib) + `pont-focal/pont.py` (numpy,
-ripser, organes `univers-focal/` inchangés) — preuves :
-`preuves/sortie-pont-focal.txt`, 108/108.*
-
-La trace relationnelle de trois tissus (frais, chaos graine 7, sanctuaire
-9 rencontres + 2 nuits) devient 2048 bits déterministes, projetés neutres
-sur le fond FOCAL (tore + sphère), mesurés en P_sig (persistance H1+H2).
-Première mesure : fond 5,7599, frais 6,3887, chaos 6,3970, **sanctuaire
-6,2301** — le compteur bouge (delta 0,1668, le pont transporte) et le
-tissu ordonné projette plus calme que le chaos. Témoin porteurs : la
-concentration monte ×31,6 en 4 transports. Piste v1 sur 3 points, pas un
-théorème — mais le tissu et l'univers parlent enfin la même langue.
-
-> **Énoncé :** l'ordre se mesure au calme qu'il projette — un tissu
-> sanctuaire fait moins de vagues topologiques que le chaos (6,23 < 6,40).
-
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -450,8 +416,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
-- [x] **second berceau C (route D)** — 24/24 sorties identiques + scroll identique, zéro warning (livré 7 oct. : leçon 18, 107/107)
-- [x] **pont FOCAL** — tissu → 2048 bits → P_sig : sanctuaire 6,2301 < chaos 6,3970, porteurs ×31,6 (livré 7 oct. : leçon 19, 108/108)
+- [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
