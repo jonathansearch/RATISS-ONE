@@ -131,6 +131,20 @@ niveau de la mer (homéostasie : `repos 60, rappel 4`) : perte par nuit =
 tampon 50 + pression 20 → nuit → VIF = 20 dernières à f10 → 5 nuits → mer
 calme (VIF 0, REFRAIN 0), statue f100 MARBRE debout.
 
+## 6quatre. Le rêve (v6, phase 5 route C — leçon 17 💭)
+
+Chaque nuit, avant d'oublier, le cerveau RÊVE : `Cerveau.rever()` ravive sur
+place (+1 coup, +pas) les traces VIF/REFRAIN riches (≥ 2 mots connus du
+tissu) — l'hippocampe rejoue ce que le tissu a COMPRIS. Le rêve ravive, la
+nuit promeut : ni promotion ni gonflement du sanctuaire ici (le rêve porte,
+il ne gonfle pas). Flag `reve` (désactivable : le chaos témoin prouve
+l'oubli total 0/0/0). Mesuré (`cerveau/autotest_chaos.py`, discours réels
+entendus 1 fois, sans focus) : FR = 1 rêve sur 19 puis « amis du peuple »
+seule au sanctuaire (f61) en 4 nuits ; JFK = 3 riches sauvées (f61) pendant
+que « can do for » (×2, 0 compris) meurt au refrain — répéter sans
+comprendre = mourir, comprendre sans répéter = monter. La relecture couronne
+une élue, gravée f91 : du chaos au marbre, sans aide.
+
 ## 7. Rejouer
 
 ```bash

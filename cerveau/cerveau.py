@@ -134,6 +134,7 @@ class Cerveau:
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
         self.tampon = []  # v5 : l'antichambre — le jour écoute, la nuit consolide
+        self.reve = True  # v6 : on rêve chaque nuit (désactivable : chaos témoin)
         self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR")}
         self._cise_lus = 0  # v3 : étincelles déjà lues au journal du tissu
         self._reconstruire()
@@ -252,13 +253,28 @@ class Cerveau:
         trace.redire()
         return phrase, trace
 
+    def rever(self):
+        """LE RÊVE (v6, phase 5) : l'hippocampe rejoue ce que le tissu a compris.
+        Chaque trace VIF/REFRAIN riche (≥ 2 mots connus) est ravivée sur place
+        (+1 coup, +pas) — on ne rêve que de ce qu'on comprend. Le rêve ravive,
+        la nuit promeut : ni promotion ni gonflement du sanctuaire ici.
+        Retourne le nombre de ravives (la sélectivité du rêve)."""
+        n = 0
+        for nom in ("VIF", "REFRAIN"):
+            for mots in list(self.secteurs[nom].traces):
+                if sum(1 for m in mots if m in self.mots_connus) >= 2:
+                    self.secteurs[nom].deposer(list(mots))
+                    n += 1
+        return n
+
     def nuit(self):
-        """La nuit : le tampon se vide (dans l'ordre), puis le tissu oublie,
-        la faucheuse élague, les secteurs consolident."""
+        """La nuit : le tampon se vide (dans l'ordre), on rêve de ce qu'on a
+        compris, puis le tissu oublie, la faucheuse élague, les secteurs consolident."""
         videes = 0
         while self.tampon:  # v5 : le soir, l'antichambre se vide au VIF
             self._deposer_trace(self.tampon.pop(0))
             videes += 1
+        reves = self.rever() if self.reve else 0  # v6 : le rêve avant l'oubli
         self._exec("oublier\n")
         self._exec("nettoyer\n")
         self._sync()
@@ -268,7 +284,7 @@ class Cerveau:
         r_vif = self.secteurs["VIF"].nuit(self.secteurs["REFRAIN"])
         r_ult = self.secteurs["ULTRA-SECTEUR"].nuit(None)
         return {"vif": r_vif, "refrain": r_ref, "sanctuaire": r_san, "ultra": r_ult,
-                "elagues": elagues, "videes": videes}
+                "elagues": elagues, "videes": videes, "reves": reves}
 
     def resonance(self, motif):
         return self.itp.resonance(motif)

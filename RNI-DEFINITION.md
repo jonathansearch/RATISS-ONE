@@ -332,6 +332,29 @@ la mer GARDE LE NIVEAU, le marbre est ÉTERNEL.
 > absorbe le choc (sans rien perdre) et l'homéostasie qui ramène le bruit
 > au niveau de la mer pendant que le gravé reste au sommet.
 
+### Leçon 17 💭 — Le rêve : on ne garde que ce qu'on comprend
+*Route C phase 5 : `cerveau/cerveau.py` (`rever()`, flag `reve`) +
+`cerveau/autotest_chaos.py` (JFK + discours FR réels, 1 écoute, sans focus) —
+preuves : `preuves/sortie-chaos.txt`, `bouche/preuve-chaos.wav`, 105/105.*
+
+Le baptême du feu : deux vrais discours entendus UNE fois, sans focus, sans
+filet. D'abord l'honnêteté : sans rêve, oubli TOTAL prouvé (0/0/0 après 6
+nuits — entendre une fois, c'est oublier, comme nous). Puis le mécanisme :
+chaque nuit, le RÊVE ravive les traces VIF/REFRAIN riches (≥ 2 mots connus) —
+l'hippocampe rejoue ce que le tissu a COMPRIS ; le rêve ravive, la nuit
+promeut. FR : 1 seul rêve sur 19 la 1re nuit (la sélectivité !), « amis du
+peuple » émerge seule au sanctuaire (f61) en 4 nuits. JFK : les 3 riches
+sauvées (f61) pendant que « can do for » (répétée 2 fois, 0 mot connu) meurt
+au refrain — DOUBLE DISSOCIATION : répéter sans comprendre = mourir,
+comprendre sans répéter = monter par le rêve. La relecture couronne UNE élue
+(« americans ask not »), gravée f91 : du chaos au marbre, sans aucune aide.
+Le focus et les « riches ×2 » des démos, qui tenaient la main du cerveau,
+sont devenus une loi émergente. Batterie intacte : 104/104 avant comme après.
+
+> **Énoncé :** la consolidation est gardée par la compréhension — le rêve
+> rejoue chaque nuit ce que le tissu tient (≥ 2 mots connus), et ce seul
+> filtre fait émerger le sanctuaire du chaos en 4 nuits.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -388,7 +411,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **tokenizer v1 (vision du chef)** — 4 règles sortie FR/EN, robinet à données, notebook Colab (livré 7 oct. : leçon 14, 102/102)
 - [x] **cerveau v2 phase 3 (route C)** — marbre + rétroaction : gravure à la 3e relecture, relief 13 mesuré (livré 7 oct. : leçon 15, 103/103)
 - [x] **cerveau v2 phase 4 (route C)** — marée : tampon 50 + homéostasie (mer 60), tempête 70 tenue (livré 7 oct. : leçon 16, 104/104)
-- [ ] **cerveau v2 phases 5-6 (route C)** — chaos, docs (choix du chef, 6 oct.)
+- [x] **cerveau v2 phase 5 (route C)** — chaos + rêve : oubli honnête, émergence en 4 nuits, double dissociation (livré 7 oct. : leçon 17, 105/105)
+- [ ] **cerveau v2 phase 6 (route C)** — docs (choix du chef, 6 oct.)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable

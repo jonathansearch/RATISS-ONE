@@ -256,6 +256,16 @@ def main():
     else:
         print("ÉCHEC : l'autotest de la marée ne passe pas")
         echecs += 1
+    controles += 1
+    proc_chaos = subprocess.run(
+        [sys.executable, "cerveau/autotest_chaos.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_chaos.returncode == 0 and "CHAOS OK" in proc_chaos.stdout:
+        print("OK : autotest du chaos (oubli honnête + rêve + double dissociation)")
+    else:
+        print("ÉCHEC : l'autotest du chaos ne passe pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

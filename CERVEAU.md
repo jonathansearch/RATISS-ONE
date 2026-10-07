@@ -87,4 +87,10 @@ soupape zéro-perte) + HOMÉOSTASIE (sanctuaire : niveau de la mer 60, rappel 4)
 Tempête de 70 inconnues tenue : statue f100 debout, mer calme, relief 35.
 Batterie 104/104.)*
 
+*(v6, RÊVE (phase 5) : + `rever()` — chaque nuit ravive les traces riches
+(≥ 2 mots compris) ; flag `reve` désactivable. Chaos réel (JFK + discours FR,
+1 écoute, sans focus) : sans rêve oubli total 0/0/0, avec rêve sanctuaire en
+4 nuits + double dissociation (répéter-sans-comprendre meurt au refrain).
+Élue gravée f91 : du chaos au marbre sans aide. Batterie 105/105.)*
+
 *« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

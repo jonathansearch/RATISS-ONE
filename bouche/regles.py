@@ -109,7 +109,28 @@ def main():
                     help="phase 3 : 3 relectures (gravure) + 5 nuits avant de parler")
     ap.add_argument("--tempete", action="store_true",
                     help="phase 4 : gravure + tempête de 70 inconnues + 5 nuits avant de parler")
+    ap.add_argument("--chaos", action="store_true",
+                    help="phase 5 : JFK réel entendu 1 fois (sans focus) + 4 nuits de rêve "
+                         "+ gravure de l'élue + 2 nuits avant de parler")
     args = ap.parse_args()
+    if args.chaos:
+        from cerveau.autotest_chaos import MOTS_JFK  # discours réel archivé
+        c = Cerveau("EN")
+        for i in range(len(MOTS_JFK) - 2):
+            c.entendre_sequence(MOTS_JFK[i:i + 3])
+        reves = sum(c.nuit()["reves"] for _ in range(4))
+        for _ in range(3):
+            c.redire()
+        for _ in range(2):
+            c.nuit()
+        top = c.secteurs["SANCTUAIRE"].top(1)[0]
+        print(f"chaos : JFK 20 fenêtres x1 écoute, {reves} rêves en 4 nuits")
+        print(f"élue : {top} (sans focus, sans filet)")
+        phrase = formuler(lire_etat(c))
+        print(f"dit : {phrase}")
+        if args.wav:
+            print(args.wav + " écrit" if parler(phrase, "bouche/voix/en_US-lessac-medium.onnx", args.wav) else "ÉCHEC bouche")
+        return 0
     c = demo(args.demo)
     if args.marbre:
         for _ in range(3):
