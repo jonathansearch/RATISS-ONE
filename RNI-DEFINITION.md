@@ -484,6 +484,23 @@ régénérable — le notebook régénère 100M sur place (sha pinné aussi).
 > **Énoncé :** la puissance ne se décrète pas, elle se profile — 88 %
 > dans l'interprète, x33 en fusionnant, 300 millions à l'heure.
 
+### Leçon 26 💪 — Graver : le cerveau fortifié rentre à la maison
+*Question du chef : « où sont les données d'entraînement ? » — réponse :
+nulle part (doctrine : la donnée s'oublie), MAIS le résultat était perdu
+avec (trou trouvé, trou bouché). `Cerveau.graver/relire` : photo complète
+(graphe + secteurs + tampon + compteur, charges éphémères exclues),
+reprise exacte prouvée (200k + 50k des deux côtés, 115/115).*
+
+Nos « poids » : 917 octets pour 200k écoutes — pas des gigas : on note qui
+tient qui et combien fort (des relations), pas chaque grain de sable.
+Le notebook grave à la fin (`--graver`), téléchargement 1 clic ou Drive ;
+`--relire` reprend l'entraînement où il s'était arrêté (les écoutes
+continuent). Deux cerveaux, une valise : Colab muscle, le fichier ramène,
+le dépôt réveille.
+
+> **Énoncé :** la donnée s'oublie, les muscles voyagent — 917 octets
+> valent mieux qu'un cerveau mort sur Colab.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -553,6 +570,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **masse 250k → 5M** — 250 000 écoutes en ~70 s (12 Mo), sanctuaire conquis, notebook §2b Colab (livré 7 oct. : leçon 23, 112/112)
 - [x] **programme 1h Colab** — fichier 5M (sha pinné) + 5M fraîches, 1M validé 327 s, GPU déclaré inutile (livré 7 oct. : leçon 24, 113/113)
 - [x] **programme puissance 300M** — battement fusionné x33 + binaire 3o + 3 époques, 30M validé 318 s (livré 7 oct. : leçon 25, 114/114)
+- [x] **cerveau fortifié (graver/relire)** — photo ~1 Ko, reprise exacte, notebook grave + télécharge (livré 7 oct. : leçon 26, 115/115)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

@@ -1,104 +1,109 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 320" font-family="Segoe UI, Verdana, sans-serif">
 <rect x="2" y="2" width="776" height="316" rx="16" fill="#FAF7F0" stroke="#E8E0D0" stroke-width="2"/>
-<text x="390" y="34" font-size="19" font-weight="bold" fill="#1A1A2E" text-anchor="middle">📈 La batterie : 42 → 114 contrôles (avec le creux honnête)</text>
+<text x="390" y="34" font-size="19" font-weight="bold" fill="#1A1A2E" text-anchor="middle">📈 La batterie : 42 → 115 contrôles (avec le creux honnête)</text>
 <circle cx="50.0" cy="177.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
 <text x="50.0" y="167.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">42</text>
 <text x="50.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">v0.1</text>
-<line x1="50.0" y1="177.5" x2="85.8" y2="110.1" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="85.8" cy="110.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="85.8" y="100.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">81</text>
-<text x="85.8" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">cerveau</text>
-<line x1="85.8" y1="110.1" x2="121.6" y2="96.3" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="121.6" cy="96.3" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="121.6" y="86.3" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">89</text>
-<text x="121.6" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route A</text>
-<line x1="121.6" y1="96.3" x2="157.4" y2="89.4" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="157.4" cy="89.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="157.4" y="79.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">93</text>
-<text x="157.4" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route B</text>
-<line x1="157.4" y1="89.4" x2="193.2" y2="142.9" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="193.2" cy="142.9" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="193.2" y="132.9" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">62</text>
-<text x="193.2" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">creux C</text>
-<line x1="193.2" y1="142.9" x2="228.9" y2="89.4" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="228.9" cy="89.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="228.9" y="79.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">93</text>
-<text x="228.9" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route C</text>
-<line x1="228.9" y1="89.4" x2="264.7" y2="75.5" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="264.7" cy="75.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="264.7" y="65.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">101</text>
-<text x="264.7" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">CISE</text>
-<line x1="264.7" y1="75.5" x2="300.5" y2="73.8" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="300.5" cy="73.8" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="300.5" y="63.8" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">102</text>
-<text x="300.5" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">tok</text>
-<line x1="300.5" y1="73.8" x2="336.3" y2="72.1" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="336.3" cy="72.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="336.3" y="62.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">103</text>
-<text x="336.3" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">marbre</text>
-<line x1="336.3" y1="72.1" x2="372.1" y2="70.4" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="372.1" cy="70.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="372.1" y="60.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">104</text>
-<text x="372.1" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">marée</text>
-<line x1="372.1" y1="70.4" x2="407.9" y2="68.6" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="407.9" cy="68.6" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="407.9" y="58.6" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">105</text>
-<text x="407.9" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">chaos</text>
-<line x1="407.9" y1="68.6" x2="443.7" y2="66.9" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="443.7" cy="66.9" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="443.7" y="56.9" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">106</text>
-<text x="443.7" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">livre</text>
-<line x1="443.7" y1="66.9" x2="479.5" y2="65.2" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="479.5" cy="65.2" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="479.5" y="55.2" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">107</text>
-<text x="479.5" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route D</text>
-<line x1="479.5" y1="65.2" x2="515.3" y2="63.5" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="515.3" cy="63.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="515.3" y="53.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">108</text>
-<text x="515.3" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">pont FOCAL</text>
-<line x1="515.3" y1="63.5" x2="551.1" y2="61.7" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="551.1" cy="61.7" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="551.1" y="51.7" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">109</text>
-<text x="551.1" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">R5</text>
-<line x1="551.1" y1="61.7" x2="586.8" y2="60.0" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="586.8" cy="60.0" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="586.8" y="50.0" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">110</text>
-<text x="586.8" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">direct</text>
-<line x1="586.8" y1="60.0" x2="622.6" y2="58.3" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="622.6" cy="58.3" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="622.6" y="48.3" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">111</text>
-<text x="622.6" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">dialogue</text>
-<line x1="622.6" y1="58.3" x2="658.4" y2="56.5" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="658.4" cy="56.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="658.4" y="46.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">112</text>
-<text x="658.4" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">masse</text>
-<line x1="658.4" y1="56.5" x2="694.2" y2="54.8" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="694.2" cy="54.8" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="694.2" y="44.8" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">113</text>
-<text x="694.2" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">colab1h</text>
-<line x1="694.2" y1="54.8" x2="730.0" y2="53.1" stroke="#1E9E6A" stroke-width="3"/>
-<circle cx="730.0" cy="53.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
-<text x="730.0" y="43.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">114</text>
-<text x="730.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">puissance</text>
+<line x1="50.0" y1="177.5" x2="84.0" y2="110.1" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="84.0" cy="110.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="84.0" y="100.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">81</text>
+<text x="84.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">cerveau</text>
+<line x1="84.0" y1="110.1" x2="118.0" y2="96.3" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="118.0" cy="96.3" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="118.0" y="86.3" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">89</text>
+<text x="118.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route A</text>
+<line x1="118.0" y1="96.3" x2="152.0" y2="89.4" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="152.0" cy="89.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="152.0" y="79.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">93</text>
+<text x="152.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route B</text>
+<line x1="152.0" y1="89.4" x2="186.0" y2="142.9" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="186.0" cy="142.9" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="186.0" y="132.9" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">62</text>
+<text x="186.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">creux C</text>
+<line x1="186.0" y1="142.9" x2="220.0" y2="89.4" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="220.0" cy="89.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="220.0" y="79.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">93</text>
+<text x="220.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route C</text>
+<line x1="220.0" y1="89.4" x2="254.0" y2="75.5" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="254.0" cy="75.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="254.0" y="65.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">101</text>
+<text x="254.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">CISE</text>
+<line x1="254.0" y1="75.5" x2="288.0" y2="73.8" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="288.0" cy="73.8" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="288.0" y="63.8" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">102</text>
+<text x="288.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">tok</text>
+<line x1="288.0" y1="73.8" x2="322.0" y2="72.1" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="322.0" cy="72.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="322.0" y="62.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">103</text>
+<text x="322.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">marbre</text>
+<line x1="322.0" y1="72.1" x2="356.0" y2="70.4" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="356.0" cy="70.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="356.0" y="60.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">104</text>
+<text x="356.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">marée</text>
+<line x1="356.0" y1="70.4" x2="390.0" y2="68.6" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="390.0" cy="68.6" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="390.0" y="58.6" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">105</text>
+<text x="390.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">chaos</text>
+<line x1="390.0" y1="68.6" x2="424.0" y2="66.9" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="424.0" cy="66.9" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="424.0" y="56.9" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">106</text>
+<text x="424.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">livre</text>
+<line x1="424.0" y1="66.9" x2="458.0" y2="65.2" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="458.0" cy="65.2" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="458.0" y="55.2" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">107</text>
+<text x="458.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">route D</text>
+<line x1="458.0" y1="65.2" x2="492.0" y2="63.5" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="492.0" cy="63.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="492.0" y="53.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">108</text>
+<text x="492.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">pont FOCAL</text>
+<line x1="492.0" y1="63.5" x2="526.0" y2="61.7" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="526.0" cy="61.7" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="526.0" y="51.7" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">109</text>
+<text x="526.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">R5</text>
+<line x1="526.0" y1="61.7" x2="560.0" y2="60.0" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="560.0" cy="60.0" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="560.0" y="50.0" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">110</text>
+<text x="560.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">direct</text>
+<line x1="560.0" y1="60.0" x2="594.0" y2="58.3" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="594.0" cy="58.3" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="594.0" y="48.3" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">111</text>
+<text x="594.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">dialogue</text>
+<line x1="594.0" y1="58.3" x2="628.0" y2="56.5" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="628.0" cy="56.5" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="628.0" y="46.5" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">112</text>
+<text x="628.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">masse</text>
+<line x1="628.0" y1="56.5" x2="662.0" y2="54.8" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="662.0" cy="54.8" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="662.0" y="44.8" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">113</text>
+<text x="662.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">colab1h</text>
+<line x1="662.0" y1="54.8" x2="696.0" y2="53.1" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="696.0" cy="53.1" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="696.0" y="43.1" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">114</text>
+<text x="696.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">puissance</text>
+<line x1="696.0" y1="53.1" x2="730.0" y2="51.4" stroke="#1E9E6A" stroke-width="3"/>
+<circle cx="730.0" cy="51.4" r="5" fill="#1E9E6A" stroke="#fff" stroke-width="2"/>
+<text x="730.0" y="41.4" font-size="11" font-weight="bold" fill="#1E9E6A" text-anchor="middle">115</text>
+<text x="730.0" y="268" font-size="10" fill="#1A1A2E" text-anchor="middle">fortifie</text>
 <text x="50.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
-<text x="85.8" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
-<text x="121.6" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
-<text x="157.4" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
-<text x="193.2" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
-<text x="228.9" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="264.7" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="300.5" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="336.3" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="372.1" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="407.9" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="443.7" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="479.5" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="515.3" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="551.1" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="586.8" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="622.6" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="658.4" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
-<text x="694.2" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="84.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
+<text x="118.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
+<text x="152.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
+<text x="186.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">6 oct.</text>
+<text x="220.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="254.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="288.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="322.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="356.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="390.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="424.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="458.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="492.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="526.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="560.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="594.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="628.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="662.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
+<text x="696.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
 <text x="730.0" y="282" font-size="9" fill="#6B7280" text-anchor="middle">7 oct.</text>
 <text x="390" y="300" font-size="11" font-style="italic" fill="#6B7280" text-anchor="middle">Le creux (62/93) : la loi v2 casse tout, le monde s'ajuste, tout remonte — sans toucher une règle.</text>
 </svg>

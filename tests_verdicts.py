@@ -405,11 +405,12 @@ def main():
                     and "epoques 3" in src_lourd
                     and "100000000" in src_lourd
                     and "11c17ba5948c4e6f5a486dad2014782bb9f6d70dfff714dd2c3d90d4738080ad" in src_lourd
-                    and "--rapide --binaire --ram" in src_lourd)
+                    and "--rapide --binaire --ram" in src_lourd
+                    and "cerveau-fortifie.json.gz" in src_lourd)
     except (OSError, ValueError):
         ok_lourd = False
     if ok_lourd:
-        print("OK : notebook puissance valide (8 cellules, sha 100M, 3 époques)")
+        print("OK : notebook puissance valide (8 cellules, sha 100M, 3 époques, graver)")
     else:
         print("ÉCHEC : le notebook puissance est cassé")
         echecs += 1
@@ -430,6 +431,21 @@ def main():
         print("OK : battement rapide pinné (1k seed 7 = 305e8b21042704bb)")
     else:
         print(f"ÉCHEC : le battement rapide a changé ({_h})")
+        echecs += 1
+    controles += 1
+    import tempfile as _tf
+    _tmp = _tf.mktemp(suffix=".json.gz")
+    with _ctx.redirect_stdout(_io.StringIO()):
+        _c.graver(_tmp)
+        _r = _Cerveau.relire(_tmp)
+    _same = (dict(_r.graph["liens"]) == dict(_c.graph["liens"])
+             and _r.ecoutes == _c.ecoutes == 1000
+             and [list(m) for m in _r.tampon] == [list(m) for m in _c.tampon])
+    os.remove(_tmp)
+    if _same:
+        print("OK : graver/relire exact (1k seed 7, reprise parfaite)")
+    else:
+        print("ÉCHEC : le cerveau relu diffère")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

@@ -21,9 +21,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ratum import Interprete  # noqa: E402
 
 try:
-    from secteurs import Secteur  # exécuté avec cerveau/ dans le chemin
+    from secteurs import Secteur, Trace  # exécuté avec cerveau/ dans le chemin
 except ImportError:  # importé comme paquet depuis la racine
-    from cerveau.secteurs import Secteur
+    from cerveau.secteurs import Secteur, Trace
 
 # --- vocabulaire anglais (miroir de english.ratum) ---
 CONCEPTS = ["people", "land", "voice", "duty", "together", "future"]
@@ -372,3 +372,79 @@ class Cerveau:
         lignes.append(f"écoutes : {self.ecoutes} séquences entendues (R5)")
         lignes.append(f"liens : {len(self.graph['liens'])} (chaînes vivantes : {len(self.chaines)})")
         return "\n".join(lignes)
+
+    # ----- le cerveau fortifié rentre à la maison (leçon 26) -----
+    def graver(self, chemin):
+        """Photo complète : graphe + secteurs + tampon + compteur.
+
+        Les charges et les coups, éphémères, ne sont PAS sauvés (doctrine :
+        seules les forces persistent) — le cerveau relu repart charges à
+        zéro, comme après une nuit. `.gz` = compressé, sinon JSON brut.
+        Retourne la taille en octets.
+        """
+        import gzip
+        import json
+        import time
+        photo = {
+            "format": "cerveau-fortifie-v1",
+            "langue": self.langue,
+            "ecoutes": self.ecoutes,
+            "reve": self.reve,
+            "tampon": [list(m) for m in self.tampon],
+            "graph": {
+                "neurones": dict(self.graph["neurones"]),
+                "liens": [[a, b, f] for (a, b), f in self.graph["liens"].items()],
+                "types": sorted(self.graph["types"]),
+                "geles": [[a, b] for a, b in self.graph["geles"]],
+            },
+            "chaines": [[a, b] for a, b in self.chaines],
+            "secteurs": {
+                nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
+                       "redites": t.redites, "grave": t.grave}
+                      for t in s.traces.values()]
+                for nom, s in self.secteurs.items()},
+            "ordres": {nom: [list(m) for m in s.ordre]
+                       for nom, s in self.secteurs.items()},
+            "meta": {"logiciel": "RATISS-ONE",
+                     "date": time.strftime("%Y-%m-%d %H:%M:%S")},
+        }
+        brut = json.dumps(photo, ensure_ascii=False).encode("utf-8")
+        if str(chemin).endswith(".gz"):
+            with gzip.open(chemin, "wb") as fh:
+                fh.write(brut)
+        else:
+            with open(chemin, "wb") as fh:
+                fh.write(brut)
+        return os.path.getsize(chemin)
+
+    @classmethod
+    def relire(cls, chemin):
+        """Réveille un cerveau depuis sa photo (graver). Reprise exacte :
+        le graphe relu a de l'avance sur l'interprète neuf (_tissu_sale)."""
+        import gzip
+        import json
+        ouvrir = gzip.open if str(chemin).endswith(".gz") else open
+        with ouvrir(chemin, "rb") as fh:
+            photo = json.loads(fh.read().decode("utf-8"))
+        assert photo.get("format") == "cerveau-fortifie-v1", "pas une photo de cerveau"
+        c = cls(photo.get("langue", "FR"))
+        c.ecoutes = photo["ecoutes"]
+        c.reve = photo["reve"]
+        c.tampon = [list(m) for m in photo["tampon"]]
+        c.graph["neurones"] = dict(photo["graph"]["neurones"])
+        c.graph["liens"] = {(a, b): f for a, b, f in photo["graph"]["liens"]}
+        c.graph["types"] = set(photo["graph"]["types"])
+        c.graph["geles"] = {(a, b) for a, b in photo["graph"]["geles"]}
+        c.chaines = {(a, b) for a, b in photo["chaines"]}
+        for nom, traces in photo["secteurs"].items():
+            s = c.secteurs[nom]
+            s.traces = {}
+            for t in traces:
+                tr = Trace(t["mots"], t["force"])
+                tr.coups = t["coups"]
+                tr.redites = t["redites"]
+                tr.grave = t["grave"]
+                s.traces[tr.mots] = tr
+            s.ordre = [tuple(m) for m in photo["ordres"][nom]]
+        c._tissu_sale = True  # le graphe relu devance l'interprète neuf
+        return c

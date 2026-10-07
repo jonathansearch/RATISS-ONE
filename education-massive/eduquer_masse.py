@@ -61,11 +61,19 @@ def main(argv):
                     help="charge le binaire en RAM d'un coup (100M = 300 Mo)")
     ap.add_argument("--epoques", type=int, default=1,
                     help="nombre de passages sur les données (la répétition grave, comme l'enfance)")
+    ap.add_argument("--relire", default=None,
+                    help="repart d'un cerveau gravé (reprise exacte, les écoutes continuent)")
+    ap.add_argument("--graver", default=None,
+                    help="grave le cerveau fortifié en fin d'éducation (.json ou .json.gz : nos poids)")
     args = ap.parse_args(argv)
     t0 = time.time()
-    c = Cerveau("FR")
+    if args.relire:
+        c = Cerveau.relire(args.relire)
+        print(f"CERVEAU RELU — {c.ecoutes} écoutes déjà, le fortifié se réveille")
+    else:
+        c = Cerveau("FR")
     c.rapide = args.rapide
-    n = 0
+    n = c.ecoutes
     print(f"=== ÉDUCATION MASSIVE ({'RAPIDE' if args.rapide else 'lent'}, "
           f"{'binaire' + ('+RAM' if args.ram else '') if args.binaire else 'JSONL'}, "
           f"{args.epoques} époque(s), une nuit par lot) ===")
@@ -91,9 +99,14 @@ def main(argv):
     if args.bilan:
         with open(args.bilan, "w", encoding="utf-8") as fh:
             fh.write(phrase + "\n")
+    extra = ""
+    if args.graver:
+        octets = c.graver(args.graver)
+        extra = f", cerveau gravé {args.graver} ({octets} octets)"
+        print(f"CERVEAU GRAVÉ — {args.graver} ({octets} octets : nos poids) 💪")
     print(f"MASSE OK — {n} séquences, {len(c.graph['liens'])} liens, "
           f"{len(c.graph['neurones'])} neurones, RAM max {memoir_mo():.0f} Mo, "
-          f"{time.time() - t0:.0f} s")
+          f"{time.time() - t0:.0f} s{extra}")
     return 0
 
 

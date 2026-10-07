@@ -143,3 +143,13 @@ Données en binaire (3 octets/séquence, même flux seed 7 : `binaire_masse.py`)
 100M en RAM (300 Mo), 3 époques : 300M écoutes ≈ 56 min, ~100 000/s.
 Validé 30M : 318 s, 98 Mo (`preuves/sortie-masse-30M.txt`). Fichier lourd
 30M (58,3 Mo, sha pinné au rapport) : régénérable, hors dépôt.
+
+## 9. Le cerveau fortifié (7 oct., leçon 26)
+
+Question du chef : où va le résultat ? `Cerveau.graver(chemin)` sauve
+graphe + secteurs + tampon + compteur (les charges, éphémères, restent
+dehors — doctrine) ; `Cerveau.relire(chemin)` réveille à l'identique
+(reprise exacte prouvée : `preuves/graver-relire.txt`). Nos poids : ~1 Ko
+(des relations, pas des gigas de sable). L'éducateur grave en fin de run
+(`--graver`) et reprend (`--relire`, les écoutes continuent) ; le notebook
+télécharge le fortifié (1 clic) ou le pousse sur Drive.
