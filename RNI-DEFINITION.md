@@ -372,6 +372,23 @@ berceaux indépendants, une seule voix.
 > indépendantes sortent les mêmes octets — le C prouve le Python, et le
 > Python prouve le C.
 
+### Leçon 19 🌌 — Le calme du sanctuaire : le pont FOCAL mesure l'ordre
+*Pont : `pont-focal/encodeur.py` (stdlib) + `pont-focal/pont.py` (numpy,
+ripser, organes `univers-focal/` inchangés) — preuves :
+`preuves/sortie-pont-focal.txt`, 108/108.*
+
+La trace relationnelle de trois tissus (frais, chaos graine 7, sanctuaire
+9 rencontres + 2 nuits) devient 2048 bits déterministes, projetés neutres
+sur le fond FOCAL (tore + sphère), mesurés en P_sig (persistance H1+H2).
+Première mesure : fond 5,7599, frais 6,3887, chaos 6,3970, **sanctuaire
+6,2301** — le compteur bouge (delta 0,1668, le pont transporte) et le
+tissu ordonné projette plus calme que le chaos. Témoin porteurs : la
+concentration monte ×31,6 en 4 transports. Piste v1 sur 3 points, pas un
+théorème — mais le tissu et l'univers parlent enfin la même langue.
+
+> **Énoncé :** l'ordre se mesure au calme qu'il projette — un tissu
+> sanctuaire fait moins de vagues topologiques que le chaos (6,23 < 6,40).
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -434,6 +451,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [x] **second berceau C (route D)** — 24/24 sorties identiques + scroll identique, zéro warning (livré 7 oct. : leçon 18, 107/107)
+- [x] **pont FOCAL** — tissu → 2048 bits → P_sig : sanctuaire 6,2301 < chaos 6,3970, porteurs ×31,6 (livré 7 oct. : leçon 19, 108/108)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
