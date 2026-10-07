@@ -5,16 +5,20 @@
 1 séquence riche (>= 2 mots connus), répétée x2
 focus répété x6 : amis du peuple
 === 3. NUIT 1 ===
+nettoyage : 4 liens morts, 0 neurones morts
 promus VIF->REFRAIN : 1, morts VIF : 0
 === 4. NUIT 2 ===
+nettoyage : 0 liens morts, 0 neurones morts
 promus REFRAIN->SANCTUAIRE : 1
 === 5. RAPPORT ===
 VIF : 0 traces
 REFRAIN : 0 traces
 SANCTUAIRE : 1 traces
   - amis+du+peuple x1 f92
-tissu : amis=95 peuple=95 pays=95 patrie=95
-liens : 27 (chaînes vivantes : 1)
-dit : J'ai entendu 19 séquences. 0 dort au refrain. 1 a atteint le sanctuaire : amis du peuple.
+ULTRA-SECTEUR : 0 traces
+tampon : 0 en attente
+tissu : amis=91 peuple=97 pays=97 patrie=97
+liens : 23 (chaînes vivantes : 1)
+dit : Au sanctuaire : amis du peuple. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
 bouche/cerveau-fr.wav écrit
-=== boucle totale : 8.5 s ===
+=== boucle totale : 8.2 s ===

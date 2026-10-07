@@ -4,7 +4,8 @@
 horodatés FR) → fenêtres de 3 mots → `Cerveau("FR")` (éducation + écoute +
 répétitions) → nuit 1 → nuit 2 → `rapport()` → Piper FR (résumé parlé).
 **Preuves :** `preuves/transcription-discours.txt`,
-`preuves/sortie-cerveau-demo-fr.txt`, `bouche/cerveau-fr.wav` (6.0 s).
+`preuves/sortie-cerveau-demo-fr.txt`, `bouche/cerveau-fr.wav` (6.8 s,
+restauré 7 oct. 2026).
 
 ## Installation (vivante, non persistée — rejouer par session)
 
@@ -55,14 +56,14 @@ vers l'unique séquence répétée — entonnoir honnête, pas de remplissage.
 
 - Phrase : « J'ai entendu 19 séquences. 0 dort au refrain. 1 a atteint le
   sanctuaire : amis du peuple. » (accords singulier/pluriel gérés)
-- `bouche/cerveau-fr.wav` : 6.0 s — boucle totale **8.5 s** (oreille 1.4 s
-  à chaud, cerveau ~5 s, bouche ~2 s)
+- `bouche/cerveau-fr.wav` : 6.8 s — boucle totale **~8-13 s** selon cache
+  (oreille ~1.5 s à chaud, reste cerveau + bouche ; restauré 7 oct. 2026)
 
 ## Autotest FR (hors-ligne, déterministe)
 
 `python3 cerveau/autotest_fr.py` → `CERVEAU FR OK — sanctuaire :
-amis+du+peuple x1 f92, tissu : 95 95 95 95, chaînes : 1`.
-Dans la batterie : **89/89 verts** (22 programmes + 2 autotests).
+amis+du+peuple x1 f92, tissu : 91 97 97 97, chaînes : 1`.
+Dans la batterie : autotest vert (108/108, 7 oct. 2026).
 
 ## Ce que ça prouve (et pas plus)
 

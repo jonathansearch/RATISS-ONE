@@ -52,5 +52,5 @@ python3 donnees/generer.py --verifier   # 20/20 reproduites
 ## 6. Roadmap tokenizer
 
 - [ ] **R5 comptes** — « J'ai entendu N séquences » (compteur d'écoutes à ajouter)
-- [ ] **wav FR** — voix FR à restaurer (snapshot l'a mangée)
+- [x] **wav FR** — voix siwis restaurée, `bouche/cerveau-fr.wav` 6.8 s régénéré par le pipeline (7 oct.)
 - [ ] **entrée Phonon** — brancher l'oreille live sur les règles (chaos phase 5)
