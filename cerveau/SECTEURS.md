@@ -101,6 +101,20 @@ Ce n'est PAS de la physique quantique : pas de qubits, pas de superposition —
 des compteurs, des seuils et des nuits. De l'intrication relationnelle
 computationnelle, comme écrit dans la fiche RNI.
 
+## 6bis. La gravure et la rétroaction (v4, phase 3 route C — leçon 15 🪨)
+
+Le sanctuaire est le BLOC de marbre, la rétroaction est le CISEAU, la gravure
+est la STATUE. `Cerveau.redire()` ferme la boucle : la trace dominante du
+sanctuaire est formulée (tokenizer, règle unique) puis RÉ-ENTENDUE — la bouche
+parle, l'oreille écoute. Chaque relecture incrémente `redites` ; à la 3e
+(`SEUIL_MARBRE = 3`), la trace est GRAVÉE : la nuit ne l'use plus (ni usure,
+ni mort, ni promotion). Le répété reste en haut, le reste s'efface : le
+RELIEF naît de l'oubli sélectif. Mesuré (`cerveau/autotest_marbre.py`) : A
+relue 3 fois = f100 MARBRE après 5 nuits, témoin B = f87, relief 13 ; FR
+identique. L'éclair (CISE) fige par la vitesse, la rivière (MARBRE) grave par
+la répétition — ne pas confondre avec le « marbre absolu » (ULTRA-SECTEUR,
+convictions CISE à 100, sans répétition).
+
 ## 7. Rejouer
 
 ```bash

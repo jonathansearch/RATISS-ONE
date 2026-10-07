@@ -105,8 +105,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--demo", choices=["EN", "FR"], default="EN")
     ap.add_argument("--wav", default=None)
+    ap.add_argument("--marbre", action="store_true",
+                    help="phase 3 : 3 relectures (gravure) + 5 nuits avant de parler")
     args = ap.parse_args()
     c = demo(args.demo)
+    if args.marbre:
+        for _ in range(3):
+            c.redire()
+        for _ in range(5):
+            c.nuit()
+        top = c.secteurs["SANCTUAIRE"].top(1)[0]
+        print(f"gravé : {top} (3 relectures + 5 nuits)")
     phrase = formuler(lire_etat(c))
     print(f"dit : {phrase}")
     if args.wav:

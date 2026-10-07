@@ -286,6 +286,29 @@ parlent maintenant par la règle unique.
 > par 4 règles pinnées — et la donnée d'entraînement est un robinet (tissu
 > déterministe), pas un désert.
 
+### Leçon 15 🪨 — Le marbre : la rivière grave par répétition, la boucle se ferme
+*Route C phase 3 : `cerveau/secteurs.py` (v4 : redites, gravure) +
+`cerveau/cerveau.py` (`redire()`) + `cerveau/autotest_marbre.py` —
+preuves : `preuves/sortie-marbre.txt`, `bouche/preuve-marbre.wav`, 103/103.*
+
+Face au mur de la saturation (B : 74-94, tout au même niveau, aucun relief),
+la stratégie tient en une phrase : D'ABORD graver ce qui compte, ENSUITE
+réguler le reste (l'homéostasie, phase 4, pourra effacer sans peur — la statue
+est à l'abri). La 🔁 rétroaction ferme la boucle : `redire()` formule la trace
+dominante du sanctuaire (tokenizer, règle unique — pas de triche) puis la
+RÉ-ENTEND, comme on relit sa leçon à voix haute. À la 3e relecture
+(`SEUIL_MARBRE = 3`), la trace est 🪨 GRAVÉE : la nuit ne l'use plus (ni
+usure, ni mort). Mesuré : A relue 3 fois traverse 5 nuits à f100 MARBRE
+pendant que le témoin B tombe à f87 — relief 13, le creusement a commencé ;
+FR identique (gravée f100, 2 nuits). L'éclair (💥 CISE) fige par la VITESSE,
+la rivière (🪨 MARBRE) grave par la RÉPÉTITION — deux chemins vers l'éternel.
+Vocabulaire officiel : le sanctuaire est le BLOC, la rétroaction est le CISEAU,
+la gravure est la STATUE.
+
+> **Énoncé :** ce qui est répété à voix haute se grave (nuit 0) pendant que
+> le reste s'efface — le répété reste en haut, l'oublié descend : le relief
+> naît de l'oubli sélectif, pas d'un réglage.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -340,7 +363,8 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **cerveau v2 phases 1-2 (route C)** — cœur (10,3)+élastique+ombre, nuits faucheuses, 93/93 (livré 7 oct. : leçon 12)
 - [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, ULTRA-SECTEUR Python, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
 - [x] **tokenizer v1 (vision du chef)** — 4 règles sortie FR/EN, robinet à données, notebook Colab (livré 7 oct. : leçon 14, 102/102)
-- [ ] **cerveau v2 phases 3-6 (route C)** — marbre + rétroaction, buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
+- [x] **cerveau v2 phase 3 (route C)** — marbre + rétroaction : gravure à la 3e relecture, relief 13 mesuré (livré 7 oct. : leçon 15, 103/103)
+- [ ] **cerveau v2 phases 4-6 (route C)** — buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable

@@ -26,6 +26,14 @@ REGIMES = {
 }
 
 
+# v4 (MARBRE, phase 3 route C) : une trace du sanctuaire RELUE à voix haute
+# (rétroaction : la bouche parle, l'oreille ré-entend) SEUIL_MARBRE fois
+# est GRAVÉE — la nuit ne l'use plus. L'éclair (CISE) fige par la vitesse,
+# la rivière (MARBRE) grave par la répétition. Le sanctuaire est le bloc,
+# la rétroaction est le ciseau, la gravure est la statue.
+SEUIL_MARBRE = 3
+
+
 class Trace:
     """Une séquence entendue : mots ordonnés + répétitions + force."""
 
@@ -33,13 +41,24 @@ class Trace:
         self.mots = tuple(mots)
         self.coups = 1
         self.force = force
+        self.redites = 0   # v4 : relectures à voix haute (rétroaction)
+        self.grave = False  # v4 : gravée dans le marbre (nuit 0, immortelle)
 
     def repeter(self, pas):
         self.coups += 1
         self.force = min(100, self.force + pas)
 
+    def redire(self):
+        """Une relecture à voix haute. Retourne True si ça vient de graver."""
+        self.redites += 1
+        if not self.grave and self.redites >= SEUIL_MARBRE:
+            self.grave = True
+            return True
+        return False
+
     def __repr__(self):
-        return f"{'+'.join(self.mots)} x{self.coups} f{self.force}"
+        base = f"{'+'.join(self.mots)} x{self.coups} f{self.force}"
+        return base + (" MARBRE" if self.grave else "")
 
 
 class Secteur:
@@ -69,6 +88,8 @@ class Secteur:
         morts, promus = [], []
         for mots in list(self.ordre):
             trace = self.traces[mots]
+            if trace.grave:
+                continue  # v4 : le marbre traverse la nuit intact
             trace.force -= self.regime["nuit"]
             if trace.force <= 0:
                 morts.append(mots)

@@ -236,6 +236,16 @@ def main():
     else:
         print("ÉCHEC : l'autotest de la bouche ne passe pas")
         echecs += 1
+    controles += 1
+    proc_marbre = subprocess.run(
+        [sys.executable, "cerveau/autotest_marbre.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_marbre.returncode == 0 and "MARBRE OK" in proc_marbre.stdout:
+        print("OK : autotest du marbre (gravure + relief + rétroaction FR/EN)")
+    else:
+        print("ÉCHEC : l'autotest du marbre ne passe pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

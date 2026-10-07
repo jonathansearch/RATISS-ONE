@@ -214,6 +214,21 @@ class Cerveau:
         self._sync()
         return trace
 
+    def redire(self):
+        """RÉTROACTION (v4, phase 3) : la boucle se ferme — le crâne formule
+        sa trace dominante (tokenizer, règle unique) puis la RÉ-ENTEND :
+        la bouche parle, l'oreille écoute, le répété se grave.
+        Retourne (phrase, trace) ou (None, None) si le sanctuaire est vide.
+        Import paresseux : la bouche dépend du crâne au chargement, pas l'inverse."""
+        tops = self.secteurs["SANCTUAIRE"].top(1)
+        if not tops:
+            return None, None
+        from bouche.regles import formuler, lire_etat
+        phrase = formuler(lire_etat(self))
+        trace = self.entendre_sequence(list(tops[0].mots))
+        trace.redire()
+        return phrase, trace
+
     def nuit(self):
         """La nuit : le tissu oublie, la faucheuse élague, les secteurs consolident."""
         self._exec("oublier\n")
