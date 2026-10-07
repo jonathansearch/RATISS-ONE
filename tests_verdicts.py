@@ -579,6 +579,42 @@ def main():
     else:
         print("ÉCHEC : le remix est mauvais")
         echecs += 1
+    controles += 1
+    from convertisseur_ud import tout_boire as _boire
+    _ok_fd = False
+    try:
+        class _A:
+            pass
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _vi = _tf.mktemp(suffix=".json.gz")
+            _Cerveau("FR").graver(_vi)
+            _outs = []
+            for _g, _k in ((7, 500), (99, 700)):
+                _a = _A()
+                _a.conllu = "education-manuelle/echantillon-ud.conllu"
+                _a.graines = _g
+                _a.paires = _k
+                _a.injecter = _vi
+                _a.sortie = _tf.mktemp(suffix=".json.gz")
+                _boire(_a)
+                _outs.append(_Cerveau.relire(_a.sortie))
+                os.remove(_a.sortie)
+            os.remove(_vi)
+            _fd = _Cerveau.relire("cerveau/fige-300M-tout.json.gz")
+        _ok_fd = (dict(_outs[0].graph["liens"]) == dict(_outs[1].graph["liens"])
+                  and dict(_outs[0].graph["neurones"]) == dict(_outs[1].graph["neurones"])
+                  and _outs[0].motifs == _outs[1].motifs
+                  and (len(_fd.graph["neurones"]), len(_fd.graph["liens"]),
+                       len(_fd.motifs)) == (24639, 105349, 20)
+                  and _fd.ecoutes == 300000000
+                  and len(_fd.graph["types"]) == 24639)
+    except Exception:
+        _ok_fd = False
+    if _ok_fd:
+        print("OK : fond du verre (ordre indifférent, 24639/105349/20 pinnés)")
+    else:
+        print("ÉCHEC : le fond du verre est mauvais")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

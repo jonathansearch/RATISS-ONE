@@ -1,0 +1,36 @@
+RÉSERVOIR — 105313 paires (déjà sues : 39749)
+vague 1/33 : +366 neurones +2000 liens | total 15915 neurones 41785 liens, 15915 figés | reste 63564
+vague 2/33 : +381 neurones +2000 liens | total 16296 neurones 43785 liens, 16296 figés | reste 61564
+vague 3/33 : +368 neurones +2000 liens | total 16664 neurones 45785 liens, 16664 figés | reste 59564
+vague 4/33 : +351 neurones +2000 liens | total 17015 neurones 47785 liens, 17015 figés | reste 57564
+vague 5/33 : +342 neurones +2000 liens | total 17357 neurones 49785 liens, 17357 figés | reste 55564
+vague 6/33 : +373 neurones +2000 liens | total 17730 neurones 51785 liens, 17730 figés | reste 53564
+vague 7/33 : +343 neurones +2000 liens | total 18073 neurones 53785 liens, 18073 figés | reste 51564
+vague 8/33 : +339 neurones +2000 liens | total 18412 neurones 55785 liens, 18412 figés | reste 49564
+vague 9/33 : +313 neurones +2000 liens | total 18725 neurones 57785 liens, 18725 figés | reste 47564
+vague 10/33 : +292 neurones +2000 liens | total 19017 neurones 59785 liens, 19017 figés | reste 45564
+vague 11/33 : +313 neurones +2000 liens | total 19330 neurones 61785 liens, 19330 figés | reste 43564
+vague 12/33 : +296 neurones +2000 liens | total 19626 neurones 63785 liens, 19626 figés | reste 41564
+vague 13/33 : +303 neurones +2000 liens | total 19929 neurones 65785 liens, 19929 figés | reste 39564
+vague 14/33 : +288 neurones +2000 liens | total 20217 neurones 67785 liens, 20217 figés | reste 37564
+vague 15/33 : +314 neurones +2000 liens | total 20531 neurones 69785 liens, 20531 figés | reste 35564
+vague 16/33 : +278 neurones +2000 liens | total 20809 neurones 71785 liens, 20809 figés | reste 33564
+vague 17/33 : +270 neurones +2000 liens | total 21079 neurones 73785 liens, 21079 figés | reste 31564
+vague 18/33 : +282 neurones +2000 liens | total 21361 neurones 75785 liens, 21361 figés | reste 29564
+vague 19/33 : +258 neurones +2000 liens | total 21619 neurones 77785 liens, 21619 figés | reste 27564
+vague 20/33 : +237 neurones +2000 liens | total 21856 neurones 79785 liens, 21856 figés | reste 25564
+vague 21/33 : +233 neurones +2000 liens | total 22089 neurones 81785 liens, 22089 figés | reste 23564
+vague 22/33 : +244 neurones +2000 liens | total 22333 neurones 83785 liens, 22333 figés | reste 21564
+vague 23/33 : +221 neurones +2000 liens | total 22554 neurones 85785 liens, 22554 figés | reste 19564
+vague 24/33 : +225 neurones +2000 liens | total 22779 neurones 87785 liens, 22779 figés | reste 17564
+vague 25/33 : +215 neurones +2000 liens | total 22994 neurones 89785 liens, 22994 figés | reste 15564
+vague 26/33 : +226 neurones +2000 liens | total 23220 neurones 91785 liens, 23220 figés | reste 13564
+vague 27/33 : +211 neurones +2000 liens | total 23431 neurones 93785 liens, 23431 figés | reste 11564
+vague 28/33 : +210 neurones +2000 liens | total 23641 neurones 95785 liens, 23641 figés | reste 9564
+vague 29/33 : +219 neurones +2000 liens | total 23860 neurones 97785 liens, 23860 figés | reste 7564
+vague 30/33 : +210 neurones +2000 liens | total 24070 neurones 99785 liens, 24070 figés | reste 5564
+vague 31/33 : +197 neurones +2000 liens | total 24267 neurones 101785 liens, 24267 figés | reste 3564
+vague 32/33 : +209 neurones +2000 liens | total 24476 neurones 103785 liens, 24476 figés | reste 1564
+vague 33/33 : +163 neurones +1564 liens | total 24639 neurones 105349 liens, 24639 figés | reste 0
+RÉSERVOIR VIDE — 24639 neurones, 105349 liens, 20 motifs, écoutes 300000000 (100 % bu ✅)
+GRAVÉ — cerveau/fige-300M-tout.json.gz

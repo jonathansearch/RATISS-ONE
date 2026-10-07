@@ -188,3 +188,11 @@ UNION, marbre épargné) et fige. En 88 s : 15 549 nerfs, 39 785 filaments,
 36 % du réservoir bu, 300M et sanctuaire intacts. La saturation (épargnés
 croissants) mesure l'absorption. Bonus : R-ULTRA ne nomme que les motifs
 nommables (« la bouche ne dit que ce qu'elle peut nommer »).
+
+## 14. Le fond du verre (7 oct., leçon 32)
+
+`--jusquau-fond` : le cerveau est le registre (sue = le lien existe, marbre
+respecté), le reste est brassé (graine) puis vidé par vagues jusqu'à 0
+restant (terminaison garantie). 33 vagues en 48 s : 24 639 nerfs,
+105 349 filaments, 105 313/105 313 recomptées indépendamment. Prouvé :
+l'ordre des vagues ne change rien (même graphe final).

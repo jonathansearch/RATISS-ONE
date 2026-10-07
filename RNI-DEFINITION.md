@@ -584,6 +584,22 @@ qu'elle peut nommer (bouche OK, 5 phrases intactes).
 > **Énoncé :** remixer, c'est boire sans se noyer — 100 tours graineés,
 > 15 549 nerfs, et la bouche reste propre.
 
+### Leçon 32 🌊 — Jusqu'au fond : le réservoir vide, 0 restant
+*Ordre du chef : tout boire, jusqu'à ce qu'il ne reste rien. `--jusquau-fond` :
+le cerveau EST le registre (sue = le lien existe), le reste est brassé
+puis vidé par vagues de 2000, terminaison garantie (liste fixée d'avance).
+33 vagues en 48 s : 15 549 -> 24 639 nerfs, 39 785 -> 105 349 filaments,
+105 313/105 313 recomptées (0 manquante ✅), 300M intactes (121/121).*
+
+Vague 1 dit tout : +2000 liens mais +366 nerfs — les mots étaient sus,
+les liens manquaient (le remix avait enseigné le vocabulaire, le fond
+enseigne la toile). Propriété prouvée sur fixture : l'ordre ne compte
+pas (graines + découpes différentes = graphes identiques) — tout boire,
+c'est tout boire. Boucles X->X soudées (précédent : 198 en marbre).
+
+> **Énoncé :** un réservoir se vide par vagues, pas au hasard — 33 vagues,
+> 0 restant, et l'ordre n'a jamais compté.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -659,6 +675,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **figement CISE du 300M** — 13 nerfs + 40 filaments, 20 nuits intactes, marbre gravé (livré 7 oct. : leçon 29, 118/118)
 - [x] **école manuelle UD** — convertisseur 14 450 phrases -> 247 nerfs figés, loi 10x, 300M intactes (livré 7 oct. : leçon 30, 119/119)
 - [x] **remix 100 tours** — 108k paires brassées, 15 549 nerfs figés, bouche renommée (livré 7 oct. : leçon 31, 120/120)
+- [x] **fond du verre** — 105 313/105 313 bues, 24 639 nerfs figés, ordre indifférent (livré 7 oct. : leçon 32, 121/121)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

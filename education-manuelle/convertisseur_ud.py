@@ -104,6 +104,31 @@ def extraire(conllu, nos):
     return arcs, racines
 
 
+def _fragment(gardes, racines, source, **extra):
+    """Gardes {(a,b): (rel, n)} -> fragment CISE (UN seul bâtisseur)."""
+    liens, motifs = [], {}
+    for (a, b) in sorted(gardes):
+        r, n = gardes[(a, b)]
+        liens.append({"a": a, "b": b, "force": min(100, 10 * n), "n": n, "rel": r})
+        motifs.setdefault(REL_MOTIF.get(r, MOTIF_DIVERS), set()).update((a, b))
+    mots = sorted({w for l in liens for w in (l["a"], l["b"])})
+    racines_ici = sorted(w for w in mots if w in racines)
+    if racines_ici:
+        motifs[MOTIF_RACINE] = set(racines_ici)
+    frag = {
+        "format": "fragment-cise-ud-v1",
+        "source": source,
+        "loi": "force = min(100, 10 x rencontres)",
+        "mots_touches": mots,
+        "neurones": mots,
+        "liens": liens,
+        "motifs": {k: sorted(v) for k, v in sorted(motifs.items())},
+        "stats": {"paires_gardees": len(liens)},
+    }
+    frag.update(extra)
+    return frag
+
+
 def convertir(arcs, racines, nos, topk):
     """Arcs -> fragment CISE (déterministe : trié partout)."""
     par_mot = {}
@@ -118,28 +143,12 @@ def convertir(arcs, racines, nos, topk):
             cle = (a, b)
             if cle not in gardes or gardes[cle][1] < n:
                 gardes[cle] = (r, n)
-    liens, motifs = [], {}
-    for (a, b) in sorted(gardes):
-        r, n = gardes[(a, b)]
-        force = min(100, 10 * n)  # LOI DE L'ÉCOLE
-        liens.append({"a": a, "b": b, "force": force, "n": n, "rel": r})
-        motifs.setdefault(REL_MOTIF.get(r, MOTIF_DIVERS), set()).update((a, b))
-    mots = sorted({w for l in liens for w in (l["a"], l["b"])})
-    racines_ici = sorted(w for w in mots if w in racines)
-    if racines_ici:
-        motifs[MOTIF_RACINE] = set(racines_ici)
-    return {
-        "format": "fragment-cise-ud-v1",
-        "source": "UD_French-GSD train (14 450 phrases, CC-BY-SA)",
-        "loi": "force = min(100, 10 x rencontres)",
-        "topk": topk,
-        "mots_touches": sorted(par_mot),
-        "neurones": mots,
-        "liens": liens,
-        "motifs": {k: sorted(v) for k, v in sorted(motifs.items())},
-        "stats": {"arcs_lus": sum(arcs.values()), "paires_uniques": len(arcs),
-                  "paires_gardees": len(liens), "mots_touches": len(par_mot)},
-    }
+    frag = _fragment(gardes, racines, "UD_French-GSD train (14 450 phrases, CC-BY-SA)",
+                     topk=topk)
+    frag["mots_touches"] = sorted(par_mot)
+    frag["stats"] = {"arcs_lus": sum(arcs.values()), "paires_uniques": len(arcs),
+                     "paires_gardees": len(frag["liens"]), "mots_touches": len(par_mot)}
+    return frag
 
 
 def neurone_pour(c, lemme):
@@ -192,26 +201,7 @@ def echantillonner(arcs, racines, graine, k):
         (a, b, r), n = items[i]
         if (a, b) not in gardes or gardes[(a, b)][1] < n:
             gardes[(a, b)] = (r, n)
-    liens, motifs = [], {}
-    for (a, b) in sorted(gardes):
-        r, n = gardes[(a, b)]
-        liens.append({"a": a, "b": b, "force": min(100, 10 * n), "n": n, "rel": r})
-        motifs.setdefault(REL_MOTIF.get(r, MOTIF_DIVERS), set()).update((a, b))
-    mots = sorted({w for l in liens for w in (l["a"], l["b"])})
-    racines_ici = sorted(w for w in mots if w in racines)
-    if racines_ici:
-        motifs[MOTIF_RACINE] = set(racines_ici)
-    return {
-        "format": "fragment-cise-ud-v1",
-        "source": "UD_French-GSD train (remix)",
-        "loi": "force = min(100, 10 x rencontres)",
-        "graine": graine,
-        "mots_touches": mots,
-        "neurones": mots,
-        "liens": liens,
-        "motifs": {k2: sorted(v) for k2, v in sorted(motifs.items())},
-        "stats": {"paires_gardees": len(liens)},
-    }
+    return _fragment(gardes, racines, "UD_French-GSD train (remix)", graine=graine)
 
 
 def remix(args):
@@ -242,6 +232,52 @@ def remix(args):
     return 0
 
 
+def lemme_de(neurone):
+    return neurone[5:] if neurone.startswith("word_") else neurone
+
+
+def tout_boire(args):
+    """JUSQU'AU FOND : vide le réservoir (brassé, par vagues) jusqu'à 0 restant.
+
+    Le cerveau EST le registre : sue = le lien existe (marbre respecté, on
+    ne réécrit pas). Terminaison garantie : la liste du reste est fixée
+    d'avance, chaque vague la vide. Boucles X->X : soudées comme le reste
+    (précédent : 198 déjà en marbre)."""
+    import contextlib
+    import io
+    import random
+    arcs, racines = extraire(args.conllu, None)
+    reserve = {}
+    for (a, b, r), n in arcs.items():
+        cle = tuple(sorted((a, b)))
+        if cle not in reserve or reserve[cle][1] < n:
+            reserve[cle] = (r, n)
+    c = Cerveau.relire(args.injecter)
+    sues = {tuple(sorted((lemme_de(a), lemme_de(b)))) for a, b in c.graph["liens"]}
+    sues &= set(reserve)
+    print(f"RÉSERVOIR — {len(reserve)} paires (déjà sues : {len(sues)})")
+    reste = sorted(set(reserve) - sues)
+    random.Random(args.graines).shuffle(reste)
+    vagues = [reste[i:i + args.paires] for i in range(0, len(reste), args.paires)]
+    for i, vague in enumerate(vagues):
+        gardes = {p: reserve[p] for p in vague}
+        frag = _fragment(gardes, racines, "UD_French-GSD train (fond du verre)",
+                         vague=i + 1)
+        stats = injecter(c, frag)
+        with contextlib.redirect_stdout(io.StringIO()):
+            res = c.figer()
+        restant = len(reste) - min((i + 1) * args.paires, len(reste))
+        print(f"vague {i + 1}/{len(vagues)} : +{stats['neurones']} neurones "
+              f"+{stats['liens']} liens | total {len(c.graph['neurones'])} neurones "
+              f"{len(c.graph['liens'])} liens, {len(res['figes'])} figés | "
+              f"reste {restant}", flush=True)
+    c.graver(args.sortie)
+    print(f"RÉSERVOIR VIDE — {len(c.graph['neurones'])} neurones, {len(c.graph['liens'])} "
+          f"liens, {len(c.motifs)} motifs, écoutes {c.ecoutes} (100 % bu ✅)")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
+
+
 def main(argv):
     ap = argparse.ArgumentParser()
     ap.add_argument("--conllu", required=True)
@@ -253,7 +289,13 @@ def main(argv):
                     help="remix : N tours sur TOUT le réservoir (0 = un seul fragment topk)")
     ap.add_argument("--graines", type=int, default=1000, help="graine de base des tours")
     ap.add_argument("--paires", type=int, default=500, help="paires brassées par tour")
+    ap.add_argument("--jusquau-fond", action="store_true",
+                    help="vide TOUT le réservoir par vagues (s'arrête à 0 restant)")
     args = ap.parse_args(argv)
+    if args.jusquau_fond:
+        assert args.tours == 0, "--tours et --jusquau-fond sont exclusifs"
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés"
+        return tout_boire(args)
     if args.tours > 0:
         assert args.injecter and args.sortie, "--injecter + --sortie exigés avec --tours"
         return remix(args)
