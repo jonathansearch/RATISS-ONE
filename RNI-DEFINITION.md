@@ -516,6 +516,21 @@ possible) : le relais, c'est le coureur qui passe le témoin à chaque tour
 > **Énoncé :** une sauvegarde à la fin, c'est un espoir ; une à chaque
 > lot, c'est une assurance — le témoin ne tombe jamais.
 
+### Leçon 28 🏠 — Le retour : 300M vérifiés à la maison
+*Le chef pousse `cerveau/cerveau.zip` (fortifié + relais + bilan + voix).
+Réveil au labo : 300 000 000 écoutes pile, sanctuaire « amis patrie pays »
+(x812847), relais = final (coupure : aucune), voix 9,5 s. Le dépôt relit
+le fortifié dans la batterie : le retour est pinné (117/117).*
+
+L'heure Colab est allée au bout : 300M exactement, tampon vide, forces
+relais = forces finales. Les millions de répétitions au sanctuaire
+(amis+peuple+enfants x2137904) montrent la consolidation, pas du par-coeur :
+le répété s'est gravé. Le cerveau du dépôt sait désormais réveiller le
+musclé — la boucle Colab → fichier → dépôt est fermée et testée.
+
+> **Énoncé :** un entraînement qui finit bien se prouve au réveil —
+> 300 millions d'écoutes, zéro perte, le sanctuaire a parlé.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -587,6 +602,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **programme puissance 300M** — battement fusionné x33 + binaire 3o + 3 époques, 30M validé 318 s (livré 7 oct. : leçon 25, 114/114)
 - [x] **cerveau fortifié (graver/relire)** — photo ~1 Ko, reprise exacte, notebook grave + télécharge (livré 7 oct. : leçon 26, 115/115)
 - [x] **relais Drive auto** — photo chaque lot sur Drive, fortifié daté + bilan + voix, `git pull` (livré 7 oct. : leçon 27, 116/116)
+- [x] **retour 300M vérifié** — zip du chef relu (300M pile, sanctuaire pinné), voix archivée (livré 7 oct. : leçon 28, 117/117)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

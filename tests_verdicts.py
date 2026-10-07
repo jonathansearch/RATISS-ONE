@@ -473,6 +473,29 @@ def main():
     else:
         print("ÉCHEC : le relais ne survit pas")
         echecs += 1
+    controles += 1
+    import zipfile as _zp
+    _ok_ret, _top_ret = False, ""
+    try:
+        with _zp.ZipFile("cerveau/cerveau.zip") as _z:
+            _noms = [n for n in _z.namelist() if n.startswith("fortifie-")]
+            if len(_noms) == 1:
+                _tmpf = _tf.mktemp(suffix=".json.gz")
+                with open(_tmpf, "wb") as _fh:
+                    _fh.write(_z.read(_noms[0]))
+                with _ctx.redirect_stdout(_io.StringIO()):
+                    _rf = _Cerveau.relire(_tmpf)
+                os.remove(_tmpf)
+                _tops = _rf.secteurs["SANCTUAIRE"].top(1)
+                _top_ret = "+".join(_tops[0].mots) if _tops else ""
+                _ok_ret = (_rf.ecoutes == 300000000 and _top_ret == "amis+patrie+pays")
+    except Exception:
+        _ok_ret = False
+    if _ok_ret:
+        print("OK : retour Colab (300M, sanctuaire amis+patrie+pays)")
+    else:
+        print(f"ÉCHEC : le cerveau revenu de Colab est mauvais ({_top_ret})")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

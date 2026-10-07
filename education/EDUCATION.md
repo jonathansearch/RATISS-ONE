@@ -161,3 +161,11 @@ CHEMIN (écrasé, ~1 Ko). Sur Colab gratuit (coupure possible), le relais
 vit sur le Drive : on ne perd jamais plus d'un lot, et `--relire` repart
 du dernier. Le notebook monte le Drive, fait `git pull` (maj du code),
 photographie chaque lot, puis copie le fortifié daté + bilan + voix.
+
+## 11. Le retour (7 oct., leçon 28)
+
+Le chef pousse `cerveau/cerveau.zip` : le labo réveille le fortifié
+(300M pile, sanctuaire « amis patrie pays ») et le relit dans la batterie
+(pinné : 300 000 000 + top sanctuaire). La voix du bilan est archivée
+(`preuves/bilan-300M.wav`, 9,5 s). Boucle fermée : Colab muscle, le
+fichier ramène, le dépôt réveille et vérifie.
