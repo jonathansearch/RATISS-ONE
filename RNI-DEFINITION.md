@@ -257,7 +257,9 @@ comme les paramètres d'un LLM) et les liens entre CISE deviennent des
 filaments gelés (ni loi, ni oubli, ni faucheuse ne les touche). Preuve j14 :
 4 rencontres chaudes (vitesse 9) = rien ; 11 battements (vitesse 16) = 2 CISE
 + 1 filament à 69 ; 20 nuits + faucheuse = 69 inchangé, TIENT. L'ultra-secteur
-(le marbre absolu) = l'ensemble des CISE du tissu, soudés en dur. Deux maisons
+(le marbre absolu) = l'ensemble des CISE du tissu, soudés en dur + 4e secteur
+Python (ULTRA-SECTEUR : tableau de bord des convictions, force 100, immortel).
+Explosion manuelle (outil labo) : l'auto émergente viendra à terme. Deux maisons
 tranchées (a) : école délie 0, vie (10,3). Tokenisation externe : plus tard.
 
 > **Énoncé :** le trop-plein ne déborde plus, il SE FIGE : vitesse ≥ 10 + il bat
@@ -316,9 +318,10 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **vocabulaire élargi (route B)** — 37 phrases, 6 → 50 mots par éducation, courbe 38→49→50, contrôles 0/50
       (livré 6 oct. : leçon 11, 93/93 contrôles verts)
 - [x] **cerveau v2 phases 1-2 (route C)** — cœur (10,3)+élastique+ombre, nuits faucheuses, 93/93 (livré 7 oct. : leçon 12)
-- [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
+- [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, ULTRA-SECTEUR Python, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
 - [ ] **cerveau v2 phases 3-6 (route C)** — marbre + rétroaction, buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
+- [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
 - [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas

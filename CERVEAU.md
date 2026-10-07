@@ -75,4 +75,7 @@ Python ↔ Ratum est devenu un miroir complet (forces, seuils adaptés,
 suppressions). Preuves : `cerveau/autotest.py` + `autotest_fr.py` dans
 la batterie (93/93), sanctuaire FR toujours à f92.
 
+*(v3, CISE : + ULTRA-SECTEUR — le crâne observe les étincelles du tissu et
+garde chaque conviction à 100, immortelle. Batterie 101/101.)*
+
 *« On ne croit pas. On rejoue. » — même quand on s'inspire du vivant.*

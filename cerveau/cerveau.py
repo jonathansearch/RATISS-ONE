@@ -128,7 +128,8 @@ class Cerveau:
             "geles": set(),   # v3 (CISE) : clés des filaments
         }
         self.chaines = set()  # liens nés des séquences (élaguables)
-        self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE")}
+        self.secteurs = {n: Secteur(n) for n in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR")}
+        self._cise_lus = 0  # v3 : étincelles déjà lues au journal du tissu
         self._reconstruire()
         # v2 : enfance longue (30 x TOUT) — l'ombre exige des ponts solides :
         # un lien à 90 porte l'écho à 45, deux ponts à 90 rallument un concept.
@@ -154,6 +155,7 @@ class Cerveau:
         """Régénère le tissu depuis le graphe (les charges, éphémères, repartent à zéro)."""
         self.itp = Interprete()
         self.itp.bavard = False  # le cerveau garde les verdicts, pas les rouages
+        self._cise_lus = 0  # journal neuf : tout relire depuis le début
         instr = self.itp.decoupage(self._source_tissu().splitlines())
         self.itp.executer(instr, 0, len(instr))
 
@@ -174,6 +176,10 @@ class Cerveau:
         for c in list(self.chaines):
             if c not in self.graph["liens"]:
                 self.chaines.discard(c)
+        # v3 (CISE) : le crâne observe — chaque étincelle dépose sa conviction.
+        for e in t.journal_cise[self._cise_lus:]:
+            self.secteurs["ULTRA-SECTEUR"].deposer(["cise", e["motif"]] + sorted(e["figes"]))
+        self._cise_lus = len(t.journal_cise)
 
     def _elaguer(self):
         morts = [c for c in self.chaines if self.graph["liens"].get(c, 0) <= 0]
@@ -217,14 +223,15 @@ class Cerveau:
         r_san = self.secteurs["SANCTUAIRE"].nuit(None)
         r_ref = self.secteurs["REFRAIN"].nuit(self.secteurs["SANCTUAIRE"])
         r_vif = self.secteurs["VIF"].nuit(self.secteurs["REFRAIN"])
-        return {"vif": r_vif, "refrain": r_ref, "sanctuaire": r_san, "elagues": elagues}
+        r_ult = self.secteurs["ULTRA-SECTEUR"].nuit(None)
+        return {"vif": r_vif, "refrain": r_ref, "sanctuaire": r_san, "ultra": r_ult, "elagues": elagues}
 
     def resonance(self, motif):
         return self.itp.resonance(motif)
 
     def rapport(self):
         lignes = []
-        for nom in ("VIF", "REFRAIN", "SANCTUAIRE"):
+        for nom in ("VIF", "REFRAIN", "SANCTUAIRE", "ULTRA-SECTEUR"):
             s = self.secteurs[nom]
             lignes.append(f"{nom} : {len(s.traces)} traces")
             for t in s.top(3):

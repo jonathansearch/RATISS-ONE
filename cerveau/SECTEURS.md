@@ -22,19 +22,27 @@ Trois mots, un ordre, une force. Rien d'autre. Relire la fiche section 2
 de `RNI-DEFINITION.md` : la mémoire long terme du RNI, c'est le chemin,
 pas la cargaison.
 
-## 2. Les trois secteurs (régimes mesurés, pas décrétés)
+## 2. Les quatre secteurs (régimes mesurés, pas décrétés)
 
 | Secteur | Entrée (force à l'arrivée) | + par rencontre | − par nuit | Meurt sous | Monte au-dessus de | Coups pour monter |
 |---|---|---|---|---|---|---|
 | **VIF** (l'instant) | 30 | 20 | 20 | 20 | 20 | 2 rencontres |
 | **REFRAIN** (le chant) | 40 | 15 | 8 | 8 | 50 | 4 rencontres |
 | **SANCTUAIRE** (le marbre) | 60 | 10 | 1 | — (jamais) | — (sommet) | — |
+| **ULTRA-SECTEUR** (le marbre absolu, v3) | 100 | 0 | 0 | — (jamais) | — (absolu) | — |
 
 Lire le tableau : une séquence entendue UNE fois arrive au VIF à 30 et meurt
 à la première nuit (30 − 20 = 10 < 20). Entendue DEUX fois (30 + 20 = 50),
 elle monte au REFRAIN. Le refrain pardonne (nuit douce : −8) mais exige
 (4 rencontres pour monter). Le sanctuaire n'oublie presque plus (−1 par
 nuit) et ne meurt jamais.
+
+L'ultra-secteur (v3, CISE) ne se remplit pas par répétition : il OBSERVE.
+Chaque étincelle du tissu (`cise`) y dépose sa conviction (`cise + motif +
+figés`, force 100, immortelle). C'est le tableau de bord du marbre : les
+convictions profondes, listables sans scanner le graphe — un jour, la bouche
+y lira l'identité de l'IA. L'ultra-secteur traverse la nuit intact (nuit 0 :
+le marbre absolu n'oublie pas).
 
 ## 3. La nuit (consolidation)
 

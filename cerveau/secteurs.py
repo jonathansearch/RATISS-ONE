@@ -20,6 +20,9 @@ REGIMES = {
     "VIF":        {"entree": 30, "pas": 20, "nuit": 20, "cap": 20,  "coups": 2,    "vers": "REFRAIN"},
     "REFRAIN":    {"entree": 40, "pas": 15, "nuit": 8,  "cap": 50,  "coups": 4,    "vers": "SANCTUAIRE"},
     "SANCTUAIRE": {"entree": 60, "pas": 10, "nuit": 1,  "cap": 200, "coups": None, "vers": None},
+    # v3 (CISE) : l'ultra-secteur OBSERVE (pas de répétition) — chaque étincelle
+    # du tissu y dépose sa conviction à 100, immortelle. Le tableau de bord du marbre.
+    "ULTRA-SECTEUR": {"entree": 100, "pas": 0, "nuit": 0, "cap": 500, "coups": None, "vers": None},
 }
 
 

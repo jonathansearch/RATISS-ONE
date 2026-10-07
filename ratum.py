@@ -40,6 +40,7 @@ class Tissu:
         self.neurones = {}   # nom -> {"seuil", "charge", "coups", "type"}
         self.liens = {}      # (a, b) trié -> force int
         self.geles = set()   # v3 (CISE) : clés des filaments (liens gelés)
+        self.journal_cise = []  # v3 : {motif, figes} par étincelle (le crâne y lit)
         self.motifs = {}     # nom -> [neurones]
 
 
@@ -352,6 +353,7 @@ class Interprete:
                 t.geles.add(cle)
                 fils += 1
         if figes:
+            t.journal_cise.append({"motif": mots[1], "figes": list(figes)})
             pl_n = "s" if len(figes) > 1 else ""
             pl_f = "s" if fils > 1 else ""
             print(f"étincelle : {' '.join(figes)} figé{pl_n}, {fils} filament{pl_f}")
@@ -443,6 +445,7 @@ class Interprete:
                          for n, v in t.neurones.items()},
             "liens": [{"a": a, "b": b, "force": f} for (a, b), f in t.liens.items()],
             "geles": [[a, b] for (a, b) in t.geles],
+            "journal_cise": t.journal_cise,
             "motifs": t.motifs,
         }
         with open(mots[1], "w", encoding="utf-8") as fh:
@@ -461,6 +464,7 @@ class Interprete:
                      for n, v in photo["neurones"].items()}
         t.liens = {self.cle_lien(l["a"], l["b"]): l["force"] for l in photo["liens"]}
         t.geles = {self.cle_lien(a, b) for a, b in photo.get("geles", [])}
+        t.journal_cise = photo.get("journal_cise", [])
         t.motifs = photo["motifs"]
         self.tissu = t
         print(f"tissu relu depuis {mots[1]}")

@@ -32,8 +32,20 @@ def main():
     # le tissu tient toujours, les chaînes vivent
     assert c.resonance("MAMERICANS") >= 60
     assert len(c.chaines) >= 1, "aucune chaîne mot-à-mot née"
+    # ULTRA-SECTEUR (v3) : le tissu fige, le crâne note la conviction.
+    c._exec("répéter 6\nrencontre MAMERICANS\npropager\nrenforcer\nrepos\nfin\n"
+            "rencontre MAMERICANS\npropager\nrenforcer\ncise MAMERICANS\nrepos\n")
+    c._sync()
+    ultra = c.secteurs["ULTRA-SECTEUR"].traces
+    cle = ("cise", "MAMERICANS", "land", "people", "together", "word_americans")
+    assert len(ultra) == 1 and cle in ultra and ultra[cle].force == 100, ultra
+    for _ in range(3):
+        c.nuit()
+    assert cle in ultra and ultra[cle].force == 100, "l'ultra-secteur a oublié !"
+    assert c.resonance("MAMERICANS") >= 60
     print(f"CERVEAU OK — sanctuaire : {len(c.secteurs['SANCTUAIRE'].traces)} trace(s), "
-          f"chaînes : {len(c.chaines)}, MAMERICANS={c.resonance('MAMERICANS')}")
+          f"ultra : {len(ultra)} conviction(s), chaînes : {len(c.chaines)}, "
+          f"MAMERICANS={c.resonance('MAMERICANS')}")
     return 0
 
 

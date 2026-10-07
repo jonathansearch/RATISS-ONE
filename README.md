@@ -272,7 +272,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **route A : français** — oreille faster-whisper + tissu + bouche FR (21/21, f92, 89/89 verts)
 - [x] **route B : vocabulaire** — 37 phrases → 50 mots par éducation, 3 calibrages prouvés (93/93 verts)
 - [x] **route C phases 1-2 : cœur v2** — (10,3) + élastique + ombre, nuits faucheuses
-- [x] **CISE (vision du chef)** — vitesse = battements + énergie, étincelle, neurones mémoire figés, (a) deux maisons
+- [x] **CISE (vision du chef)** — vitesse = battements + énergie, étincelle, neurones mémoire figés, ULTRA-SECTEUR, (a) deux maisons
 - [ ] **route C phases 3-6** — marbre + rétroaction, buffer + homéostasie, chaos, docs
 - [ ] **route D : v2 bas niveau** — interprète C, mêmes sorties au caractère près
 - [ ] **toujours** — chaque affirmation rejouable en une commande

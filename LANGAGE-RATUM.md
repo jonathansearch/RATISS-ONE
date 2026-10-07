@@ -242,7 +242,11 @@
   CISE deviennent des filaments gelés (marqués `!`). Ni la loi, ni l'oubli,
   ni la faucheuse, ni `adapter` ne touchent au gelé. L'ultra-secteur (le marbre
   absolu) = l'ensemble des CISE du tissu, soudés en dur sur l'orée des neurones.
-- **Usage :** `cise <motif>` (à chaud, avant `repos` !)
+- Le crâne observe : chaque étincelle dépose sa conviction (`cise + motif +
+  figés`) dans l'ULTRA-SECTEUR Python (force 100, immortelle) — le tableau
+  de bord du marbre.
+- **Usage :** `cise <motif>` (à chaud, avant `repos` ! manuel : l'explosion
+  auto émergente viendra à terme, décision du chef)
 - **Exemple :** `cise M` → `étincelle : a b figés, 1 filament`
 
 ---
