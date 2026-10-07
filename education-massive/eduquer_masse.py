@@ -32,12 +32,14 @@ def memoir_mo():
     return resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
 
 
-def entendre_lot(c, seqs, n, lot, t0):
+def entendre_lot(c, seqs, n, lot, t0, relais=None):
     for seq in seqs:
         c.entendre_sequence(seq)
         n += 1
         if n % lot == 0:
             c.nuit()
+            if relais:
+                c.graver(relais)  # le témoin : photo écrasée à chaque lot
             print(f"lot {n} : liens={len(c.graph['liens'])} "
                   f"neurones={len(c.graph['neurones'])} "
                   f"écoutes={c.ecoutes} RAM={memoir_mo():.0f} Mo "
@@ -65,6 +67,8 @@ def main(argv):
                     help="repart d'un cerveau gravé (reprise exacte, les écoutes continuent)")
     ap.add_argument("--graver", default=None,
                     help="grave le cerveau fortifié en fin d'éducation (.json ou .json.gz : nos poids)")
+    ap.add_argument("--relais", default=None,
+                    help="photo écrasée à chaque lot (si Colab meurt, le dernier lot survit)")
     args = ap.parse_args(argv)
     t0 = time.time()
     if args.relire:
@@ -83,16 +87,16 @@ def main(argv):
         if args.binaire:
             mots, _ = table()
             if args.ram:
-                n = entendre_lot(c, lire_ram(args.entree, mots), n, args.lot, t0)
+                n = entendre_lot(c, lire_ram(args.entree, mots), n, args.lot, t0, args.relais)
             else:
-                n = entendre_lot(c, lire_iter(args.entree, mots), n, args.lot, t0)
+                n = entendre_lot(c, lire_iter(args.entree, mots), n, args.lot, t0, args.relais)
         else:
             with open(args.entree, encoding="utf-8") as fh:
-                n = entendre_lot(c, (json.loads(l)["mots"] for l in fh), n, args.lot, t0)
+                n = entendre_lot(c, (json.loads(l)["mots"] for l in fh), n, args.lot, t0, args.relais)
         if args.complement:
             print(f"=== COMPLÉMENT : {args.complement} fraîches (seed 8) ===")
             n = entendre_lot(c, (s["mots"] for s in iterer(args.complement, seed=8)),
-                             n, args.lot, t0)
+                             n, args.lot, t0, args.relais)
     print("=== BILAN ===")
     phrase = formuler(lire_etat(c))
     print(f"dit : {phrase}")

@@ -406,7 +406,9 @@ def main():
                     and "100000000" in src_lourd
                     and "11c17ba5948c4e6f5a486dad2014782bb9f6d70dfff714dd2c3d90d4738080ad" in src_lourd
                     and "--rapide --binaire --ram" in src_lourd
-                    and "cerveau-fortifie.json.gz" in src_lourd)
+                    and "cerveau-fortifie.json.gz" in src_lourd
+                    and "drive.mount" in src_lourd
+                    and "--relais" in src_lourd)
     except (OSError, ValueError):
         ok_lourd = False
     if ok_lourd:
@@ -446,6 +448,30 @@ def main():
         print("OK : graver/relire exact (1k seed 7, reprise parfaite)")
     else:
         print("ÉCHEC : le cerveau relu diffère")
+        echecs += 1
+    controles += 1
+    _bin = _tf.mktemp(suffix=".bin")
+    _rel = _tf.mktemp(suffix=".json.gz")
+    subprocess.run([sys.executable, "education-massive/binaire_masse.py",
+                    "--n", "2000", "--seed", "7", "--sortie", _bin],
+                   capture_output=True, text=True, check=True)
+    _p = subprocess.run(
+        [sys.executable, "education-massive/eduquer_masse.py",
+         "--entree", _bin, "--lot", "1000", "--rapide", "--binaire",
+         "--relais", _rel],
+        capture_output=True, text=True, encoding="utf-8")
+    _ok_rel = False
+    if _p.returncode == 0 and os.path.exists(_rel):
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _rr = _Cerveau.relire(_rel)
+        _ok_rel = (_rr.ecoutes == 2000 and len(_rr.graph["liens"]) > 0)
+    os.remove(_bin)
+    if os.path.exists(_rel):
+        os.remove(_rel)
+    if _ok_rel:
+        print("OK : relais bout-en-bout (photo chaque lot, 2k relues)")
+    else:
+        print("ÉCHEC : le relais ne survit pas")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

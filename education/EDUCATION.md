@@ -153,3 +153,11 @@ dehors — doctrine) ; `Cerveau.relire(chemin)` réveille à l'identique
 (des relations, pas des gigas de sable). L'éducateur grave en fin de run
 (`--graver`) et reprend (`--relire`, les écoutes continuent) ; le notebook
 télécharge le fortifié (1 clic) ou le pousse sur Drive.
+
+## 10. Le relais (7 oct., leçon 27)
+
+`--relais CHEMIN` : à chaque lot (chaque nuit), le cerveau est gravé à
+CHEMIN (écrasé, ~1 Ko). Sur Colab gratuit (coupure possible), le relais
+vit sur le Drive : on ne perd jamais plus d'un lot, et `--relire` repart
+du dernier. Le notebook monte le Drive, fait `git pull` (maj du code),
+photographie chaque lot, puis copie le fortifié daté + bilan + voix.

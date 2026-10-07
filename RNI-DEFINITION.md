@@ -501,6 +501,21 @@ le dépôt réveille.
 > **Énoncé :** la donnée s'oublie, les muscles voyagent — 917 octets
 > valent mieux qu'un cerveau mort sur Colab.
 
+### Leçon 27 🏃 — Le relais : sauvegarde auto, zéro main
+*Le chef lance l'heure : « pas de récupération à la main ». Le notebook
+monte le Drive (1 clic), photographie le cerveau à chaque lot sur le Drive
+(`--relais`, écrasé, ~1 Ko), grave le fortifié daté + bilan + voix à la
+fin. Si Colab coupe : `--relire relais.json.gz`, ça repart du dernier lot.*
+
+La sauvegarde de fin ne suffit pas pour 1h de gratuit (coupure toujours
+possible) : le relais, c'est le coureur qui passe le témoin à chaque tour
+— on ne perd jamais plus d'un lot (10M ≈ 1,7 min). Le notebook fait aussi
+`git pull` (le chef avait l'ancienne version clonée). Prouvé bout-en-bout
+(2k, photo chaque lot, relecture 2000/2000 — 116/116).
+
+> **Énoncé :** une sauvegarde à la fin, c'est un espoir ; une à chaque
+> lot, c'est une assurance — le témoin ne tombe jamais.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -571,6 +586,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **programme 1h Colab** — fichier 5M (sha pinné) + 5M fraîches, 1M validé 327 s, GPU déclaré inutile (livré 7 oct. : leçon 24, 113/113)
 - [x] **programme puissance 300M** — battement fusionné x33 + binaire 3o + 3 époques, 30M validé 318 s (livré 7 oct. : leçon 25, 114/114)
 - [x] **cerveau fortifié (graver/relire)** — photo ~1 Ko, reprise exacte, notebook grave + télécharge (livré 7 oct. : leçon 26, 115/115)
+- [x] **relais Drive auto** — photo chaque lot sur Drive, fortifié daté + bilan + voix, `git pull` (livré 7 oct. : leçon 27, 116/116)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
