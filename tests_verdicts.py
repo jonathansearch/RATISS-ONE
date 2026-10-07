@@ -496,6 +496,34 @@ def main():
     else:
         print(f"ÉCHEC : le cerveau revenu de Colab est mauvais ({_top_ret})")
         echecs += 1
+    controles += 1
+    _ok_fig = False
+    try:
+        with _zp.ZipFile("cerveau/cerveau.zip") as _z:
+            _noms = [n for n in _z.namelist() if n.startswith("fortifie-")]
+            _tmpf = _tf.mktemp(suffix=".json.gz")
+            with open(_tmpf, "wb") as _fh:
+                _fh.write(_z.read(_noms[0]))
+            with _ctx.redirect_stdout(_io.StringIO()):
+                _fc = _Cerveau.relire(_tmpf)
+                _res = _fc.figer()
+                _tmpg = _tf.mktemp(suffix=".json.gz")
+                _fc.graver(_tmpg)
+                _fr = _Cerveau.relire(_tmpg)
+            os.remove(_tmpf)
+            os.remove(_tmpg)
+            _ok_fig = (len(_res["figes"]) == 13 and _res["filaments"] == 40
+                       and _res["forces_intactes"]
+                       and len(_fc.secteurs["ULTRA-SECTEUR"].top(10)) == 6
+                       and set(_fr.graph["types"]) == set(_fc.graph["types"])
+                       and set(_fr.graph["geles"]) == set(_fc.graph["geles"]))
+    except Exception:
+        _ok_fig = False
+    if _ok_fig:
+        print("OK : figement CISE (13 nerfs, 40 filaments, marbre reverrouillé)")
+    else:
+        print("ÉCHEC : le figement CISE est mauvais")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

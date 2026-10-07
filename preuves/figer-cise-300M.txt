@@ -1,0 +1,17 @@
+FIGEMENT CISE DU 300M — l'éclair manuel (7 oct. 2026)
+réveillé : 300000000 écoutes, 40 liens
+étincelle : word_amis monde ensemble voix figés, 7 filaments
+étincelle : word_peuple terre figés, 7 filaments
+étincelle : word_pays destin figés, 9 filaments
+étincelle : word_patrie figé, 7 filaments
+étincelle : word_unir devoir figés, 10 filaments
+étincelle : word_avenir lointain figés, 0 filament
+étincelle : rien d'assez rapide
+FIGÉS : 13 neurones -> destin, devoir, ensemble, lointain, monde, terre, voix, word_amis, word_avenir, word_patrie, word_pays, word_peuple, word_unir
+FILAMENTS : 40 liens gelés
+forces entraînées intactes : True
+convictions ULTRA-SECTEUR : 6
+cerveau figé gravé : cerveau/fige-300M.json.gz (1444 octets)
+après 20 nuits : 40 filaments, types intacts : True
+forces des filaments inchangées : True
+FIGEMENT EXACT ✅ — les nerfs sont dans le marbre

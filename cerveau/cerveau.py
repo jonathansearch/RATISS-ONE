@@ -333,6 +333,28 @@ class Cerveau:
                     n += 1
         return n
 
+    def figer(self, motifs=None):
+        """L'ÉCLAIR MANUEL (décision du chef, 7 oct.) : bombarde chaque motif
+        (11 rencontres à chaud, vitesse 16 — leçon 13) puis `cise` : les
+        neurones qui battent se figent en CISE, les liens entre figés
+        deviennent des filaments (gelés : la loi ne les touche plus, les
+        nuits non plus). Les forces entraînées ne bougent PAS (ni propager
+        ni renforcer sur ce chemin — prouvé par assert). Idempotent :
+        re-figer un figé ne fait rien. Retourne le résumé."""
+        if motifs is None:
+            motifs = list(self.motifs)
+        forces_avant = dict(self.graph["liens"])
+        src = ""
+        for m in motifs:
+            src += f"rencontre {m}\n" * 11
+            src += f"cise {m}\n"
+        self._exec(src)  # reconstruit si sale, bombarde, fait exploser
+        self._sync()  # remonte types/gelés + convictions ULTRA-SECTEUR
+        assert dict(self.graph["liens"]) == forces_avant, "le figement a bougé les forces !"
+        return {"figes": sorted(self.graph["types"]),
+                "filaments": len(self.graph["geles"]),
+                "forces_intactes": True}
+
     def nuit(self):
         """La nuit : le tampon se vide (dans l'ordre), on rêve de ce qu'on a
         compris, puis le tissu oublie, la faucheuse élague, les secteurs consolident."""

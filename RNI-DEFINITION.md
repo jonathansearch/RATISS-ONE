@@ -531,6 +531,22 @@ musclé — la boucle Colab → fichier → dépôt est fermée et testée.
 > **Énoncé :** un entraînement qui finit bien se prouve au réveil —
 > 300 millions d'écoutes, zéro perte, le sanctuaire a parlé.
 
+### Leçon 29 ⚡ — L'éclair manuel : les nerfs dans le marbre
+*Ordre du chef : figer le 300M en CISE. `Cerveau.figer()` : 11 rencontres
+à chaud par motif (vitesse 16, leçon 13) puis `cise` — 13 neurones figés,
+40 filaments, forces entraînées intactes (assert), 6 convictions à
+l'ULTRA-SECTEUR. Épreuve : 20 nuits, le gelé ne bouge pas d'un poil
+(promesse j14 tenue). Pinné : 13/40/6 (118/118).*
+
+Le CISE, c'est la vitesse qui devient de la mémoire : bombardé assez fort
+alors qu'il bat, le transporteur se fige — son seuil ne s'adaptera plus,
+ses filaments braveront les nuits et la faucheuse. Toute la tête du 300M
+est désormais en marbre : `cerveau/fige-300M.json.gz` (1 444 octets), et
+le figé se grave/relit sans perdre un nerf (marbre reverrouillé).
+
+> **Énoncé :** ce qui a battu 300 millions de fois mérite le marbre —
+> 13 nerfs figés, 40 filaments, 20 nuits sans une ride.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -603,6 +619,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **cerveau fortifié (graver/relire)** — photo ~1 Ko, reprise exacte, notebook grave + télécharge (livré 7 oct. : leçon 26, 115/115)
 - [x] **relais Drive auto** — photo chaque lot sur Drive, fortifié daté + bilan + voix, `git pull` (livré 7 oct. : leçon 27, 116/116)
 - [x] **retour 300M vérifié** — zip du chef relu (300M pile, sanctuaire pinné), voix archivée (livré 7 oct. : leçon 28, 117/117)
+- [x] **figement CISE du 300M** — 13 nerfs + 40 filaments, 20 nuits intactes, marbre gravé (livré 7 oct. : leçon 29, 118/118)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
