@@ -1,0 +1,22 @@
+=== DIRECT SIMULÉ : porte-voix/audio/jfk.wav par tranches de 2 s ===
+6 tranches
+tranches exportées -> porte-voix/tranches-jfk.json
+t+   0s : « and so my fellow americans »
+tissu   : I heard 3 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+t+   2s : « ask »
+tissu   : I heard 4 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+t+   4s : « not what your custom »
+tissu   : I heard 8 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+t+   6s : « country can do for you »
+tissu   : I heard 13 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+t+   8s : « ask what you can do for your »
+tissu   : I heard 20 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+t+  10s : « country »
+tissu   : I heard 21 sequences. I hold americans, country, fellow and ask. The rest stays outside.
+=== 4 NUITS (le rêve consolide, motif chaos) ===
+nettoyage : 5 liens morts, 0 neurones morts
+nettoyage : 0 liens morts, 0 neurones morts
+nettoyage : 0 liens morts, 0 neurones morts
+nettoyage : 1 liens morts, 0 neurones morts
+dit : I heard 21 sequences. In the sanctuary: americans ask not. I hold americans, country, fellow and ask. The rest stays outside.
+DIRECT OK — 23 mots cousus

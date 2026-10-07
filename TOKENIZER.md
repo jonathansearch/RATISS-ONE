@@ -58,7 +58,7 @@ python3 donnees/generer.py --verifier   # 20/20 reproduites
 - [x] **R5 comptes** — « J'ai entendu N séquences » (compteur `ecoutes`, dehors seul, 7 oct.)
 - [x] **⑩ motifs fixes** — noyau gelé 5 EN + 5 FR (choix du labo, `MOTIFS_FIXES`, sha pinné batterie)
 - [x] **wav FR** — voix siwis restaurée, `bouche/cerveau-fr.wav` 6.8 s régénéré par le pipeline (7 oct.)
-- [ ] **entrée Phonon** — brancher l'oreille live sur les règles (chaos phase 5)
+- [x] **entrée Phonon** — direct branché : tranches 2 s → Cerveau → règles, élue retrouvée (7 oct.)
 
 ## 7. Les ⑩ motifs fixes (les étiquettes, gelées 7 oct. 2026)
 
@@ -75,3 +75,15 @@ et `avenir` restent dans `MOTS` comme mots d'école libres : ils
 grandissent, ils ne sont pas gelés. Pinné : `MOTIFS_FIXES`
 (`cerveau/cerveau.py`), sha `3165ae68528bc9d4` vérifié par la batterie
 (contrôle 109) — qui touche une étiquette fait échouer le vert.
+
+## 8. L'oreille en direct (branchée 7 oct. 2026)
+
+`porte-voix/direct.py --simuler` rejoue JFK par tranches de 2 s : chaque
+tranche est transcrite (Phonon `--json`), cousue en fenêtres de 3 mots
+(mémoire de 2 mots aux frontières), entendue par le Cerveau, dite par les
+règles — des sous-titres qui comprennent. Mesuré : 6 tranches, 23 mots
+cousus (une bavure « custom » à une frontière — le tissu tient quand
+même), comptes 3→4→8→13→20→21, puis 4 nuits : l'élue du chaos
+« americans ask not » est RETROUVÉE en direct. `--micro N` écoute N
+secondes au micro (échec propre sans périphérique). Rejoué sans Phonon
+par la batterie (contrôle 110, `tranches-jfk.json` pinnées).

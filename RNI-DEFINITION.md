@@ -405,6 +405,22 @@ sha pinné en batterie — au-delà, les mots d'école grandissent librement.
 > **Énoncé :** une bouche honnête compte ses écoutes avant de parler —
 > et un vocabulaire sain a un noyau gelé et une banlieue qui grandit.
 
+### Leçon 21 🎧 — Les sous-titres qui comprennent : l'oreille en direct
+*Direct : `porte-voix/direct.py` (tranches 2 s, Phonon `--json`,
+fenêtres chevauchantes, 4 nuits) + `--micro` — preuves :
+`preuves/sortie-oreille-direct.txt`, `porte-voix/tranches-jfk.json`,
+110/110.*
+
+JFK rejoué tranche par tranche : le tissu dit ce qu'il tient AU FUR ET À
+MESURE (3→4→8→13→20→21 séquences), survit à une bavure de frontière
+(« custom » au lieu de « country » — le seuil 60 ne bronche pas), puis le
+rêve fait son oeuvre en 4 nuits : l'élue du chaos « americans ask not »
+est retrouvée EN DIRECT, sans focus, sans filet. Déterministe au md5 près
+sur 3 passes. Le téléphone est décroché : `--micro N` écoute vraiment.
+
+> **Énoncé :** comprendre en direct, c'est tenir pendant qu'on écoute —
+> le tissu parle à t+2 s et l'élue arrive quand même à l'aube.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -469,6 +485,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **second berceau C (route D)** — 24/24 sorties identiques + scroll identique, zéro warning (livré 7 oct. : leçon 18, 107/107)
 - [x] **pont FOCAL** — tissu → 2048 bits → P_sig : sanctuaire 6,2301 < chaos 6,3970, porteurs ×31,6 (livré 7 oct. : leçon 19, 108/108)
 - [x] **R5 + ⑩ étiquettes** — « J'ai entendu N » (JFK 35, FR 30, tempête 82), noyau 5+5 gelé sha pinné (livré 7 oct. : leçon 20, 109/109)
+- [x] **oreille en direct** — tranches 2 s → règles, élue « americans ask not » retrouvée, `--micro` (livré 7 oct. : leçon 21, 110/110)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

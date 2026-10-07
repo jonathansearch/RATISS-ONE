@@ -1,0 +1,55 @@
+[
+ {
+  "t0": 0.0,
+  "mots": [
+   "and",
+   "so",
+   "my",
+   "fellow",
+   "americans"
+  ]
+ },
+ {
+  "t0": 2.0,
+  "mots": [
+   "ask"
+  ]
+ },
+ {
+  "t0": 4.0,
+  "mots": [
+   "not",
+   "what",
+   "your",
+   "custom"
+  ]
+ },
+ {
+  "t0": 6.0,
+  "mots": [
+   "country",
+   "can",
+   "do",
+   "for",
+   "you"
+  ]
+ },
+ {
+  "t0": 8.0,
+  "mots": [
+   "ask",
+   "what",
+   "you",
+   "can",
+   "do",
+   "for",
+   "your"
+  ]
+ },
+ {
+  "t0": 10.0,
+  "mots": [
+   "country"
+  ]
+ }
+]

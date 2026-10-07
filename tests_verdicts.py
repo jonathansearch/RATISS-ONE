@@ -328,6 +328,30 @@ def main():
     else:
         print("ÉCHEC : le noyau des motifs a bougé")
         echecs += 1
+    controles += 1
+    sys.path.insert(0, "porte-voix")
+    from direct import ecouter  # noqa: E402 — rejouable sans phonon
+    tranches = json.load(open("porte-voix/tranches-jfk.json", encoding="utf-8"))
+    finale_directe, lignes_directes = ecouter(
+        [(t["t0"], t["mots"]) for t in tranches], silencieux=True)
+    try:
+        with open("preuves/sortie-oreille-direct.txt", encoding="utf-8") as fh:
+            preuve_direct = fh.read()
+    except OSError:
+        preuve_direct = ""
+    comptes_direct = [3, 4, 8, 13, 20, 21]
+    if (len(lignes_directes) == 6
+            and all(p.startswith(f"I heard {n} sequences.")
+                    for (_, _, p), n in zip(lignes_directes, comptes_direct))
+            and finale_directe == ("I heard 21 sequences. In the sanctuary: "
+                                    "americans ask not. I hold americans, country, "
+                                    "fellow and ask. The rest stays outside.")
+            and "DIRECT OK" in preuve_direct
+            and finale_directe in preuve_direct):
+        print("OK : oreille en direct (6 tranches rejouées + élue retrouvée)")
+    else:
+        print("ÉCHEC : le direct ne se rejoue pas (régénérer la preuve ?)")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],
