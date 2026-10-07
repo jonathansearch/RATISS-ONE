@@ -1,3 +1,6 @@
-*.scroll
+# Binaire construit (route D) — se régénère : gcc -O2 -o route-d/ratum-c route-d/ratum.c
+route-d/ratum-c
+# Photos éphémères + caches Python (jamais versionnés)
+jouets/mem.scroll
 __pycache__/
-bouche/voix/*.onnx
+*.pyc

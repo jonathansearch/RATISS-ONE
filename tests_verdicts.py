@@ -277,6 +277,16 @@ def main():
     else:
         print("ÉCHEC : le livre ne se construit pas")
         echecs += 1
+    controles += 1
+    proc_conf = subprocess.run(
+        [sys.executable, "route-d/conformite.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_conf.returncode == 0 and "CONFORMITE OK" in proc_conf.stdout:
+        print("OK : conformité C (24/24 sorties identiques + scroll)")
+    else:
+        print("ÉCHEC : le second berceau diverge du premier")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

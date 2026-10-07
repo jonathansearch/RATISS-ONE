@@ -355,6 +355,23 @@ sont devenus une loi émergente. Batterie intacte : 104/104 avant comme après.
 > rejoue chaque nuit ce que le tissu tient (≥ 2 mots connus), et ce seul
 > filtre fait émerger le sanctuaire du chaos en 4 nuits.
 
+### Leçon 18 🔬 — Le second berceau : une spec saine a deux voix
+*Route D : `route-d/ratum.c` (~1000 lignes, libc seule) + `route-d/conformite.py` —
+preuves : `preuves/sortie-conformite.txt`, 107/107.*
+
+Portage fidèle de l'interprète en C : loi (10,3), élasticité, ombre //200,
+`borne` à chaque pas dans l'ordre d'insertion, tris partout, pluriels, JSON
+`indent=1` de `graver` répliqué à l'octet. Mesuré : **24/24 sorties identiques
+au caractère près** (codes de sortie inclus) + scroll `mem.scroll` identique —
+compilation `-O2 -Wall -Wextra` zéro warning, du premier coup. Cinq
+divergences hors corpus documentées (`route-d/LISEZ-MOI.md`), jamais
+déclenchées par les 24 programmes. Le langage a son conformance test : deux
+berceaux indépendants, une seule voix.
+
+> **Énoncé :** une spécification est saine quand deux implémentations
+> indépendantes sortent les mêmes octets — le C prouve le Python, et le
+> Python prouve le C.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -416,7 +433,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)
 - [ ] **lourd sur Colab** — réservé : quand on voudra du protocole qui dépasse ce bac à sable
-- [ ] **v2 bas niveau (route D)** — implémentation C de l'interprète, mêmes sorties au caractère près (choix du chef, 6 oct.)
+- [x] **second berceau C (route D)** — 24/24 sorties identiques + scroll identique, zéro warning (livré 7 oct. : leçon 18, 107/107)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---
