@@ -15,21 +15,13 @@ import time
 sys.path.insert(0, "porte-voix")
 from oreille_fr import transcrire_mots
 from cerveau.cerveau import Cerveau, MOTS_FR
+from bouche.regles import formuler, lire_etat, parler as dire
 
 VOIX_FR = "bouche/voix/fr_FR-siwis-medium.onnx"
 
 
 def fenetres(timed, n=3):
     return [tuple(w for w, _ in timed[i:i + n]) for i in range(len(timed) - n + 1)]
-
-
-def parler(phrase):
-    proc = subprocess.run(
-        [sys.executable, "-m", "piper", "--model", VOIX_FR,
-         "--output_file", "bouche/cerveau-fr.wav"],
-        input=phrase, capture_output=True, text=True, encoding="utf-8",
-    )
-    return proc.returncode == 0
 
 
 def main():
@@ -68,16 +60,10 @@ def main():
 
     print("=== 5. RAPPORT ===")
     print(c.rapport())
-    nr = len(c.secteurs["REFRAIN"].traces)
-    san = c.secteurs["SANCTUAIRE"].traces
-    top = " ".join(c.secteurs["SANCTUAIRE"].top(1)[0].mots) if san else "rien"
-    s1 = "" if len(wins) == 1 else "s"
-    dort = "dort" if nr <= 1 else "dorment"  # zéro est singulier
-    atteint = "a atteint" if len(san) <= 1 else "ont atteint"
-    phrase = (f"J'ai entendu {len(wins)} séquence{s1}. {nr} {dort} au refrain. "
-              f"{len(san)} {atteint} le sanctuaire : {top}.")
+    phrase = formuler(lire_etat(c))  # règle unique v1 (bouche/regles.py)
     print(f"dit : {phrase}")
-    print("bouche/cerveau-fr.wav écrit" if parler(phrase) else "ÉCHEC bouche")
+    print("bouche/cerveau-fr.wav écrit"
+          if dire(phrase, VOIX_FR, "bouche/cerveau-fr.wav") else "ÉCHEC bouche")
     print(f"=== boucle totale : {time.time() - t0:.1f} s ===")
     return 0
 

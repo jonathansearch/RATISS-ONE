@@ -18,6 +18,7 @@ import time
 
 sys.path.insert(0, "porte-voix")
 from oreille import transcrire
+from bouche.regles import formuler_tissu, parler as parler_regle
 
 # Vocabulaire anglais du tissu : mot entendu -> (motif, membres)
 VOCAB = {
@@ -71,7 +72,7 @@ def construire(transcription):
         L.append(f"  motif {motif} : " + " ".join(mb))
     L.append("  motif TOUT : " + " ".join(TOUT))
     L.append("")
-    L.append("  répéter 9")
+    L.append("  répéter 15")  # v2 : le monde, pas la règle
     L.append("    rencontre TOUT")
     L.append("    propager")
     L.append("    renforcer")
@@ -101,12 +102,7 @@ def construire(transcription):
     return "\n".join(L)
 
 
-def parler(phrase, voix, sortie):
-    proc = subprocess.run(
-        [sys.executable, "-m", "piper", "--model", voix, "--output_file", sortie],
-        input=phrase, capture_output=True, text=True, encoding="utf-8",
-    )
-    return proc.returncode == 0
+parler = parler_regle  # la bouche unique vit dans bouche/regles.py
 
 
 def main():
@@ -131,14 +127,7 @@ def main():
         if ligne.startswith("holds ") and "does not" not in ligne:
             tenus.append(ligne[6:])
     print("=== 3. BOUCHE ===")
-    if tenus:
-        uniques = list(dict.fromkeys(tenus))
-        if len(uniques) > 1:
-            phrase = "I hold " + ", ".join(uniques[:-1]) + " and " + uniques[-1] + ". The rest stays outside."
-        else:
-            phrase = f"I hold {uniques[0]}. The rest stays outside."
-    else:
-        phrase = "I hold nothing. Everything stays outside."
+    phrase = formuler_tissu(list(dict.fromkeys(tenus)), "EN")  # règle unique v1
     print(f"dit : {phrase}")
     ok = parler(phrase, "bouche/voix/en_US-lessac-medium.onnx", "bouche/verdicts.wav")
     print("bouche/verdicts.wav écrit" if ok else "ÉCHEC bouche")

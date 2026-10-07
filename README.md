@@ -26,7 +26,7 @@
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à trois secteurs, et ne redit que ce
 > qu'il tient — par une vraie bouche (Piper). 23 programmes, 93 contrôles
-> verts, 13 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
+> verts, 14 leçons mesurées, zéro donnée stockée. Chaque affirmation ci-dessous
 > se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -88,7 +88,7 @@ prouvée par des programmes qui tournent.
 | 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire **f92**, résumé parlé 6 s (leçon 9) |
 | 🇫🇷 `francais.ratum` + `cerveau-demo-fr.py` | route A : tissu + cerveau + bouche FRANÇAIS | 21/21 mot pour mot, sanctuaire **f92**, boucle 8.5 s (leçon 10) |
 | 📚 `education/` (route B) | 37 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
-| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **101/101 contrôles verts** |
+| ⚙️ `ratum.py` | interprète de référence | 24/24 programmes, **102/102 contrôles verts** |
 | 📜 `LANGAGE-RATUM.md` | spec du langage | 18 relations, chacune expliquée |
 
 ---
@@ -214,18 +214,18 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `parole.py`, `bouche/` | la bouche : Piper + verdicts parlés | `bouche/verdicts.wav`, `cerveau.wav` |
 | `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : graphe + secteurs + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
 | `education/` | l'école : corpus 37 phrases + éducateur → 50 mots | `vocabulaire50.ratum`, `images/constellation.png` |
-| `RNI-DEFINITION.md` | la fiche scientifique : définition + 13 leçons + roadmap | — |
+| `RNI-DEFINITION.md` | la fiche scientifique : définition + 14 leçons + roadmap | — |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `outils/figures.py` | régénère les figures du README depuis les mesures | `images/*.png` |
-| `tests_verdicts.py` | la batterie : 101 contrôles | `101/101 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 102 contrôles | `102/102 CONTRÔLES VERTS` |
 | `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **101/101 contrôles verts**, 24 programmes, 13 leçons (v0.1 → CISE)
+- **102/102 contrôles verts**, 24 programmes, 14 leçons (v0.1 → tokenizer v1)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -238,7 +238,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📖 Ordre de lecture
 
-1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 13 leçons)
+1. Ce README (la carte) → 2. `RNI-DEFINITION.md` (la fiche : définition + 14 leçons)
 2. `LANGAGE-RATUM.md` (les 18 relations) → 4. `jouets/` (10 histoires d'éducation)
 3. `CERVEAU.md` (la carte cerveau → organes) → 6. `cerveau/SECTEURS.md` (la doctrine)
 4. `preuves/` (le carnet du labo : chaque sortie rejouable en une commande)
@@ -273,6 +273,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **route B : vocabulaire** — 37 phrases → 50 mots par éducation, 3 calibrages prouvés (93/93 verts)
 - [x] **route C phases 1-2 : cœur v2** — (10,3) + élastique + ombre, nuits faucheuses
 - [x] **CISE (vision du chef)** — vitesse = battements + énergie, étincelle, neurones mémoire figés, ULTRA-SECTEUR, (a) deux maisons
+- [x] **tokenizer v1** — 4 règles sortie FR/EN, bouche testée, robinet à données, notebook Colab
 - [ ] **route C phases 3-6** — marbre + rétroaction, buffer + homéostasie, chaos, docs
 - [ ] **route D : v2 bas niveau** — interprète C, mêmes sorties au caractère près
 - [ ] **toujours** — chaque affirmation rejouable en une commande
@@ -286,7 +287,7 @@ Feuille détaillée : `RNI-DEFINITION.md` §7.
 ```
 RATISS-ONE/
 ├── README.md                  # vous êtes ici
-├── RNI-DEFINITION.md          # fiche scientifique + 13 leçons + roadmap
+├── RNI-DEFINITION.md          # fiche scientifique + 14 leçons + roadmap
 ├── LANGAGE-RATUM.md           # spec Ratum : 18 relations
 ├── CERVEAU.md                 # carte cerveau → organes
 ├── MANIFESTE.json             # SHA-256 de chaque fichier

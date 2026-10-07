@@ -268,6 +268,26 @@ tranchées (a) : école délie 0, vie (10,3). Tokenisation externe : plus tard.
 
 ---
 
+### Leçon 14 🗣️ — Le tokenizer : la pensée devient phrase
+*Vision du chef (7 oct.) + `bouche/regles.py` (4 règles) + `donnees/generer.py` —
+preuves : `bouche/autotest_bouche.py` (BOUCHE OK), batterie 102/102, `TOKENIZER.md`.*
+
+Le chaînon manquant : une règle tiny lit l'état (convictions ultra +
+sanctuaire + mots tenus) et le traduit en phrase FR/EN que Piper parle.
+Quatre règles ordonnées (ULTRA, SANCT, TISSU, VIDE), zéro singulier,
+déterministes : 5 phrases exactes pinnées (EN×3, FR×2). Le vrai problème —
+la DONNÉE — est résolu par construction : le tissu déterministe fabrique
+lui-même ses paires (20 paires, 20/20 vérifiées) ; le générateur est versionné,
+la masse vivra sur Colab. Entraîner, chez nous, = éduquer (relations, pas de
+poids en Go) + vérifier (100 % reproduction). Les démos (parole, cerveau-fr)
+parlent maintenant par la règle unique.
+
+> **Énoncé :** la sortie est une traduction, pas une génération : état → phrase
+> par 4 règles pinnées — et la donnée d'entraînement est un robinet (tissu
+> déterministe), pas un désert.
+
+---
+
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
 
 Phonon-2 (Fermion Research, sept. 2026) : modèle OUVERT de reconnaissance vocale,
@@ -319,6 +339,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
       (livré 6 oct. : leçon 11, 93/93 contrôles verts)
 - [x] **cerveau v2 phases 1-2 (route C)** — cœur (10,3)+élastique+ombre, nuits faucheuses, 93/93 (livré 7 oct. : leçon 12)
 - [x] **CISE (vision du chef)** — 20e relation, 2 types de neurones, ULTRA-SECTEUR Python, (a) deux maisons (livré 7 oct. : leçon 13, 101/101)
+- [x] **tokenizer v1 (vision du chef)** — 4 règles sortie FR/EN, robinet à données, notebook Colab (livré 7 oct. : leçon 14, 102/102)
 - [ ] **cerveau v2 phases 3-6 (route C)** — marbre + rétroaction, buffer + homéostasie, chaos, docs (choix du chef, 6 oct.)
 - [ ] **tokenisation + compréhension externe** — différé (décision du chef, 7 oct.)
 - [ ] **ignition auto (émergence)** — l'étincelle sans commande, à terme (décision du chef, 7 oct.)

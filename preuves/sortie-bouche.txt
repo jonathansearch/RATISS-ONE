@@ -1,0 +1,10 @@
+=== AUTOTEST BOUCHE ===
+étincelle : word_americans people land together figés, 6 filaments
+BOUCHE OK — 5 phrases exactes (EN x3, FR x2)
+=== DEMO EN (dite + parlée) ===
+dit : In the sanctuary: fellow americans ask. I hold americans, country, fellow and ask. The rest stays outside.
+=== DEMO FR (dite) ===
+dit : Au sanctuaire : amis du peuple. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+=== ROBINET ===
+20 paires -> /home/user/RATISS-ONE/donnees/paires.jsonl
+vérifié : 20/20 phrases reproduites à l'identique

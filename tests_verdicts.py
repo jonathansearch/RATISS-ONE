@@ -226,6 +226,16 @@ def main():
     else:
         print("ÉCHEC : l'autotest du cerveau FR ne passe pas")
         echecs += 1
+    controles += 1
+    proc_bouche = subprocess.run(
+        [sys.executable, "bouche/autotest_bouche.py"],
+        capture_output=True, text=True, encoding="utf-8",
+    )
+    if proc_bouche.returncode == 0 and "BOUCHE OK" in proc_bouche.stdout:
+        print("OK : autotest de la bouche (5 phrases exactes FR/EN)")
+    else:
+        print("ÉCHEC : l'autotest de la bouche ne passe pas")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],
