@@ -4,3 +4,6 @@ route-d/ratum-c
 jouets/mem.scroll
 __pycache__/
 *.pyc
+# Modeles voix + photos e closes (regenerables en local)
+bouche/voix/*.onnx*
+tissu-educ.scroll
