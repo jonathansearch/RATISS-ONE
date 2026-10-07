@@ -63,11 +63,12 @@
 7. [Le graphe](#-le-graphe--lire-le-cerveau-penser) — 8. [L'école](#-lécole--grandir-par-phrases) —
 9. [Le tokenizer](#-le-tokenizer--la-pensée-devient-phrase) — 10. [L'éclair et la rivière](#-léclair-et-la-rivière) —
 11. [La marée](#-la-marée--le-jour-écoute-la-nuit-consolide) — 12. [Le rêve](#-le-rêve--garder-ce-quon-comprend) —
-13. [Les mesures](#-les-mesures--rien-dinventé) — 14. [Les voix](#-les-voix--7-preuves-audio) —
-15. [Démarrage rapide](#-démarrage-rapide) — 16. [Carte du dépôt](#-carte-du-dépôt) —
-17. [Chiffres clés](#-chiffres-clés) — 18. [Ordre de lecture](#-ordre-de-lecture) —
-19. [La méthode](#-la-méthode) — 20. [Feuille de route](#-feuille-de-route) —
-21. [Arborescence](#-arborescence) — 22. [Citation, auteur, licence](#-citation-auteur-licence)
+13. [Le second berceau](#-le-second-berceau--le-c-qui-chante-pareil-leçon-18) — 14. [Le pont FOCAL](#-le-pont-focal--mesurer-lordre-leçon-19) —
+15. [Les mesures](#-les-mesures--rien-dinventé) — 16. [Les voix](#-les-voix--7-preuves-audio) —
+17. [Démarrage rapide](#-démarrage-rapide) — 18. [Carte du dépôt](#-carte-du-dépôt) —
+19. [Chiffres clés](#-chiffres-clés) — 20. [Ordre de lecture](#-ordre-de-lecture) —
+21. [La méthode](#-la-méthode) — 22. [Feuille de route](#-feuille-de-route) —
+23. [Arborescence](#-arborescence) — 24. [Citation, auteur, licence](#-citation-auteur-licence)
 
 ---
 
@@ -303,6 +304,48 @@ comprendre = mourir, comprendre sans répéter = monter. L'élue est gravée
 
 ---
 
+## 🔬 Le second berceau : le C qui chante pareil (leçon 18)
+
+*Route D — `route-d/ratum.c` (~1000 lignes, que la libc) + `route-d/conformite.py`.*
+
+Une spec saine a deux implémentations indépendantes et identiques. Le
+portage C rejoue les 24 programmes du corpus et sort **exactement** comme
+Python : loi (10,3), élasticité, ombre //200, tris, pluriels, et même le
+JSON `indent=1` de `graver` répliqué à l'octet — compilé `gcc -O2
+-Wall -Wextra` **zéro warning**, conforme **du premier coup**.
+
+<img src="README-figures/second-berceau.svg" width="100%" alt="Second berceau : 24/24 sorties identiques entre Python et C"/>
+
+- **24/24 sorties identiques** au caractère près (codes + `mem.scroll`)
+- 5 divergences hors corpus documentées (`route-d/LISEZ-MOI.md`), jamais déclenchées
+- Preuve : [`preuves/sortie-conformite.txt`](preuves/sortie-conformite.txt) — contrôle batterie ✅
+
+---
+
+## 🌌 Le pont FOCAL : mesurer l'ordre (leçon 19)
+
+*`pont-focal/encodeur.py` (stdlib) + `pont-focal/pont.py` (numpy, ripser, organes inchangés).*
+
+Le tissu traverse le vrai univers FOCAL : sa trace relationnelle (quels
+mots, quel ordre, quelle force — jamais la donnée brute) devient 2048 bits
+déterministes, projetés sur le fond tore+sphère, mesurés en P_sig. Première
+mesure : le compteur bouge (delta 0,17) et le sanctuaire projette **plus
+calme que le chaos** (6,23 < 6,40). Piste v1 honnête, pas un théorème.
+
+<img src="README-figures/pont-focal.svg" width="100%" alt="Pont FOCAL : P_sig frais, chaos, sanctuaire + porteurs x31,6"/>
+
+| tissu | P_sig | sha16 des bits |
+|---|---|---|
+| fond seul | 5,76 | — |
+| frais | 6,39 | `e098de14fc25fbed` |
+| chaos | 6,40 | `f29a73ec25dbdb98` |
+| sanctuaire | **6,23** | `f555dd714bc1bf0b` |
+| porteurs (×4 transports) | Φ 27,1 → **855,6 (×31,6)** | — |
+
+Preuve : [`preuves/sortie-pont-focal.txt`](preuves/sortie-pont-focal.txt) — contrôle batterie ✅
+
+---
+
 ## 📊 Les mesures : rien d'inventé
 
 <img src="livre/figures/g_batterie.svg" width="100%" alt="La batterie : 42 → 106 avec le creux honnête"/>
@@ -320,7 +363,7 @@ Détail un par un : **livre §10** + `tests_verdicts.py`.
 | Fichier | Ce qu'on entend |
 |---|---|
 | [🔊 `bouche/cerveau.wav`](bouche/cerveau.wav) | « I heard 20 sequences. 3 sleep in the refrain. 1 reached the sanctuary : fellow americans ask. » (JFK, 6 s) |
-| [🔊 `bouche/cerveau-fr.wav`](bouche/cerveau-fr.wav) | « J'ai entendu 19 séquences. 0 dort au refrain. 1 a atteint le sanctuaire : amis du peuple. » |
+| [🔊 `bouche/cerveau-fr.wav`](bouche/cerveau-fr.wav) | « Au sanctuaire : amis du peuple. Je tiens amis, peuple, pays et patrie… » (discours→résumé, 6.8 s) |
 | [🔊 `bouche/verdicts.wav`](bouche/verdicts.wav) | « I hold fellow, americans, ask and country. The rest stays outside. » (le perroquet) |
 | [🔊 `bouche/preuve-tokenizer.wav`](bouche/preuve-tokenizer.wav) | « In the sanctuary: fellow americans ask. I hold americans, country, fellow and ask… » |
 | [🔊 `bouche/preuve-marbre.wav`](bouche/preuve-marbre.wav) | La même, dite par le gravé après 5 nuits |
@@ -373,6 +416,9 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | 📚 `livre/index.html` | **LE LIVRE** : tout (19 leçons, 20 figures, 4 audios jouables, CC-BY-SA) | `livre/presentation.html` (slides) |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
+| `route-d/` | le second berceau : Ratum en C, mêmes sorties au caractère près | `preuves/sortie-conformite.txt` (24/24) |
+| `pont-focal/` | tissu → 2048 bits → P_sig : le compteur d'émergence | `preuves/sortie-pont-focal.txt` (6,23 < 6,40) |
+| `README-figures/` | les 2 images du README, générées (pas dessinées) | `fabriquer.py` |
 | `outils/figures.py` | régénère les figures PNG depuis les mesures | `images/*.png` |
 | `livre/construire.py` | régénère courbes + livre + slides (déterministe) | `LIVRE OK` |
 | `tests_verdicts.py` | la batterie : 108 contrôles | `108/108 CONTRÔLES VERTS` |
@@ -459,7 +505,7 @@ RATISS-ONE/
 ├── LANGAGE-RATUM.md           # spec Ratum : une vingtaine de relations
 ├── TOKENIZER.md               # les 4 règles + robinet + notebook Colab
 ├── CERVEAU.md                 # carte cerveau → organes (v1 → v6)
-├── MANIFESTE.json             # SHA-256 de chaque fichier (132 fichiers)
+├── MANIFESTE.json             # SHA-256 de chaque fichier (146 fichiers)
 ├── ratum.py                   # interprète de référence (495 lignes)
 ├── tests_verdicts.py          # batterie : 108 contrôles
 ├── rni-simple / complexe / interference.ratum
@@ -475,9 +521,12 @@ RATISS-ONE/
 ├── donnees/                   # robinet : générateur + 20 paires + notebook
 ├── livre/                     # LE LIVRE : figures + livre + slides + CC-BY-SA
 ├── univers-focal/             # 4 organes FOCAL (référence)
+├── route-d/                   # second berceau : ratum.c + conformite.py (24/24)
+├── pont-focal/                # tissu → bits → P_sig (sanctuaire 6,23 < chaos 6,40)
+├── README-figures/            # 2 images du README (fabriquer.py, générées)
 ├── outils/                    # tisser_grand.py, figures.py
-├── images/                    # logo + 6 figures régénérées
-└── preuves/                   # carnet du labo : 22 sorties rejouables
+├── images/                    # logo + 5 figures régénérées
+└── preuves/                   # carnet du labo : 25 sorties rejouables
 ```
 
 ---
@@ -498,7 +547,7 @@ RATISS-ONE/
 0009-0000-4092-5313 · **Licences** : **MIT** pour le code (voir `LICENSE`),
 **CC-BY-SA-4.0** pour le livre (voir `livre/LICENCE.md` : ouvert, partage à
 l'identique). Les organes externes gardent leurs licences : poids Phonon-2
-(CC-BY-4.0), Piper et voix (GPL-3.0, organe téléchargeable, `.onnx` EN
-inclus, FR en attente).
+(CC-BY-4.0), Piper et voix (GPL-3.0, `.onnx` EN+FR téléchargeables et
+restaurés en local, voir `cerveau/MESURES-FR.md`).
 
 *« On ne croit pas. On rejoue. » — RATISS Labs* 🔁

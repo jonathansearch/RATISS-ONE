@@ -1,13 +1,13 @@
 {
  "depot": "RATISS-ONE",
  "date": "2026-10-07",
- "version": "focal-v1",
+ "version": "readme-v3",
  "fichiers": {
   ".gitignore": "84cef3e92f7314e2",
   "CERVEAU.md": "24c584cabda63a9b",
   "LANGAGE-RATUM.md": "c0fad1976baa6a03",
   "LICENSE": "3408e120fb868a0e",
-  "README.md": "d4d8dc8562bf5daa",
+  "README.md": "7dcdb8f8e2443039",
   "RNI-DEFINITION.md": "c1472de5fc21ba2f",
   "bouche/PIPER.md": "c19bbf9366367957",
   "bouche/cerveau-fr.wav": "b9746b1ccbb595f1",
@@ -18,7 +18,7 @@
   "cerveau-demo-fr.py": "cdc54b1306a9add9",
   "cerveau-demo.py": "78ac81bf1c0689f1",
   "cerveau/MESURES-CERVEAU.md": "959bf7c92d9275ae",
-  "cerveau/MESURES-FR.md": "2225e534e619c8da",
+  "cerveau/MESURES-FR.md": "0706dcd080540acf",
   "cerveau/SECTEURS.md": "65fc20d5d1c6fad1",
   "cerveau/__init__.py": "9b032101ff4c8fcc",
   "cerveau/autotest.py": "e270c18c583e0792",
@@ -135,7 +135,7 @@
   "livre/figures/reve.svg": "dfa66cf2ce0537e8",
   "livre/figures/timeline.svg": "bd7308f2c12a9861",
   "livre/figures/tokenizer.svg": "0688f6177c2a4844",
-  "MANIFESTE.json": "d88977b2b83f09f1",
+  "MANIFESTE.json": "fcda3c0a17d411d9",
   "tissu-educ.scroll": "c792d713a53869e5",
   "bouche/voix/en_US-lessac-medium.onnx": "5efe09e699021878",
   "preuves/sortie-conformite.txt": "ce54d79e3fa55bea",
@@ -145,6 +145,9 @@
   "preuves/sortie-pont-focal.txt": "5a3835c28f0beee9",
   "pont-focal/LISEZ-MOI.md": "ce8ca78031ef0d3a",
   "pont-focal/encodeur.py": "aea5e05c70e5c4f1",
-  "pont-focal/pont.py": "67eb84f7ec90c8d1"
+  "pont-focal/pont.py": "67eb84f7ec90c8d1",
+  "README-figures/fabriquer.py": "bd9270ab7fa0a3e1",
+  "README-figures/pont-focal.svg": "042c484e40baf814",
+  "README-figures/second-berceau.svg": "1401a08512ca3b10"
  }
 }

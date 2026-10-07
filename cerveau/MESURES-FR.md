@@ -54,8 +54,10 @@ vers l'unique séquence répétée — entonnoir honnête, pas de remplissage.
 
 ## Sortie (bouche FR)
 
-- Phrase : « J'ai entendu 19 séquences. 0 dort au refrain. 1 a atteint le
-  sanctuaire : amis du peuple. » (accords singulier/pluriel gérés)
+- Rapport : secteurs + tissu + liens (ex. `amis+du+peuple x1 f92`),
+  puis phrase dite : « Au sanctuaire : amis du peuple. Je tiens amis,
+  peuple, pays et patrie. » (le compteur « J'ai entendu N séquences »
+  reste à faire : TOKENIZER.md R5)
 - `bouche/cerveau-fr.wav` : 6.8 s — boucle totale **~8-13 s** selon cache
   (oreille ~1.5 s à chaud, reste cerveau + bouche ; restauré 7 oct. 2026)
 
