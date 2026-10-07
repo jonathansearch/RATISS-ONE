@@ -615,6 +615,34 @@ def main():
     else:
         print("ÉCHEC : le fond du verre est mauvais")
         echecs += 1
+    controles += 1
+    _ok_sd = False
+    try:
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _pre = _Cerveau.relire("cerveau/fige-300M-tout.json.gz")
+            _pre._exec("rencontre MAMIS\npropager\n")
+            _ch_pre = _pre.itp.tissu.neurones["word_ami"]["charge"]
+            _post = _Cerveau.relire("cerveau/fige-300M-soude.json.gz")
+            _post._exec("rencontre MAMIS\npropager\n")
+            _ch_post = _post.itp.tissu.neurones["word_ami"]["charge"]
+            _post.nuit()
+        _pont = ("word_ami", "word_amis")
+        _ok_sd = (_ch_pre == 0 and _ch_post == 50
+                  and _post.graph["liens"].get(_pont) == 100
+                  and _pont in _post.graph["geles"]
+                  and (len(_post.graph["neurones"]), len(_post.graph["liens"]),
+                       len(_post.motifs)) == (24639, 105350, 20)
+                  and _post.ecoutes == 300000000
+                  and len(_post.graph["types"]) == 24639
+                  and all(_post.graph["liens"].get(k) == v
+                          for k, v in _pre.graph["liens"].items()))
+    except Exception:
+        _ok_sd = False
+    if _ok_sd:
+        print("OK : soudure-amis (pont 100 figé, écho 0->50, 105350 liens)")
+    else:
+        print("ÉCHEC : la soudure est mauvaise")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

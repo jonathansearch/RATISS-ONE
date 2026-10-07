@@ -600,6 +600,23 @@ c'est tout boire. Boucles X->X soudées (précédent : 198 en marbre).
 > **Énoncé :** un réservoir se vide par vagues, pas au hasard — 33 vagues,
 > 0 restant, et l'ordre n'a jamais compté.
 
+### Leçon 33 🤝 — Souder les jumeaux : les 300M AVEC les nouveaux
+*Question du chef : pourquoi 0 nerf neuf avec 300M ? Réponse honnête :
+300M = un COMPTEUR d'écoutes, pas des nerfs — écouter fait vibrer,
+renforce les liens (forces 97), fait naître des LIENS (15 chaînes) et
+des TRACES (sanctuaire : amis+patrie+pays ×812 847), mais les nerfs
+naissent à l'école. Diagnostic : une seule île (24 541/24 639, pas de
+compartiment), 12/13 vieux fusionnés aux nouveaux — seul `word_amis`
+orphelin (8 liens vieux, 0 neuf, doublon de `word_ami`). Soudure :
+pont-jumeau force 100 (identité = certitude), figé par `cise` ciblé
+(boucle globale, journal vide, ULTRA intact) — écho 0 -> 50 : l'UD
+s'allume quand l'école parle. Bonus : `word_avenir—lointain` est mort
+de faim pendant les 300M (`avenir` jamais entendu, oubli normal
+leçon 4) — l'école UD lui a rendu 21 liens (122/122).*
+
+> **Énoncé :** un jumeau se soude, pas s'efface — un pont à 100,
+> et l'écho traverse.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -676,6 +693,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **école manuelle UD** — convertisseur 14 450 phrases -> 247 nerfs figés, loi 10x, 300M intactes (livré 7 oct. : leçon 30, 119/119)
 - [x] **remix 100 tours** — 108k paires brassées, 15 549 nerfs figés, bouche renommée (livré 7 oct. : leçon 31, 120/120)
 - [x] **fond du verre** — 105 313/105 313 bues, 24 639 nerfs figés, ordre indifférent (livré 7 oct. : leçon 32, 121/121)
+- [x] **soudure-amis** — pont-jumeau 100 figé, écho 0->50, ULTRA intact (livré 7 oct. : leçon 33, 122/122)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

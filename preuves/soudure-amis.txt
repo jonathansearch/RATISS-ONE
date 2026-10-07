@@ -1,0 +1,10 @@
+=== SOUDURE-AMIS : le jumeau orphelin rejoint les nouveaux ===
+AVANT : charge de word_ami quand MAMIS bat = 0 (seuil 50 -> SOURD)
+SOUDURE : pont ('word_ami', 'word_amis') force 100 filament=True
+APRÈS : charge de word_ami quand MAMIS bat = 50 (seuil 50 -> ENTEND ✅)
+anciens liens intacts : True
+ULTRA-SECTEUR identique : True
+dit : J'ai entendu 300000000 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+nuit 0 perte : True
+GRAVÉ — 24639 nerfs, 105350 liens, 20 motifs, écoutes 300000000
+artefact : 2682833 octets

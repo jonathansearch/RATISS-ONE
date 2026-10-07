@@ -355,6 +355,26 @@ class Cerveau:
                 "filaments": len(self.graph["geles"]),
                 "forces_intactes": True}
 
+    def souder(self, a, b, force=100):
+        """SOUDURE (leçon 33) : pont-jumeau entre deux nerfs du même mot.
+
+        Règle : paire vierge exigée (le marbre ne se réécrit pas), force 100
+        (identité = certitude). Le pont est figé par un `cise` ciblé : la
+        boucle des filaments est GLOBALE (tout lien entre figés gèle), et
+        comme rien de neuf ne fige, le journal reste vide (ULTRA intact).
+        Retourne le pont soudé."""
+        assert a in self.graph["neurones"] and b in self.graph["neurones"], \
+            "souder des fantômes ? non"
+        pont = cle(a, b)
+        assert pont not in self.graph["liens"], \
+            "le marbre ne se réécrit pas (ce pont existe déjà)"
+        self.graph["liens"][pont] = force
+        self._tissu_sale = True
+        motif = next(m for m, mb in self.motifs.items() if a in mb or b in mb)
+        self.figer(motifs=[motif])
+        assert pont in self.graph["geles"], "la soudure n'a pas pris !"
+        return {"pont": pont, "force": force, "filament": True}
+
     def nuit(self):
         """La nuit : le tampon se vide (dans l'ordre), on rêve de ce qu'on a
         compris, puis le tissu oublie, la faucheuse élague, les secteurs consolident."""
