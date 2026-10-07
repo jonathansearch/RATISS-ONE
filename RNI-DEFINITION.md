@@ -547,6 +547,26 @@ le figé se grave/relit sans perdre un nerf (marbre reverrouillé).
 > **Énoncé :** ce qui a battu 300 millions de fois mérite le marbre —
 > 13 nerfs figés, 40 filaments, 20 nuits sans une ride.
 
+### Leçon 30 🔨 — L'école manuelle : le convertisseur UD -> CISE
+*Le chef refuse le LLM (« on n'est pas faibles ») : on quantifie
+nous-mêmes. Convertisseur (1,4 s, zéro puissance) : 14 450 phrases UD
+françaises annotées -> fragment sur mesure (238 mots, 222 liens, 12
+motifs-relations) -> poussé au figé-300M -> éclair -> 247 nerfs, 260
+filaments, 300M intactes, sanctuaire intact (119/119).*
+
+Loi de l'école : force = min(100, 10 x rencontres) — la répétition prouve.
+Les étiquettes UD deviennent des motifs français (MSUJET, MOBJET,
+MEPITHETE, MRACINE...) : l'annotation survit comme groupe qui se fige.
+Règles : topk=5 par mot (le tissu reste petit), le marbre ne se réécrit
+pas (2 paires épargnées), R5 (l'injection n'est pas une écoute), pas de
+nouvelles oreilles (mots_connus intacts). Deux bugs attrapés : motifs
+perdus au graver (persistés), drapeau sale oublié (injecter le lève).
+Les motifs-relations sont larges (résonance faible) : ils figent, ils
+ne chantent pas — le chant viendra du constructeur.
+
+> **Énoncé :** pas besoin d'emprunter une bouche quand on sait souder —
+> 14 450 phrases bues en une seconde, 234 nerfs posés à la main.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -620,6 +640,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **relais Drive auto** — photo chaque lot sur Drive, fortifié daté + bilan + voix, `git pull` (livré 7 oct. : leçon 27, 116/116)
 - [x] **retour 300M vérifié** — zip du chef relu (300M pile, sanctuaire pinné), voix archivée (livré 7 oct. : leçon 28, 117/117)
 - [x] **figement CISE du 300M** — 13 nerfs + 40 filaments, 20 nuits intactes, marbre gravé (livré 7 oct. : leçon 29, 118/118)
+- [x] **école manuelle UD** — convertisseur 14 450 phrases -> 247 nerfs figés, loi 10x, 300M intactes (livré 7 oct. : leçon 30, 119/119)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

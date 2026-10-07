@@ -1,0 +1,2366 @@
+{
+ "format": "fragment-cise-ud-v1",
+ "source": "UD_French-GSD train (14 450 phrases, CC-BY-SA)",
+ "loi": "force = min(100, 10 x rencontres)",
+ "topk": 5,
+ "mots_touches": [
+  "arbre",
+  "chanson",
+  "chemin",
+  "ciel",
+  "defendre",
+  "drapeau",
+  "eau",
+  "ecole",
+  "enfants",
+  "fete",
+  "feu",
+  "fleur",
+  "histoire",
+  "honneur",
+  "idee",
+  "justice",
+  "livre",
+  "loi",
+  "lune",
+  "main",
+  "maison",
+  "maitre",
+  "marche",
+  "matin",
+  "memoire",
+  "montagne",
+  "nuit",
+  "oiseau",
+  "pain",
+  "paix",
+  "patrie",
+  "pays",
+  "peuple",
+  "pluie",
+  "porte",
+  "question",
+  "reponse",
+  "riviere",
+  "rue",
+  "savoir",
+  "serment",
+  "soleil",
+  "temps",
+  "unir",
+  "vent",
+  "village"
+ ],
+ "neurones": [
+  "abandonner",
+  "abattre",
+  "abondant",
+  "acces",
+  "accroissement",
+  "accusation",
+  "actrice",
+  "adapter",
+  "affaire",
+  "afrique",
+  "age",
+  "aide",
+  "aider",
+  "ainsi",
+  "aire",
+  "album",
+  "alliance",
+  "alors",
+  "americain",
+  "amiens",
+  "amour",
+  "ancien",
+  "animal",
+  "apanage",
+  "arbre",
+  "argument",
+  "arret",
+  "assemblee",
+  "astre",
+  "auteur",
+  "autour",
+  "autre",
+  "barracuda",
+  "battant",
+  "beau",
+  "bien",
+  "blanc",
+  "bleu",
+  "bon",
+  "bord",
+  "bougie",
+  "branche",
+  "briller",
+  "campagne",
+  "cannelle",
+  "caracterisation",
+  "celtique",
+  "central",
+  "centre",
+  "chanson",
+  "chapelle",
+  "chasse",
+  "chaud",
+  "chemin",
+  "chocolat",
+  "choix",
+  "ciel",
+  "clair",
+  "club",
+  "collectif",
+  "commission",
+  "communiste",
+  "comporter",
+  "compter",
+  "conclure",
+  "conseiller",
+  "construire",
+  "coupe",
+  "cour",
+  "courant",
+  "cours",
+  "couvert",
+  "creer",
+  "croire",
+  "crue",
+  "culminer",
+  "dame",
+  "damier",
+  "debit",
+  "dedier",
+  "defendre",
+  "defense",
+  "derouler",
+  "descendre",
+  "developpement",
+  "devenir",
+  "devise",
+  "dignite",
+  "diluvien",
+  "dimanche",
+  "disque",
+  "district",
+  "doigt",
+  "dollar",
+  "dominer",
+  "donner",
+  "dossier",
+  "doux",
+  "drapeau",
+  "droit",
+  "droite",
+  "eau",
+  "ecole",
+  "ecrire",
+  "egypte",
+  "elargissement",
+  "enfant",
+  "enfants",
+  "enregistrer",
+  "enterrer",
+  "espace",
+  "espagnol",
+  "espece",
+  "essence",
+  "etoile",
+  "europeen",
+  "evader",
+  "faire",
+  "famille",
+  "favorable",
+  "fenetre",
+  "fer",
+  "fermer",
+  "fete",
+  "feu",
+  "film",
+  "fleur",
+  "foret",
+  "francais",
+  "froid",
+  "genealogique",
+  "grand",
+  "heure",
+  "hier",
+  "histoire",
+  "honneur",
+  "idee",
+  "immolation",
+  "io",
+  "jean",
+  "jeu",
+  "jeudi",
+  "joseph",
+  "jour",
+  "jovien",
+  "justice",
+  "laver",
+  "legion",
+  "lendemain",
+  "lever",
+  "liberte",
+  "lier",
+  "ligne",
+  "livre",
+  "loi",
+  "loire",
+  "lune",
+  "lutte",
+  "main",
+  "maison",
+  "maitre",
+  "marche",
+  "matin",
+  "meme",
+  "memoire",
+  "mettre",
+  "montagne",
+  "musique",
+  "national",
+  "nombreux",
+  "nommer",
+  "normal",
+  "nuit",
+  "oiseau",
+  "ordonner",
+  "ouvrir",
+  "pain",
+  "paix",
+  "palais",
+  "papillon",
+  "part",
+  "passer",
+  "patrie",
+  "pays",
+  "petit",
+  "peu",
+  "peuple",
+  "pied",
+  "pluie",
+  "porte",
+  "poser",
+  "possible",
+  "potable",
+  "pouvoir",
+  "premier",
+  "prendre",
+  "pression",
+  "preter",
+  "projet",
+  "puissance",
+  "que",
+  "question",
+  "raconter",
+  "regler",
+  "remettre",
+  "remonter",
+  "repondre",
+  "reponse",
+  "requete",
+  "rester",
+  "riviere",
+  "ruban",
+  "rue",
+  "russe",
+  "sahraoui",
+  "savoir",
+  "secteur",
+  "securite",
+  "serie",
+  "serment",
+  "situer",
+  "slovaquie",
+  "societe",
+  "soldat",
+  "soleil",
+  "statuer",
+  "sterling",
+  "superieur",
+  "temps",
+  "titre",
+  "tomber",
+  "tout",
+  "traite",
+  "trouver",
+  "unir",
+  "vent",
+  "village",
+  "ville"
+ ],
+ "liens": [
+  {
+   "a": "abandonner",
+   "b": "idee",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "abattre",
+   "b": "pluie",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "abondant",
+   "b": "riviere",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "accroissement",
+   "b": "defendre",
+   "force": 10,
+   "n": 1,
+   "rel": "obj"
+  },
+  {
+   "a": "accusation",
+   "b": "defendre",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "actrice",
+   "b": "honneur",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "adapter",
+   "b": "reponse",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "affaire",
+   "b": "justice",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "afrique",
+   "b": "pays",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "age",
+   "b": "arbre",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "ainsi",
+   "b": "livre",
+   "force": 20,
+   "n": 2,
+   "rel": "cc"
+  },
+  {
+   "a": "aire",
+   "b": "loi",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "album",
+   "b": "chanson",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "alliance",
+   "b": "unir",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "alors",
+   "b": "savoir",
+   "force": 20,
+   "n": 2,
+   "rel": "mark"
+  },
+  {
+   "a": "americain",
+   "b": "marche",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "amiens",
+   "b": "paix",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "amour",
+   "b": "feu",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "amour",
+   "b": "histoire",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "ancien",
+   "b": "maison",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "animal",
+   "b": "defendre",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "animal",
+   "b": "fleur",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "arbre",
+   "b": "enterrer",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "arbre",
+   "b": "espece",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "argument",
+   "b": "reponse",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "arret",
+   "b": "reponse",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "assemblee",
+   "b": "montagne",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "astre",
+   "b": "lune",
+   "force": 10,
+   "n": 1,
+   "rel": "appos"
+  },
+  {
+   "a": "auteur",
+   "b": "unir",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "autre",
+   "b": "ciel",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "autre",
+   "b": "pays",
+   "force": 90,
+   "n": 9,
+   "rel": "amod"
+  },
+  {
+   "a": "autre",
+   "b": "peuple",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "barracuda",
+   "b": "montagne",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "battant",
+   "b": "pluie",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "beau",
+   "b": "nuit",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "bien",
+   "b": "savoir",
+   "force": 40,
+   "n": 4,
+   "rel": "advmod"
+  },
+  {
+   "a": "blanc",
+   "b": "maison",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "bleu",
+   "b": "oiseau",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "bon",
+   "b": "idee",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "bougie",
+   "b": "fleur",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "branche",
+   "b": "unir",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "campagne",
+   "b": "maison",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "cannelle",
+   "b": "fleur",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "caracterisation",
+   "b": "reponse",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "celtique",
+   "b": "fete",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "central",
+   "b": "memoire",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "centre",
+   "b": "montagne",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "chanson",
+   "b": "comporter",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "chapelle",
+   "b": "maitre",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "chasse",
+   "b": "fete",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "chaud",
+   "b": "eau",
+   "force": 50,
+   "n": 5,
+   "rel": "amod"
+  },
+  {
+   "a": "chemin",
+   "b": "derouler",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "chemin",
+   "b": "elargissement",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "chemin",
+   "b": "ligne",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  },
+  {
+   "a": "chemin",
+   "b": "societe",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "chocolat",
+   "b": "pain",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "ciel",
+   "b": "aider",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "ciel",
+   "b": "descendre",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "ciel",
+   "b": "donner",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "ciel",
+   "b": "espace",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "club",
+   "b": "histoire",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "collectif",
+   "b": "memoire",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "communiste",
+   "b": "memoire",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "conseiller",
+   "b": "savoir",
+   "force": 40,
+   "n": 4,
+   "rel": "xcomp"
+  },
+  {
+   "a": "construire",
+   "b": "maison",
+   "force": 20,
+   "n": 2,
+   "rel": "acl"
+  },
+  {
+   "a": "coupe",
+   "b": "fleur",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "courant",
+   "b": "defendre",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "couvert",
+   "b": "marche",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "creer",
+   "b": "unir",
+   "force": 10,
+   "n": 1,
+   "rel": "advcl"
+  },
+  {
+   "a": "croire",
+   "b": "memoire",
+   "force": 10,
+   "n": 1,
+   "rel": "parataxis"
+  },
+  {
+   "a": "culminer",
+   "b": "montagne",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "damier",
+   "b": "drapeau",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "developpement",
+   "b": "paix",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "dignite",
+   "b": "pain",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "diluvien",
+   "b": "pluie",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "disque",
+   "b": "maison",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "district",
+   "b": "village",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  },
+  {
+   "a": "dollar",
+   "b": "pluie",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "dominer",
+   "b": "vent",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "dossier",
+   "b": "justice",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "doux",
+   "b": "eau",
+   "force": 90,
+   "n": 9,
+   "rel": "amod"
+  },
+  {
+   "a": "drapeau",
+   "b": "defense",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "drapeau",
+   "b": "drapeau",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "drapeau",
+   "b": "etoile",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "droit",
+   "b": "patrie",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "droite",
+   "b": "idee",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "eau",
+   "b": "acces",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "eau",
+   "b": "cours",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  },
+  {
+   "a": "ecole",
+   "b": "maitre",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "ecrire",
+   "b": "chanson",
+   "force": 30,
+   "n": 3,
+   "rel": "acl"
+  },
+  {
+   "a": "egypte",
+   "b": "pluie",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "enfant",
+   "b": "livre",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "enfants",
+   "b": "film",
+   "force": 10,
+   "n": 1,
+   "rel": "appos"
+  },
+  {
+   "a": "enregistrer",
+   "b": "chanson",
+   "force": 30,
+   "n": 3,
+   "rel": "acl"
+  },
+  {
+   "a": "espagnol",
+   "b": "justice",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "essence",
+   "b": "pain",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "etoile",
+   "b": "porte",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "europeen",
+   "b": "marche",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "famille",
+   "b": "oiseau",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "favorable",
+   "b": "vent",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "fenetre",
+   "b": "porte",
+   "force": 20,
+   "n": 2,
+   "rel": "conj"
+  },
+  {
+   "a": "fer",
+   "b": "chemin",
+   "force": 100,
+   "n": 23,
+   "rel": "nmod"
+  },
+  {
+   "a": "fete",
+   "b": "faire",
+   "force": 30,
+   "n": 3,
+   "rel": "obj"
+  },
+  {
+   "a": "fete",
+   "b": "lier",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "feu",
+   "b": "immolation",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "feu",
+   "b": "mettre",
+   "force": 40,
+   "n": 4,
+   "rel": "obj"
+  },
+  {
+   "a": "feu",
+   "b": "puissance",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "fleur",
+   "b": "choix",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "foret",
+   "b": "feu",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "francais",
+   "b": "ecole",
+   "force": 40,
+   "n": 4,
+   "rel": "amod"
+  },
+  {
+   "a": "francais",
+   "b": "loi",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "francais",
+   "b": "maitre",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "francais",
+   "b": "peuple",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "froid",
+   "b": "vent",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "genealogique",
+   "b": "arbre",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "grand",
+   "b": "arbre",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "grand",
+   "b": "rue",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "heure",
+   "b": "livre",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "histoire",
+   "b": "raconter",
+   "force": 70,
+   "n": 7,
+   "rel": "obj"
+  },
+  {
+   "a": "histoire",
+   "b": "titre",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "honneur",
+   "b": "dame",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "honneur",
+   "b": "legion",
+   "force": 80,
+   "n": 8,
+   "rel": "nmod"
+  },
+  {
+   "a": "honneur",
+   "b": "nommer",
+   "force": 100,
+   "n": 11,
+   "rel": "obl"
+  },
+  {
+   "a": "idee",
+   "b": "abandonner",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "idee",
+   "b": "defendre",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "io",
+   "b": "lune",
+   "force": 10,
+   "n": 1,
+   "rel": "appos"
+  },
+  {
+   "a": "jeu",
+   "b": "serment",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "joseph",
+   "b": "honneur",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "jovien",
+   "b": "lune",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "justice",
+   "b": "cour",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "justice",
+   "b": "palais",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "lever",
+   "b": "soleil",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "liberte",
+   "b": "pain",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "livre",
+   "b": "ecrire",
+   "force": 50,
+   "n": 5,
+   "rel": "obj"
+  },
+  {
+   "a": "loi",
+   "b": "commission",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "loi",
+   "b": "livre",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "loi",
+   "b": "projet",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "loire",
+   "b": "pays",
+   "force": 60,
+   "n": 6,
+   "rel": "nmod"
+  },
+  {
+   "a": "lune",
+   "b": "clair",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "lune",
+   "b": "evader",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "main",
+   "b": "doigt",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "main",
+   "b": "laver",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "main",
+   "b": "passer",
+   "force": 40,
+   "n": 4,
+   "rel": "obl"
+  },
+  {
+   "a": "main",
+   "b": "prendre",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "main",
+   "b": "tomber",
+   "force": 40,
+   "n": 4,
+   "rel": "obl"
+  },
+  {
+   "a": "marche",
+   "b": "mettre",
+   "force": 30,
+   "n": 3,
+   "rel": "obl"
+  },
+  {
+   "a": "marche",
+   "b": "part",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "matin",
+   "b": "dimanche",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "matin",
+   "b": "heure",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "matin",
+   "b": "hier",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "matin",
+   "b": "jeudi",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "matin",
+   "b": "lendemain",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "meme",
+   "b": "temps",
+   "force": 100,
+   "n": 22,
+   "rel": "amod"
+  },
+  {
+   "a": "memoire",
+   "b": "dedier",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "musique",
+   "b": "fete",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  },
+  {
+   "a": "national",
+   "b": "ecole",
+   "force": 40,
+   "n": 4,
+   "rel": "amod"
+  },
+  {
+   "a": "nombreux",
+   "b": "pays",
+   "force": 80,
+   "n": 8,
+   "rel": "amod"
+  },
+  {
+   "a": "normal",
+   "b": "ecole",
+   "force": 50,
+   "n": 5,
+   "rel": "amod"
+  },
+  {
+   "a": "nuit",
+   "b": "cours",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "nuit",
+   "b": "jour",
+   "force": 20,
+   "n": 2,
+   "rel": "conj"
+  },
+  {
+   "a": "nuit",
+   "b": "papillon",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "nuit",
+   "b": "passer",
+   "force": 30,
+   "n": 3,
+   "rel": "obj"
+  },
+  {
+   "a": "oiseau",
+   "b": "espece",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "oiseau",
+   "b": "pied",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "oiseau",
+   "b": "soldat",
+   "force": 20,
+   "n": 2,
+   "rel": "conj"
+  },
+  {
+   "a": "ordonner",
+   "b": "patrie",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "pain",
+   "b": "jean",
+   "force": 20,
+   "n": 2,
+   "rel": "flat"
+  },
+  {
+   "a": "paix",
+   "b": "conclure",
+   "force": 30,
+   "n": 3,
+   "rel": "obj"
+  },
+  {
+   "a": "paix",
+   "b": "traite",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "patrie",
+   "b": "aide",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "patrie",
+   "b": "apanage",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "patrie",
+   "b": "devise",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "petit",
+   "b": "village",
+   "force": 50,
+   "n": 5,
+   "rel": "amod"
+  },
+  {
+   "a": "peuple",
+   "b": "droit",
+   "force": 30,
+   "n": 3,
+   "rel": "nmod"
+  },
+  {
+   "a": "peuple",
+   "b": "lutte",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "porte",
+   "b": "fermer",
+   "force": 30,
+   "n": 3,
+   "rel": "obj"
+  },
+  {
+   "a": "porte",
+   "b": "ouvrir",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "porte",
+   "b": "porte",
+   "force": 20,
+   "n": 2,
+   "rel": "conj"
+  },
+  {
+   "a": "poser",
+   "b": "question",
+   "force": 60,
+   "n": 6,
+   "rel": "acl"
+  },
+  {
+   "a": "possible",
+   "b": "soleil",
+   "force": 10,
+   "n": 1,
+   "rel": "amod"
+  },
+  {
+   "a": "potable",
+   "b": "eau",
+   "force": 70,
+   "n": 7,
+   "rel": "amod"
+  },
+  {
+   "a": "pouvoir",
+   "b": "savoir",
+   "force": 30,
+   "n": 3,
+   "rel": "ccomp"
+  },
+  {
+   "a": "premier",
+   "b": "maitre",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "premier",
+   "b": "temps",
+   "force": 60,
+   "n": 6,
+   "rel": "amod"
+  },
+  {
+   "a": "pression",
+   "b": "vent",
+   "force": 10,
+   "n": 1,
+   "rel": "conj"
+  },
+  {
+   "a": "que",
+   "b": "soleil",
+   "force": 10,
+   "n": 1,
+   "rel": "advmod"
+  },
+  {
+   "a": "question",
+   "b": "poser",
+   "force": 60,
+   "n": 6,
+   "rel": "obj"
+  },
+  {
+   "a": "question",
+   "b": "regler",
+   "force": 30,
+   "n": 3,
+   "rel": "nsubj"
+  },
+  {
+   "a": "question",
+   "b": "remettre",
+   "force": 40,
+   "n": 4,
+   "rel": "obl"
+  },
+  {
+   "a": "question",
+   "b": "repondre",
+   "force": 60,
+   "n": 6,
+   "rel": "obl"
+  },
+  {
+   "a": "reponse",
+   "b": "trouver",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "requete",
+   "b": "maitre",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "rester",
+   "b": "serment",
+   "force": 10,
+   "n": 1,
+   "rel": "acl"
+  },
+  {
+   "a": "riviere",
+   "b": "bord",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "riviere",
+   "b": "crue",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "riviere",
+   "b": "debit",
+   "force": 20,
+   "n": 2,
+   "rel": "nmod"
+  },
+  {
+   "a": "riviere",
+   "b": "remonter",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "ruban",
+   "b": "unir",
+   "force": 20,
+   "n": 2,
+   "rel": "obl"
+  },
+  {
+   "a": "rue",
+   "b": "rue",
+   "force": 50,
+   "n": 5,
+   "rel": "conj"
+  },
+  {
+   "a": "rue",
+   "b": "situer",
+   "force": 40,
+   "n": 4,
+   "rel": "obl"
+  },
+  {
+   "a": "russe",
+   "b": "montagne",
+   "force": 20,
+   "n": 2,
+   "rel": "amod"
+  },
+  {
+   "a": "sahraoui",
+   "b": "peuple",
+   "force": 90,
+   "n": 9,
+   "rel": "amod"
+  },
+  {
+   "a": "savoir",
+   "b": "question",
+   "force": 30,
+   "n": 3,
+   "rel": "acl"
+  },
+  {
+   "a": "secteur",
+   "b": "vent",
+   "force": 10,
+   "n": 1,
+   "rel": "nmod"
+  },
+  {
+   "a": "securite",
+   "b": "paix",
+   "force": 20,
+   "n": 2,
+   "rel": "conj"
+  },
+  {
+   "a": "serie",
+   "b": "histoire",
+   "force": 40,
+   "n": 4,
+   "rel": "nmod"
+  },
+  {
+   "a": "serment",
+   "b": "faire",
+   "force": 10,
+   "n": 1,
+   "rel": "obj"
+  },
+  {
+   "a": "serment",
+   "b": "preter",
+   "force": 20,
+   "n": 2,
+   "rel": "obj"
+  },
+  {
+   "a": "serment",
+   "b": "statuer",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "situer",
+   "b": "village",
+   "force": 100,
+   "n": 16,
+   "rel": "acl"
+  },
+  {
+   "a": "slovaquie",
+   "b": "village",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  },
+  {
+   "a": "soleil",
+   "b": "autour",
+   "force": 10,
+   "n": 1,
+   "rel": "obl"
+  },
+  {
+   "a": "soleil",
+   "b": "briller",
+   "force": 10,
+   "n": 1,
+   "rel": "nsubj"
+  },
+  {
+   "a": "sterling",
+   "b": "livre",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "superieur",
+   "b": "ecole",
+   "force": 70,
+   "n": 7,
+   "rel": "amod"
+  },
+  {
+   "a": "temps",
+   "b": "devenir",
+   "force": 30,
+   "n": 3,
+   "rel": "obl"
+  },
+  {
+   "a": "temps",
+   "b": "peu",
+   "force": 100,
+   "n": 17,
+   "rel": "obl"
+  },
+  {
+   "a": "temps",
+   "b": "prendre",
+   "force": 100,
+   "n": 11,
+   "rel": "obj"
+  },
+  {
+   "a": "tout",
+   "b": "chanson",
+   "force": 30,
+   "n": 3,
+   "rel": "amod"
+  },
+  {
+   "a": "tout",
+   "b": "pays",
+   "force": 50,
+   "n": 5,
+   "rel": "amod"
+  },
+  {
+   "a": "village",
+   "b": "compter",
+   "force": 50,
+   "n": 5,
+   "rel": "nsubj"
+  },
+  {
+   "a": "ville",
+   "b": "rue",
+   "force": 50,
+   "n": 5,
+   "rel": "nmod"
+  }
+ ],
+ "motifs": {
+  "MAPPOS": [
+   "astre",
+   "enfants",
+   "film",
+   "io",
+   "lune"
+  ],
+  "MCIRCONST": [
+   "accusation",
+   "alliance",
+   "animal",
+   "arbre",
+   "autour",
+   "chemin",
+   "ciel",
+   "creer",
+   "dedier",
+   "defendre",
+   "derouler",
+   "descendre",
+   "devenir",
+   "donner",
+   "enterrer",
+   "evader",
+   "fete",
+   "hier",
+   "honneur",
+   "lier",
+   "lune",
+   "main",
+   "marche",
+   "matin",
+   "memoire",
+   "mettre",
+   "nommer",
+   "passer",
+   "peu",
+   "prendre",
+   "question",
+   "remettre",
+   "repondre",
+   "ruban",
+   "rue",
+   "serment",
+   "situer",
+   "soleil",
+   "statuer",
+   "temps",
+   "tomber",
+   "unir"
+  ],
+  "MCOMPLET": [
+   "acces",
+   "actrice",
+   "afrique",
+   "aide",
+   "aire",
+   "album",
+   "amiens",
+   "amour",
+   "apanage",
+   "arbre",
+   "argument",
+   "arret",
+   "assemblee",
+   "bord",
+   "campagne",
+   "caracterisation",
+   "centre",
+   "chanson",
+   "chapelle",
+   "chasse",
+   "chemin",
+   "chocolat",
+   "choix",
+   "ciel",
+   "clair",
+   "club",
+   "commission",
+   "communiste",
+   "cour",
+   "cours",
+   "crue",
+   "dame",
+   "damier",
+   "debit",
+   "defense",
+   "devise",
+   "dimanche",
+   "disque",
+   "district",
+   "doigt",
+   "dollar",
+   "drapeau",
+   "droit",
+   "droite",
+   "eau",
+   "ecole",
+   "egypte",
+   "elargissement",
+   "enfant",
+   "espace",
+   "espece",
+   "etoile",
+   "famille",
+   "fer",
+   "fete",
+   "feu",
+   "fleur",
+   "foret",
+   "heure",
+   "histoire",
+   "honneur",
+   "idee",
+   "immolation",
+   "jeu",
+   "jeudi",
+   "joseph",
+   "justice",
+   "legion",
+   "lendemain",
+   "ligne",
+   "livre",
+   "loi",
+   "loire",
+   "lune",
+   "lutte",
+   "main",
+   "maison",
+   "maitre",
+   "marche",
+   "matin",
+   "memoire",
+   "montagne",
+   "musique",
+   "nuit",
+   "oiseau",
+   "pain",
+   "paix",
+   "palais",
+   "papillon",
+   "part",
+   "patrie",
+   "pays",
+   "peuple",
+   "pied",
+   "pluie",
+   "porte",
+   "projet",
+   "puissance",
+   "reponse",
+   "requete",
+   "riviere",
+   "rue",
+   "secteur",
+   "serie",
+   "serment",
+   "slovaquie",
+   "societe",
+   "titre",
+   "traite",
+   "vent",
+   "village",
+   "ville"
+  ],
+  "MCONJOINT": [
+   "affaire",
+   "animal",
+   "bougie",
+   "cannelle",
+   "developpement",
+   "dignite",
+   "drapeau",
+   "essence",
+   "fenetre",
+   "fleur",
+   "jour",
+   "justice",
+   "liberte",
+   "nuit",
+   "oiseau",
+   "pain",
+   "paix",
+   "porte",
+   "pression",
+   "rue",
+   "securite",
+   "soldat",
+   "vent"
+  ],
+  "MEPITHETE": [
+   "abondant",
+   "age",
+   "americain",
+   "ancien",
+   "arbre",
+   "autre",
+   "battant",
+   "beau",
+   "blanc",
+   "bleu",
+   "bon",
+   "celtique",
+   "central",
+   "chanson",
+   "chaud",
+   "ciel",
+   "collectif",
+   "coupe",
+   "couvert",
+   "diluvien",
+   "doux",
+   "eau",
+   "ecole",
+   "espagnol",
+   "europeen",
+   "favorable",
+   "fete",
+   "fleur",
+   "francais",
+   "froid",
+   "genealogique",
+   "grand",
+   "idee",
+   "jovien",
+   "justice",
+   "livre",
+   "loi",
+   "lune",
+   "maison",
+   "maitre",
+   "marche",
+   "meme",
+   "memoire",
+   "montagne",
+   "national",
+   "nombreux",
+   "normal",
+   "nuit",
+   "oiseau",
+   "pays",
+   "petit",
+   "peuple",
+   "pluie",
+   "possible",
+   "potable",
+   "premier",
+   "riviere",
+   "rue",
+   "russe",
+   "sahraoui",
+   "soleil",
+   "sterling",
+   "superieur",
+   "temps",
+   "tout",
+   "vent",
+   "village"
+  ],
+  "MLIAISON": [
+   "ainsi",
+   "alors",
+   "croire",
+   "jean",
+   "livre",
+   "memoire",
+   "pain",
+   "savoir"
+  ],
+  "MMANIERE": [
+   "bien",
+   "que",
+   "savoir",
+   "soleil"
+  ],
+  "MOBJET": [
+   "abandonner",
+   "accroissement",
+   "chanson",
+   "comporter",
+   "conclure",
+   "courant",
+   "defendre",
+   "ecrire",
+   "faire",
+   "fermer",
+   "fete",
+   "feu",
+   "histoire",
+   "idee",
+   "laver",
+   "livre",
+   "main",
+   "mettre",
+   "nuit",
+   "ouvrir",
+   "paix",
+   "passer",
+   "porte",
+   "poser",
+   "prendre",
+   "preter",
+   "question",
+   "raconter",
+   "remonter",
+   "reponse",
+   "riviere",
+   "serment",
+   "temps",
+   "trouver"
+  ],
+  "MPROP": [
+   "conseiller",
+   "pouvoir",
+   "savoir"
+  ],
+  "MPROPOS": [
+   "abandonner",
+   "abattre",
+   "adapter",
+   "chanson",
+   "construire",
+   "culminer",
+   "dominer",
+   "ecrire",
+   "enregistrer",
+   "idee",
+   "lever",
+   "maison",
+   "montagne",
+   "ordonner",
+   "patrie",
+   "pluie",
+   "poser",
+   "question",
+   "reponse",
+   "rester",
+   "savoir",
+   "serment",
+   "situer",
+   "soleil",
+   "vent",
+   "village"
+  ],
+  "MRACINE": [
+   "abandonner",
+   "abattre",
+   "acces",
+   "actrice",
+   "adapter",
+   "affaire",
+   "afrique",
+   "age",
+   "aider",
+   "ainsi",
+   "album",
+   "alliance",
+   "ancien",
+   "animal",
+   "arbre",
+   "arret",
+   "auteur",
+   "beau",
+   "bien",
+   "bleu",
+   "bon",
+   "bord",
+   "branche",
+   "briller",
+   "campagne",
+   "central",
+   "centre",
+   "chanson",
+   "chemin",
+   "choix",
+   "clair",
+   "club",
+   "commission",
+   "comporter",
+   "compter",
+   "conclure",
+   "conseiller",
+   "construire",
+   "coupe",
+   "cour",
+   "courant",
+   "cours",
+   "creer",
+   "croire",
+   "dedier",
+   "defendre",
+   "derouler",
+   "descendre",
+   "developpement",
+   "devenir",
+   "devise",
+   "disque",
+   "district",
+   "dominer",
+   "donner",
+   "doux",
+   "droit",
+   "droite",
+   "ecole",
+   "ecrire",
+   "egypte",
+   "enregistrer",
+   "enterrer",
+   "espace",
+   "espece",
+   "essence",
+   "etoile",
+   "europeen",
+   "evader",
+   "faire",
+   "famille",
+   "favorable",
+   "fermer",
+   "fete",
+   "film",
+   "fleur",
+   "francais",
+   "froid",
+   "grand",
+   "heure",
+   "histoire",
+   "honneur",
+   "idee",
+   "jean",
+   "jeu",
+   "jour",
+   "justice",
+   "lever",
+   "lier",
+   "ligne",
+   "livre",
+   "loi",
+   "main",
+   "maitre",
+   "meme",
+   "mettre",
+   "montagne",
+   "nombreux",
+   "nommer",
+   "normal",
+   "nuit",
+   "oiseau",
+   "ordonner",
+   "ouvrir",
+   "pain",
+   "palais",
+   "papillon",
+   "part",
+   "passer",
+   "pays",
+   "peu",
+   "peuple",
+   "pied",
+   "porte",
+   "poser",
+   "possible",
+   "pouvoir",
+   "premier",
+   "prendre",
+   "preter",
+   "projet",
+   "puissance",
+   "question",
+   "raconter",
+   "regler",
+   "remettre",
+   "remonter",
+   "repondre",
+   "rester",
+   "riviere",
+   "rue",
+   "savoir",
+   "secteur",
+   "serie",
+   "situer",
+   "societe",
+   "statuer",
+   "superieur",
+   "temps",
+   "titre",
+   "tomber",
+   "trouver",
+   "unir",
+   "village",
+   "ville"
+  ],
+  "MSUJET": [
+   "aider",
+   "auteur",
+   "barracuda",
+   "branche",
+   "briller",
+   "ciel",
+   "compter",
+   "dossier",
+   "justice",
+   "montagne",
+   "question",
+   "regler",
+   "soleil",
+   "unir",
+   "village"
+  ]
+ },
+ "stats": {
+  "arcs_lus": 4325,
+  "paires_uniques": 3698,
+  "paires_gardees": 222,
+  "mots_touches": 46
+ }
+}

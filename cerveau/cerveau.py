@@ -420,6 +420,7 @@ class Cerveau:
                 "geles": [[a, b] for a, b in self.graph["geles"]],
             },
             "chaines": [[a, b] for a, b in self.chaines],
+            "motifs": {nom: list(mb) for nom, mb in self.motifs.items()},
             "secteurs": {
                 nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
                        "redites": t.redites, "grave": t.grave}
@@ -458,6 +459,8 @@ class Cerveau:
         c.graph["types"] = set(photo["graph"]["types"])
         c.graph["geles"] = {(a, b) for a, b in photo["graph"]["geles"]}
         c.chaines = {(a, b) for a, b in photo["chaines"]}
+        if "motifs" in photo:  # photos v1 (sans motifs) : on garde ceux du pack
+            c.motifs = {nom: list(mb) for nom, mb in photo["motifs"].items()}
         for nom, traces in photo["secteurs"].items():
             s = c.secteurs[nom]
             s.traces = {}

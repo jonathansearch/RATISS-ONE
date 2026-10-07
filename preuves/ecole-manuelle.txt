@@ -1,0 +1,23 @@
+FRAGMENT — 238 mots, 222 liens, 12 motifs -> education-manuelle/fragment-ud-fr.json
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : rien d'assez rapide
+étincelle : word_astre word_enfants word_film word_io word_lune figés, 3 filaments
+étincelle : word_accusation word_alliance word_animal word_arbre word_autour word_chemin word_ciel word_creer word_dedier word_defendre word_derouler word_descendre word_devenir word_donner word_enterrer word_evader word_fete word_hier word_honneur word_lier word_main word_marche word_matin word_memoire word_mettre word_nommer word_passer word_peu word_prendre word_question word_remettre word_repondre word_ruban word_rue word_serment word_situer word_soleil word_statuer word_temps word_tomber figés, 27 filaments
+étincelle : word_acces word_actrice word_afrique word_aide word_aire word_album word_amiens word_amour word_apanage word_argument word_arret word_assemblee word_bord word_campagne word_caracterisation word_centre word_chanson word_chapelle word_chasse word_chocolat word_choix word_clair word_club word_commission word_communiste word_cour word_cours word_crue word_dame word_damier word_debit word_defense word_devise word_dimanche word_disque word_district word_doigt word_dollar word_drapeau word_droit word_droite word_eau word_ecole word_egypte word_elargissement word_enfant word_espace word_espece word_etoile word_famille word_fer word_feu word_fleur word_foret word_heure word_histoire word_idee word_immolation word_jeu word_jeudi word_joseph word_justice word_legion word_lendemain word_ligne word_livre word_loi word_loire word_lutte word_maison word_maitre word_montagne word_musique word_nuit word_oiseau word_pain word_paix word_palais word_papillon word_part word_pied word_pluie word_porte word_projet word_puissance word_reponse word_requete word_riviere word_secteur word_serie word_slovaquie word_societe word_titre word_traite word_vent word_village word_ville figés, 88 filaments
+étincelle : word_affaire word_bougie word_cannelle word_developpement word_dignite word_essence word_fenetre word_jour word_liberte word_pression word_securite word_soldat figés, 12 filaments
+étincelle : word_abondant word_age word_americain word_ancien word_autre word_battant word_beau word_blanc word_bleu word_bon word_celtique word_central word_chaud word_collectif word_coupe word_couvert word_diluvien word_doux word_espagnol word_europeen word_favorable word_francais word_froid word_genealogique word_grand word_jovien word_meme word_national word_nombreux word_normal word_petit word_possible word_potable word_premier word_russe word_sahraoui word_sterling word_superieur word_tout figés, 47 filaments
+étincelle : word_ainsi word_alors word_croire word_jean word_savoir figés, 5 filaments
+étincelle : word_bien word_que figés, 2 filaments
+étincelle : word_abandonner word_accroissement word_comporter word_conclure word_courant word_ecrire word_faire word_fermer word_laver word_ouvrir word_poser word_preter word_raconter word_remonter word_trouver figés, 17 filaments
+étincelle : word_conseiller word_pouvoir figés, 2 filaments
+étincelle : word_abattre word_adapter word_construire word_culminer word_dominer word_enregistrer word_lever word_ordonner word_rester figés, 9 filaments
+étincelle : word_aider word_auteur word_branche word_briller word_compter word_regler figés, 6 filaments
+étincelle : word_barracuda word_dossier figés, 2 filaments
+POUSSÉ — +234 neurones, +220 liens, +12 motifs (2 marbre épargné)
+CERVEAU — 13->247 neurones, 40->260 liens, 247 figés, 260 filaments, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-ecole.json.gz

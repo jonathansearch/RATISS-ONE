@@ -169,3 +169,13 @@ Le chef pousse `cerveau/cerveau.zip` : le labo réveille le fortifié
 (pinné : 300 000 000 + top sanctuaire). La voix du bilan est archivée
 (`preuves/bilan-300M.wav`, 9,5 s). Boucle fermée : Colab muscle, le
 fichier ramène, le dépôt réveille et vérifie.
+
+## 12. L'école manuelle (7 oct., leçon 30)
+
+Pas de LLM dans le système (décision du chef) : on quantifie nous-mêmes.
+`education-manuelle/convertisseur_ud.py` boit 14 450 phrases UD françaises
+annotées et sort un fragment CISE sur mesure (238 mots, 222 liens, 12
+motifs-relations, loi force = min(100, 10 x rencontres)), poussé au
+cerveau figé puis figé à l'éclair : 247 nerfs, 260 filaments, 300M
+d'écoutes et sanctuaire intacts. Règles : topk=5/mot, marbre non
+réécrit, R5 (pas d'écoutes), pas de nouvelles oreilles.

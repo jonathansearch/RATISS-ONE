@@ -524,6 +524,31 @@ def main():
     else:
         print("ÉCHEC : le figement CISE est mauvais")
         echecs += 1
+    controles += 1
+    sys.path.insert(0, "education-manuelle")
+    from convertisseur_ud import injecter as _injecter
+    _ok_ec = False
+    try:
+        _frag = json.load(open("education-manuelle/fragment-ud-fr.json", encoding="utf-8"))
+        _loi = all(l["force"] == min(100, 10 * l["n"]) for l in _frag["liens"])
+        _n = (len(_frag["neurones"]), len(_frag["liens"]), len(_frag["motifs"]))
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _ce = _Cerveau("FR")
+            _st = _injecter(_ce, _frag)
+            _re = _ce.figer()
+        _ok_ec = (_frag.get("format") == "fragment-cise-ud-v1"
+                  and _n == (238, 222, 12) and _loi
+                  and _st["liens"] == 220 and _st["marbre_epargne"] == 2
+                  and _st["motifs"] == 12
+                  and len(_re["figes"]) == len(_ce.graph["neurones"])
+                  and _ce.ecoutes == 0)
+    except Exception:
+        _ok_ec = False
+    if _ok_ec:
+        print("OK : école manuelle (fragment 238/222/12, loi vérifiée, tout figé)")
+    else:
+        print("ÉCHEC : le convertisseur UD est mauvais")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],
