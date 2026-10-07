@@ -33,17 +33,20 @@ def charger():
     return fenetres, sorted(mots)
 
 
-def generer(n, seed=7):
+def iterer(n, seed=7):
+    """Générateur streaming : ne tient jamais tout en RAM (Colab gratuit)."""
     fenetres, mots = charger()
     rng = random.Random(seed)
-    lignes = []
     for i in range(n):
         if rng.random() < 0.5:
             seq = list(rng.choice(fenetres))
         else:
             seq = [rng.choice(mots) for _ in range(3)]
-        lignes.append({"id": i, "mots": seq})
-    return lignes
+        yield {"id": i, "mots": seq}
+
+
+def generer(n, seed=7):
+    return list(iterer(n, seed))
 
 
 def main(argv):

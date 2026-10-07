@@ -397,6 +397,21 @@ def main():
     else:
         print("ÉCHEC : le générateur de masse a changé")
         echecs += 1
+    controles += 1
+    try:
+        nb_lourd = json.load(open("colab-1h.ipynb", encoding="utf-8"))
+        src_lourd = json.dumps(nb_lourd)
+        ok_lourd = (len(nb_lourd["cells"]) == 8
+                    and "complement 5000000" in src_lourd
+                    and "b68585abcff40eb37ee86bdff463a50c47a5e47598ef36e4d49ff6a702fac7e5" in src_lourd
+                    and "bilan.txt" in src_lourd)
+    except (OSError, ValueError):
+        ok_lourd = False
+    if ok_lourd:
+        print("OK : notebook 1h valide (8 cellules, sha fichier, 5M+5M)")
+    else:
+        print("ÉCHEC : le notebook 1h est cassé")
+        echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
             [sys.executable, "ratum.py", prog],

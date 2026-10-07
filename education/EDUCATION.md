@@ -125,3 +125,10 @@ L'école monte à l'échelle Colab : `education-massive/generer_masse.py`
 Mesuré : 250 000 séquences en ~70 s, RAM 12 Mo stables, sanctuaire
 « amis peuple enfants ». 5M ≈ 25 min sur Colab (notebook §2b). Les
 fichiers lourds ne sont jamais commis (doctrine : la masse vit sur Colab).
+
+## 7. Le programme 1h (7 oct., leçon 24)
+
+`education-massive/masse-5M.jsonl.gz` (5M, 35,7 Mo, sha pinné au
+notebook) + `colab-1h.ipynb` : 5M du fichier + 5M fraîches seed 8, lots
+200k, ~55 min sur Colab gratuit, bilan parlé en option. Validé 1M en
+local (327 s, 13 Mo). Le GPU est déclaré inutile par écrit : CPU pur.

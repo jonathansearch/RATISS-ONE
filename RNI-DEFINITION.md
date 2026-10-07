@@ -452,6 +452,21 @@ c'est la piste v2. Les millions, chez nous, ce sont des écoutes.
 > **Énoncé :** l'échelle ne se décrète pas, elle se mesure — 250 000
 > écoutes prouvent que 5 millions passeront (25 min, 12 Mo).
 
+### Leçon 24 ⏳ — Le fichier lourd et l'heure Colab : 10M en 1h
+*Programme 1h : `masse-5M.jsonl.gz` (5M, sha pinné) + `colab-1h.ipynb`
+(5M fichier + 5M fraîches, lots 200k, bilan parlé) — preuves :
+`preuves/sortie-masse-1M.txt` (1M en 327 s, 13 Mo), 113/113.*
+
+1M validé en local : 327 s, RAM 13 Mo, sanctuaire « amis patrie pays »
+(l'élue change avec l'échelle — mesuré, pas promis). Extrapolé : 10M ≈
+55 min sur CPU Colab gratuit. Vérité GPU écrite au notebook : le tissu
+est CPU pur, le GPU ne l'accélère pas — et 1h suffit sans lui. Le fichier
+(270 Mo → 35,7 Mo) se vérifie par sha avant de brûler ; le tissu ne
+stocke rien : 10M de lignes passent, seules les forces restent.
+
+> **Énoncé :** une heure bien remplie vaut mieux qu'un GPU décoratif —
+> 10 millions d'écoutes prouvées à 3 000 par seconde.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -519,6 +534,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **oreille en direct** — tranches 2 s → règles, élue « americans ask not » retrouvée, `--micro` (livré 7 oct. : leçon 21, 110/110)
 - [x] **dialogue v1** — 7 intents FR+EN pinnés, « bonjour » répondu, inconnu honnête, 12 voix cousues (livré 7 oct. : leçon 22, 111/111)
 - [x] **masse 250k → 5M** — 250 000 écoutes en ~70 s (12 Mo), sanctuaire conquis, notebook §2b Colab (livré 7 oct. : leçon 23, 112/112)
+- [x] **programme 1h Colab** — fichier 5M (sha pinné) + 5M fraîches, 1M validé 327 s, GPU déclaré inutile (livré 7 oct. : leçon 24, 113/113)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

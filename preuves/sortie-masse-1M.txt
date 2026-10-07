@@ -1,0 +1,24 @@
+=== ÉDUCATION MASSIVE (streaming, une nuit par lot) ===
+nettoyage : 1 liens morts, 0 neurones morts
+lot 100000 : liens=40 neurones=13 écoutes=100000 RAM=13 Mo t=34s
+nettoyage : 3 liens morts, 0 neurones morts
+lot 200000 : liens=37 neurones=13 écoutes=200000 RAM=13 Mo t=68s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 300000 : liens=37 neurones=13 écoutes=300000 RAM=13 Mo t=100s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 400000 : liens=37 neurones=13 écoutes=400000 RAM=13 Mo t=132s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 500000 : liens=37 neurones=13 écoutes=500000 RAM=13 Mo t=165s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 600000 : liens=37 neurones=13 écoutes=600000 RAM=13 Mo t=197s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 700000 : liens=37 neurones=13 écoutes=700000 RAM=13 Mo t=229s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 800000 : liens=37 neurones=13 écoutes=800000 RAM=13 Mo t=261s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 900000 : liens=37 neurones=13 écoutes=900000 RAM=13 Mo t=294s
+nettoyage : 0 liens morts, 0 neurones morts
+lot 1000000 : liens=37 neurones=13 écoutes=1000000 RAM=13 Mo t=327s
+=== BILAN ===
+dit : J'ai entendu 1000000 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+MASSE OK — 1000000 séquences, 37 liens, 13 neurones, RAM max 13 Mo, 327 s

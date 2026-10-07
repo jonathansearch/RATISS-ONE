@@ -7,5 +7,6 @@ __pycache__/
 # Modeles voix + photos écloses (regenerables en local)
 bouche/voix/*.onnx*
 tissu-educ.scroll
-# Fichiers de masse locaux (Colab les regenere, jamais commis)
+# JSONL lourds : jamais commis (regenerables). EXCEPTION : le .gz 5M EST commis
+# (35,7 Mo < limite GitHub, telechargeable par le notebook 1h).
 education-massive/*.jsonl
