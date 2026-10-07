@@ -647,6 +647,22 @@ parlent — « empereur byzantin dire verite tout » (124/124).*
 > **Énoncé :** la bouche assemble, elle n'invente pas — chaque lien
 > parlé est tenu, sinon silence.
 
+### Leçon 36 📖 — L'école de grammaire : les bases, pas de hasard
+*Ordre du chef : toutes les bases du français, structurées à la main
+(notre méthode, pas celle des LLM). `--grammaire` : les articles sont
+de vrais nerfs (+82, +13 762 liens, motif MARTICLES, 36 épargnés —
+le contenu d'abord) ; 6 tables d'accords en un passage FEATS (genres,
+nombres, flexions, adjectifs, conjugaison présent 3e, déterminants
+observés). `parler` habille le noyau tenu : « L'empereur byzantin dit
+la vérité toute. », « Les employés prennent le nom vrai. » — appris
+100 % observé, sinon règle documentée + flag. AMENDEMENT leçon 35 :
+le pas d'expansion saute les petits mots (la colle détournait les
+noyaux — prouvé : `chien` s'était tu) ; `manger` parle désormais
+(« enfant autre pouvoir ») (125/125).*
+
+> **Énoncé :** les bases d'abord — articles, accords, présent — et
+> la colle ne détourne plus les noyaux.
+
 ---
 
 ## 5. Phonon-2 : l'oreille future (pas un outil d'entraînement)
@@ -726,6 +742,7 @@ le 6 oct. 2026 (leçon 7 : JFK mot pour mot, boucle live).
 - [x] **soudure-amis** — pont-jumeau 100 figé, écho 0->50, ULTRA intact (livré 7 oct. : leçon 33, 122/122)
 - [x] **école de l'oreille** — 24 638 mots + 16 370 formes, lent=rapide, rêve élargi (livré 7 oct. : leçon 34, 123/123)
 - [x] **école de la bouche** — 105 313 paires parlables, SVO tenu, silences honnêtes (livré 7 oct. : leçon 35, 124/124)
+- [x] **école de grammaire** — articles + 6 accords, expansion amendée, phrases vraies (livré 7 oct. : leçon 36, 125/125)
 - [ ] **toujours** — chaque affirmation rejouable en une commande, sinon elle n'existe pas
 
 ---

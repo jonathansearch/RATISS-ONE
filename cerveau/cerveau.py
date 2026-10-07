@@ -147,6 +147,12 @@ class Cerveau:
         self.formes = {}  # leçon 34 : forme fléchie (minuscule) -> lemme appris
         self.constructions = {}  # leçon 35 : (a, b) trié -> (relation, dépendant)
         self.natures = {}  # leçon 35 : noeud -> POS (VERB, NOUN...)
+        self.genres = {}  # leçon 36 : noeud -> M/F (le plus fréquent, M par défaut)
+        self.nombres = {}  # leçon 36 : noeud -> S/P (le plus fréquent, S par défaut)
+        self.flexions = {}  # leçon 36 : noeud -> {S: forme, P: forme} (noms)
+        self.adjectifs = {}  # leçon 36 : noeud -> {"MS": f...} (épithètes)
+        self.conjugue = {}  # leçon 36 : verbe -> {S: 3e sing, P: 3e plur} (présent)
+        self.determinants = {}  # leçon 36 : nom -> {S: det, P: det} (observés)
         neurones = set(pack["concepts"])
         for mb in self.motifs.values():
             neurones.update(mb)
@@ -381,6 +387,17 @@ class Cerveau:
         from bouche.construire import construire
         return construire(self, mot)
 
+    def parler(self, mot, seuil=None):
+        """PARLER (leçon 36) : le français accordé — articles, genre, nombre,
+        conjugaison présent 3e. Même noyau tenu que `dire`, habillé par les
+        tables de grammaire (tout observé, sinon règle documentée + flag).
+        Retourne le résultat ou None (même silence que `dire`).
+        Import paresseux : comme redire, la bouche dépend du crâne au chargement."""
+        from bouche import construire as _bc
+        if seuil is None:
+            seuil = _bc.SEUIL_TENU
+        return _bc.parler(self, mot, seuil=seuil)
+
     def rever(self):
         """LE RÊVE (v6, phase 5) : l'hippocampe rejoue ce que le tissu a compris.
         Chaque trace VIF/REFRAIN riche (≥ 2 mots connus) est ravivée sur place
@@ -508,6 +525,12 @@ class Cerveau:
             "constructions": [[a, b, r, d] for (a, b), (r, d)
                               in sorted(self.constructions.items())],
             "natures": {n: self.natures[n] for n in sorted(self.natures)},
+            "genres": {n: self.genres[n] for n in sorted(self.genres)},
+            "nombres": {n: self.nombres[n] for n in sorted(self.nombres)},
+            "flexions": {n: self.flexions[n] for n in sorted(self.flexions)},
+            "adjectifs": {n: self.adjectifs[n] for n in sorted(self.adjectifs)},
+            "conjugue": {n: self.conjugue[n] for n in sorted(self.conjugue)},
+            "determinants": {n: self.determinants[n] for n in sorted(self.determinants)},
             "secteurs": {
                 nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
                        "redites": t.redites, "grave": t.grave}
@@ -552,6 +575,12 @@ class Cerveau:
         c.formes = dict(photo.get("formes", {}))
         c.constructions = {(a, b): (r, d) for a, b, r, d in photo.get("constructions", [])}
         c.natures = dict(photo.get("natures", {}))
+        c.genres = dict(photo.get("genres", {}))
+        c.nombres = dict(photo.get("nombres", {}))
+        c.flexions = dict(photo.get("flexions", {}))
+        c.adjectifs = dict(photo.get("adjectifs", {}))
+        c.conjugue = dict(photo.get("conjugue", {}))
+        c.determinants = dict(photo.get("determinants", {}))
         for nom, traces in photo["secteurs"].items():
             s = c.secteurs[nom]
             s.traces = {}

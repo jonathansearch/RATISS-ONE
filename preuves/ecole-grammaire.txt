@@ -1,0 +1,15 @@
+=== L'ÉCOLE DE GRAMMAIRE : articles + accords, le bébé parle français ===
+nerfs : 24721 | liens : 119112 | motifs : 21 (MARTICLE Oui) | écoutes : 300000000
+tables : 11953 genres, 14536 nombres, 12727 flexions, 3175 adjectifs, 1119 verbes, 7725 déterminants
+  dire -> « L'empereur byzantin dit la vérité toute. » appris=True tenu=True
+  faire -> « Le nom vrai fait l'apparition première. » appris=True tenu=True
+  prendre -> « Les employés prennent le nom vrai. » appris=True tenu=True
+  enfant -> « L'armée française met les enfants autres. » appris=True tenu=True
+  chien -> « La population active élève les animaux domestiques. » appris=True tenu=True
+  manger -> « Les enfants autres peuvent. » appris=True tenu=True
+  amis -> silence (rien de tenu)
+  blorpt -> silence (rien de tenu)
+dire intact : empereur byzantin dire verite tout
+bilan (inchangé) : J'ai entendu 300000000 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+nuit 0 perte : True
+artefact : 4529320 octets

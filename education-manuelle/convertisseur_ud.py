@@ -20,6 +20,9 @@ Lois (simples, documentées, pinnées par la batterie) :
   mots_connus intact, priorité à l'école.
 - l'école de la bouche (leçon 35) apprend à part (constructions + natures),
   tissu intact : comment chaque lien tenu se parle.
+- l'école de grammaire (leçon 36) injecte les articles (vrais nerfs) et
+  apprend les accords à part (genres, nombres, flexions, conjugaison,
+  déterminants) : tout observé, sinon règle documentée + flag.
 
 Usage :
   python3 education-manuelle/convertisseur_ud.py --conllu fr.conllu --topk 5
@@ -48,6 +51,7 @@ REL_MOTIF = {
     "nmod": "MCOMPLET", "acl": "MPROPOS", "appos": "MAPPOS",
     "conj": "MCONJOINT", "ccomp": "MPROP", "xcomp": "MPROP",
     "advcl": "MCIRCONST", "nummod": "MNOMBRE", "compound": "MMOT",
+    "det": "MARTICLE",
 }
 MOTIF_DIVERS = "MLIAISON"
 MOTIF_RACINE = "MRACINE"
@@ -282,6 +286,181 @@ def bouche_cli(args):
     return 0
 
 
+TETES_ARTICLE = {"NOUN", "PROPN", "ADJ"}
+
+
+def lire_traits(p5):
+    """FEATS (colonne 6) -> dict : Gender, Number, Person, Mood, Tense..."""
+    if p5 == "_":
+        return {}
+    d = {}
+    for morceau in p5.split("|"):
+        if "=" in morceau:
+            k, v = morceau.split("=", 1)
+            d[k] = v
+    return d
+
+
+def extraire_articles(conllu):
+    """Arcs (déterminant, tête, det) : le DET dépend de son nom."""
+    arcs = Counter()
+    toks = []
+
+    def vider():
+        idx = {t[0]: t for t in toks}
+        for (i, lem, pos, head) in toks:
+            if head == 0 or head not in idx:
+                continue
+            if pos != "DET" or idx[head][2] not in TETES_ARTICLE:
+                continue
+            l1, l2 = normaliser(lem), normaliser(idx[head][1])
+            if not l1 or not l2:
+                continue
+            arcs[(l1, l2, "det")] += 1
+
+    with open(conllu, encoding="utf-8") as fh:
+        for ligne in fh:
+            ligne = ligne.strip()
+            if not ligne:
+                if toks:
+                    vider()
+                    toks = []
+                continue
+            if ligne.startswith("#"):
+                continue
+            p = ligne.split("\t")
+            if "-" in p[0] or "." in p[0]:
+                continue
+            toks.append((int(p[0]), p[2], p[3], int(p[6])))
+    if toks:
+        vider()
+    return arcs
+
+
+def ecole_grammaire(c, conllu):
+    """L'ÉCOLE DE GRAMMAIRE (leçon 36) : les articles + les accords.
+
+    1. Les articles sont de vrais nerfs (injectés + figés, motif MARTICLES).
+    2. Leurs constructions (le contenu d'abord : pas d'écrasement).
+    3. L'oreille + la bouche repassent (idempotents : que du neuf).
+    4. Les accords en un passage FEATS : genres, nombres, flexions,
+       adjectifs, conjugaison (présent 3e), déterminants observés.
+    """
+    import contextlib
+    import io
+    from collections import defaultdict
+    arts = extraire_articles(conllu)
+    gardes = {}
+    for (a, b, r), n in arts.items():
+        if (a, b) not in gardes or gardes[(a, b)][1] < n:
+            gardes[(a, b)] = (r, n)
+    frag = _fragment(gardes, set(), "UD_French-GSD train (articles)")
+    st_inject = injecter(c, frag)
+    with contextlib.redirect_stdout(io.StringIO()):
+        res_figer = c.figer()
+    for l in frag["liens"]:
+        na = neurone_pour(c, l["a"])
+        nb = neurone_pour(c, l["b"])
+        paire = tuple(sorted((na, nb)))
+        dep = l["a"] if (l["a"], l["b"], "det") in arts else l["b"]
+        c.constructions.setdefault(paire, ("det", neurone_pour(c, dep)))
+    st_or = ecole_oreille(c, conllu)
+    st_bou = ecole_bouche(c, conllu)
+    vg, vn = defaultdict(Counter), defaultdict(Counter)
+    vf, va, vv, vd = defaultdict(lambda: defaultdict(Counter)), defaultdict(
+        lambda: defaultdict(Counter)), defaultdict(lambda: defaultdict(Counter)), defaultdict(
+        lambda: defaultdict(Counter))
+    toks = []
+
+    def vider():
+        idx = {t[0]: t for t in toks}
+        for (i, lem, pos, head, ft, forme) in toks:
+            nl = normaliser(lem)
+            if not nl:
+                continue
+            noeud = noeud_pour(c.graph["neurones"], nl)
+            if noeud is None:
+                continue
+            g, nb = ft.get("Gender"), ft.get("Number")
+            if g in ("Masc", "Fem") and pos in ("NOUN", "PROPN", "ADJ", "PRON", "DET"):
+                vg[noeud][g] += 1
+            if nb in ("Sing", "Plur"):
+                if pos in ("NOUN", "PROPN", "ADJ", "PRON", "VERB", "DET"):
+                    vn[noeud][nb] += 1
+                if pos in ("NOUN", "PROPN", "ADJ") and len(forme) >= 2:
+                    vf[noeud][nb][forme.lower()] += 1
+                if pos == "ADJ" and g in ("Masc", "Fem"):
+                    va[noeud][g + nb][forme.lower()] += 1
+            if (pos in ("VERB", "AUX") and ft.get("Person") == "3"
+                    and ft.get("Mood") == "Ind" and ft.get("Tense") == "Pres"
+                    and nb in ("Sing", "Plur")):
+                vv[noeud][nb][forme.lower()] += 1
+            if (pos == "DET" and head in idx and forme.lower() in ("le", "la", "les", "l'")
+                    and nb in ("Sing", "Plur")):
+                hl = normaliser(idx[head][1])
+                hn = noeud_pour(c.graph["neurones"], hl) if hl else None
+                if hn is not None:
+                    vd[hn][nb][forme.lower()] += 1
+
+    with open(conllu, encoding="utf-8") as fh:
+        for ligne in fh:
+            ligne = ligne.strip()
+            if not ligne:
+                if toks:
+                    vider()
+                    toks = []
+                continue
+            if ligne.startswith("#"):
+                continue
+            p = ligne.split("\t")
+            if "-" in p[0] or "." in p[0]:
+                continue
+            toks.append((int(p[0]), p[2], p[3], int(p[6]), lire_traits(p[5]), p[1]))
+    if toks:
+        vider()
+
+    def top(cpt):
+        return sorted(cpt.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+
+    for noeud, cpt in vg.items():
+        c.genres[noeud] = "M" if top(cpt) == "Masc" else "F"
+    for noeud, cpt in vn.items():
+        c.nombres[noeud] = "S" if top(cpt) == "Sing" else "P"
+    for noeud, par_nb in vf.items():
+        c.flexions[noeud] = {("S" if nb == "Sing" else "P"): top(cpt)
+                             for nb, cpt in par_nb.items()}
+    for noeud, par_gn in va.items():
+        conv = {"MascSing": "MS", "FemSing": "FS", "MascPlur": "MP", "FemPlur": "FP"}
+        c.adjectifs[noeud] = {conv[gn]: top(cpt) for gn, cpt in par_gn.items()}
+    for noeud, par_nb in vv.items():
+        c.conjugue[noeud] = {("S" if nb == "Sing" else "P"): top(cpt)
+                             for nb, cpt in par_nb.items()}
+    for noeud, par_nb in vd.items():
+        c.determinants[noeud] = {("S" if nb == "Sing" else "P"): top(cpt)
+                                 for nb, cpt in par_nb.items()}
+    return {"articles": {"neurones": st_inject["neurones"], "liens": st_inject["liens"],
+                         "epargnes": st_inject["marbre_epargne"],
+                         "figes": len(res_figer["figes"])},
+            "oreille": st_or, "bouche": st_bou, "genres": len(c.genres),
+            "nombres": len(c.nombres), "flexions": len(c.flexions),
+            "adjectifs": len(c.adjectifs), "conjugue": len(c.conjugue),
+            "determinants": len(c.determinants)}
+
+
+def grammaire_cli(args):
+    c = Cerveau.relire(args.injecter)
+    stats = ecole_grammaire(c, args.conllu)
+    c.graver(args.sortie)
+    a = stats["articles"]
+    print(f"GRAMMAIRE — articles : +{a['neurones']} nerfs +{a['liens']} liens "
+          f"({a['epargnes']} épargnés), {a['figes']} figés")
+    print(f"GRAMMAIRE — accords : {stats['genres']} genres, {stats['nombres']} nombres, "
+          f"{stats['flexions']} flexions, {stats['adjectifs']} adjectifs, "
+          f"{stats['conjugue']} verbes, {stats['determinants']} déterminants")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
+
+
 def injecter(c, fragment):
     """Pousse le fragment au cerveau (soudure, pas d'écoutes)."""
     stats = {"neurones": 0, "liens": 0, "motifs": 0, "marbre_epargne": 0}
@@ -416,7 +595,14 @@ def main(argv):
                     help="école de l'oreille : apprend les mots du conllu déjà en nerfs")
     ap.add_argument("--bouche", action="store_true",
                     help="école de la bouche : apprend comment chaque lien tenu se parle")
+    ap.add_argument("--grammaire", action="store_true",
+                    help="école de grammaire : articles + accords (genres, nombres, présent)")
     args = ap.parse_args(argv)
+    if args.grammaire:
+        assert args.tours == 0 and not args.jusquau_fond and not args.oreille \
+            and not args.bouche, "--grammaire seul"
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés"
+        return grammaire_cli(args)
     if args.bouche:
         assert args.tours == 0 and not args.jusquau_fond and not args.oreille, "--bouche seul"
         assert args.injecter and args.sortie, "--injecter + --sortie exigés"

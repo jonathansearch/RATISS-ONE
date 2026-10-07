@@ -212,3 +212,12 @@ la priorité (`mots_connus` intact) ; battement par motifs temporaires
 des noyaux sujet-verbe-objet (+ épithète), ordre français, style
 télégraphique (zéro LLM) : R-CONSTRUCTEUR — chaque lien parlé est tenu
 (force >= 20), sinon la bouche se tait. 884/2067 verbes parlent.
+
+## 17. L'école de grammaire (7 oct., leçon 36)
+
+`--grammaire` : les articles deviennent de vrais nerfs (injectés + figés,
+motif MARTICLES) et les accords s'apprennent en un passage FEATS (genres,
+nombres, flexions, adjectifs, présent 3e, déterminants observés). `parler`
+habille le noyau tenu : articles, accords, conjugaison — 100 % observé,
+sinon règle documentée + flag `appris`. Amendement : l'expansion saute
+les petits mots (la colle ne détourne plus les noyaux).

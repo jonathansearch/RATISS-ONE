@@ -726,6 +726,7 @@ def main():
             _ph10 = _construire(_x, "accuser", seuil=10)
             _cb = _Cerveau.relire("cerveau/fige-300M-bouche.json.gz")
             _ph = _cb.dire("dire")
+            _phm = _cb.dire("manger")
             _or2 = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
             _sd2 = _Cerveau.relire("cerveau/fige-300M-soude.json.gz")
         _ok_bou = (_stb == {"paires": 1747, "sans_lien": 0, "natures": 1421}
@@ -741,7 +742,9 @@ def main():
                    and _ph is not None
                    and _ph["phrase"] == "empereur byzantin dire verite tout"
                    and _tenue(_cb, _ph)
-                   and _cb.dire("manger") is None and _cb.dire("blorpt") is None
+                   and _phm is not None and _phm["phrase"] == "enfant autre pouvoir"
+                   and _tenue(_cb, _phm)
+                   and _cb.dire("blorpt") is None
                    and _or2.dire("dire") is None and _sd2.dire("manger") is None
                    and _sd2.dire("amis") is None)
     except Exception:
@@ -750,6 +753,77 @@ def main():
         print("OK : bouche (SVO tenu, empereur pinné, silences honnêtes)")
     else:
         print("ÉCHEC : la bouche est mauvaise")
+        echecs += 1
+    controles += 1
+    from convertisseur_ud import ecole_grammaire as _gramm
+    _ok_gr = False
+    try:
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _vi = _tf.mktemp(suffix=".json.gz")
+            _Cerveau("FR").graver(_vi)
+            _a = _A()
+            _a.conllu = "education-manuelle/echantillon-ud.conllu"
+            _a.graines = 7
+            _a.paires = 500
+            _a.injecter = _vi
+            _a.sortie = _tf.mktemp(suffix=".json.gz")
+            _boire(_a)
+            os.remove(_vi)
+            _x = _Cerveau.relire(_a.sortie)
+            os.remove(_a.sortie)
+            _ecole(_x, "education-manuelle/echantillon-ud.conllu")
+            _bouche(_x, "education-manuelle/echantillon-ud.conllu")
+            _stg = _gramm(_x, "education-manuelle/echantillon-ud.conllu")
+            _pg10 = _x.parler("accuser", seuil=10)
+            _cg = _Cerveau.relire("cerveau/fige-300M-grammaire.json.gz")
+            _pg = _cg.parler("dire")
+            _pg2 = _cg.parler("chien")
+            _pg3 = _cg.parler("manger")
+            _cb2 = _Cerveau.relire("cerveau/fige-300M-bouche.json.gz")
+            _pb = _cb2.parler("dire")
+            _or3 = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
+        _ok_gr = (_stg["articles"]["neurones"] == 19
+                  and _stg["articles"]["liens"] == 626
+                  and _stg["articles"]["epargnes"] == 1
+                  and _stg["articles"]["figes"] == 1447
+                  and (_stg["genres"], _stg["nombres"], _stg["flexions"],
+                       _stg["adjectifs"], _stg["conjugue"], _stg["determinants"])
+                  == (902, 1131, 908, 195, 102, 430)
+                  and len(_x.motifs) == 21 and "MARTICLE" in _x.motifs
+                  and _pg10 is not None
+                  and _pg10["phrase"] == "Stephen accuse Adeang."
+                  and _pg10["appris"] is False and _pg10["tenu"] is True
+                  and _construire(_x, "accuser", seuil=10)["phrase"] == "stephen accuser adeang"
+                  and _x.parler("blorpt") is None
+                  and (len(_cg.graph["neurones"]), len(_cg.graph["liens"]),
+                       len(_cg.motifs)) == (24721, 119112, 21)
+                  and _cg.ecoutes == 300000000
+                  and len(_cg.oreille) == 24720 and len(_cg.formes) == 16406
+                  and len(_cg.constructions) == 119075 and len(_cg.natures) == 24720
+                  and (len(_cg.genres), len(_cg.nombres), len(_cg.flexions),
+                       len(_cg.adjectifs), len(_cg.conjugue), len(_cg.determinants))
+                  == (11953, 14536, 12727, 3175, 1119, 7725)
+                  and _pg is not None
+                  and _pg["phrase"] == "L'empereur byzantin dit la vérité toute."
+                  and _pg["appris"] is True and _pg["tenu"] is True
+                  and _pg2 is not None
+                  and _pg2["phrase"] == "La population active élève les animaux domestiques."
+                  and _pg2["appris"] is True
+                  and (_cg.dire("chien") or {}).get("phrase") == "population actif elever animal domestique"
+                  and _pg3 is not None
+                  and _pg3["phrase"] == "Les enfants autres peuvent."
+                  and _pg3["appris"] is True and _pg3["tenu"] is True
+                  and _cg.parler("blorpt") is None
+                  and _pb is not None
+                  and _pb["phrase"] == "L'empereur byzantin dire le verite tout."
+                  and _pb["appris"] is False and _pb["tenu"] is True
+                  and _or3.parler("dire") is None)
+    except Exception:
+        _ok_gr = False
+    if _ok_gr:
+        print("OK : grammaire (articles + accords, empereur pinné, 119112 liens)")
+    else:
+        print("ÉCHEC : la grammaire est mauvaise")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(
