@@ -1,0 +1,39 @@
+PREUVE — leçon 43 : FQuAD2 bu (Q&R français NATIF, test+valid, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut --injecter cerveau/fige-300M-piaf.json.gz --sortie cerveau/fige-300M-fquad2.json.gz --topk 0
+
+DIALOGUES — 1000 dialogues, 1481 tours, 11700 mots, 7137 paires uniques, 10675 rencontres
+FRAGMENT — 2715 mots, 7114 liens, 2 motifs
+POUSSÉ — +214 neurones, +2866 liens, +2 motifs (4248 marbre épargné)
+BOUCHE — 6766 paires parlables, 0 sans lien
+OREILLE — 2715 mots appris, 0 sourds
+CERVEAU — 64325->64539 neurones, 314097->316963 liens, 64539 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-fquad2.json.gz (10,6 Mo)
+Q&R : 1000 exemples lus (test 800 + valid 200), 500 sans réponse (questions
+impossibles FQuAD2, Q seules bues), 983 réponses multiples (1re bue),
+1000 contextes ignorés. MSUITE=51466 MREPONSE=16570. topk=0 (TOUT).
+Note : fichiers *_hasAns EXCLUS (sous-ensembles de test/valid : doublons).
+
+Chasse aux bruits : 234 neufs relus UN PAR UN + 53 contextes (zéro échantillon).
++20 : 8 anglais (phrase CIM #772 : autism disorder functional impairment
+intellectual mild + aspergirl personalise), 9 coquilles/fautes natives
+(innodation roosevelet matriarcale konprinz steckel politage iteneraires
+desechement idigenes), leggieremente (IT rare), padroado (PT), maur
+(fragment hyphen de Saint-Maur).
+GARDÉS notables : monita/missionarios (titre latin, cohérence vitai),
+monarch (Monarch Airlines), integra (intégra), querre (Querré), chimarros
+(nom mytho), maestoso + arietta + pianissimo (musique, dico/usage), frisonne
+(jument), teias (roi), bretonnie (lieu), thresher (USS), stekel (1 c),
+friedrichshof (lieu, nom propre > langue). Zéro orphelin (topk=0).
+
+Licence du jeu : Apache-2.0 (manu/fquad2_test, QA français natif) —
+on ne garde que la trace relationnelle (paires + forces), jamais le texte.
+
+REJEU x3 : +214/+2866/+2 identiques ; bit-à-bit identique à seed fixe
+(PYTHONHASHSEED=0, hors meta.date : ordre chaines/geles seul variable).
+Batterie : 132/132 CONTRÔLES VERTS (contrôle fquad2 ajouté : fixture
+5/8/65/59, 64539/316963/36, Q&R natif, R5 OK).
+
+Note dépôt : la leçon 42 avait effacé 21 fichiers par erreur (index partiel
++ renommage détecté) ; restaurés en ae93915 + b7b44ee AVANT cette leçon
+(dépôt vérifié : c43e276 + 5 fichiers leçon 42, zéro suppression).
+Règle ajoutée : vérifier --stat après chaque commit.

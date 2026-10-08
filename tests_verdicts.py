@@ -764,6 +764,48 @@ def main():
         print("ÉCHEC : le convertisseur piaf est mauvais")
         echecs += 1
     controles += 1
+    _ok_fq2 = False
+    try:
+        _arcs2, _st2 = _dx("education-manuelle/echantillon-fquad2.parquet")
+        _f21 = _dc(_arcs2, "test")
+        _f22 = _dc(_arcs2, "test")
+        _loi2 = all(l["force"] == min(100, 10 * l["n"]) for l in _f21["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cd2 = _Cerveau("FR")
+            _si2 = _injecter(_cd2, _f21)
+            _si22 = _injecter(_cd2, _f21)
+            _rf2 = _cd2.figer()
+            _bo2 = _dbo(_cd2, _arcs2)
+            _od2 = _dor(_cd2, _f21["neurones"])
+            _fq2 = _Cerveau.relire("cerveau/fige-300M-fquad2.json.gz")
+        _ok_fq2 = (_f21 == _f22 and _loi2
+                  and (_st2["dialogues"], _st2["tours"], _st2["mots"],
+                       _st2["paires_uniques"]) == (5, 8, 65, 59)
+                  and _st2["qa"] == {"multiples_ignorees": 6,
+                                     "sans_reponse": 2, "contextes_ignores": 5}
+                  and (len(_f21["neurones"]), len(_f21["liens"]),
+                       len(_f21["motifs"])) == (53, 59, 2)
+                  and _f21.get("format") == "fragment-cise-dialogues-v1"
+                  and _cd2.ecoutes == 0 and _od2["sourds"] == 0
+                  and _si22["neurones"] == 0 and _si22["liens"] == 0
+                  and len(_rf2["figes"]) == len(_cd2.graph["neurones"])
+                  and (len(_fq2.graph["neurones"]), len(_fq2.graph["liens"]),
+                       len(_fq2.motifs)) == (64539, 316963, 36)
+                  and _fq2.ecoutes == 300000000
+                  and (len(_fq2.motifs["MSUITE"]),
+                       len(_fq2.motifs["MREPONSE"])) == (51466, 16570))
+        try:
+            del _cd2, _fq2  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_fq2 = False
+    if _ok_fq2:
+        print("OK : fquad2 (fixture 5/8/65/59, 64539/316963/36, Q&R natif, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur fquad2 est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:

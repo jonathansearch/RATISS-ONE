@@ -183,6 +183,15 @@ BRUITS = {
     "neushoorn", "werbestelle",
     # fragment technique (Riccò : le ò italien est hors-classe LETTRES)
     "ricc",
+    # --- repérés dans FQuAD2 (leçon 43 : 234 neufs relus UN PAR UN) ---
+    # anglais (phrase CIM #772 + usages : même logique qu'au 41)
+    "autism", "disorder", "functional", "impairment", "intellectual",
+    "mild", "aspergirl", "personalise",
+    # coquilles et fautes humaines (questions natives FQuAD)
+    "innodation", "roosevelet", "matriarcale", "konprinz", "steckel",
+    "politage", "iteneraires", "desechement", "idigenes",
+    # intrusions (IT rare objet-de-Q ; PT historique ; fragment hyphen)
+    "leggieremente", "padroado", "maur",
 }
 UNE_LETTRE = {"a", "y"}
 MOTIF_SUITE = "MSUITE"
