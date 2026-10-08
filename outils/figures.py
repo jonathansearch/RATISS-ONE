@@ -8,6 +8,9 @@ Zéro dessin à la main : le graphe est rejoué hors-ligne (transcrit JFK archiv
 mêmes répétitions que cerveau-demo.py) et les nombres affichés sont ASSERTÉS
 égaux à la démo live (preuves/sortie-cerveau-demo.txt). Si la démo change, les
 figures refusent de se générer avec les vieux nombres.
+
+v2 (leçon 44, 8 oct. 2026) : le nettoyage du cerveau actuel tue 4 liens morts
+(28 -> 24 liens). Les figures affichent les vrais nombres rejoués.
 """
 
 import math
@@ -55,7 +58,7 @@ def rejouer_demo():
     assert len(wins) == 20, wins
     assert len(riches) == 3, riches
     assert len(c.graph["neurones"]) == 13, sorted(c.graph["neurones"])
-    assert len(c.graph["liens"]) == 28, len(c.graph["liens"])
+    assert len(c.graph["liens"]) == 24, len(c.graph["liens"])
     assert len(c.chaines) == 2, c.chaines
     san = c.secteurs["SANCTUAIRE"].traces
     top = c.secteurs["SANCTUAIRE"].top(1)[0]
@@ -161,7 +164,7 @@ def fig_hero(c):
     fig, ax = plt.subplots(figsize=(14, 9))
     style(ax)
     dessine_graphe(ax, c, annotes_forces=False)
-    ax.set_title("LE TISSU ÉDUQUÉ — 13 neurones, 28 liens (26 tissés + 2 chaînes nées de JFK)",
+    ax.set_title("LE TISSU ÉDUQUÉ — 13 neurones, 24 liens (22 tissés + 2 chaînes nées de JFK)",
                  color=BLANC, fontsize=14, weight="bold", pad=14)
     ax.text(0, -4.35,
             "épaisseur = force mesurée du lien  ·  or = chaînes des mots qui se suivent (fellow-americans-ask)",
@@ -251,16 +254,33 @@ def fig_boucle():
     plt.close(fig)
 
 
+def fig_logo():
+    """Le logo du labo (sobre : nom + devise, mêmes couleurs que les figures)."""
+    fig, ax = plt.subplots(figsize=(4.4, 2.2))
+    style(ax)
+    ax.set_xlim(0, 4.4)
+    ax.set_ylim(0, 2.2)
+    ax.text(2.2, 1.45, "⚛ RATISS LABS", color=CYAN, fontsize=20,
+            weight="bold", ha="center", va="center")
+    ax.text(2.2, 0.75, "« On ne croit pas. On rejoue. »", color=BLANC,
+            fontsize=9, ha="center", va="center", style="italic")
+    fig.tight_layout()
+    fig.savefig("images/logo-ratiss-labs.png", dpi=100)
+    plt.close(fig)
+
+
 def main():
     os.makedirs("images", exist_ok=True)
     print("rejeu de la démo (hors-ligne, déterministe)…")
     c = rejouer_demo()
-    print("assertions live OK : 20 seq., 28 liens, sanctuaire f92")
+    print("assertions live OK : 20 seq., 24 liens, sanctuaire f92")
     fig_hero(c)
     fig_graphe(c)
     fig_secteurs()
     fig_boucle()
-    print("images/hero-cerveau.png, graphe-jfk.png, secteurs.png, boucle.png écrites")
+    fig_logo()
+    print("images/hero-cerveau.png, graphe-jfk.png, secteurs.png, boucle.png, "
+          "logo-ratiss-labs.png écrites")
 
 
 if __name__ == "__main__":

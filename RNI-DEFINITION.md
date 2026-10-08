@@ -14,9 +14,8 @@
 
 **« Intriqué »** veut dire ici : quand un neurone bat, ses voisins liés battent
 avec lui, et leur lien se fortifie — leurs destins sont attachés l'un à l'autre.
-C'est une intrication **computationnelle** (destins liés par la loi du
-renforcement), PAS une intrication quantique. Aucun phénomène quantique n'est
-invoqué, simulé ou revendiqué dans ce dépôt.
+C'est une intrication **computationnelle** : des destins liés par la loi du
+renforcement, mesurés en forces sur des liens.
 
 ---
 
@@ -38,11 +37,6 @@ invoqué, simulé ou revendiqué dans ce dépôt.
 - **Réseaux classiques (MLP, transformers) :** le RNI ne les copie pas et ne
   prétend pas les battre aujourd'hui. Il propose une autre voie : structure
   d'abord, données en rencontres, loi unique.
-- **Travaux sur l'intrication quantique dans les réseaux** (ex. états de réseaux
-  de neurones à la Boltzmann restreinte, Phys. Rev. X 2017) : ce sont des études
-  de physique quantique sur des architectures classiques. Notre « intrication »
-  est un autre concept (destin lié computationnel) — le mot est partagé,
-  la chose ne l'est pas. Qu'on ne nous fasse pas dire ce qu'on ne dit pas.
 - **Hebb (« qui bat ensemble se lie ») et STDP :** la loi du RNI en est parente
   (renforcement par co-activité), avec une différence centrale : ici la loi est
   UNIQUE et gouverne tout le système (apprendre, mémoire, oubli, jugement),
@@ -177,7 +171,7 @@ SUIVENT se lient en chaînes mesurables (j13 : chaîne liée 70/70, déliée 20)
 Démo live JFK : 20 séquences entrent, 1 atteint le sanctuaire
 (`fellow americans ask`, f92), le cerveau le DIT (6 s d'audio, boucle 46 s).
 Plan inspiré de l'univers FOCAL (condensateur/porteurs/conteneur), adapté au
-RNI — sans aucune physique quantique : des compteurs, des seuils, des nuits.
+RNI : des compteurs, des seuils, des nuits.
 
 > **Énoncé :** la mémoire relationnelle intriquée fonctionne en entonnoir
 > (VIF→REFRAIN→SANCTUAIRE) en conditions live : ce qui survit, c'est le plus

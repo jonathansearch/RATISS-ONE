@@ -7,6 +7,9 @@ RATISS Labs · MIT · usage : python3 education/figures_vocab.py (matplotlib req
 Zéro dessin à la main : parse education/vocabulaire50.ratum (273 liens),
 ASSERT les nombres (56 mots, BILAN 50/50), puis trace. Positions
 déterministes par famille ; épaisseurs = forces mesurées.
+
+v2 (leçon 44, 8 oct. 2026) : l'export actuel porte 276 liens / 55 mots /
+263 forts (word_avenir absent : MAVENIR motif seul, 5 témoins tracés).
 """
 
 import math
@@ -78,12 +81,12 @@ def positions():
 def main():
     ici = os.path.dirname(os.path.abspath(__file__))
     liens, mots = charger_export(os.path.join(ici, "vocabulaire50.ratum"))
-    assert len(liens) == 273, len(liens)
+    assert len(liens) == 276, len(liens)
     mots_mots = {m for m in mots if m.startswith("word_")}
-    assert len(mots_mots) == 56, len(mots_mots)
+    assert len(mots_mots) == 55, len(mots_mots)
     forts = sum(1 for f in liens.values() if f >= 70)
-    assert forts == 261, forts
-    print(f"asserts OK : 56 mots, 273 liens, {forts} forts")
+    assert forts == 263, forts
+    print(f"asserts OK : 55 mots, 276 liens, {forts} forts")
 
     pos, noms = positions()
     fig, ax = plt.subplots(figsize=(16, 12))
@@ -133,11 +136,11 @@ def main():
             ax.text(x - x / nrm * 0.5, y - y / nrm * 0.5, "ancre", color=col,
                     fontsize=7.5, ha="center", va="center", style="italic", zorder=3)
 
-    ax.set_title("LA CONSTELLATION — 50 mots appris par phrases, 6 témoins au loin "
+    ax.set_title("LA CONSTELLATION — 50 mots appris par phrases, 5 témoins tracés "
                  "(forces mesurées, round 3)",
                  color=BLANC, fontsize=12.5, weight="bold", pad=14)
     ax.text(0, -5.2, "épaisseur = force mesurée (liens < 30 masqués)  ·  "
-            "5 familles + 8 ponts + 6 témoins gris  ·  anneau : mots, centre : ancres",
+            "5 familles + 8 ponts + 5 témoins gris  ·  anneau : mots, centre : ancres",
             color=GRIS, fontsize=9.5, ha="center", va="top")
     ax.set_xlim(-5.6, 5.6)
     ax.set_ylim(-5.6, 5.6)

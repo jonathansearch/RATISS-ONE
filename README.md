@@ -8,17 +8,17 @@
 
 [![License: MIT](https://img.shields.io/badge/Code-MIT-teal.svg)](LICENSE)
 [![Livre: CC-BY-SA](https://img.shields.io/badge/Livre-CC--BY--SA-blue.svg)](livre/LICENCE.md)
-[![Tests](https://img.shields.io/badge/Tests-125%2F125-brightgreen.svg)](tests_verdicts.py)
+[![Tests](https://img.shields.io/badge/Tests-133%2F133-brightgreen.svg)](tests_verdicts.py)
 [![Programmes](https://img.shields.io/badge/Programmes-24-teal.svg)](tests_verdicts.py)
 [![Ratum](https://img.shields.io/badge/Ratum-v2-teal.svg)](LANGAGE-RATUM.md)
-[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-36-teal.svg)](RNI-DEFINITION.md)
+[![Leçons](https://img.shields.io/badge/Le%C3%A7ons-44-teal.svg)](RNI-DEFINITION.md)
 [![Données stockées](https://img.shields.io/badge/Donn%C3%A9es%20stock%C3%A9es-z%C3%A9ro-orange.svg)](RNI-DEFINITION.md)
 
 *Par **RATISS Labs** — Jonathan Evina · Yaoundé 🇨🇲 · code MIT + livre CC-BY-SA · reproductibilité publique voulue*
 
 </div>
 
-<img src="images/hero-cerveau.png" width="100%" alt="Le tissu éduqué : 13 neurones, 28 liens"/>
+<img src="images/hero-cerveau.png" width="100%" alt="Le tissu éduqué : 13 neurones, 24 liens"/>
 
 > **Résumé.** *RATISS-ONE est un programme de recherche ouvert : un réseau de
 > neurones intriqué (RNI) — ni usine à prédictions, ni entrepôt de données —
@@ -27,7 +27,7 @@
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à secteurs (tampon, entonnoir, rêve),
 > et ne redit que ce qu'il tient — par une vraie bouche (Piper). 24 programmes,
-> 125 contrôles verts, 36 leçons mesurées, zéro donnée stockée. Chaque affirmation
+> 133 contrôles verts, 44 leçons mesurées, zéro donnée stockée. Chaque affirmation
 > ci-dessous se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -36,7 +36,7 @@
 > encounters under a single law (what holds together strengthens, what comes
 > apart fades), hears the world through a real ear (Phonon-2), files memories
 > in a sector brain (buffer, funnel, dream), and only speaks what it holds —
-> through a real mouth (Piper). 24 programs, 125 green checks, 36 measured
+> through a real mouth (Piper). 24 programs, 133 green checks, 44 measured
 > lessons, zero stored data. Every claim below replays in one command, or it
 > does not exist.*
 
@@ -48,7 +48,7 @@
 ## 📚 LIRE LE LIVRE (le complet)
 
 > **👉 [`livre/index.html`](livre/index.html) — Le Livre Complet** (ouvrir en local : fichier unique, zéro internet) :
-> les 36 leçons, **20 figures**, **4 audios jouables**, les 125 contrôles un par un —
+> les 31 leçons, **14 figures**, **4 audios jouables**, les contrôles un par un (§10) —
 > sous licence **CC-BY-SA-4.0** (ouverte, partage à l'identique).
 > **🎤 [`livre/presentation.html`](livre/presentation.html)** — les 12 slides des sommets (flèches ←/→).
 > Reconstruit en une commande : `python3 livre/construire.py` → `LIVRE OK`.
@@ -61,14 +61,15 @@
 3. [Le concept](#-le-concept) — 4. [Le langage Ratum](#-le-langage-ratum) —
 5. [La boucle](#-la-boucle--du-son-au-son) — 6. [Le cerveau](#-le-cerveau--un-entonnoir-qui-oublie-bien) —
 7. [Le graphe](#-le-graphe--lire-le-cerveau-penser) — 8. [L'école](#-lécole--grandir-par-phrases) —
-9. [Le tokenizer](#-le-tokenizer--la-pensée-devient-phrase) — 10. [L'éclair et la rivière](#-léclair-et-la-rivière) —
-11. [La marée](#-la-marée--le-jour-écoute-la-nuit-consolide) — 12. [Le rêve](#-le-rêve--garder-ce-quon-comprend) —
-13. [Le second berceau](#-le-second-berceau--le-c-qui-chante-pareil-leçon-18) — 14. [Le pont FOCAL](#-le-pont-focal--mesurer-lordre-leçon-19) —
-15. [Les mesures](#-les-mesures--rien-dinventé) — 16. [Les voix](#-les-voix--8-preuves-audio) —
-17. [Démarrage rapide](#-démarrage-rapide) — 18. [Carte du dépôt](#-carte-du-dépôt) —
-19. [Chiffres clés](#-chiffres-clés) — 20. [Ordre de lecture](#-ordre-de-lecture) —
-21. [La méthode](#-la-méthode) — 22. [Feuille de route](#-feuille-de-route) —
-23. [Arborescence](#-arborescence) — 24. [Citation, auteur, licence](#-citation-auteur-licence)
+9. [L'école manuelle](#-lécole-manuelle--les-vraies-bases-fr-leçons-38-44) — 10. [Le tokenizer](#-le-tokenizer--la-pensée-devient-phrase) —
+11. [L'éclair et la rivière](#-léclair-et-la-rivière) — 12. [La marée](#-la-marée--le-jour-écoute-la-nuit-consolide) —
+13. [Le rêve](#-le-rêve--garder-ce-quon-comprend) — 14. [Le second berceau](#-le-second-berceau--le-c-qui-chante-pareil-leçon-18) —
+15. [Le pont FOCAL](#-le-pont-focal--mesurer-lordre-leçon-19) — 16. [Les mesures](#-les-mesures--rien-dinventé) —
+17. [Les voix](#-les-voix--8-preuves-audio) — 18. [Démarrage rapide](#-démarrage-rapide) —
+19. [Carte du dépôt](#-carte-du-dépôt) — 20. [Chiffres clés](#-chiffres-clés) —
+21. [Ordre de lecture](#-ordre-de-lecture) — 22. [La méthode](#-la-méthode) —
+23. [Feuille de route](#-feuille-de-route) — 24. [Arborescence](#-arborescence) —
+25. [Citation, auteur, licence](#-citation-auteur-licence)
 
 ---
 
@@ -103,7 +104,7 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 🦜 `parole.py` + `bouche/` | boucle audio → tissu → audio (Piper) | 4 mots **tenus à 90**, verdicts PARLÉS 4.9 s (leçon 8) |
 | 🧠 `cerveau/` + `cerveau-demo.py` | crâne Python + pensée Ratum, secteurs VIF→REFRAIN→SANCTUAIRE | JFK live → 1 sanctuaire **f92**, résumé parlé 6 s (leçon 9) |
 | 🇫🇷 `francais.ratum` + `cerveau-demo-fr.py` | route A : tissu + cerveau + bouche FRANÇAIS | 21/21 mot pour mot, sanctuaire **f92**, boucle 8.5 s (leçon 10) |
-| 📚 `education/` (route B) | 37 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
+| 📚 `education/` (route B) | 39 phrases → 50 mots appris, 0 tissage manuel | **50/50 TIENT**, témoins 0, contrôles délie 3/10 → **0/50** (leçon 11) |
 | 🧬 `ratum.py` v2 (route C) | loi universelle (10,3) + élastique + ombre + faucheuse | 62/93 → **93/93 sans toucher une règle** (leçon 12) |
 | 💥 CISE (leçon 13) | vitesse ≥ 10 → étincelle → neurones mémoire figés + ULTRA-SECTEUR | **MAMERICANS=100 figé**, 3 nuits sans bouger, « 20 nuits : 69! » |
 | 🗣️ tokenizer (leçon 14) | 5 règles sortie FR/EN + robinet à données + notebook Colab | 5 phrases pinnées, **20 paires 20/20**, Python validé |
@@ -130,8 +131,8 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 🗣️ bouche (leçon 35) | 105 313 paires parlables, SVO tenu en 9 s | **884 verbes parlent**, silences honnêtes |
 | 📖 grammaire (leçon 36) | articles + 6 accords en 14 s, expansion amendée | **phrases vraies**, 100 % observé ou flag |
 | 🗓️ bases (leçon 37) | 573 petits mots + 5 tables en 20 s, tout en une fois | **raconter parle** : temps, négation, copules |
-| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 37 leçons, 20 figures, 4 audios, slides, CC-BY-SA |
-| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **126/126 contrôles verts** |
+| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 31 leçons, 14 figures, 4 audios, slides, CC-BY-SA |
+| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **133/133 contrôles verts** |
 
 ---
 
@@ -151,9 +152,8 @@ mesurée : `lie` = +10 (élastique), `délie` = −3, ombre (moitié perdue par
 saut), oubli −3 — calibrés par l'expérience de coexistence (le symétrique
 s'effondre 10/10, l'asymétrique tient 52/52).
 
-**L'honnêteté radicale** : ce n'est PAS de la physique quantique (jamais de
-qubits : des compteurs, des seuils et des nuits), PAS de la neurobiologie
-(des compteurs à seuil, pas des cellules) — et quand la saturation à 95
+**L'honnêteté radicale** : des compteurs, des seuils et des nuits (pas des
+cellules, pas de la magie) — et quand la saturation à 95
 déplaît, on la publie… puis on la creuse (relief 35, § marée).
 
 ---
@@ -225,7 +225,7 @@ Doctrine complète : `cerveau/SECTEURS.md`.
 <img src="images/graphe-jfk.png" width="100%" alt="JFK dans le cerveau : chaque lien porte sa force mesurée"/>
 
 Le graphe ci-dessus n'est pas un schéma : c'est **le tissu réel après la
-démo** — 13 neurones (6 concepts au centre, 6 mots en anneau), 28 liens,
+démo** — 13 neurones (6 concepts au centre, 6 mots en anneau), 24 liens,
 chaque lien portant sa force mesurée. En or : les 2 chaînes nées des mots
 qui se SUIVENT (`fellow-americans-ask`).
 
@@ -238,17 +238,17 @@ forces, ses morts… et ses cicatrices : c'est ça, une mesure.
 
 > Ces figures sont régénérées depuis le code, jamais dessinées à la main :
 > `python3 outils/figures.py` rejoue la démo hors-ligne, **assert** les
-> nombres live (20 séq., 28 liens, sanctuaire f92), puis trace. Si la démo
+> nombres live (20 séq., 24 liens, sanctuaire f92), puis trace. Si la démo
 > change, les figures refusent les vieux nombres.
 
 ---
 
 ## 📚 L'école : grandir par phrases
 
-<img src="images/constellation.png" width="100%" alt="La constellation : 50 mots appris par phrases, 6 témoins au loin"/>
+<img src="images/constellation.png" width="100%" alt="La constellation : 50 mots appris par phrases, 5 témoins tracés"/>
 
-Fini le tissage à la main : **37 phrases** font naître 50 neurones et 247
-liens — après 3 rounds + 2 nuits, **50/50 TIENT** (seuil 60), 6 témoins à 0.
+Fini le tissage à la main : **39 phrases** font naître 50 mots (63 neurones,
+276 liens) — après 3 rounds + 2 nuits, **50/50 TIENT** (seuil 60), 6 témoins à 0.
 
 <img src="livre/figures/g_ecole.svg" width="100%" alt="Courbe d'école : 38 → 49 → 50, MUNIR 51 → 58 → 60"/>
 
@@ -256,6 +256,31 @@ Courbe d'apprentissage **38 → 49 → 50**, cousin MUNIR deviné 51 → 58 → 
 Le contrôle tue : délie 3 ou 10 → **0/50** (la falaise). Trois calibrages,
 trois usages : (10,10) éducation commune, (10,3) coexistence, (10,0) école.
 Preuves : `education/EDUCATION.md`, `preuves/sortie-education*.txt`.
+
+---
+
+## 🎓 L'école manuelle : les vraies bases FR (leçons 38-44)
+
+<img src="images/croissance-ecole.png" width="100%" alt="Croissance du cerveau : 25 272 → 90 666 neurones, leçons 38 à 44"/>
+
+Après les jouets, le tissu boit le VRAI français : 7 bases libres, une par
+une (dialogues, Q&R, conversations in-the-wild), avec chasse aux bruits à
+chaque leçon et un contrôle batterie pinné par base. Le brut meurt après
+comptage (rotation : un seul jeu complet à la fois) — seule la trace
+relationnelle persiste (paires + forces).
+
+| Leçon | Base | Mots bus | Cerveau (neurones / liens) |
+|---|---|---:|---|
+| 38 | accueil-ubs (dialogues) | 6 295 | 25 272 / 161 454 |
+| 39 | ding-01 (dialogues) | 70 274 | 25 803 / 173 556 |
+| 40 | french_CEFR (phrases A1-C2) | 109 486 | 31 374 / 211 888 |
+| 41 | frenchQA (Q&R) | 2 398 744 | 64 277 / 304 561 |
+| 42 | piaf (Q&R natif) | 52 658 | 64 325 / 314 097 |
+| 43 | fquad2 (Q&R natif) | 11 700 | 64 539 / 316 963 |
+| 44 | wildchat-1m-fr (conversations) | 19 556 414 | 90 666 / 404 043 |
+
+Preuves : `preuves/dialogues-*.txt` (une par leçon), `education-manuelle/`
+(convertisseurs + fixtures rejouées par la batterie).
 
 ---
 
@@ -369,9 +394,9 @@ Preuve : [`preuves/sortie-pont-focal.txt`](preuves/sortie-pont-focal.txt) — co
 <img src="livre/figures/g_batterie.svg" width="100%" alt="La batterie : 42 → 106 avec le creux honnête"/>
 <img src="livre/figures/g_saturation.svg" width="100%" alt="La saturation : désert 90 → bande 74-94 → statue 100 + mer 60"/>
 
-**125 contrôles** : 97 (24 programmes : codes + phrases pinnées + interdits
-absents) + 28 (pont voix, éducateur, 6 autotests cerveau/bouche/marbre/marée/
-chaos, livre, conformité C, pont FOCAL, étiquettes, direct, dialogue, masse, notebook 1h, rapide, fortifié, relais, retour, figé, école, remix, fond, soudure, oreille, bouche, grammaire). Le creux 62/93 de la route C est publié comme le reste.
+**133 contrôles** : 97 (24 programmes : codes + phrases pinnées + interdits
+absents) + 36 (pont voix, éducateur, 6 autotests cerveau/bouche/marbre/marée/
+chaos, livre, conformité C, pont FOCAL, étiquettes, direct, dialogue, masse, notebook 1h, rapide, fortifié, relais, retour, figé, école, remix, fond, soudure, oreille, bouche, grammaire, bases, dialogues, ding, cefr, frenchqa, piaf, fquad2, wildchat). Le creux 62/93 de la route C est publié comme le reste.
 Détail un par un : **livre §10** + `tests_verdicts.py`.
 
 ---
@@ -401,7 +426,7 @@ git clone https://github.com/jonathansearch/RATISS-ONE.git
 cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal : 3 neurones
 python3 ratum.py english.ratum          # le tissu : TIENT / ROMPT / cousin 36
-python3 tests_verdicts.py               # 125 contrôles (24 programmes + 16 système)
+python3 tests_verdicts.py               # 133 contrôles (97 programmes + 36 système)
 python3 cerveau/autotest_chaos.py       # le chaos : 0/0/0 puis élues f91
 python3 livre/construire.py             # LE LIVRE : courbes + livre + slides
 python3 bouche/regles.py --chaos       # l'élue parle (+ --wav f.wav)
@@ -431,27 +456,29 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `cerveau/`, `cerveau-demo.py`, `-fr.py` | le crâne : tampon + secteurs + rêve + nuits (EN + FR) | `preuves/sortie-cerveau-demo(-fr).txt` |
 | `education/` | l'école : corpus 39 phrases + éducateur → 50 mots | `vocabulaire50.ratum`, `images/constellation.png` |
 | `donnees/` + `TOKENIZER.md` | le robinet : paires état→phrase + règles + notebook Colab | 20 paires, 20/20 |
-| `RNI-DEFINITION.md` | la fiche scientifique : définition + 36 leçons + roadmap | — |
-| 📚 `livre/index.html` | **LE LIVRE** : tout (36 leçons, 20 figures, 4 audios jouables, CC-BY-SA) | `livre/presentation.html` (slides) |
+| `RNI-DEFINITION.md` | la fiche scientifique : définition + 36 énoncés + roadmap (44 leçons) | — |
+| 📚 `livre/index.html` | **LE LIVRE** : leçons 1-31 (14 figures, 4 audios jouables, CC-BY-SA) ; 32-44 dans `preuves/` | `livre/presentation.html` (slides) |
 | `CERVEAU.md` | la carte d'inspiration cerveau → organes | — |
 | `univers-focal/` | les 4 organes FOCAL (référence d'inspiration) | — |
 | `route-d/` | le second berceau : Ratum en C, mêmes sorties au caractère près | `preuves/sortie-conformite.txt` (24/24) |
 | `pont-focal/` | tissu → 2048 bits → P_sig : le compteur d'émergence | `preuves/sortie-pont-focal.txt` (6,23 < 6,40) |
 | `README-figures/` | les 2 images du README, générées (pas dessinées) | `fabriquer.py` |
-| `outils/figures.py` | régénère les figures PNG depuis les mesures | `images/*.png` |
+| `outils/figures.py` + `figures_ecole.py`, `education/figures_vocab.py` | régénèrent les 7 figures PNG depuis les mesures | `images/*.png` |
+| `education-manuelle/` | l'école manuelle : convertisseurs + fixtures + cerveaux (leçons 38-44) | `preuves/dialogues-*.txt` |
+| `education-conversation/` | les conversations du labo (REDO) | — |
 | `livre/construire.py` | régénère courbes + livre + slides (déterministe) | `LIVRE OK` |
-| `tests_verdicts.py` | la batterie : 125 contrôles | `125/125 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 133 contrôles | `133/133 CONTRÔLES VERTS` |
 | `dialogue/` | on lui parle, il répond (7 intents + conversation scriptée) | `preuves/sortie-dialogue.txt`, `bouche/dialogue.wav` |
 | `education-massive/` | générateur seed 7 + éducateur streaming (masse sur Colab) | `preuves/sortie-masse-250k.txt` |
-| `MANIFESTE.json` | SHA-256 de chaque fichier (sceau du labo) | — |
+| `MANIFESTE.json` | SHA-256 des fichiers (sceau bases-v1, leçon 37) | — |
 
 ---
 
 ## 📏 Chiffres clés
 
-- **126/126 contrôles verts**, 24 programmes, 37 leçons (v0.1 → bouche-v1 → grammaire-v1 → bases-v1)
+- **133/133 contrôles verts**, 24 programmes, 44 leçons (v0.1 → bases-v1 → école manuelle : 90 666 neurones, 404 043 liens)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
-- **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
+- **50 mots éduqués** : 39 phrases → 63 neurones, 276 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
 - **Relief 35** : statue f100, mer 60 — la saturation 90 → 74-94 → creusée
 - **Tempête 70 tenue** : tampon 50 + pression 20, zéro perte, mer calme 0/0
@@ -464,7 +491,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📖 Ordre de lecture
 
-1. 📚 `livre/index.html` (le complet : 36 leçons, 20 figures, 4 audios) → 2. ce README (la carte)
+1. 📚 `livre/index.html` (leçons 1-31 : 14 figures, 4 audios) → 2. ce README (la carte)
 2. `RNI-DEFINITION.md` (la fiche : définition + 36 énoncés) → 4. `LANGAGE-RATUM.md` (les relations)
 3. `jouets/` (14 histoires d'éducation) → 6. `CERVEAU.md` (cerveau → organes)
 4. `cerveau/SECTEURS.md` (la doctrine) → 8. `TOKENIZER.md` (les 5 règles)
@@ -483,8 +510,8 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
   tous dépassés.
 - **Simulation ≠ matériel.** Tout ici est calcul déterministe sur CPU ; si un
   jour le tissu touche une QPU, ce sera dit à voix haute.
-- **Ce qu'on ne prétend PAS** : pas de quantique, pas de neurones
-  biologiques, pas de conscience — des compteurs qui tiennent ou qui rompent.
+- **Ce qu'on ne prétend PAS** : pas de neurones biologiques, pas de
+  conscience — des compteurs qui tiennent ou qui rompent.
 
 ---
 
@@ -500,7 +527,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **v1-parole** — tissu anglais + bouche (verdicts parlés 4.9 s)
 - [x] **v1-cerveau** — crâne + secteurs + séquences (sanctuaire f92, 81/81 verts)
 - [x] **route A : français** — oreille faster-whisper + tissu + bouche FR (21/21, f92, 89/89 verts)
-- [x] **route B : vocabulaire** — 37 phrases → 50 mots par éducation, 3 calibrages prouvés (93/93 verts)
+- [x] **route B : vocabulaire** — 39 phrases → 50 mots par éducation, 3 calibrages prouvés (93/93 verts)
 - [x] **route C phases 1-2 : cœur v2** — (10,3) + élastique + ombre, nuits faucheuses
 - [x] **CISE (vision du chef)** — vitesse = battements + énergie, étincelle, neurones mémoire figés, ULTRA-SECTEUR, (a) deux maisons
 - [x] **tokenizer v1** — 4 règles sortie FR/EN, bouche testée, robinet à données, notebook Colab
@@ -529,6 +556,13 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **école de la bouche** — 105 313 paires parlables, SVO tenu (124/124)
 - [x] **école de grammaire** — articles + 6 accords, phrases vraies (125/125)
 - [x] **école des bases** — tout en une fois, raconter parle (126/126)
+- [x] **leçon 38 : accueil bu** — premiers dialogues FR, 25 272/161 454 (127/127)
+- [x] **leçon 39 : ding-01 bu** — dialogues Catan + élisions (128/128)
+- [x] **leçon 40 : french_CEFR bu** — 6 000 phrases A1-C2, motifs MA1-MC2 (129/129)
+- [x] **leçon 41 : frenchQA bu** — 204 715 Q&R, +32 903N +92 673L (130/130)
+- [x] **leçon 42 : piaf bu** — Q&R natif, 5 bruits (131/131)
+- [x] **leçon 43 : fquad2 bu** — Q&R natif, 20 bruits (132/132)
+- [x] **leçon 44 : wildchat-1m-fr bu** — 19,5M mots in-the-wild, 90 666/404 043 (133/133)
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
 Feuille détaillée : `RNI-DEFINITION.md` §7.
@@ -540,13 +574,13 @@ Feuille détaillée : `RNI-DEFINITION.md` §7.
 ```
 RATISS-ONE/
 ├── README.md                  # vous êtes ici (la carte illustrée)
-├── RNI-DEFINITION.md          # fiche scientifique + 36 leçons + roadmap
+├── RNI-DEFINITION.md          # fiche scientifique + 36 énoncés + roadmap (44 leçons)
 ├── LANGAGE-RATUM.md           # spec Ratum : une vingtaine de relations
 ├── TOKENIZER.md               # les 5 règles + robinet + notebook Colab
 ├── CERVEAU.md                 # carte cerveau → organes (v1 → v6)
-├── MANIFESTE.json             # SHA-256 de chaque fichier (168 fichiers)
+├── MANIFESTE.json             # sceau SHA-256 bases-v1 (171 fichiers, leçon 37)
 ├── ratum.py                   # interprète de référence (495 lignes)
-├── tests_verdicts.py          # batterie : 125 contrôles
+├── tests_verdicts.py          # batterie : 133 contrôles
 ├── rni-simple / complexe / interference.ratum
 ├── vocabulaire.ratum  english.ratum  francais.ratum  v1-coexistence.ratum
 ├── jouets/                    # j01 → j14 (seuils… CISE)
@@ -554,9 +588,11 @@ RATISS-ONE/
 ├── porte-voix/                # oreilles + pont (PHONON.md, PROTOCOLE)
 ├── parole.py  parole-ecoute.ratum
 ├── bouche/                    # tokenizer + 8 voix + preuves audio
-├── cerveau/                   # crâne : secteurs, tampon, rêve, 4 autotests
+├── cerveau/                   # crâne : secteurs, tampon, rêve, 5 autotests
 ├── cerveau-demo.py  -fr.py    # démos live JFK → sanctuaire → résumé parlé
 ├── education/                 # route B : corpus + éducateur + vocabulaire50
+├── education-manuelle/        # école manuelle : convertisseurs + cerveaux 38-44
+├── education-conversation/    # conversations du labo (REDO)
 ├── donnees/                   # robinet : générateur + 20 paires + notebook
 ├── livre/                     # LE LIVRE : figures + livre + slides + CC-BY-SA
 ├── univers-focal/             # 4 organes FOCAL (référence)
@@ -565,9 +601,9 @@ RATISS-ONE/
 ├── README-figures/            # 2 images du README (fabriquer.py, générées)
 ├── dialogue/                  # 7 intents + conversation (12 répliques)
 ├── education-massive/         # générateur + éducateur (250k local, 5M Colab)
-├── outils/                    # tisser_grand.py, figures.py
-├── images/                    # logo + 5 figures régénérées
-└── preuves/                   # carnet du labo : 25 sorties rejouables
+├── outils/                    # tisser_grand.py, figures.py, figures_ecole.py
+├── images/                    # logo + 6 figures régénérées depuis les mesures
+└── preuves/                   # carnet du labo : 52 sorties rejouables
 ```
 
 ---

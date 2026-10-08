@@ -97,9 +97,8 @@ comme référence) nous a donné quatre mécanismes, chacun adapté au RNI :
 | conteneur (boucles stables) | **SANCTUAIRE** | la boucle devient le marbre : −1, jamais mort |
 | couches (mesure par couches) | `rapport()` | la mesure devient le verdict par secteur |
 
-Ce n'est PAS de la physique quantique : pas de qubits, pas de superposition —
-des compteurs, des seuils et des nuits. De l'intrication relationnelle
-computationnelle, comme écrit dans la fiche RNI.
+De l'intrication relationnelle computationnelle, comme écrit dans la fiche
+RNI : des compteurs, des seuils et des nuits.
 
 ## 6bis. La gravure et la rétroaction (v4, phase 3 route C — leçon 15 🪨)
 

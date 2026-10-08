@@ -61,8 +61,7 @@ Ratum + Python). L'architecture :
 Preuve live : JFK (20 séquences) → 1 sanctuaire (`fellow americans ask`,
 f92) → résumé parlé 6 s (`cerveau/MESURES-CERVEAU.md`, `bouche/cerveau.wav`).
 Inspiré de FOCAL (condensateur → VIF, porteurs → REFRAIN, conteneur →
-SANCTUAIRE), adapté au RNI — et toujours pas de physique quantique :
-des compteurs, des seuils et des nuits.
+SANCTUAIRE), adapté au RNI : des compteurs, des seuils et des nuits.
 
 ## Le cerveau v2 : la graine longue et la faucheuse (7 oct. 2026)
 
