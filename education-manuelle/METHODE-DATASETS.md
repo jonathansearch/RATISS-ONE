@@ -22,9 +22,8 @@ les lois, le reste à boire. Lis tout avant de toucher quoi que ce soit.
   (formats : Accueil `X:`, Ding `NNNN L`, phrases CSV ; voir §4).
 - Bus (3) : accueil-ubs (leçon 38), ding-01 (39), french_CEFR (40).
   Prochaine leçon = 41, puis 42... (un dataset = une leçon).
-- ⚠️ BUDGET : 117 Mo / 128 Mo. Vérifie `du -sh /home/user` à chaque
-  étape. Un cerveau ≈ +7 Mo (+ histoire git). Si ça touche 128 :
-  STOP, rapport au chef, c'est lui qui tranche.
+- Espace : pas de plafond de ton côté (le 128 Mo, c'est seulement
+  chez Ratiss, pas chez toi).
 
 ## 3. La procédure exacte (13 pas, dans l'ordre)
 
@@ -58,7 +57,9 @@ les lois, le reste à boire. Lis tout avant de toucher quoi que ce soit.
     d'invention).
 11. DOCS : `FICHE.json` (chiffres exacts + statut BU + licence) et
     ligne `INDICE.md` (dépôt données).
-12. JETER le brut (`rm -rf brut/`). Loi : les Go ne dorment pas.
+12. JETER le brut (`rm -rf brut/`) : on garde la TRACE (cerveau +
+    fiche), jamais la donnée brute. Et ne JAMAIS commiter de brut
+    (GitHub : 100 Mo/fichier max).
 13. COMMIT + PUSH les 2 dépôts (message : `leçon 41 : <nom> bu ...`),
     puis RAPPORT au chef (français direct, emojis 🎉🔥💪, chiffres,
     honnêteté ; JAMAIS de proposition de suite : attendre son ordre).
@@ -203,7 +204,7 @@ Environnement : `pip install huggingface_hub` à chaque session.
 | CATIE-AQ | 100 petits | FR | prompts/QA, formats variés (1 par 1 !) |
 | TCOF | ~200k mots | FR | ⚠️ page 404 : masse à retrouver |
 | FLEURON | ? | FR | ⚠️ site 404 : masse à retrouver |
-| CFDD / Claire | ~15 Go | FR | 🔒 401 HF : accès à débloquer ; GROS |
+| CFDD / Claire | ~15 Go | FR | 🔒 401 HF : accès à débloquer |
 | discord-dialogues | 331 Mo | EN | ⚠️ ANGLAIS : demander au chef d'abord |
 | yield | 363 Mo | EN | ⚠️ ANGLAIS : demander au chef d'abord |
 | ko-agent | 1,36 Go | EN | trajectoires + outils ; ANGLAIS |
@@ -219,7 +220,8 @@ poids) ? En cas de doute : rapport + attendre l'ordre.
 
 ## 7. Lois (non négociables)
 
-- 1 dataset complet à la fois ; plafond 128 Mo ; brut jeté après usage.
+- 1 dataset complet à la fois ; brut jeté après usage (la trace
+  seule, jamais la donnée) ; jamais de brut commité (100 Mo/fichier).
 - Marbre : lien existant = on ne touche pas. R5 : écoutes intactes.
 - Batterie verte AVANT chaque push. Preuves = sorties réelles.
 - Pas de LLM dans le système, jamais. Pas de maths imposées au chef.
