@@ -1,0 +1,17 @@
+PREUVE — leçon 38 : premiers dialogues (Accueil_UBS, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut/TRANS_TXT --injecter cerveau/fige-300M-bases.json.gz --sortie cerveau/fige-300M-accueil.json.gz
+
+DIALOGUES — 41 dialogues, 1062 tours, 6295 mots, 3201 paires uniques, 6021 rencontres
+FRAGMENT — 596 mots, 3072 liens, 2 motifs
+POUSSÉ — +101 neurones, +2166 liens, +2 motifs (906 marbre épargné)
+BOUCHE — 2819 paires parlables, 0 sans lien
+OREILLE — 596 mots appris, 0 sourds
+CERVEAU — 25171->25272 neurones, 159288->161454 liens, 25272 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-accueil.json.gz (5,6 Mo)
+
+Bruit écarté à la main : 46 tokens (mots coupés, coquilles, bruits de bouche,
+3 intrusions anglaises) — voir BRUITS dans convertisseur_dialogues.py.
+Premier passage : 145 neurones dont 44 bruits -> nettoyé et rejoué propre.
+
+Batterie : 127/127 CONTRÔLES VERTS (nouveau contrôle dialogues OK).
+TOUS LES VERDICTS CONFORMES.

@@ -550,6 +550,42 @@ def main():
         print("ÉCHEC : le convertisseur UD est mauvais")
         echecs += 1
     controles += 1
+    from convertisseur_dialogues import (extraire as _dx, convertir as _dc,
+        ecole_oreille_dial as _dor, ecole_bouche_dial as _dbo)
+    _ok_dial = False
+    try:
+        _arcs, _st = _dx("education-manuelle/echantillon-dialogues.txt")
+        _f1 = _dc(_arcs, "test")
+        _f2 = _dc(_arcs, "test")
+        _loi = all(l["force"] == min(100, 10 * l["n"]) for l in _f1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cd = _Cerveau("FR")
+            _si = _injecter(_cd, _f1)
+            _rf = _cd.figer()
+            _bo = _dbo(_cd, _arcs)
+            _od = _dor(_cd, _f1["neurones"])
+            _acc = _Cerveau.relire("cerveau/fige-300M-accueil.json.gz")
+        _ok_dial = (_f1 == _f2 and _loi
+                  and (_st["dialogues"], _st["tours"], _st["mots"],
+                       _st["paires_uniques"]) == (1, 6, 31, 30)
+                  and (len(_f1["neurones"]), len(_f1["liens"]),
+                       len(_f1["motifs"])) == (28, 30, 2)
+                  and _f1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cd.ecoutes == 0 and _od["sourds"] == 0
+                  and len(_rf["figes"]) == len(_cd.graph["neurones"])
+                  and (len(_acc.graph["neurones"]), len(_acc.graph["liens"]),
+                       len(_acc.motifs)) == (25272, 161454, 30)
+                  and _acc.ecoutes == 300000000
+                  and (len(_acc.motifs["MSUITE"]),
+                       len(_acc.motifs["MREPONSE"])) == (592, 244))
+    except Exception:
+        _ok_dial = False
+    if _ok_dial:
+        print("OK : dialogues (fixture 1/6/31/30, accueil 25272/161454/30, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur dialogues est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:

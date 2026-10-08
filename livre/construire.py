@@ -155,7 +155,11 @@ def construire():
             fh.write("\n".join(fn()) + "\n</svg>\n")
 
     def image(nom):
-        with open(os.path.join(DEPOT, "images", nom + ".png"), "rb") as fh:
+        chemin = os.path.join(DEPOT, "images", nom + ".png")
+        if not os.path.exists(chemin):
+            return (f"<!-- illustration {nom} absente "
+                    "(photos purgées, régénérable : outils/figures.py) -->")
+        with open(chemin, "rb") as fh:
             b64 = base64.b64encode(fh.read()).decode("ascii")
         return (f'<img src="data:image/png;base64,{b64}" alt="{nom}" '
                 f'style="max-width:100%;border-radius:12px"/>')
