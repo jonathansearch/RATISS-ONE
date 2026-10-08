@@ -19,7 +19,17 @@ sentence,difficulty : chaque phrase = 1 dialogue à 1 tour (pas de paire
 entre phrases, ce ne sont pas des dialogues) ; difficulty A1..C2 = motif
 de niveau MA1..MC2 (les mots du fragment vus à ce niveau) ; on boit
 train+val+test (pas d'évaluation externe, le tissu boit tout).
-Fichiers *.txt, triés.
+(v4, Q&R frenchQA, leçon 41) : parquet CATIE-AQ/frenchQA (question/answers)
+: chaque exemple = 1 dialogue (tour Q puis tour R, locuteurs q/r, pas
+de paire ENTRE exemples) ; on boit question + 1re réponse (les réponses
+d'annotation [1:] ne sont pas des suites : comptées, ignorées) ; les
+CONTEXTES (paragraphes encyclopédiques) et titres ne sont pas de la
+conversation : comptés, ignorés ; test sans réponses = dialogues à Q
+seule (comme CEFR : le tissu boit tout ce qui est buvable). Apostrophe
+typographique ’ ramenée à ' (même coupure, pas de faux collé).
+Limite connue (v3, assumée) : le t euphonique (a-t-il) donne (te,il)
+par la règle des élisions — systématique, pas un bruit.
+Fichiers *.txt, triés (+ *.parquet : lus en l'état, non triés).
 Encodage : utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
 
 Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
@@ -130,6 +140,40 @@ BRUITS = {
     "it", "may", "nil", "put", "sit", "tm", "morning", "uploading",
     # onomatopée improvisée + URL
     "cracracracracraaa", "wwwmonprospectuscom",
+    # --- repérés dans frenchQA (leçon 41 : courts + longs + triples +
+    # collés rares + échantillon 200 ; règle : sigles/noms propres gardés,
+    # intrusions étrangères et corruptions MT jetées) ---
+    # anglais clair (courts + verbes + noms communs)
+    "buy", "cry", "dry", "egg", "eat", "eye", "fly", "fog", "foo", "law",
+    "low", "odd", "own", "saw", "she", "ten", "two", "way", "why",
+    "writing", "written", "without", "yourself", "against", "another",
+    "airport", "airborne", "airbourne", "airtrain", "backwoods",
+    "warehouse", "welfare", "wildlife", "yardage", "fellowship", "flight",
+    "governor", "lifesize", "month", "settle", "sheer", "straits",
+    "wilderness", "faithful", "neuropsychopharmacology",
+    "polytetrafluoroethylene",
+    # notations techniques (extensions, fichiers)
+    "mov", "txt", "zip",
+    # intrusions étrangères (DE/NL/ES : même logique que l'anglais)
+    "bundesverfassungsgericht", "polizeigeschichtliche",
+    "reichssicherheitshauptamt", "verfassungsgerichtshof", "frankreich",
+    "madchenschule", "stube", "skiinternat", "boomhuis", "rotterdamse",
+    # collés avérés (jamais écrits soudés en français)
+    "intercontinentalexchange", "secretprojectrevolution", "emmanuelmacron",
+    "famillecharles", "italieamanda", "meninblack", "avantagent",
+    "provenancede",
+    # coquilles et corruptions MT
+    "alfredssson", "barrret", "commment", "deviennnent", "oppposant",
+    "personnnes", "recommmande", "tttites", "villle", "gossameres",
+    "resonnable", "characteristiques", "differenciables", "momotremes",
+    "northuumbria", "orothdoxes", "sumitoma", "witesnake", "frocat",
+    "noninitarien", "somalias", "tadjikiste",
+    # ordinaux romains collés (suffixe sans nombre : précédent er/eme)
+    "iiieme", "viiieme", "xviiieme", "xviiiieme",
+    # romans XXX : contournent la règle xxx (majuscules) + nombres
+    "xxxiv", "xxxviii",
+    # notations (codepoint, transcripteur)
+    "fffd", "www",
 }
 UNE_LETTRE = {"a", "y"}
 MOTIF_SUITE = "MSUITE"
@@ -153,6 +197,26 @@ def lire_fichier(chemin):
     except UnicodeDecodeError:
         texte = brut.decode("latin-1")
     lignes = [l.strip().strip("\ufeff") for l in texte.splitlines()]
+    if chemin.endswith(".parquet"):
+        import pyarrow.parquet as _pq
+        t = _pq.read_table(chemin)
+        qs = t.column("question").to_pylist()
+        rs = t.column("answers").to_pylist()
+        blocs, multi, vides = [], 0, 0
+        for q, r in zip(qs, rs):
+            txts = [x for x in (r.get("text") or []) if x and x.strip()]
+            if len(txts) > 1:
+                multi += len(txts) - 1
+            if not txts:
+                vides += 1
+            qtxt = (q or "").replace("’", "'")
+            bloc = [("q", qtxt, None)]
+            if txts:
+                bloc.append(("r", txts[0].replace("’", "'"), None))
+            blocs.append(bloc)
+        lire_fichier.qa_stats = {"multiples_ignorees": multi, "sans_reponse": vides,
+                                 "contextes_ignores": len(blocs)}
+        return blocs, "qa"
     if lignes and "sentence" in lignes[0] and "difficulty" in lignes[0]:
         tours = []
         for r in _csv.DictReader(_io.StringIO(texte)):
@@ -237,14 +301,24 @@ def extraire(chemin, formes=None):
     if os.path.isdir(chemin):
         fichiers = sorted(f for f in os.listdir(chemin) if f.endswith(".txt"))
         fichiers = [os.path.join(chemin, f) for f in fichiers]
+        fichiers += sorted(os.path.join(dp, f) for dp, _, fs in os.walk(chemin)
+                           for f in fs if f.endswith(".parquet"))
     else:
         fichiers = [chemin]
     arcs = Counter()
     mots_niveau = {}
+    qa_multi = qa_vides = qa_ctx = 0
     dialogues, tours, mots = 0, 0, 0
     for f in fichiers:
         tours_f, relie = lire_fichier(f)
-        blocs = [tours_f] if relie else [[t] for t in tours_f]
+        if relie == "qa":
+            st = lire_fichier.qa_stats
+            qa_multi += st["multiples_ignorees"]
+            qa_vides += st["sans_reponse"]
+            qa_ctx += st["contextes_ignores"]
+            blocs = tours_f
+        else:
+            blocs = [tours_f] if relie else [[t] for t in tours_f]
         for bloc in blocs:
             precedent = None  # (locuteur, dernier lemme)
             bu = False
@@ -272,6 +346,9 @@ def extraire(chemin, formes=None):
              "paires_uniques": len(arcs), "rencontres": sum(arcs.values()),
              "mots_niveau": {k: sorted(v)
                              for k, v in sorted(mots_niveau.items())}}
+    if qa_ctx:
+        stats["qa"] = {"multiples_ignorees": qa_multi, "sans_reponse": qa_vides,
+                       "contextes_ignores": qa_ctx}
     return arcs, stats
 
 

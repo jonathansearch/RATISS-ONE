@@ -1,0 +1,40 @@
+PREUVE — leçon 41 : frenchQA bu (Q&R français, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut --injecter cerveau/fige-300M-cefr.json.gz --sortie cerveau/fige-300M-frenchqa.json.gz --topk 3
+
+DIALOGUES — 204703 dialogues, 259109 tours, 2398744 mots, 320587 paires uniques, 2190907 rencontres
+FRAGMENT — 48775 mots, 106037 liens, 2 motifs
+POUSSÉ — +32903 neurones, +92673 liens, +2 motifs (13364 marbre épargné)
+BOUCHE — 131106 paires parlables, 162977 sans lien
+OREILLE — 48775 mots appris, 0 sourds
+CERVEAU — 31374->64277 neurones, 211888->304561 liens, 64277 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-frenchqa.json.gz (10,8 Mo)
+Q&R : 204715 exemples lus, 140389 sans réponse (68,6 %, questions seules bues),
+0 réponse multiple, 204715 contextes encyclopédiques ignorés (ordre chef : Q→R seul).
+MSUITE=51156 MREPONSE=15418.
+
+Nouveautés tokeniseur v4 : parquet CATIE-AQ/frenchQA (question + 1re réponse,
+pas de paire ENTRE exemples) ; contextes ignorés ; fixture 5 exemples
+(5/9/24/19, qa 1/1/5) comptée MAIN. Fixtures accueil/ding/cefr intactes.
+Bouche sans-lien 162977 = effet topk=3 (paires rares hors fragment, noté).
+
+Chasse aux bruits systématique : courts (22 : buy cry dry...), longs (8 : 4 DE
++ neuropsychopharmacology...), triples (15 : barrret commment...), collés
+rares (26 : emmanuelmacron meninblack frankreich skiinternat...),
+échantillon 200 seed 41 (26 : madchenschule provenancede tadjikiste...).
+Total +97 (law déjà dans CEFR : gelé, leçon 40 intouchable).
+Méthode : détecteurs + JUGEMENT MAIN + 27 contextes relus (noms propres et
+sigles GARDÉS : CityRep CUDL Dyplomys PrNSP ; composés soudés attestés
+GARDÉS : rendezvous kilowattheures ; franglais d'usage GARDÉ).
+Règles trouvées : romans XXX contournent la règle xxx (majuscules) ;
+4 ORPHELINS (furtwangen lopes matter schouwburg : voisins uniques coupés,
+zéro paire, non appris — mécanisme documenté, pas un bug).
+Résidu accepté : bruit MT isolé (force 10, orphelin, marbre protège le cœur).
+
+Licence du jeu : CC-BY-4.0 (CATIE-AQ/frenchQA) — on ne garde que la trace
+relationnelle (paires + forces), jamais le texte (rien à redistribuer).
+
+REJEU x3 : +32903/+92673/+2 identiques à chaque passage ; contenus bit-à-bit
+identiques à seed fixe (PYTHONHASHSEED=0, hors meta.date et mtime gzip :
+ordre des listes chaines/geles seul variable, mêmes éléments).
+Batterie : 130/130 CONTRÔLES VERTS (contrôle frenchqa ajouté : fixture
+5/9/24/19, 64277/304561/36, Q&R, R5 OK).

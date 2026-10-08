@@ -680,6 +680,48 @@ def main():
         print("ÉCHEC : le convertisseur cefr est mauvais")
         echecs += 1
     controles += 1
+    _ok_fqa = False
+    try:
+        _arcsq, _stq = _dx("education-manuelle/echantillon-frenchqa.parquet")
+        _fq1 = _dc(_arcsq, "test")
+        _fq2 = _dc(_arcsq, "test")
+        _loiq = all(l["force"] == min(100, 10 * l["n"]) for l in _fq1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdq = _Cerveau("FR")
+            _siq = _injecter(_cdq, _fq1)
+            _si2q = _injecter(_cdq, _fq1)
+            _rfq = _cdq.figer()
+            _boq = _dbo(_cdq, _arcsq)
+            _odq = _dor(_cdq, _fq1["neurones"])
+            _fqa = _Cerveau.relire("cerveau/fige-300M-frenchqa.json.gz")
+        _ok_fqa = (_fq1 == _fq2 and _loiq
+                  and (_stq["dialogues"], _stq["tours"], _stq["mots"],
+                       _stq["paires_uniques"]) == (5, 9, 24, 19)
+                  and _stq["qa"] == {"multiples_ignorees": 1,
+                                     "sans_reponse": 1, "contextes_ignores": 5}
+                  and (len(_fq1["neurones"]), len(_fq1["liens"]),
+                       len(_fq1["motifs"])) == (22, 19, 2)
+                  and _fq1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdq.ecoutes == 0 and _odq["sourds"] == 0
+                  and _si2q["neurones"] == 0 and _si2q["liens"] == 0
+                  and len(_rfq["figes"]) == len(_cdq.graph["neurones"])
+                  and (len(_fqa.graph["neurones"]), len(_fqa.graph["liens"]),
+                       len(_fqa.motifs)) == (64277, 304561, 36)
+                  and _fqa.ecoutes == 300000000
+                  and (len(_fqa.motifs["MSUITE"]),
+                       len(_fqa.motifs["MREPONSE"])) == (51156, 15418))
+        try:
+            del _cdq, _fqa  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_fqa = False
+    if _ok_fqa:
+        print("OK : frenchqa (fixture 5/9/24/19, 64277/304561/36, Q&R, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur frenchqa est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:
