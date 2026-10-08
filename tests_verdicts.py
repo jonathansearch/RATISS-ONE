@@ -561,6 +561,7 @@ def main():
         with _ctx.redirect_stdout(_io.StringIO()):
             _cd = _Cerveau("FR")
             _si = _injecter(_cd, _f1)
+            _si2 = _injecter(_cd, _f1)
             _rf = _cd.figer()
             _bo = _dbo(_cd, _arcs)
             _od = _dor(_cd, _f1["neurones"])
@@ -572,6 +573,7 @@ def main():
                        len(_f1["motifs"])) == (28, 30, 2)
                   and _f1.get("format") == "fragment-cise-dialogues-v1"
                   and _cd.ecoutes == 0 and _od["sourds"] == 0
+                  and _si2["neurones"] == 0 and _si2["liens"] == 0
                   and len(_rf["figes"]) == len(_cd.graph["neurones"])
                   and (len(_acc.graph["neurones"]), len(_acc.graph["liens"]),
                        len(_acc.motifs)) == (25272, 161454, 30)
@@ -581,7 +583,7 @@ def main():
     except Exception:
         _ok_dial = False
     if _ok_dial:
-        print("OK : dialogues (fixture 1/6/31/30, accueil 25272/161454/30, R5 OK)")
+        print("OK : dialogues (fixture 1/6/31/30, accueil 25272/161454/30, rejoué +0, R5 OK)")
     else:
         print("ÉCHEC : le convertisseur dialogues est mauvais")
         echecs += 1

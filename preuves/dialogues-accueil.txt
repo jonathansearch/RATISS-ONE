@@ -15,3 +15,10 @@ Premier passage : 145 neurones dont 44 bruits -> nettoyé et rejoué propre.
 
 Batterie : 127/127 CONTRÔLES VERTS (nouveau contrôle dialogues OK).
 TOUS LES VERDICTS CONFORMES.
+
+REJEU x3 (même dataset, principe du pourcentage) :
+passage 2 : +0 neurones +0 liens (épargné 3072) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 3 : +0 neurones +0 liens (épargné 3072) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 4 : +0 neurones +0 liens (épargné 3072) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+signature cerveau avant/après : 205006a2a6d08609 / 205006a2a6d08609 (identique).
+RÉSERVOIR VIDE : plus rien à apprendre dans Accueil_UBS. ✅
