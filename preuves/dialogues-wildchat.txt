@@ -1,0 +1,48 @@
+PREUVE — leçon 44 : WildChat-1M FR bu (conversations françaises
+in-the-wild, non-toxiques, 8 oct. 2026).
+Commande : extraction duckdb (language='French' AND toxic=false) ->
+txt (u:/a:, 1 paragraphe/conversation) -> convertisseur_dialogues.py
+v5+v5b, fusion globale, seuil n>=5, topk=3 -> injecter dans
+cerveau/fige-300M-fquad2.json.gz -> bouche + oreille -> chirurgie
+609 bruits -> cerveau/fige-300M-wildchat.json.gz
+
+DIALOGUES — 26977 dialogues, 131720 tours, 19556414 mots, 2693857 paires
+uniques, 19456414 rencontres (q1 4315 + q2 7481 + q3 9676 + q4 5505)
+FRAGMENT — 46137 mots, 100664 liens, 2 motifs (n>=5 : 405803 paires)
+POUSSÉ — +26736 neurones, +88304 liens, +2 motifs (12360 marbre épargné)
+BOUCHE — 122445 paires parlables, 246113 sans lien (topk=3, queue longue)
+OREILLE — 46137 mots appris, 0 sourd
+CHIRURGIE — -609 neurones, -1224 liens (bruits îlots, quasi-isolés)
+CERVEAU — 64539->90666 neurones, 316963->404043 liens, 91275 figés,
+écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-wildchat.json.gz (14,4 Mo)
+Seuil : n>=5 (~0,25 rencontre/million de mots, même ordre que frenchQA
+n>=1 : 0,4/M — persistance RELATIVE, loi R=P_sig). MSUITE=79178
+MREPONSE=16607. Tours vides : comptés, ignorés. Zéro toxique (filtre).
+Note : n=1 = 60 % des paires (fautes, tics, hapax) — sous le seuil.
+
+Chasse aux bruits : 26739 neufs, détecteur îlots (mots >16 lettres SANS
+paire grammaticale FR dans le top-6 = identifiants machine-purs) -> 609
+purgés (updatequantitymath usestateinitialdays videofileclipvideo
+bynomsaison animr refcoatinginheritance...). Sample main 50 : 1 collé,
+le reste sain.
+GARDÉS notables : videosurveillance (paires FR), farouchequette (nom de
+famille : johnny sabine simon fils fille), http* (https httpclient :
+vocabulaire), franglais cité en français (bottomnavigationbar, input,
+cells, bug : emprunts techniques authentiques, presqu'îles du FR).
+
+Licence du jeu : ODC-BY (allenai/WildChat-1M, conversations réelles) —
+on ne garde que la trace relationnelle (paires + forces), jamais le texte.
+
+REJEU : fixture parquet=txt bit-à-bit (5/20/4234/2703, arcs identiques) ;
+convertir déterministe (f1==f2) ; injecter idempotent (+0 au rejoué) ;
+graver-flux A/B : contenu identique à l'ancien octet-par-octet (hors
+date, ordre sets seul variable). Rejeu global non refait (19M mots,
+déterministe par construction : compteurs + listes triées).
+Batterie : 133/133 CONTRÔLES VERTS (contrôle wildchat ajouté : fixture
+5/20/4234/2703, 90666/404043/36, txt=parquet, R5 OK).
+
+Note technique : injection monobloc OOM (photo ×3 en RAM : cerveau +
+photo + dumps). Réponse : seuil n>=5 (fragment 46K/101K) + graver en
+FLUX (cerveau/cerveau.py : même JSON, écrit morceau par morceau, validé
+A/B). Mémoire : /tmp est tmpfs (RAM!) — 282 Mo libérés avant batterie.

@@ -29,6 +29,15 @@ seule (comme CEFR : le tissu boit tout ce qui est buvable). Apostrophe
 typographique ’ ramenée à ' (même coupure, pas de faux collé).
 Limite connue (v3, assumée) : le t euphonique (a-t-il) donne (te,il)
 par la règle des élisions — systématique, pas un bruit.
+(v5, conversations wildchat, leçon 44) : parquet allenai/WildChat-1M
+(colonne conversation : liste {role, content}) : chaque conversation
+= 1 dialogue multi-tours (locuteurs u/a, paires reponse/suite comme
+les dialogues, pas de paire ENTRE conversations) ; tours vides
+comptés, ignorés (comme les sans-réponse v4).
+(v5b, wildchat-txt, leçon 44) : même chose en texte pur — 1 paragraphe
+= 1 conversation, 1 ligne = 1 tour (u:/a:) ; équivalence parquet=txt
+prouvée bit-à-bit (batterie : arcs + stats identiques) ; les parasites
+\r \x0b \u2028 \ufeff sont lavés en amont (ils coupent les mots).
 Fichiers *.txt, triés (+ *.parquet : lus en l'état, non triés).
 Encodage : utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
 
@@ -218,6 +227,23 @@ def lire_fichier(chemin):
     if chemin.endswith(".parquet"):
         import pyarrow.parquet as _pq
         t = _pq.read_table(chemin)
+        if "conversation" in t.column_names:  # wildchat (v5)
+            blocs, vides = [], 0
+            for conv in t.column("conversation").to_pylist():
+                bloc = []
+                for m in conv or []:
+                    role = "u" if (m.get("role") or "") == "user" else "a"
+                    txt = (m.get("content") or "").replace("’", "'")
+                    if not txt.strip():
+                        vides += 1
+                        continue
+                    bloc.append((role, txt, None))
+                if bloc:
+                    blocs.append(bloc)
+            lire_fichier.qa_stats = {"multiples_ignorees": 0,
+                                     "sans_reponse": vides,
+                                     "contextes_ignores": len(blocs)}
+            return blocs, "qa"
         qs = t.column("question").to_pylist()
         rs = t.column("answers").to_pylist()
         blocs, multi, vides = [], 0, 0
@@ -253,6 +279,32 @@ def lire_fichier(chemin):
             elif courant is not None and l and LETTRES.search(l):
                 courant[1] += " " + l
         return [(loc, txt, None) for loc, txt in tours], True
+    if any(not l for l in lignes):  # paragraphes ? (wildchat-txt, v5b)
+        paras, cur = [], []
+        for l in lignes:
+            if l:
+                cur.append(l)
+            elif cur:
+                paras.append(cur)
+                cur = []
+        if cur:
+            paras.append(cur)
+        blocs = []
+        for p in paras:
+            bloc = []
+            for l in p:
+                m = TOUR.match(l)
+                if m and m.group(1).lower() in ("u", "a"):
+                    bloc.append((m.group(1).lower(), m.group(2), None))
+            if bloc:
+                blocs.append(bloc)
+        if blocs and all(
+                not l or (TOUR.match(l) and TOUR.match(l).group(1).lower()
+                          in ("u", "a")) for l in lignes):
+            lire_fichier.qa_stats = {"multiples_ignorees": 0,
+                                     "sans_reponse": 0,
+                                     "contextes_ignores": len(blocs)}
+            return blocs, "qa"
     tours = []
     for l in lignes:
         m = TOUR.match(l)

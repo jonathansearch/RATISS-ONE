@@ -517,58 +517,117 @@ class Cerveau:
         Les charges et les coups, éphémères, ne sont PAS sauvés (doctrine :
         seules les forces persistent) — le cerveau relu repart charges à
         zéro, comme après une nuit. `.gz` = compressé, sinon JSON brut.
+        Écriture en FLUX (leçon 44) : le même JSON qu'avant, sans
+        dupliquer le cerveau en mémoire (les gros cerveaux ne tiennent
+        plus en RAM autrement : photo + dumps = 3 copies).
         Retourne la taille en octets.
         """
         import gzip
         import json
         import time
-        photo = {
-            "format": "cerveau-fortifie-v1",
-            "langue": self.langue,
-            "ecoutes": self.ecoutes,
-            "reve": self.reve,
-            "tampon": [list(m) for m in self.tampon],
-            "graph": {
-                "neurones": dict(self.graph["neurones"]),
-                "liens": [[a, b, f] for (a, b), f in self.graph["liens"].items()],
-                "types": sorted(self.graph["types"]),
-                "geles": [[a, b] for a, b in self.graph["geles"]],
-            },
-            "chaines": [[a, b] for a, b in self.chaines],
-            "motifs": {nom: list(mb) for nom, mb in self.motifs.items()},
-            "oreille": {mot: list(mb) for mot, mb in self.oreille.items()},
-            "formes": dict(self.formes),
-            "constructions": [[a, b, r, d] for (a, b), (r, d)
-                              in sorted(self.constructions.items())],
-            "natures": {n: self.natures[n] for n in sorted(self.natures)},
-            "genres": {n: self.genres[n] for n in sorted(self.genres)},
-            "nombres": {n: self.nombres[n] for n in sorted(self.nombres)},
-            "flexions": {n: self.flexions[n] for n in sorted(self.flexions)},
-            "adjectifs": {n: self.adjectifs[n] for n in sorted(self.adjectifs)},
-            "conjugue": {n: self.conjugue[n] for n in sorted(self.conjugue)},
-            "determinants": {n: self.determinants[n] for n in sorted(self.determinants)},
-            "participes": {n: self.participes[n] for n in sorted(self.participes)},
-            "auxiliaires": {n: self.auxiliaires[n] for n in sorted(self.auxiliaires)},
-            "places": {n: self.places[n] for n in sorted(self.places)},
-            "personnes": {n: self.personnes[n] for n in sorted(self.personnes)},
-            "negations": {n: self.negations[n] for n in sorted(self.negations)},
-            "secteurs": {
-                nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
-                       "redites": t.redites, "grave": t.grave}
-                      for t in s.traces.values()]
-                for nom, s in self.secteurs.items()},
-            "ordres": {nom: [list(m) for m in s.ordre]
-                       for nom, s in self.secteurs.items()},
-            "meta": {"logiciel": "RATISS-ONE",
-                     "date": time.strftime("%Y-%m-%d %H:%M:%S")},
-        }
-        brut = json.dumps(photo, ensure_ascii=False).encode("utf-8")
+        d = lambda o: json.dumps(o, ensure_ascii=False)
         if str(chemin).endswith(".gz"):
-            with gzip.open(chemin, "wb") as fh:
-                fh.write(brut)
+            fh = gzip.open(chemin, "wt", encoding="utf-8")
         else:
-            with open(chemin, "wb") as fh:
-                fh.write(brut)
+            fh = open(chemin, "w", encoding="utf-8")
+        with fh:
+            w = fh.write
+            w('{"format": "cerveau-fortifie-v1", "langue": ')
+            w(d(self.langue))
+            w(', "ecoutes": ')
+            w(d(self.ecoutes))
+            w(', "reve": ')
+            w(d(self.reve))
+            w(', "tampon": [')
+            w(", ".join(d(list(m)) for m in self.tampon))
+            w('], "graph": {"neurones": {')
+            w(", ".join(d(k) + ": " + d(v)
+                        for k, v in self.graph["neurones"].items()))
+            w('}, "liens": [')
+            first = True
+            for (a, b), f in self.graph["liens"].items():
+                if not first:
+                    w(", ")
+                first = False
+                w(d([a, b, f]))
+            w('], "types": [')
+            w(", ".join(d(t) for t in sorted(self.graph["types"])))
+            w('], "geles": [')
+            first = True
+            for a, b in self.graph["geles"]:
+                if not first:
+                    w(", ")
+                first = False
+                w(d([a, b]))
+            w(']}, "chaines": [')
+            first = True
+            for a, b in self.chaines:
+                if not first:
+                    w(", ")
+                first = False
+                w(d([a, b]))
+            w('], "motifs": {')
+            first = True
+            for nom, mb in self.motifs.items():
+                if not first:
+                    w(", ")
+                first = False
+                w(d(nom) + ": [" + ", ".join(d(m) for m in mb) + "]")
+            w('}, "oreille": {')
+            first = True
+            for mot, mb in self.oreille.items():
+                if not first:
+                    w(", ")
+                first = False
+                w(d(mot) + ": [" + ", ".join(d(m) for m in mb) + "]")
+            w('}, "formes": {')
+            w(", ".join(d(k) + ": " + d(v)
+                        for k, v in self.formes.items()))
+            w('}, "constructions": [')
+            first = True
+            for (a, b), (r, dep) in sorted(self.constructions.items()):
+                if not first:
+                    w(", ")
+                first = False
+                w(d([a, b, r, dep]))
+            w('], "natures": {')
+            w(", ".join(d(n) + ": " + d(self.natures[n])
+                        for n in sorted(self.natures)))
+            for attr in ("genres", "nombres", "flexions", "adjectifs",
+                         "conjugue", "determinants", "participes",
+                         "auxiliaires", "places", "personnes", "negations"):
+                w('}, "' + attr + '": {')
+                dd = getattr(self, attr)
+                w(", ".join(d(n) + ": " + d(dd[n]) for n in sorted(dd)))
+            w('}, "secteurs": {')
+            first = True
+            for nom, s in self.secteurs.items():
+                if not first:
+                    w(", ")
+                first = False
+                w(d(nom) + ": [")
+                first_t = True
+                for t in s.traces.values():
+                    if not first_t:
+                        w(", ")
+                    first_t = False
+                    w('{"mots": [' + ", ".join(d(m) for m in t.mots) + "]")
+                    w(', "coups": ' + d(t.coups))
+                    w(', "force": ' + d(t.force))
+                    w(', "redites": ' + d(t.redites))
+                    w(', "grave": ' + d(t.grave) + "}")
+                w("]")
+            w('}, "ordres": {')
+            first = True
+            for nom, s in self.secteurs.items():
+                if not first:
+                    w(", ")
+                first = False
+                w(d(nom) + ": [" + ", ".join(d(list(m)) for m in s.ordre)
+                  + "]")
+            w('}, "meta": {"logiciel": "RATISS-ONE", "date": ')
+            w(d(time.strftime("%Y-%m-%d %H:%M:%S")))
+            w("}}")
         return os.path.getsize(chemin)
 
     @classmethod

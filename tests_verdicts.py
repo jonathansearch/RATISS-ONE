@@ -806,6 +806,50 @@ def main():
         print("ÉCHEC : le convertisseur fquad2 est mauvais")
         echecs += 1
     controles += 1
+    _ok_wc = False
+    try:
+        _arcsw, _stw = _dx("education-manuelle/echantillon-wildchat.parquet")
+        _arcst, _stt = _dx("education-manuelle/echantillon-wildchat.txt")
+        _fw1 = _dc(_arcsw, "test")
+        _fw2 = _dc(_arcsw, "test")
+        _loiw = all(l["force"] == min(100, 10 * l["n"]) for l in _fw1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdw = _Cerveau("FR")
+            _siw = _injecter(_cdw, _fw1)
+            _si2w = _injecter(_cdw, _fw1)
+            _rfw = _cdw.figer()
+            _bow = _dbo(_cdw, _arcsw)
+            _odw = _dor(_cdw, _fw1["neurones"])
+            _wc = _Cerveau.relire("cerveau/fige-300M-wildchat.json.gz")
+        _ok_wc = (_fw1 == _fw2 and _loiw
+                  and dict(_arcst) == dict(_arcsw) and _stt == _stw
+                  and (_stw["dialogues"], _stw["tours"], _stw["mots"],
+                       _stw["paires_uniques"]) == (5, 20, 4234, 2703)
+                  and _stw["qa"] == {"multiples_ignorees": 0,
+                                     "sans_reponse": 0, "contextes_ignores": 5}
+                  and (len(_fw1["neurones"]), len(_fw1["liens"]),
+                       len(_fw1["motifs"])) == (1003, 2703, 2)
+                  and _fw1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdw.ecoutes == 0 and _odw["sourds"] == 0
+                  and _si2w["neurones"] == 0 and _si2w["liens"] == 0
+                  and len(_rfw["figes"]) == len(_cdw.graph["neurones"])
+                  and (len(_wc.graph["neurones"]), len(_wc.graph["liens"]),
+                       len(_wc.motifs)) == (90666, 404043, 36)
+                  and _wc.ecoutes == 300000000
+                  and (len(_wc.motifs["MSUITE"]),
+                       len(_wc.motifs["MREPONSE"])) == (79178, 16607))
+        try:
+            del _cdw, _wc  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_wc = False
+    if _ok_wc:
+        print("OK : wildchat (fixture 5/20/4234/2703, 90666/404043/36, txt=parquet, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur wildchat est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:
