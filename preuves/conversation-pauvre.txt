@@ -1,0 +1,53 @@
+corpus : 13 scènes, 40 mots, 3 témoins, 42 tests
+naissances : 43 neurones, 84 liens
+nettoyage : 70 liens morts, 3 neurones morts
+école x1 + jour x1 + 1 nuit(s) : 3 neurones morts, 70 liens morts, écoutes R5 = 13
+raccommodage x1
+--- interrogation (sonde pure, coups sur ratés) ---
+  S1_salut    q0 salut            -> S1_salut     25.0 vs S7_merci     12.5 ❌ +5coups
+  S1_salut    q1 salut+ami        -> S1_salut     50.0 vs S2_vas        9.0 ✅
+  S1_salut    q2 bonjour          -> S1_salut     31.0 vs S7_merci     15.5 ✅ +3coups
+  S2_vas      q0 comment+vas      -> S2_vas       34.0 vs S6_marche     9.0 ✅ +2coups
+  S2_vas      q1 comment          -> S2_vas       29.0 vs F11_martin    0.0 ❌ +5coups
+  S2_vas      q2 vas+bien         -> S2_vas       58.0 vs S6_marche     9.0 ✅
+  S3_viens    q0 tu+viens         -> S3_viens     34.5 vs S5_pain      22.0 ✅ +2coups
+  S3_viens    q1 viens+demain     -> S3_viens     34.0 vs S5_pain      17.0 ✅
+  S3_viens    q2 tu+demain        -> S3_viens     35.0 vs S5_pain      22.0 ✅
+  S4_heure    q0 quelle+heure     -> S4_heure     34.0 vs F11_martin    0.0 ✅ +2coups
+  S4_heure    q1 heure+midi       -> S4_heure     34.0 vs F11_martin    0.0 ✅
+  S4_heure    q2 quelle+midi      -> S4_heure     34.0 vs F11_martin    0.0 ✅
+  S5_pain     q0 tu+veux+pain     -> S5_pain      47.0 vs S3_viens     32.0 ✅ +1coup
+  S5_pain     q1 veux+pain        -> S5_pain      34.0 vs S3_viens     17.0 ✅ +1coup
+  S5_pain     q2 tu+pain          -> S5_pain      40.0 vs S3_viens     28.5 ✅
+  S6_marche   q0 ou+vas           -> S6_marche    40.0 vs S2_vas       29.0 ✅ +3coups
+  S6_marche   q1 vas+marche       -> S6_marche    40.0 vs S2_vas       29.0 ✅
+  S6_marche   q2 ou+marche        -> S6_marche    40.0 vs F11_martin    0.0 ✅
+  S7_merci    q0 merci+ami        -> S7_merci     50.0 vs S2_vas       38.0 ✅ +5coups
+  S7_merci    q1 merci+grand      -> S7_merci     50.0 vs S2_vas       29.0 ✅
+  S7_merci    q2 grand+ami        -> S7_merci     50.0 vs S1_salut     31.0 ✅
+  S8_revoir   q0 au+revoir        -> S8_revoir    34.0 vs S1_salut     17.0 ✅ +2coups
+  S8_revoir   q1 revoir+demain    -> S8_revoir    34.0 vs S1_salut     17.0 ✅
+  S8_revoir   q2 au+demain        -> S8_revoir    34.0 vs S1_salut     17.0 ✅
+  S9_nuit     q0 nuit+calme       -> S9_nuit      34.0 vs S1_salut     17.0 ✅ +2coups
+  S9_nuit     q1 dors+bien        -> S9_nuit      46.0 vs S2_vas       36.0 ✅ +2coups
+  S9_nuit     q2 nuit+dors        -> S9_nuit      46.0 vs S1_salut     23.0 ✅
+  S10_chante  q0 qui+chante       -> S10_chante   34.0 vs F11_martin    5.0 ✅ +2coups
+  S10_chante  q1 chante+oiseau    -> S10_chante   34.0 vs F11_martin    0.0 ✅
+  S10_chante  q2 qui+oiseau       -> S10_chante   34.0 vs F11_martin    5.0 ✅
+  F11_martin  q0 qui+martin       -> F11_martin   37.0 vs S10_chante   17.0 ✅ +3coups
+  F11_martin  q1 martin+luther    -> F11_martin   40.0 vs F13_reve      8.0 ✅
+  F11_martin  q2 qui+luther       -> F11_martin   37.0 vs S10_chante   17.0 ✅
+  F12_mort    q0 martin+mort      -> F12_mort     34.0 vs F11_martin   20.0 ✅ +3coups
+  F12_mort    q1 mort+avril       -> F12_mort     34.0 vs F11_martin    0.0 ✅
+  F12_mort    q2 martin+avril     -> F12_mort     34.0 vs F11_martin   20.0 ✅
+  F13_reve    q0 reve+martin      -> F13_reve     48.0 vs F11_martin   34.0 ✅ +5coups
+  F13_reve    q1 reve+liberte     -> F13_reve     48.0 vs F11_martin   17.0 ✅
+  F13_reve    q2 liberte+martin   -> F13_reve     48.0 vs F11_martin   37.0 ✅
+  caillou     témoin                  -> silence exigé : max   0.0 (✅)
+  ruisseau    témoin                  -> silence exigé : max   0.0 (✅)
+  hibou       témoin                  -> silence exigé : max   0.0 (✅)
+PREMIER PASSAGE pauvre : 25/42 (avant coups)
+BILAN pauvre : 40/42 tiennent (48 coups, 15 rattrapés)
+  VIF         : 0 traces | —
+  REFRAIN     : 13 traces | au+revoir+demain+ami x1 f40, comment+vas+bien+merci x1 f40, martin+mort+avril+memphis x1 f40
+  SANCTUAIRE  : 0 traces | —

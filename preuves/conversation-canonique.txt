@@ -1,0 +1,57 @@
+corpus : 13 scènes, 40 mots, 3 témoins, 42 tests
+naissances : 43 neurones, 84 liens
+nettoyage : 92 liens morts, 3 neurones morts
+nettoyage : 5 liens morts, 0 neurones morts
+nettoyage : 7 liens morts, 0 neurones morts
+nettoyage : 5 liens morts, 0 neurones morts
+école x8 + jour x3 + 4 nuit(s) : 3 neurones morts, 109 liens morts, écoutes R5 = 39
+raccommodage x8
+--- interrogation (sonde pure, coups sur ratés) ---
+  S1_salut    q0 salut            -> S1_salut     31.0 vs S7_merci     15.5 ✅ +1coup
+  S1_salut    q1 salut+ami        -> S1_salut     62.0 vs S2_vas       36.5 ✅
+  S1_salut    q2 bonjour          -> S1_salut     31.0 vs S7_merci     15.5 ✅
+  S2_vas      q0 comment+vas      -> S2_vas       58.0 vs S6_marche    29.0 ✅
+  S2_vas      q1 comment          -> S2_vas       31.0 vs F11_martin    0.0 ✅ +1coup
+  S2_vas      q2 vas+bien         -> S2_vas       69.0 vs S9_nuit      33.0 ✅
+  S3_viens    q0 tu+viens         -> S3_viens     71.0 vs S5_pain      53.5 ✅
+  S3_viens    q1 viens+demain     -> S3_viens     68.0 vs S5_pain      34.0 ✅
+  S3_viens    q2 tu+demain        -> S3_viens     74.0 vs S5_pain      53.5 ✅
+  S4_heure    q0 quelle+heure     -> S4_heure     58.0 vs F11_martin    0.0 ✅
+  S4_heure    q1 heure+midi       -> S4_heure     58.0 vs F11_martin    0.0 ✅
+  S4_heure    q2 quelle+midi      -> S4_heure     58.0 vs F11_martin    0.0 ✅
+  S5_pain     q0 tu+veux+pain     -> S5_pain     100.0 vs S3_viens     67.0 ✅
+  S5_pain     q1 veux+pain        -> S5_pain      66.0 vs S3_viens     33.0 ✅
+  S5_pain     q2 tu+pain          -> S5_pain      73.0 vs S3_viens     53.5 ✅
+  S6_marche   q0 ou+vas           -> S6_marche    58.0 vs S2_vas       31.0 ✅
+  S6_marche   q1 vas+marche       -> S6_marche    58.0 vs S2_vas       31.0 ✅
+  S6_marche   q2 ou+marche        -> S6_marche    58.0 vs F11_martin    0.0 ✅
+  S7_merci    q0 merci+ami        -> S2_vas       83.0 vs S7_merci     74.0 ❌ +5coups
+  S7_merci    q1 merci+grand      -> S7_merci     76.5 vs S2_vas       42.0 ✅
+  S7_merci    q2 grand+ami        -> S7_merci     74.0 vs S2_vas       60.0 ✅
+  S8_revoir   q0 au+revoir        -> S8_revoir    58.0 vs S1_salut     29.0 ✅
+  S8_revoir   q1 revoir+demain    -> S8_revoir    58.0 vs S3_viens     34.0 ✅
+  S8_revoir   q2 au+demain        -> S8_revoir    58.0 vs S3_viens     34.0 ✅
+  S9_nuit     q0 nuit+calme       -> S9_nuit      58.0 vs S1_salut     29.0 ✅
+  S9_nuit     q1 dors+bien        -> S9_nuit      64.0 vs S2_vas       42.0 ✅
+  S9_nuit     q2 nuit+dors        -> S9_nuit      58.0 vs S1_salut     29.0 ✅
+  S10_chante  q0 qui+chante       -> S10_chante   58.0 vs F11_martin   34.0 ✅
+  S10_chante  q1 chante+oiseau    -> S10_chante   58.0 vs F11_martin    0.0 ✅
+  S10_chante  q2 qui+oiseau       -> S10_chante   58.0 vs F11_martin   34.0 ✅
+  F11_martin  q0 qui+martin       -> F11_martin   71.0 vs F13_reve     33.0 ✅
+  F11_martin  q1 martin+luther    -> F11_martin   71.0 vs F13_reve     33.0 ✅
+  F11_martin  q2 qui+luther       -> F11_martin   68.0 vs S10_chante   29.0 ✅
+  F12_mort    q0 martin+mort      -> F12_mort     58.0 vs F11_martin   37.0 ✅
+  F12_mort    q1 mort+avril       -> F12_mort     58.0 vs F11_martin    0.0 ✅
+  F12_mort    q2 martin+avril     -> F12_mort     58.0 vs F11_martin   37.0 ✅
+  F13_reve    q0 reve+martin      -> F11_martin   80.0 vs F13_reve     78.0 ❌ +5coups
+  F13_reve    q1 reve+liberte     -> F13_reve     78.0 vs F11_martin   40.0 ✅
+  F13_reve    q2 liberte+martin   -> F13_reve     78.0 vs F11_martin   61.0 ✅
+  caillou     témoin                  -> silence exigé : max   0.0 (✅)
+  ruisseau    témoin                  -> silence exigé : max   0.0 (✅)
+  hibou       témoin                  -> silence exigé : max   0.0 (✅)
+PREMIER PASSAGE canonique : 38/42 (avant coups)
+BILAN canonique : 40/42 tiennent (12 coups, 2 rattrapés)
+  VIF         : 0 traces | —
+  REFRAIN     : 0 traces | —
+  SANCTUAIRE  : 13 traces | au+revoir+demain+ami x1 f91, comment+vas+bien+merci x1 f91, martin+mort+avril+memphis x1 f91
+gravé : education-conversation/fige-conversation.json.gz (1839 octets — les forces, pas les mots)
