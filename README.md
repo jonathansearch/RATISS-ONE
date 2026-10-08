@@ -129,8 +129,9 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 👂 oreille (leçon 34) | 24 638 mots + 16 370 formes appris en 5 s | **lent=rapide**, écho inverse 50, rêve élargi |
 | 🗣️ bouche (leçon 35) | 105 313 paires parlables, SVO tenu en 9 s | **884 verbes parlent**, silences honnêtes |
 | 📖 grammaire (leçon 36) | articles + 6 accords en 14 s, expansion amendée | **phrases vraies**, 100 % observé ou flag |
-| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 36 leçons, 20 figures, 4 audios, slides, CC-BY-SA |
-| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **125/125 contrôles verts** |
+| 🗓️ bases (leçon 37) | 573 petits mots + 5 tables en 20 s, tout en une fois | **raconter parle** : temps, négation, copules |
+| 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 37 leçons, 20 figures, 4 audios, slides, CC-BY-SA |
+| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **126/126 contrôles verts** |
 
 ---
 
@@ -448,7 +449,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📏 Chiffres clés
 
-- **125/125 contrôles verts**, 24 programmes, 36 leçons (v0.1 → bouche-v1 → grammaire-v1)
+- **126/126 contrôles verts**, 24 programmes, 37 leçons (v0.1 → bouche-v1 → grammaire-v1 → bases-v1)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 37 phrases → 63 neurones, 273 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -527,6 +528,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **école de l'oreille** — 24 638 mots + 16 370 formes, lent=rapide (123/123)
 - [x] **école de la bouche** — 105 313 paires parlables, SVO tenu (124/124)
 - [x] **école de grammaire** — articles + 6 accords, phrases vraies (125/125)
+- [x] **école des bases** — tout en une fois, raconter parle (126/126)
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
 Feuille détaillée : `RNI-DEFINITION.md` §7.

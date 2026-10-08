@@ -23,6 +23,10 @@ Lois (simples, documentées, pinnées par la batterie) :
 - l'école de grammaire (leçon 36) injecte les articles (vrais nerfs) et
   apprend les accords à part (genres, nombres, flexions, conjugaison,
   déterminants) : tout observé, sinon règle documentée + flag.
+- l'école des bases (leçon 37) injecte TOUTE la structure (pronoms,
+  prépositions, adverbes, conjonctions, nombres, auxiliaires, réfugiés)
+  et complète les tables (conjugaison totale, participes, auxiliaires,
+  places, personnes, négations) : les bases, pas de hasard.
 
 Usage :
   python3 education-manuelle/convertisseur_ud.py --conllu fr.conllu --topk 5
@@ -43,6 +47,9 @@ from generer_masse import charger  # noqa: E402
 
 CONTENU = {"NOUN", "VERB", "ADJ", "ADV", "PROPN"}
 STOPLISTE = {"ne", "pas", "etre", "avoir"}  # grammaire pure : attendra le constructeur
+# Leçon 37 : la stopliste REND ses mots (réfugiés) + les 1-lettre (à, y).
+REFUGIES = {"etre", "avoir", "ne", "pas"}
+POS_STRUCTURE = {"PRON", "ADP", "ADV", "CCONJ", "SCONJ", "NUM", "PART", "AUX"}
 
 # Étiquette UD -> motif français (le français, pas le jargon).
 REL_MOTIF = {
@@ -52,6 +59,8 @@ REL_MOTIF = {
     "conj": "MCONJOINT", "ccomp": "MPROP", "xcomp": "MPROP",
     "advcl": "MCIRCONST", "nummod": "MNOMBRE", "compound": "MMOT",
     "det": "MARTICLE",
+    "case": "MPREPO", "aux": "MAUX", "cop": "METRE",
+    "mark": "MMARQUE", "expl": "MEXPLETIF",
 }
 MOTIF_DIVERS = "MLIAISON"
 MOTIF_RACINE = "MRACINE"
@@ -63,6 +72,17 @@ def normaliser(lemme):
     if len(s) < 2 or not s.isalpha() or not s.isascii():
         return None
     if s in STOPLISTE:
+        return None
+    return s
+
+
+def normaliser_structure(lemme):
+    """Comme normaliser, mais la stopliste rend ses mots et les 1-lettre
+    (à, y) passent : la structure n'a pas peur des petits. Réservé aux
+    chemins neufs (leçon 37) — les vieux chemins gardent normaliser."""
+    s = unicodedata.normalize("NFKD", lemme.lower())
+    s = "".join(c for c in s if not unicodedata.combining(c))
+    if len(s) < 1 or not s.isalpha() or not s.isascii():
         return None
     return s
 
@@ -225,9 +245,11 @@ def ecole_cli(args):
     return 0
 
 
-def extraire_natures(conllu):
-    """Lit le CoNLL-U : lemme -> nature (POS le plus fréquent, égalité -> A-Z)."""
+def extraire_natures_pos(conllu, structure=False):
+    """Lit le CoNLL-U : lemme -> Counter(POS). structure=True : avec
+    normaliser_structure (réfugiés + 1-lettre — chemins neufs only)."""
     from collections import Counter, defaultdict
+    norm = normaliser_structure if structure else normaliser
     votes = defaultdict(Counter)
     with open(conllu, encoding="utf-8") as fh:
         for ligne in fh:
@@ -237,9 +259,15 @@ def extraire_natures(conllu):
             p = ligne.split("\t")
             if "-" in p[0] or "." in p[0]:
                 continue
-            lemme = normaliser(p[2])
+            lemme = norm(p[2])
             if lemme:
                 votes[lemme][p[3]] += 1
+    return votes
+
+
+def extraire_natures(conllu):
+    """Lit le CoNLL-U : lemme -> nature (POS le plus fréquent, égalité -> A-Z)."""
+    votes = extraire_natures_pos(conllu)
     return {l: sorted(c.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
             for l, c in votes.items()}
 
@@ -337,45 +365,35 @@ def extraire_articles(conllu):
     return arcs
 
 
-def ecole_grammaire(c, conllu):
-    """L'ÉCOLE DE GRAMMAIRE (leçon 36) : les articles + les accords.
+TENSES = {"Pres": "present", "Imp": "imparfait", "Fut": "futur",
+          "Past": "passe_simple"}
 
-    1. Les articles sont de vrais nerfs (injectés + figés, motif MARTICLES).
-    2. Leurs constructions (le contenu d'abord : pas d'écrasement).
-    3. L'oreille + la bouche repassent (idempotents : que du neuf).
-    4. Les accords en un passage FEATS : genres, nombres, flexions,
-       adjectifs, conjugaison (présent 3e), déterminants observés.
-    """
-    import contextlib
-    import io
-    from collections import defaultdict
-    arts = extraire_articles(conllu)
-    gardes = {}
-    for (a, b, r), n in arts.items():
-        if (a, b) not in gardes or gardes[(a, b)][1] < n:
-            gardes[(a, b)] = (r, n)
-    frag = _fragment(gardes, set(), "UD_French-GSD train (articles)")
-    st_inject = injecter(c, frag)
-    with contextlib.redirect_stdout(io.StringIO()):
-        res_figer = c.figer()
-    for l in frag["liens"]:
-        na = neurone_pour(c, l["a"])
-        nb = neurone_pour(c, l["b"])
-        paire = tuple(sorted((na, nb)))
-        dep = l["a"] if (l["a"], l["b"], "det") in arts else l["b"]
-        c.constructions.setdefault(paire, ("det", neurone_pour(c, dep)))
-    st_or = ecole_oreille(c, conllu)
-    st_bou = ecole_bouche(c, conllu)
+
+def passer_accords(c, conllu, complet=False):
+    """Un passage FEATS : genres, nombres, flexions, adjectifs, conjugaison,
+    déterminants (+ complet : conjugaison totale, participes, auxiliaires,
+    places, personnes, négations). Idempotent (mêmes votes -> mêmes tables).
+    complet=False : comportement leçon 36 à l'identique."""
+    from collections import Counter, defaultdict
+    norm = normaliser_structure if complet else normaliser
+
+    def top(cpt):
+        return sorted(cpt.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+
     vg, vn = defaultdict(Counter), defaultdict(Counter)
     vf, va, vv, vd = defaultdict(lambda: defaultdict(Counter)), defaultdict(
         lambda: defaultdict(Counter)), defaultdict(lambda: defaultdict(Counter)), defaultdict(
         lambda: defaultdict(Counter))
+    vv2, vp = defaultdict(lambda: defaultdict(Counter)), defaultdict(
+        lambda: defaultdict(Counter))
+    vaux, vplaces, vpers, vneg = defaultdict(Counter), defaultdict(Counter), defaultdict(
+        Counter), defaultdict(Counter)
     toks = []
 
     def vider():
         idx = {t[0]: t for t in toks}
-        for (i, lem, pos, head, ft, forme) in toks:
-            nl = normaliser(lem)
+        for (i, lem, pos, head, ft, forme, rel) in toks:
+            nl = norm(lem)
             if not nl:
                 continue
             noeud = noeud_pour(c.graph["neurones"], nl)
@@ -397,10 +415,40 @@ def ecole_grammaire(c, conllu):
                 vv[noeud][nb][forme.lower()] += 1
             if (pos == "DET" and head in idx and forme.lower() in ("le", "la", "les", "l'")
                     and nb in ("Sing", "Plur")):
-                hl = normaliser(idx[head][1])
+                hl = norm(idx[head][1])
                 hn = noeud_pour(c.graph["neurones"], hl) if hl else None
                 if hn is not None:
                     vd[hn][nb][forme.lower()] += 1
+            if complet:
+                tense = ft.get("Tense")
+                if (pos in ("VERB", "AUX") and ft.get("Mood") == "Ind"
+                        and tense in TENSES and ft.get("VerbForm") != "Part"
+                        and ft.get("Person") in ("1", "2", "3") and nb in ("Sing", "Plur")):
+                    clef = TENSES[tense] + "-" + ft["Person"] + "-" + ("S" if nb == "Sing" else "P")
+                    vv2[noeud][clef][forme.lower()] += 1
+                if (pos in ("VERB", "AUX") and ft.get("VerbForm") == "Part"
+                        and tense != "Pres" and g in ("Masc", "Fem") and nb in ("Sing", "Plur")):
+                    vp[noeud][g + nb][forme.lower()] += 1
+                if pos == "PRON" and ft.get("Person") in ("1", "2", "3"):
+                    vpers[noeud][ft["Person"]] += 1
+                r0 = rel.split(":")[0]
+                if r0 == "aux" and head in idx:
+                    dl = normaliser_structure(lem)
+                    if dl in ("avoir", "etre"):
+                        hl = norm(idx[head][1])
+                        hn = noeud_pour(c.graph["neurones"], hl) if hl else None
+                        if hn is not None:
+                            vaux[hn][dl] += 1
+                if r0 == "amod" and pos == "ADJ" and head in idx \
+                        and idx[head][2] in ("NOUN", "PROPN"):
+                    vplaces[noeud]["avant" if i < idx[head][0] else "apres"] += 1
+                if r0 == "advmod" and head in idx and idx[head][2] in ("VERB", "AUX"):
+                    dl = normaliser_structure(lem)
+                    if dl in ("pas", "plus", "jamais"):
+                        hl = norm(idx[head][1])
+                        hn = noeud_pour(c.graph["neurones"], hl) if hl else None
+                        if hn is not None:
+                            vneg[hn][dl] += 1
 
     with open(conllu, encoding="utf-8") as fh:
         for ligne in fh:
@@ -415,13 +463,9 @@ def ecole_grammaire(c, conllu):
             p = ligne.split("\t")
             if "-" in p[0] or "." in p[0]:
                 continue
-            toks.append((int(p[0]), p[2], p[3], int(p[6]), lire_traits(p[5]), p[1]))
+            toks.append((int(p[0]), p[2], p[3], int(p[6]), lire_traits(p[5]), p[1], p[7]))
     if toks:
         vider()
-
-    def top(cpt):
-        return sorted(cpt.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
-
     for noeud, cpt in vg.items():
         c.genres[noeud] = "M" if top(cpt) == "Masc" else "F"
     for noeud, cpt in vn.items():
@@ -438,6 +482,89 @@ def ecole_grammaire(c, conllu):
     for noeud, par_nb in vd.items():
         c.determinants[noeud] = {("S" if nb == "Sing" else "P"): top(cpt)
                                  for nb, cpt in par_nb.items()}
+    if complet:
+        for noeud, par_tpn in vv2.items():
+            c.conjugue[noeud] = {k: top(cpt) for k, cpt in par_tpn.items()}
+        for noeud, par_gn in vp.items():
+            conv = {"MascSing": "MS", "FemSing": "FS", "MascPlur": "MP", "FemPlur": "FP"}
+            c.participes[noeud] = {conv[gn]: top(cpt) for gn, cpt in par_gn.items()}
+        for noeud, cpt in vaux.items():
+            c.auxiliaires[noeud] = max(cpt.items(),
+                key=lambda kv: (kv[1], kv[0] == "avoir"))[0]  # avoir gagne les égalités (défaut 90 %+ des verbes)
+        for noeud, cpt in vplaces.items():
+            c.places[noeud] = top(cpt)
+        for noeud, cpt in vpers.items():
+            c.personnes[noeud] = top(cpt)
+        for noeud, cpt in vneg.items():
+            c.negations[noeud] = top(cpt)
+
+
+def extraire_structure(conllu, structure):
+    """Arcs qui touchent la structure (un bout suffit), toutes relations.
+    normaliser_structure : réfugiés + 1-lettre (le contenu garde son filtre)."""
+    arcs = Counter()
+    toks = []
+
+    def vider():
+        idx = {t[0]: t for t in toks}
+        for (i, lem, pos, head, rel) in toks:
+            if head == 0 or head not in idx:
+                continue
+            l1 = normaliser_structure(lem)
+            l2 = normaliser_structure(idx[head][1])
+            if not l1 or not l2:
+                continue
+            if l1 in structure or l2 in structure:
+                arcs[(l1, l2, rel.split(":")[0])] += 1
+
+    with open(conllu, encoding="utf-8") as fh:
+        for ligne in fh:
+            ligne = ligne.strip()
+            if not ligne:
+                if toks:
+                    vider()
+                    toks = []
+                continue
+            if ligne.startswith("#"):
+                continue
+            p = ligne.split("\t")
+            if "-" in p[0] or "." in p[0]:
+                continue
+            toks.append((int(p[0]), p[2], p[3], int(p[6]), p[7]))
+    if toks:
+        vider()
+    return arcs
+
+
+def ecole_grammaire(c, conllu):
+    """L'ÉCOLE DE GRAMMAIRE (leçon 36) : les articles + les accords.
+
+    1. Les articles sont de vrais nerfs (injectés + figés, motif MARTICLES).
+    2. Leurs constructions (le contenu d'abord : pas d'écrasement).
+    3. L'oreille + la bouche repassent (idempotents : que du neuf).
+    4. Les accords en un passage FEATS : genres, nombres, flexions,
+       adjectifs, conjugaison (présent 3e), déterminants observés.
+    """
+    import contextlib
+    import io
+    arts = extraire_articles(conllu)
+    gardes = {}
+    for (a, b, r), n in arts.items():
+        if (a, b) not in gardes or gardes[(a, b)][1] < n:
+            gardes[(a, b)] = (r, n)
+    frag = _fragment(gardes, set(), "UD_French-GSD train (articles)")
+    st_inject = injecter(c, frag)
+    with contextlib.redirect_stdout(io.StringIO()):
+        res_figer = c.figer()
+    for l in frag["liens"]:
+        na = neurone_pour(c, l["a"])
+        nb = neurone_pour(c, l["b"])
+        paire = tuple(sorted((na, nb)))
+        dep = l["a"] if (l["a"], l["b"], "det") in arts else l["b"]
+        c.constructions.setdefault(paire, ("det", neurone_pour(c, dep)))
+    st_or = ecole_oreille(c, conllu)
+    st_bou = ecole_bouche(c, conllu)
+    passer_accords(c, conllu)
     return {"articles": {"neurones": st_inject["neurones"], "liens": st_inject["liens"],
                          "epargnes": st_inject["marbre_epargne"],
                          "figes": len(res_figer["figes"])},
@@ -457,6 +584,68 @@ def grammaire_cli(args):
     print(f"GRAMMAIRE — accords : {stats['genres']} genres, {stats['nombres']} nombres, "
           f"{stats['flexions']} flexions, {stats['adjectifs']} adjectifs, "
           f"{stats['conjugue']} verbes, {stats['determinants']} déterminants")
+    print(f"GRAVÉ — {args.sortie}")
+    return 0
+
+
+def ecole_bases(c, conllu):
+    """L'ÉCOLE DES BASES (leçon 37) : TOUTE la structure, une fois.
+
+    1. La structure = lemmes à nature de structure (POS majoritaire) +
+       réfugiés (la stopliste rend ne/pas/être/avoir).
+    2. Vrais nerfs + vrais liens (toutes relations, le plus prouvé gagne),
+       figés ; constructions en setdefault (contenu > articles > structure).
+    3. L'oreille + la bouche repassent (idempotents : que du neuf).
+    4. passer_accords complet : conjugaison totale, participes, auxiliaires,
+       places, personnes, négations (+ genres/nombres des nouveaux).
+    """
+    import contextlib
+    import io
+    pos_votes = extraire_natures_pos(conllu, structure=True)
+    structure = {l for l, cpt in pos_votes.items()
+                 if sorted(cpt.items(), key=lambda kv: (-kv[1], kv[0]))[0][0]
+                 in POS_STRUCTURE}
+    structure |= REFUGIES
+    arcs = extraire_structure(conllu, structure)
+    gardes = {}
+    for (a, b, r), n in arcs.items():
+        if (a, b) not in gardes or gardes[(a, b)][1] < n:
+            gardes[(a, b)] = (r, n)
+    frag = _fragment(gardes, set(), "UD_French-GSD train (structure)")
+    st_inject = injecter(c, frag)
+    with contextlib.redirect_stdout(io.StringIO()):
+        res_figer = c.figer()
+    for l in frag["liens"]:
+        na = neurone_pour(c, l["a"])
+        nb = neurone_pour(c, l["b"])
+        paire = tuple(sorted((na, nb)))
+        # gardes ordonnés : a = le dépendant (direction préservée).
+        c.constructions.setdefault(paire, (l["rel"], neurone_pour(c, l["a"])))
+    st_or = ecole_oreille(c, conllu)
+    st_bou = ecole_bouche(c, conllu)
+    passer_accords(c, conllu, complet=True)
+    return {"structure": {"mots": len(structure), "neurones": st_inject["neurones"],
+                          "liens": st_inject["liens"],
+                          "epargnes": st_inject["marbre_epargne"],
+                          "figes": len(res_figer["figes"])},
+            "oreille": st_or, "bouche": st_bou, "genres": len(c.genres),
+            "nombres": len(c.nombres), "flexions": len(c.flexions),
+            "adjectifs": len(c.adjectifs), "conjugue": len(c.conjugue),
+            "determinants": len(c.determinants), "participes": len(c.participes),
+            "auxiliaires": len(c.auxiliaires), "places": len(c.places),
+            "personnes": len(c.personnes), "negations": len(c.negations)}
+
+
+def bases_cli(args):
+    c = Cerveau.relire(args.injecter)
+    stats = ecole_bases(c, args.conllu)
+    c.graver(args.sortie)
+    s = stats["structure"]
+    print(f"BASES — structure : {s['mots']} mots, +{s['neurones']} nerfs "
+          f"+{s['liens']} liens ({s['epargnes']} épargnés), {s['figes']} figés")
+    print(f"BASES — tables : {stats['conjugue']} conjugaisons, {stats['participes']} participes, "
+          f"{stats['auxiliaires']} auxiliaires, {stats['places']} places, "
+          f"{stats['personnes']} personnes, {stats['negations']} négations")
     print(f"GRAVÉ — {args.sortie}")
     return 0
 
@@ -597,7 +786,14 @@ def main(argv):
                     help="école de la bouche : apprend comment chaque lien tenu se parle")
     ap.add_argument("--grammaire", action="store_true",
                     help="école de grammaire : articles + accords (genres, nombres, présent)")
+    ap.add_argument("--bases", action="store_true",
+                    help="école des bases : TOUTE la structure + tables complètes, une fois")
     args = ap.parse_args(argv)
+    if args.bases:
+        assert args.tours == 0 and not args.jusquau_fond and not args.oreille \
+            and not args.bouche and not args.grammaire, "--bases seul"
+        assert args.injecter and args.sortie, "--injecter + --sortie exigés"
+        return bases_cli(args)
     if args.grammaire:
         assert args.tours == 0 and not args.jusquau_fond and not args.oreille \
             and not args.bouche, "--grammaire seul"

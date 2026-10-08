@@ -1,0 +1,22 @@
+=== L'ÉCOLE DES BASES : TOUT, EN UNE FOIS — le bébé raconte ===
+nerfs : 25171 | liens : 159288 | motifs : 28 | écoutes : 300000000
+constructions : 159251 | structure : 573 mots, +450 nerfs +40176 liens (8544 épargnés)
+tables : 11996 genres, 14593 nombres, 12753 flexions, 3183 adjectifs, 1240 verbes, 7813 déterminants, 1452 participes, 1202 auxiliaires, 2760 places, 29 personnes, 346 négations
+nouveaux motifs : MPREPO MINDIRECT MAUX METRE MEXPLETIF MNOMBRE (+ MMARQUE leçon 37)
+  raconter manger présent -> « On mange bien. » appris=True tenu=True
+  raconter manger passé composé -> « On a bien mangé. » appris=True tenu=True
+  raconter manger présent négatif -> « On ne mange jamais bien. » appris=True tenu=True
+  raconter vouloir présent -> « Nous voulons vraiment dire. » appris=True tenu=True
+  raconter mere présent (copule) -> « L'islam est religion. » appris=True tenu=True
+  raconter ami présent (et) -> « La famille aisée de Colubridae et les meilleurs amis prétendent lui. » appris=True tenu=True
+  raconter prendre passé simple -> « Les employés prirent lors le vrai nom de deux autres espèces dans la famille aisée de Colubridae en le compte. » appris=False tenu=True
+  raconter faire futur -> « On fera egalement la première apparition pour vous dans deux dernières années du calendrier proleptique. » appris=False tenu=True
+  paradigme complet (faire) : fait / faisait / fit / fera / a fait / ne fait pas
+  paradigme complet (prendre) : prennent / prenait / prirent / prendrons / avons pris / ne prennent pas
+  paradigme complet (pouvoir) : pouvons / pouvions / put / pourra / avons pu / ne pouvons pas
+  devenir -> silence (sujets non tenus) | blorpt -> silence (rien de tenu)
+  temps "passe" -> silence (le passé simple s'appelle passe_simple)
+parler/dire intacts : code gelé, pinnés sur fige-300M-grammaire.json.gz (125 verts)
+bilan (inchangé) : J'ai entendu 300000000 séquences. Au sanctuaire : amis patrie pays. Je tiens amis, peuple, pays et patrie. Le reste reste dehors.
+nuit 0 perte : True
+artefact : 5549067 octets

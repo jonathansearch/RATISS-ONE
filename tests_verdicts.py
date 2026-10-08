@@ -789,7 +789,8 @@ def main():
                   and (_stg["genres"], _stg["nombres"], _stg["flexions"],
                        _stg["adjectifs"], _stg["conjugue"], _stg["determinants"])
                   == (902, 1131, 908, 195, 102, 430)
-                  and len(_x.motifs) == 21 and "MARTICLE" in _x.motifs
+                  and len(_x.motifs) == 22 and "MARTICLE" in _x.motifs  # leçon 37 : + MMARQUE (mark, les juxtaposées "que" nommées dès le fixture)
+                  and "MMARQUE" in _x.motifs
                   and _pg10 is not None
                   and _pg10["phrase"] == "Stephen accuse Adeang."
                   and _pg10["appris"] is False and _pg10["tenu"] is True
@@ -824,6 +825,95 @@ def main():
         print("OK : grammaire (articles + accords, empereur pinné, 119112 liens)")
     else:
         print("ÉCHEC : la grammaire est mauvaise")
+        echecs += 1
+    controles += 1
+    from convertisseur_ud import ecole_bases as _bases
+    _ok_ba = False
+    try:
+        try:
+            del _cg, _cb2, _or3, _x  # la leçon 36 rend ses géants (RAM)
+        except NameError:
+            pass
+        import gc as _gc
+        _gc.collect()
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _vi2 = _tf.mktemp(suffix=".json.gz")
+            _Cerveau("FR").graver(_vi2)
+            _a2 = _A()
+            _a2.conllu = "education-manuelle/echantillon-ud.conllu"
+            _a2.graines = 7
+            _a2.paires = 500
+            _a2.injecter = _vi2
+            _a2.sortie = _tf.mktemp(suffix=".json.gz")
+            _boire(_a2)
+            os.remove(_vi2)
+            _xb = _Cerveau.relire(_a2.sortie)
+            os.remove(_a2.sortie)
+            _ecole(_xb, "education-manuelle/echantillon-ud.conllu")
+            _bouche(_xb, "education-manuelle/echantillon-ud.conllu")
+            _gramm(_xb, "education-manuelle/echantillon-ud.conllu")
+            _stb = _bases(_xb, "education-manuelle/echantillon-ud.conllu")
+            _rb10 = _xb.raconter("accuser", seuil=10)
+            _cb = _Cerveau.relire("cerveau/fige-300M-bases.json.gz")
+            _r_man = _cb.raconter("manger")
+            _r_pc = _cb.raconter("manger", temps="passe_compose")
+            _r_neg = _cb.raconter("manger", temps="present", negatif=True)
+            _r_vou = _cb.raconter("vouloir")
+            _r_mer = _cb.raconter("mere")
+            _r_ami = _cb.raconter("ami")
+            _r_ps = _cb.raconter("prendre", temps="passe_simple")
+            _r_fut = _cb.raconter("faire", temps="futur")
+        _ok_ba = (_stb["structure"]["mots"] == 120
+                  and _stb["structure"]["neurones"] == 79
+                  and _stb["structure"]["liens"] == 1286
+                  and _stb["structure"]["epargnes"] == 159
+                  and _stb["structure"]["figes"] == 1526
+                  and (_stb["participes"], _stb["auxiliaires"], _stb["places"],
+                       _stb["personnes"], _stb["negations"]) == (110, 67, 164, 15, 10)
+                  and len(_xb.motifs) == 28
+                  and all(m in _xb.motifs for m in ("MPREPO", "MINDIRECT", "MAUX",
+                       "METRE", "MEXPLETIF", "MNOMBRE", "MMARQUE"))
+                  and _rb10 is not None
+                  and _rb10["phrase"] == "Stephen accuse Adeang et les autres députés de l'opposition."
+                  and _rb10["appris"] is False and _rb10["tenu"] is True
+                  and _xb.raconter("blorpt") is None
+                  and (len(_cb.graph["neurones"]), len(_cb.graph["liens"]),
+                       len(_cb.motifs)) == (25171, 159288, 28)
+                  and _cb.ecoutes == 300000000
+                  and len(_cb.oreille) == 25152 and len(_cb.formes) == 16503
+                  and len(_cb.constructions) == 159251 and len(_cb.natures) == 25152
+                  and (len(_cb.genres), len(_cb.nombres), len(_cb.flexions),
+                       len(_cb.adjectifs), len(_cb.conjugue), len(_cb.determinants),
+                       len(_cb.participes), len(_cb.auxiliaires), len(_cb.places),
+                       len(_cb.personnes), len(_cb.negations))
+                  == (11996, 14593, 12753, 3183, 1240, 7813, 1452, 1202, 2760, 29, 346)
+                  and _r_man is not None
+                  and _r_man["phrase"] == "On mange bien."
+                  and _r_man["appris"] is True and _r_man["tenu"] is True
+                  and _r_pc is not None and _r_pc["phrase"] == "On a bien mangé."
+                  and _r_pc["appris"] is True
+                  and _r_neg is not None and _r_neg["phrase"] == "On ne mange jamais bien."
+                  and _r_neg["appris"] is True
+                  and _r_vou is not None and _r_vou["phrase"] == "Nous voulons vraiment dire."
+                  and _r_vou["appris"] is True
+                  and _r_mer is not None and _r_mer["phrase"] == "L'islam est religion."
+                  and _r_mer["appris"] is True and _r_mer.get("attribut") == "word_religion"
+                  and _r_ami is not None
+                  and _r_ami["phrase"] == "La famille aisée de Colubridae et les meilleurs amis prétendent lui."
+                  and _r_ami["appris"] is True
+                  and _r_ps is not None
+                  and _r_ps["phrase"] == "Les employés prirent lors le vrai nom de deux autres espèces dans la famille aisée de Colubridae en le compte."
+                  and _r_fut is not None
+                  and _r_fut["phrase"] == "On fera egalement la première apparition pour vous dans deux dernières années du calendrier proleptique."
+                  and _cb.raconter("blorpt") is None
+                  and _cb.raconter("devenir") is None
+                  and _cb.raconter("manger", temps="passe") is None)
+    except Exception:
+        _ok_ba = False
+    if _ok_ba:
+        print("OK : bases (raconter 8 phrases, 28 motifs, 159288 liens)")
+    else:
+        print("ÉCHEC : les bases sont mauvaises")
         echecs += 1
     for prog, cas in CAS.items():
         proc = subprocess.run(

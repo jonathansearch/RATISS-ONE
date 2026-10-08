@@ -151,8 +151,13 @@ class Cerveau:
         self.nombres = {}  # leçon 36 : noeud -> S/P (le plus fréquent, S par défaut)
         self.flexions = {}  # leçon 36 : noeud -> {S: forme, P: forme} (noms)
         self.adjectifs = {}  # leçon 36 : noeud -> {"MS": f...} (épithètes)
-        self.conjugue = {}  # leçon 36 : verbe -> {S: 3e sing, P: 3e plur} (présent)
+        self.conjugue = {}  # leçon 36-37 : verbe -> {"present-3-S": forme...}
         self.determinants = {}  # leçon 36 : nom -> {S: det, P: det} (observés)
+        self.participes = {}  # leçon 37 : verbe -> {"MS": mangé...}
+        self.auxiliaires = {}  # leçon 37 : verbe -> avoir/être (observé)
+        self.places = {}  # leçon 37 : adjectif -> avant/après (observé)
+        self.personnes = {}  # leçon 37 : pronom -> 1/2/3 (observé)
+        self.negations = {}  # leçon 37 : verbe -> pas/plus/jamais (observé)
         neurones = set(pack["concepts"])
         for mb in self.motifs.values():
             neurones.update(mb)
@@ -398,6 +403,17 @@ class Cerveau:
             seuil = _bc.SEUIL_TENU
         return _bc.parler(self, mot, seuil=seuil)
 
+    def raconter(self, mot, temps="present", negatif=False, seuil=None):
+        """RACONTER (leçon 37) : TOUTES les bases, une fois — pronoms,
+        prépositions, négation, adverbes, infinitifs, et/ou, nombres,
+        4 temps + passé composé, copules. Même noyau tenu, compléments
+        tenus, paires parlées vérifiées (tenue2). `dire`/`parler` intacts.
+        Import paresseux : comme redire, la bouche dépend du crâne au chargement."""
+        from bouche import construire as _bc
+        if seuil is None:
+            seuil = _bc.SEUIL_TENU
+        return _bc.raconter(self, mot, temps=temps, negatif=negatif, seuil=seuil)
+
     def rever(self):
         """LE RÊVE (v6, phase 5) : l'hippocampe rejoue ce que le tissu a compris.
         Chaque trace VIF/REFRAIN riche (≥ 2 mots connus) est ravivée sur place
@@ -531,6 +547,11 @@ class Cerveau:
             "adjectifs": {n: self.adjectifs[n] for n in sorted(self.adjectifs)},
             "conjugue": {n: self.conjugue[n] for n in sorted(self.conjugue)},
             "determinants": {n: self.determinants[n] for n in sorted(self.determinants)},
+            "participes": {n: self.participes[n] for n in sorted(self.participes)},
+            "auxiliaires": {n: self.auxiliaires[n] for n in sorted(self.auxiliaires)},
+            "places": {n: self.places[n] for n in sorted(self.places)},
+            "personnes": {n: self.personnes[n] for n in sorted(self.personnes)},
+            "negations": {n: self.negations[n] for n in sorted(self.negations)},
             "secteurs": {
                 nom: [{"mots": list(t.mots), "coups": t.coups, "force": t.force,
                        "redites": t.redites, "grave": t.grave}
@@ -581,6 +602,11 @@ class Cerveau:
         c.adjectifs = dict(photo.get("adjectifs", {}))
         c.conjugue = dict(photo.get("conjugue", {}))
         c.determinants = dict(photo.get("determinants", {}))
+        c.participes = dict(photo.get("participes", {}))
+        c.auxiliaires = dict(photo.get("auxiliaires", {}))
+        c.places = dict(photo.get("places", {}))
+        c.personnes = dict(photo.get("personnes", {}))
+        c.negations = dict(photo.get("negations", {}))
         for nom, traces in photo["secteurs"].items():
             s = c.secteurs[nom]
             s.traces = {}

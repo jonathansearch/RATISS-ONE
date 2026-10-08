@@ -221,3 +221,13 @@ nombres, flexions, adjectifs, présent 3e, déterminants observés). `parler`
 habille le noyau tenu : articles, accords, conjugaison — 100 % observé,
 sinon règle documentée + flag `appris`. Amendement : l'expansion saute
 les petits mots (la colle ne détourne plus les noyaux).
+
+## 18. L'école des bases (8 oct., leçon 37)
+
+`--bases` : TOUT, en une fois — les 573 petits mots deviennent de vrais
+nerfs (6 motifs : MPREPO MINDIRECT MAUX METRE MEXPLETIF MNOMBRE) et 5
+tables s'ajoutent (participes, auxiliaires, places, personnes, négations).
+`raconter` parle : pronoms sujets, prépositions, négation, adverbes,
+infinitifs, et/ou, nombres, 4 temps + passé composé, copules — 100 %
+observé, sinon règle documentée + flag. Trois lois d'assemblage : sujets
+au nominatif, article selon le premier mot, jamais X et X ni X est X.
