@@ -8,7 +8,7 @@
 
 [![License: MIT](https://img.shields.io/badge/Code-MIT-teal.svg)](LICENSE)
 [![Livre: CC-BY-SA](https://img.shields.io/badge/Livre-CC--BY--SA-blue.svg)](livre/LICENCE.md)
-[![Tests](https://img.shields.io/badge/Tests-133%2F133-brightgreen.svg)](tests_verdicts.py)
+[![Tests](https://img.shields.io/badge/Tests-134%2F134-brightgreen.svg)](tests_verdicts.py)
 [![Programmes](https://img.shields.io/badge/Programmes-24-teal.svg)](tests_verdicts.py)
 [![Ratum](https://img.shields.io/badge/Ratum-v2-teal.svg)](LANGAGE-RATUM.md)
 [![Leçons](https://img.shields.io/badge/Le%C3%A7ons-44-teal.svg)](RNI-DEFINITION.md)
@@ -27,7 +27,7 @@
 > se disjoint s'efface), entend le monde par une vraie oreille (Phonon-2),
 > range ses souvenirs dans un cerveau à secteurs (tampon, entonnoir, rêve),
 > et ne redit que ce qu'il tient — par une vraie bouche (Piper). 24 programmes,
-> 133 contrôles verts, 44 leçons mesurées, zéro donnée stockée. Chaque affirmation
+> 134 contrôles verts, 45 leçons mesurées, zéro donnée stockée. Chaque affirmation
 > ci-dessous se rejoue en une commande, sinon elle n'existe pas.*
 >
 > **Abstract (EN).** *RATISS-ONE is an open research program: an entangled
@@ -36,7 +36,7 @@
 > encounters under a single law (what holds together strengthens, what comes
 > apart fades), hears the world through a real ear (Phonon-2), files memories
 > in a sector brain (buffer, funnel, dream), and only speaks what it holds —
-> through a real mouth (Piper). 24 programs, 133 green checks, 44 measured
+> through a real mouth (Piper). 24 programs, 134 green checks, 45 measured
 > lessons, zero stored data. Every claim below replays in one command, or it
 > does not exist.*
 
@@ -132,7 +132,7 @@ l'intelligence — mais chaque étape est prouvée par des programmes qui tourne
 | 📖 grammaire (leçon 36) | articles + 6 accords en 14 s, expansion amendée | **phrases vraies**, 100 % observé ou flag |
 | 🗓️ bases (leçon 37) | 573 petits mots + 5 tables en 20 s, tout en une fois | **raconter parle** : temps, négation, copules |
 | 📚 `livre/` (leçon mère) | le livre complet auto-reconstruit | 31 leçons, 14 figures, 4 audios, slides, CC-BY-SA |
-| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **133/133 contrôles verts** |
+| ⚙️ `tests_verdicts.py` | la batterie | 24/24 programmes, **134/134 contrôles verts** |
 
 ---
 
@@ -278,6 +278,7 @@ relationnelle persiste (paires + forces).
 | 42 | piaf (Q&R natif) | 52 658 | 64 325 / 314 097 |
 | 43 | fquad2 (Q&R natif) | 11 700 | 64 539 / 316 963 |
 | 44 | wildchat-1m-fr (conversations) | 19 556 414 | 90 666 / 404 043 |
+| 45 | narrativeqa-fr (livres) | 10 586 524 | 95 660 / 428 471 |
 
 Preuves : `preuves/dialogues-*.txt` (une par leçon), `education-manuelle/`
 (convertisseurs + fixtures rejouées par la batterie).
@@ -394,9 +395,9 @@ Preuve : [`preuves/sortie-pont-focal.txt`](preuves/sortie-pont-focal.txt) — co
 <img src="livre/figures/g_batterie.svg" width="100%" alt="La batterie : 42 → 106 avec le creux honnête"/>
 <img src="livre/figures/g_saturation.svg" width="100%" alt="La saturation : désert 90 → bande 74-94 → statue 100 + mer 60"/>
 
-**133 contrôles** : 97 (24 programmes : codes + phrases pinnées + interdits
+**134 contrôles** : 98 (24 programmes : codes + phrases pinnées + interdits
 absents) + 36 (pont voix, éducateur, 6 autotests cerveau/bouche/marbre/marée/
-chaos, livre, conformité C, pont FOCAL, étiquettes, direct, dialogue, masse, notebook 1h, rapide, fortifié, relais, retour, figé, école, remix, fond, soudure, oreille, bouche, grammaire, bases, dialogues, ding, cefr, frenchqa, piaf, fquad2, wildchat). Le creux 62/93 de la route C est publié comme le reste.
+chaos, livre, conformité C, pont FOCAL, étiquettes, direct, dialogue, masse, notebook 1h, rapide, fortifié, relais, retour, figé, école, remix, fond, soudure, oreille, bouche, grammaire, bases, dialogues, ding, cefr, frenchqa, piaf, fquad2, wildchat, narrativeqa). Le creux 62/93 de la route C est publié comme le reste.
 Détail un par un : **livre §10** + `tests_verdicts.py`.
 
 ---
@@ -426,7 +427,7 @@ git clone https://github.com/jonathansearch/RATISS-ONE.git
 cd RATISS-ONE
 python3 ratum.py rni-simple.ratum        # le minimal : 3 neurones
 python3 ratum.py english.ratum          # le tissu : TIENT / ROMPT / cousin 36
-python3 tests_verdicts.py               # 133 contrôles (97 programmes + 36 système)
+python3 tests_verdicts.py               # 134 contrôles (98 programmes + 36 système)
 python3 cerveau/autotest_chaos.py       # le chaos : 0/0/0 puis élues f91
 python3 livre/construire.py             # LE LIVRE : courbes + livre + slides
 python3 bouche/regles.py --chaos       # l'élue parle (+ --wav f.wav)
@@ -467,7 +468,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 | `education-manuelle/` | l'école manuelle : convertisseurs + fixtures + cerveaux (leçons 38-44) | `preuves/dialogues-*.txt` |
 | `education-conversation/` | les conversations du labo (REDO) | — |
 | `livre/construire.py` | régénère courbes + livre + slides (déterministe) | `LIVRE OK` |
-| `tests_verdicts.py` | la batterie : 133 contrôles | `133/133 CONTRÔLES VERTS` |
+| `tests_verdicts.py` | la batterie : 134 contrôles | `134/134 CONTRÔLES VERTS` |
 | `dialogue/` | on lui parle, il répond (7 intents + conversation scriptée) | `preuves/sortie-dialogue.txt`, `bouche/dialogue.wav` |
 | `education-massive/` | générateur seed 7 + éducateur streaming (masse sur Colab) | `preuves/sortie-masse-250k.txt` |
 | `MANIFESTE.json` | SHA-256 des fichiers (sceau bases-v1, leçon 37) | — |
@@ -476,7 +477,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 
 ## 📏 Chiffres clés
 
-- **133/133 contrôles verts**, 24 programmes, 44 leçons (v0.1 → bases-v1 → école manuelle : 90 666 neurones, 404 043 liens)
+- **134/134 contrôles verts**, 24 programmes, 45 leçons (v0.1 → bases-v1 → école manuelle : 95 660 neurones, 428 471 liens)
 - **Pipeline bilingue** : EN (JFK, boucle 46 s) + FR (discours, 21/21, boucle 8.5 s), sanctuaire f92 des deux côtés
 - **50 mots éduqués** : 39 phrases → 63 neurones, 276 liens, courbe 38→49→50, 6 témoins à 0
 - **300 neurones / 1200 liens** : 40/40 TIENT à 75-85 en 0,1 s (v0.3)
@@ -563,6 +564,7 @@ python3 cerveau-demo.py                 # JFK → secteurs → résumé parlé
 - [x] **leçon 42 : piaf bu** — Q&R natif, 5 bruits (131/131)
 - [x] **leçon 43 : fquad2 bu** — Q&R natif, 20 bruits (132/132)
 - [x] **leçon 44 : wildchat-1m-fr bu** — 19,5M mots in-the-wild, 90 666/404 043 (133/133)
+- [x] **leçon 45 : narrativeqa-fr bu** — 130 livres, 10,6M mots, 95 660/428 471 (134/134)
 - [ ] **toujours** — chaque affirmation rejouable en une commande
 
 Feuille détaillée : `RNI-DEFINITION.md` §7.
@@ -580,7 +582,7 @@ RATISS-ONE/
 ├── CERVEAU.md                 # carte cerveau → organes (v1 → v6)
 ├── MANIFESTE.json             # sceau SHA-256 bases-v1 (171 fichiers, leçon 37)
 ├── ratum.py                   # interprète de référence (495 lignes)
-├── tests_verdicts.py          # batterie : 133 contrôles
+├── tests_verdicts.py          # batterie : 134 contrôles
 ├── rni-simple / complexe / interference.ratum
 ├── vocabulaire.ratum  english.ratum  francais.ratum  v1-coexistence.ratum
 ├── jouets/                    # j01 → j14 (seuils… CISE)

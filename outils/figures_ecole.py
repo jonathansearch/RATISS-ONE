@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-FIGURE ÉCOLE v1 — la croissance du cerveau, leçon par leçon (38 -> 44).
+FIGURE ÉCOLE v1 — la croissance du cerveau, leçon par leçon (38 -> 45).
 RATISS Labs · MIT · usage : python3 outils/figures_ecole.py (matplotlib requis)
 
 Zéro dessin à la main : les nombres sont ceux pinnés par la batterie
 (tests_verdicts.py : contrôles dialogues/ding/cefr/frenchqa/piaf/fquad2/
-wildchat) et les mots bus ceux des preuves. Si la batterie change, les
-asserts refusent et la figure doit être mise à jour avec elle.
+wildchat/narrativeqa) et les mots bus ceux des preuves. Si la batterie
+change, les asserts refusent et la figure doit être mise à jour avec elle.
 """
 
 import matplotlib
@@ -29,12 +29,13 @@ LECONS = [
     (42, "piaf", 64325, 314097, 52658),
     (43, "fquad2", 64539, 316963, 11700),
     (44, "wildchat", 90666, 404043, 19556414),
+    (45, "narrativeqa", 95660, 428471, 10586524),
 ]
 
 
 def main():
-    assert [l[0] for l in LECONS] == [38, 39, 40, 41, 42, 43, 44]
-    assert LECONS[-1][2:] == (90666, 404043, 19556414), "recaler sur la batterie !"
+    assert [l[0] for l in LECONS] == [38, 39, 40, 41, 42, 43, 44, 45]
+    assert LECONS[-1][2:] == (95660, 428471, 10586524), "recaler sur la batterie !"
     fig, ax = plt.subplots(figsize=(14, 7))
     ax.set_facecolor(FOND)
     fig.patch.set_facecolor(FOND)
@@ -48,7 +49,7 @@ def main():
         ax.text(x, l + 9000, f"{l}", color=OR, fontsize=8.5, ha="center")
         ax.text(x, 8000, b, color=GRIS, fontsize=9, ha="center", style="italic")
     ax.set_title("L'ÉCOLE MANUELLE — le cerveau grandit leçon par leçon "
-                 "(38 -> 44, nombres pinnés par la batterie)",
+                 "(38 -> 45, nombres pinnés par la batterie)",
                  color=BLANC, fontsize=13, weight="bold", pad=14)
     ax.set_xlabel("leçon", color=GRIS, fontsize=11)
     ax.set_ylabel("neurones / liens", color=GRIS, fontsize=11)

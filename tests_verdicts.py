@@ -824,11 +824,11 @@ def main():
         _ok_wc = (_fw1 == _fw2 and _loiw
                   and dict(_arcst) == dict(_arcsw) and _stt == _stw
                   and (_stw["dialogues"], _stw["tours"], _stw["mots"],
-                       _stw["paires_uniques"]) == (5, 20, 4234, 2703)
+                       _stw["paires_uniques"]) == (5, 20, 4233, 2702)
                   and _stw["qa"] == {"multiples_ignorees": 0,
                                      "sans_reponse": 0, "contextes_ignores": 5}
                   and (len(_fw1["neurones"]), len(_fw1["liens"]),
-                       len(_fw1["motifs"])) == (1003, 2703, 2)
+                       len(_fw1["motifs"])) == (1003, 2702, 2)
                   and _fw1.get("format") == "fragment-cise-dialogues-v1"
                   and _cdw.ecoutes == 0 and _odw["sourds"] == 0
                   and _si2w["neurones"] == 0 and _si2w["liens"] == 0
@@ -845,9 +845,51 @@ def main():
     except Exception:
         _ok_wc = False
     if _ok_wc:
-        print("OK : wildchat (fixture 5/20/4234/2703, 90666/404043/36, txt=parquet, R5 OK)")
+        print("OK : wildchat (fixture 5/20/4233/2702, 90666/404043/36, txt=parquet, R5 OK)")
     else:
         print("ÉCHEC : le convertisseur wildchat est mauvais")
+        echecs += 1
+    controles += 1
+    _ok_nq = False
+    try:
+        _arcsn, _stn = _dx("education-manuelle/echantillon-narrativeqa.csv")
+        _fn1 = _dc(_arcsn, "test")
+        _fn2 = _dc(_arcsn, "test")
+        _loin = all(l["force"] == min(100, 10 * l["n"]) for l in _fn1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdn = _Cerveau("FR")
+            _sin = _injecter(_cdn, _fn1)
+            _si2n = _injecter(_cdn, _fn1)
+            _rfn = _cdn.figer()
+            _bon = _dbo(_cdn, _arcsn)
+            _odn = _dor(_cdn, _fn1["neurones"])
+            _nq = _Cerveau.relire("cerveau/fige-300M-narrativeqa.json.gz")
+        _ok_nq = (_fn1 == _fn2 and _loin
+                  and (_stn["dialogues"], _stn["tours"], _stn["mots"],
+                       _stn["paires_uniques"]) == (4163, 4168, 142654, 78356)
+                  and _stn["qa"] == {"multiples_ignorees": 4,
+                                     "sans_reponse": 0, "contextes_ignores": 3}
+                  and (len(_fn1["neurones"]), len(_fn1["liens"]),
+                       len(_fn1["motifs"])) == (17671, 78356, 2)
+                  and _fn1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdn.ecoutes == 0 and _odn["sourds"] == 0
+                  and _si2n["neurones"] == 0 and _si2n["liens"] == 0
+                  and len(_rfn["figes"]) == len(_cdn.graph["neurones"])
+                  and (len(_nq.graph["neurones"]), len(_nq.graph["liens"]),
+                       len(_nq.motifs)) == (95660, 428471, 36)
+                  and _nq.ecoutes == 300000000
+                  and (len(_nq.motifs["MSUITE"]),
+                       len(_nq.motifs["MREPONSE"])) == (84491, 16607))
+        try:
+            del _cdn, _nq  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_nq = False
+    if _ok_nq:
+        print("OK : narrativeqa (fixture 4163/4168/142654/78356, 95660/428471/36, livres n>=8, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur narrativeqa est mauvais")
         echecs += 1
     controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
@@ -979,7 +1021,7 @@ def main():
         _x0 = _fx[0]
         _nd = _x0.oreille["abordable"][0]
         _x0.graph["neurones"].pop(_nd)
-        _ok_or = (_st == {"mots": 1421, "sourds": 142, "formes": 829}
+        _ok_or = (_st == {"mots": 1423, "sourds": 142, "formes": 831}
                   and _x0.formes.get("amis") == "ami"
                   and _x0.formes.get("absides") == "abside"
                   and _x0._oreille(["amis"]) == (["amis"], [], ["word_amis"])
@@ -999,7 +1041,7 @@ def main():
     except Exception:
         _ok_or = False
     if _ok_or:
-        print("OK : oreille (1421 mots, lent=rapide, 24638/16370 pinnés)")
+        print("OK : oreille (1423 mots, lent=rapide, 24638/16370 pinnés)")
     else:
         print("ÉCHEC : l'oreille est mauvaise")
         echecs += 1
@@ -1029,7 +1071,7 @@ def main():
             _phm = _cb.dire("manger")
             _or2 = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
             _sd2 = _Cerveau.relire("cerveau/fige-300M-soude.json.gz")
-        _ok_bou = (_stb == {"paires": 1747, "sans_lien": 0, "natures": 1421}
+        _ok_bou = (_stb == {"paires": 1750, "sans_lien": 0, "natures": 1423}
                    and _ph10 is not None and _ph10["phrase"] == "stephen accuser adeang"
                    and _tenue(_x, _ph10, seuil=10)
                    and _x.dire("aborder") is None
@@ -1083,12 +1125,12 @@ def main():
             _pb = _cb2.parler("dire")
             _or3 = _Cerveau.relire("cerveau/fige-300M-oreille.json.gz")
         _ok_gr = (_stg["articles"]["neurones"] == 19
-                  and _stg["articles"]["liens"] == 626
+                  and _stg["articles"]["liens"] == 628
                   and _stg["articles"]["epargnes"] == 1
-                  and _stg["articles"]["figes"] == 1447
+                  and _stg["articles"]["figes"] == 1449
                   and (_stg["genres"], _stg["nombres"], _stg["flexions"],
                        _stg["adjectifs"], _stg["conjugue"], _stg["determinants"])
-                  == (902, 1131, 908, 195, 102, 430)
+                  == (904, 1133, 910, 195, 102, 431)
                   and len(_x.motifs) == 22 and "MARTICLE" in _x.motifs  # leçon 37 : + MMARQUE (mark, les juxtaposées "que" nommées dès le fixture)
                   and "MMARQUE" in _x.motifs
                   and _pg10 is not None
@@ -1165,9 +1207,9 @@ def main():
             _r_fut = _cb.raconter("faire", temps="futur")
         _ok_ba = (_stb["structure"]["mots"] == 120
                   and _stb["structure"]["neurones"] == 79
-                  and _stb["structure"]["liens"] == 1286
+                  and _stb["structure"]["liens"] == 1287
                   and _stb["structure"]["epargnes"] == 159
-                  and _stb["structure"]["figes"] == 1526
+                  and _stb["structure"]["figes"] == 1528
                   and (_stb["participes"], _stb["auxiliaires"], _stb["places"],
                        _stb["personnes"], _stb["negations"]) == (110, 67, 164, 15, 10)
                   and len(_xb.motifs) == 28

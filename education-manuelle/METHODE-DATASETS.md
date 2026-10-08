@@ -14,14 +14,17 @@ les lois, le reste à boire. Lis tout avant de toucher quoi que ce soit.
 
 ## 2. L'état actuel (8 oct. 2026)
 
-- Cerveau courant : `cerveau/fige-300M-cefr.json.gz`
-  (31374 neurones, 211888 liens, 36 motifs, écoutes 300000000).
+- Cerveau courant : `cerveau/fige-300M-narrativeqa.json.gz`
+  (95660 neurones, 428471 liens, 36 motifs, écoutes 300000000).
   Toujours injecter dans le DERNIER cerveau, jamais un vieux.
-- Batterie : 129/129 verts (`python3 -u tests_verdicts.py`, ~1 min).
+- Batterie : 134/134 verts (`python3 -u tests_verdicts.py`, ~1 min).
 - Convertisseur : `education-manuelle/convertisseur_dialogues.py`
-  (formats : Accueil `X:`, Ding `NNNN L`, phrases CSV ; voir §4).
-- Bus (3) : accueil-ubs (leçon 38), ding-01 (39), french_CEFR (40).
-  Prochaine leçon = 41, puis 42... (un dataset = une leçon).
+  (formats : Accueil `X:`, Ding `NNNN L`, phrases CSV, parquets
+  wildchat/frenchQA/piaf/fquad2, CSV narrativeqa `;` ; voir §4).
+- Bus (8) : accueil-ubs (38), ding-01 (39), french_CEFR (40),
+  frenchQA (41), piaf (42), fquad2 (43), wildchat-1m-fr (44),
+  narrativeqa-fr (45). Prochaine leçon = 46, puis 47...
+  (un dataset = une leçon).
 - Espace : pas de plafond de ton côté (le 128 Mo, c'est seulement
   chez Ratiss, pas chez toi).
 

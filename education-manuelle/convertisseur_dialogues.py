@@ -38,12 +38,17 @@ comptés, ignorés (comme les sans-réponse v4).
 = 1 conversation, 1 ligne = 1 tour (u:/a:) ; équivalence parquet=txt
 prouvée bit-à-bit (batterie : arcs + stats identiques) ; les parasites
 \r \x0b \u2028 \ufeff sont lavés en amont (ils coupent les mots).
+(v6, narrativeqa, leçon 45) : CSV CATIE-AQ/french_narrativeqa
+(texte;question;answers;titre;auteur;nb_mots) : chaque ligne = 1 Q&R
+(comme v4) + chaque LIVRE (texte dédupliqué par titre) bu phrase par
+phrase (comme v3) ; textes répétés = contextes ignorés (comptés).
 Fichiers *.txt, triés (+ *.parquet : lus en l'état, non triés).
 Encodage : utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
 
 Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
 - groupes de lettres uniquement (chiffres et ponctuation tombent, les
-  apostrophes et traits d'union COUPENT : "aujourd'hui" -> aujourd + hui).
+  apostrophes et traits d'union COUPENT : "aujourd'hui" -> aujourd + hui) ;
+  les ligatures œ/æ sont des lettres (sœur -> soeur, leçon 45).
 - forme accentuée d'abord (tables de la leçon 34 : c.formes), sinon
   normalisation simple (minuscules, accents retirés).
 - 1-lettre : seuls "a" (à/a) et "y" passent (comme la leçon 37).
@@ -85,7 +90,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from cerveau.cerveau import Cerveau, noeud_pour  # noqa: E402
 from convertisseur_ud import injecter, normaliser_structure  # noqa: E402
 
-LETTRES = re.compile(r"[a-zàâäéèêëîïôöùûüç]+")
+LETTRES = re.compile(r"[a-zàâäéèêëîïôöùûüçœæ]+")
 TOUR = re.compile(r"^([a-zA-Z])\s*:\s*(.*)$")
 DING = re.compile(r"^(\d+)\s+([a-zA-Z])\s+(.*)$")
 CROCHETS = re.compile(r"\[[^\]]*\]")
@@ -261,6 +266,41 @@ def lire_fichier(chemin):
         lire_fichier.qa_stats = {"multiples_ignorees": multi, "sans_reponse": vides,
                                  "contextes_ignores": len(blocs)}
         return blocs, "qa"
+    if lignes and lignes[0].startswith("texte;question;answers"):
+        # (v6, narrativeqa, leçon 45) : CSV CATIE-AQ/french_narrativeqa
+        # (texte;question;answers;titre;auteur;nb_mots, champs multilignes) :
+        # chaque ligne = 1 Q&R (comme v4) ; chaque LIVRE (texte dédupliqué
+        # par titre) = phrases bues 1 par 1 (comme v3 : pas de paire entre
+        # phrases) ; les textes répétés = contextes ignorés (comptés).
+        _csv.field_size_limit(sys.maxsize)
+        rows = list(_csv.DictReader(_io.StringIO(texte), delimiter=";"))
+        blocs, multi, vides, livres, doublons = [], 0, 0, {}, 0
+        for row in rows:
+            q = (row.get("question") or "").replace("’", "'")
+            txts = [x.strip().replace("’", "'") for x in
+                    (row.get("answers") or "").split("|||")]
+            txts = [x for x in txts if x]
+            if len(txts) > 1:
+                multi += len(txts) - 1
+            bloc = [("q", q, None)]
+            if txts:
+                bloc.append(("r", txts[0], None))
+            else:
+                vides += 1
+            blocs.append(bloc)
+            titre = (row.get("titre") or "").strip()
+            if titre and titre not in livres:
+                livres[titre] = (row.get("texte") or "").replace("’", "'")
+            elif titre:
+                doublons += 1
+        for txt in livres.values():
+            for ph in _phrases(txt):
+                if ph.strip():
+                    blocs.append([("p", ph, None)])
+        lire_fichier.qa_stats = {"multiples_ignorees": multi,
+                                 "sans_reponse": vides,
+                                 "contextes_ignores": doublons}
+        return blocs, "qa"
     if lignes and "sentence" in lignes[0] and "difficulty" in lignes[0]:
         tours = []
         for r in _csv.DictReader(_io.StringIO(texte)):
@@ -323,6 +363,18 @@ def _nettoyer_parens(contenu):
             continue
         gardes.append(t)
     return " ".join(gardes)
+
+
+def _phrases(texte):
+    """Un texte continu -> [phrases] (v6 : livres narrativeqa).
+
+    Coupe après [. ! ? …] suivi d'un blanc + majuscule (ou guillemet,
+    parenthèse, tiret de dialogue). Limite connue (assumée) : les
+    abréviations (M., Dr, etc.) coupent aussi — faux voisins rares,
+    sous le seuil de persistance (même statut que le t euphonique v3).
+    """
+    morceaux = re.split(r"(?<=[.!?…])\s+(?=[A-ZÀ-Þ«\"'\"(—–-])", texte)
+    return [m.strip() for m in morceaux if m.strip()]
 
 
 def tokeniser(texte, formes):
@@ -419,6 +471,84 @@ def extraire(chemin, formes=None):
     if qa_ctx:
         stats["qa"] = {"multiples_ignorees": qa_multi, "sans_reponse": qa_vides,
                        "contextes_ignores": qa_ctx}
+    return arcs, stats
+
+
+def extraire_narrativeqa_stream(flux, formes=None):
+    """Le CSV narrativeqa en STREAMING (v6b, leçon 45) : (arcs, stats).
+
+    Même résultat que lire_fichier v6 + extraire, mais ligne par ligne
+    (les 862 Mo ne tiennent pas en RAM : jamais stockés, jamais chargés
+    d'un bloc — 1 livre à la fois). flux = lignes texte (stdin décodé,
+    fichier ouvert). Équivalence stream==fichier prouvée (batterie).
+    stats["livres"] = {"lus": N, "doublons_ignores": M}.
+    """
+    import csv as _csv
+    from collections import Counter
+    _csv.field_size_limit(sys.maxsize)
+    formes = formes or {}
+    arcs = Counter()
+    dialogues, tours, mots = 0, 0, 0
+    multi, vides, doublons, livres_lus = 0, 0, 0, 0
+    vus = set()
+
+    def boire(bloc):
+        nonl = {"d": 0, "t": 0, "m": 0}
+        precedent, bu = None, False
+        for loc, texte, _niveau in bloc:
+            segments = tokeniser(texte, formes)
+            if not segments:
+                continue
+            bu = True
+            nonl["t"] += 1
+            plats = [w for s in segments for w in s]
+            nonl["m"] += len(plats)
+            for seg in segments:
+                for x, y in zip(seg, seg[1:]):
+                    arcs[(x, y, "suite")] += 1
+            if precedent is not None and plats:
+                rel = "reponse" if loc != precedent[0] else "suite"
+                arcs[(precedent[1], plats[0], rel)] += 1
+            if plats:
+                precedent = (loc, plats[-1])
+        if bu:
+            nonl["d"] += 1
+        return nonl
+
+    for row in _csv.DictReader(flux, delimiter=";"):
+        q = (row.get("question") or "").replace("’", "'")
+        txts = [x.strip().replace("’", "'")
+                for x in (row.get("answers") or "").split("|||")]
+        txts = [x for x in txts if x]
+        if len(txts) > 1:
+            multi += len(txts) - 1
+        bloc = [("q", q, None)]
+        if txts:
+            bloc.append(("r", txts[0], None))
+        else:
+            vides += 1
+        b = boire(bloc)
+        dialogues += b["d"]
+        tours += b["t"]
+        mots += b["m"]
+        titre = (row.get("titre") or "").strip()
+        if titre and titre not in vus:
+            vus.add(titre)
+            livres_lus += 1
+            for ph in _phrases((row.get("texte") or "").replace("’", "'")):
+                if ph.strip():
+                    b = boire([("p", ph, None)])
+                    dialogues += b["d"]
+                    tours += b["t"]
+                    mots += b["m"]
+        elif titre:
+            doublons += 1
+    stats = {"dialogues": dialogues, "tours": tours, "mots": mots,
+             "paires_uniques": len(arcs), "rencontres": sum(arcs.values()),
+             "mots_niveau": {},
+             "qa": {"multiples_ignorees": multi, "sans_reponse": vides,
+                    "contextes_ignores": doublons},
+             "livres": {"lus": livres_lus, "doublons_ignores": doublons}}
     return arcs, stats
 
 

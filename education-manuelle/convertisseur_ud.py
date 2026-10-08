@@ -67,7 +67,8 @@ MOTIF_RACINE = "MRACINE"
 
 
 def normaliser(lemme):
-    s = unicodedata.normalize("NFKD", lemme.lower())
+    s = lemme.lower().replace("œ", "oe").replace("æ", "ae")  # leçon 45 : ligatures
+    s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     if len(s) < 2 or not s.isalpha() or not s.isascii():
         return None
@@ -80,7 +81,8 @@ def normaliser_structure(lemme):
     """Comme normaliser, mais la stopliste rend ses mots et les 1-lettre
     (à, y) passent : la structure n'a pas peur des petits. Réservé aux
     chemins neufs (leçon 37) — les vieux chemins gardent normaliser."""
-    s = unicodedata.normalize("NFKD", lemme.lower())
+    s = lemme.lower().replace("œ", "oe").replace("æ", "ae")  # leçon 45 : ligatures
+    s = unicodedata.normalize("NFKD", s)
     s = "".join(c for c in s if not unicodedata.combining(c))
     if len(s) < 1 or not s.isalpha() or not s.isascii():
         return None
