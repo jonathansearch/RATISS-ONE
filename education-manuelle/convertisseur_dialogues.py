@@ -14,7 +14,12 @@ Format lu : auto-détecté par fichier. (v1, style Accueil_UBS) : lignes
 "X: texte" (X = une lettre, le locuteur), le reste ignoré. (v2, style
 Ding) : tours "NNNN L texte" (numéro, locuteur, texte sur la même ligne),
 suivis de lignes sans lettres (horaires, pauses) ignorées ; une ligne
-avec des lettres sous un tour = suite du tour. Fichiers *.txt, triés.
+avec des lettres sous un tour = suite du tour. (v3, phrases CEFR) : CSV
+sentence,difficulty : chaque phrase = 1 dialogue à 1 tour (pas de paire
+entre phrases, ce ne sont pas des dialogues) ; difficulty A1..C2 = motif
+de niveau MA1..MC2 (les mots du fragment vus à ce niveau) ; on boit
+train+val+test (pas d'évaluation externe, le tissu boit tout).
+Fichiers *.txt, triés.
 Encodage : utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
 
 Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
@@ -23,6 +28,9 @@ Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
 - forme accentuée d'abord (tables de la leçon 34 : c.formes), sinon
   normalisation simple (minuscules, accents retirés).
 - 1-lettre : seuls "a" (à/a) et "y" passent (comme la leçon 37).
+- les ÉLISIONS se résolvent (qu→que, c→ce, d→de, j→je, m→me, n→ne,
+  s→se, t→te : "qu'on" donne la paire (que,on), "c'est" donne (ce,est)) ;
+  "l'" reste coupé (le ou la ? ambigu, on ne devine pas).
 - les HÉSITATIONS ("e") et les BRUITS (liste ci-dessous, repérés à la
   main : morceaux de mots coupés, coquilles du transcripteur, bruits
   de bouche, intrusions anglaises, inaudibles "xxx") ne sont pas appris
@@ -64,6 +72,9 @@ DING = re.compile(r"^(\d+)\s+([a-zA-Z])\s+(.*)$")
 CROCHETS = re.compile(r"\[[^\]]*\]")
 PARENS = re.compile(r"\(([^)]*)\)")
 HESITATIONS = {"e"}
+MORCEAUX = {"qu"}
+ELISIONS = {"qu": "que", "c": "ce", "d": "de", "j": "je", "m": "me",
+            "n": "ne", "s": "se", "t": "te"}
 BRUITS = {
     # morceaux de mots coupés (transcription orale, repérés à la main)
     "aujourd", "hui", "jusqu", "teleph", "automati", "entrepri", "remerc",
@@ -97,6 +108,28 @@ BRUITS = {
     "tatalatata", "tchk", "tchoc", "tchu",
     # inclassables
     "disaenit", "mseugeu", "zouig",
+    # --- repérés dans CEFR (leçon 40 : chasse systématique) ---
+    # morceaux de mots coupés / fragments
+    "ax", "bap", "cre", "ent", "fe", "fen", "fre", "fub", "fur", "ges",
+    "her", "ide", "ja", "kyi", "ler", "lls", "lon", "lr", "moe", "mus",
+    "ner", "omb", "ome", "ore", "ota", "piu", "puf", "rey", "ri", "ros",
+    "suu", "tat", "tre", "tun", "upa", "ves", "vge", "vog", "yom", "zaw",
+    "tions", "iredu", "insouci", "ducation", "barbo", "npi",
+    # suffixes ordinaux sans leur nombre (1er, 2ème : chiffres tombés)
+    "er", "eme",
+    # mots collés (espace manquante dans le jeu)
+    "aimerla", "appellecahier", "assurela", "vanitecomme",
+    "impertinentepropose", "dansces", "dansles", "quelquechose",
+    "roledans", "sonlangage", "trouverune", "amourpropre", "compterdu",
+    "lepeu", "parla", "actionet",
+    # coquilles du jeu (fautes de frappe)
+    "beacoup", "bbonne", "acccepte", "attteint", "chaufffeur",
+    "communce", "conta", "motle", "oublique", "perde", "reporterre",
+    "sinema", "suporte", "viter",
+    # anglais clair ("tm" : marque déposée, notation pas parole)
+    "it", "may", "nil", "put", "sit", "tm", "morning", "uploading",
+    # onomatopée improvisée + URL
+    "cracracracracraaa", "wwwmonprospectuscom",
 }
 UNE_LETTRE = {"a", "y"}
 MOTIF_SUITE = "MSUITE"
@@ -104,18 +137,30 @@ MOTIF_REPONSE = "MREPONSE"
 
 
 def lire_fichier(chemin):
-    """Un fichier -> [(locuteur, texte)] (utf-8, repli latin-1).
+    """Un fichier -> ([(locuteur, texte, niveau)], relie) (utf-8, latin-1).
 
-    Format auto-détecté : une ligne "NNNN L ..." = Ding, sinon "X: ..." =
-    Accueil. En Ding, les lignes sans lettres (horaires, pauses) ne sont
-    pas de la parole ; une ligne à lettres sous un tour = suite du tour.
+    Format auto-détecté : CSV sentence,difficulty = phrases (relie=False,
+    niveau A1..C2 ou None) ; une ligne "NNNN L ..." = Ding ; sinon "X: ..."
+    = Accueil (relie=True, niveau None). En Ding, les lignes sans lettres
+    (horaires, pauses) ne sont pas de la parole ; une ligne à lettres
+    sous un tour = suite du tour.
     """
+    import csv as _csv
+    import io as _io
     brut = open(chemin, "rb").read()
     try:
         texte = brut.decode("utf-8")
     except UnicodeDecodeError:
         texte = brut.decode("latin-1")
     lignes = [l.strip().strip("\ufeff") for l in texte.splitlines()]
+    if lignes and "sentence" in lignes[0] and "difficulty" in lignes[0]:
+        tours = []
+        for r in _csv.DictReader(_io.StringIO(texte)):
+            niv = (r.get("difficulty") or "").strip() or None
+            if niv is not None and not re.fullmatch(r"[A-C][12]", niv):
+                niv = None
+            tours.append(("p", r.get("sentence") or "", niv))
+        return tours, False
     if any(DING.match(l) for l in lignes):
         tours, courant = [], None
         for l in lignes:
@@ -125,13 +170,13 @@ def lire_fichier(chemin):
                 tours.append(courant)
             elif courant is not None and l and LETTRES.search(l):
                 courant[1] += " " + l
-        return [(loc, txt) for loc, txt in tours]
+        return [(loc, txt, None) for loc, txt in tours], True
     tours = []
     for l in lignes:
         m = TOUR.match(l)
         if m:
-            tours.append((m.group(1).lower(), m.group(2)))
-    return tours
+            tours.append((m.group(1).lower(), m.group(2), None))
+    return tours, True
 
 
 def _nettoyer_parens(contenu):
@@ -159,6 +204,8 @@ def tokeniser(texte, formes):
                 segments.append(courant)
                 courant = []
             continue
+        if morceau in ELISIONS:
+            morceau = ELISIONS[morceau]
         if len(morceau) < 2 and morceau not in UNE_LETTRE:
             continue
         lemme = formes.get(morceau) or normaliser_structure(morceau)
@@ -182,7 +229,9 @@ def extraire(chemin, formes=None):
     arcs : Counter (mot1, mot2, relation) ; relations = "suite" (mots
     voisins dans un segment) ou "reponse" (fin d'un tour -> début du
     suivant, locuteur changé) ; même locuteur de suite = "suite".
-    formes : dict forme -> lemme (celui du cerveau, ou {} = normalisé)."""
+    Phrases (CSV) : 1 dialogue par phrase, pas de paire entre phrases.
+    formes : dict forme -> lemme (celui du cerveau, ou {} = normalisé).
+    stats["mots_niveau"] : niveau -> mots (pour les motifs MA1..MC2)."""
     from collections import Counter
     formes = formes or {}
     if os.path.isdir(chemin):
@@ -191,36 +240,47 @@ def extraire(chemin, formes=None):
     else:
         fichiers = [chemin]
     arcs = Counter()
+    mots_niveau = {}
     dialogues, tours, mots = 0, 0, 0
     for f in fichiers:
-        tours_f = lire_fichier(f)
-        if not tours_f:
-            continue
-        dialogues += 1
-        precedent = None  # (locuteur, dernier lemme)
-        for loc, texte in tours_f:
-            segments = tokeniser(texte, formes)
-            tours += 1
-            mots += sum(len(s) for s in segments)
-            for seg in segments:
-                for x, y in zip(seg, seg[1:]):
-                    arcs[(x, y, "suite")] += 1
-            plats = [w for s in segments for w in s]
-            if precedent is not None and plats:
-                rel = "reponse" if loc != precedent[0] else "suite"
-                arcs[(precedent[1], plats[0], rel)] += 1
-            if plats:
-                precedent = (loc, plats[-1])
+        tours_f, relie = lire_fichier(f)
+        blocs = [tours_f] if relie else [[t] for t in tours_f]
+        for bloc in blocs:
+            precedent = None  # (locuteur, dernier lemme)
+            bu = False
+            for loc, texte, niveau in bloc:
+                segments = tokeniser(texte, formes)
+                if not segments:
+                    continue
+                bu = True
+                tours += 1
+                plats = [w for s in segments for w in s]
+                mots += len(plats)
+                for seg in segments:
+                    for x, y in zip(seg, seg[1:]):
+                        arcs[(x, y, "suite")] += 1
+                if precedent is not None and plats:
+                    rel = "reponse" if loc != precedent[0] else "suite"
+                    arcs[(precedent[1], plats[0], rel)] += 1
+                if plats:
+                    precedent = (loc, plats[-1])
+                    if niveau:
+                        mots_niveau.setdefault(niveau, set()).update(plats)
+            if bu:
+                dialogues += 1
     stats = {"dialogues": dialogues, "tours": tours, "mots": mots,
-             "paires_uniques": len(arcs), "rencontres": sum(arcs.values())}
+             "paires_uniques": len(arcs), "rencontres": sum(arcs.values()),
+             "mots_niveau": {k: sorted(v)
+                             for k, v in sorted(mots_niveau.items())}}
     return arcs, stats
 
 
-def convertir(arcs, source, topk=0):
+def convertir(arcs, source, topk=0, niveaux=None):
     """Arcs -> fragment CISE (déterministe : trié partout).
 
     topk = 0 : TOUT (petits corpus) ; topk > 0 : topk paires par mot
-    (gros corpus : le tissu reste petit, comme la leçon 30)."""
+    (gros corpus : le tissu reste petit, comme la leçon 30).
+    niveaux : {niveau: [mots]} -> motifs MA1..MC2 (mots du fragment)."""
     if topk and topk > 0:
         par_mot = {}
         for (a, b, r), n in arcs.items():
@@ -244,6 +304,12 @@ def convertir(arcs, source, topk=0):
                       "n": n, "rel": r})
         motifs[MOTIF_REPONSE if r == "reponse" else MOTIF_SUITE].update((a, b))
     mots = sorted({w for l in liens for w in (l["a"], l["b"])})
+    if niveaux:
+        en_mots = set(mots)
+        for niv in sorted(niveaux):
+            gardes_niv = sorted(set(niveaux[niv]) & en_mots)
+            if gardes_niv:
+                motifs["M" + niv] = set(gardes_niv)
     return {
         "format": "fragment-cise-dialogues-v1",
         "source": source,
@@ -308,7 +374,7 @@ def main(argv):
     print(f"DIALOGUES — {stats['dialogues']} dialogues, {stats['tours']} tours, "
           f"{stats['mots']} mots, {stats['paires_uniques']} paires uniques, "
           f"{stats['rencontres']} rencontres")
-    fragment = convertir(arcs, args.dialogues, args.topk)
+    fragment = convertir(arcs, args.dialogues, args.topk, stats["mots_niveau"])
     print(f"FRAGMENT — {len(fragment['neurones'])} mots, {len(fragment['liens'])} liens, "
           f"{len(fragment['motifs'])} motifs")
     if args.fragment:

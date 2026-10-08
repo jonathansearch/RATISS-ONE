@@ -1,0 +1,37 @@
+PREUVE — leçon 40 : french_CEFR bu (6000 phrases A1..C2, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut --injecter cerveau/fige-300M-ding.json.gz --sortie cerveau/fige-300M-cefr.json.gz
+
+DIALOGUES — 6000 dialogues, 6000 tours, 109486 mots, 53828 paires uniques, 103200 rencontres
+FRAGMENT — 12172 mots, 53828 liens, 7 motifs
+POUSSÉ — +5571 neurones, +38332 liens, +7 motifs (15496 marbre épargné)
+BOUCHE — 49905 paires parlables, 0 sans lien
+OREILLE — 12172 mots appris, 0 sourds
+CERVEAU — 25803->31374 neurones, 173556->211888 liens, 31374 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-cefr.json.gz (7,1 Mo)
+Motifs de niveau : MA1=1061 MA2=1505 MB1=2245 MB2=3753 MC1=4675 MC2=5827.
+
+Nouveautés tokeniseur v3 : format CSV (1 phrase = 1 dialogue, pas de paire
+entre phrases) + motifs MA1..MC2 + ÉLISIONS RÉSOLUES (qu→que, c→ce, d→de,
+j→je, m→me, n→ne, s→se, t→te : +3643 mots, paires (que,on) (ce,est)...).
+"l'" reste coupé (le/la ambigu). Fixtures accueil/ding re-pinnées (34/33, 30/25).
+Note : les élisions d'Accueil/Ding seront bues par les corpus suivants.
+
+Chasse aux bruits systématique : courts (49), triples (3), -ing anglais (2),
+URL (1), onomatopée (1), coquilles (16 : beacoup, bbonne...), collés (16 :
+trouverune, quelquechose, dansles...), fragments longs (5). Total +89.
+Méthode : détecteurs (longueur, triples, découpes connues) + JUGEMENT MAIN
+(les détecteurs proposent, la main dispose : conjugaisons et composés gardés).
+Résidu accepté : coquilles subtiles isolées (force 10, orphelines).
+
+Licence du jeu : NON INDIQUÉE sur la carte HF — on ne garde que la trace
+relationnelle (paires + forces), jamais le texte (rien à redistribuer).
+
+REJEU x3 (principe du pourcentage) :
+passage 2 : +0 neurones +0 liens (épargné 53828) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 3 : +0 neurones +0 liens (épargné 53828) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 4 : +0 neurones +0 liens (épargné 53828) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+signature cerveau avant/après : e54b7b7886e8ba4b / e54b7b7886e8ba4b (identique).
+RÉSERVOIR VIDE : plus rien à apprendre dans french_CEFR. ✅
+
+Batterie : 129/129 CONTRÔLES VERTS (nouveau contrôle cefr OK).
+TOUS LES VERDICTS CONFORMES.

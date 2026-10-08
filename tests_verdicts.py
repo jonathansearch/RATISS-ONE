@@ -568,9 +568,9 @@ def main():
             _acc = _Cerveau.relire("cerveau/fige-300M-accueil.json.gz")
         _ok_dial = (_f1 == _f2 and _loi
                   and (_st["dialogues"], _st["tours"], _st["mots"],
-                       _st["paires_uniques"]) == (1, 6, 31, 30)
+                       _st["paires_uniques"]) == (1, 6, 34, 33)
                   and (len(_f1["neurones"]), len(_f1["liens"]),
-                       len(_f1["motifs"])) == (28, 30, 2)
+                       len(_f1["motifs"])) == (30, 33, 2)
                   and _f1.get("format") == "fragment-cise-dialogues-v1"
                   and _cd.ecoutes == 0 and _od["sourds"] == 0
                   and _si2["neurones"] == 0 and _si2["liens"] == 0
@@ -583,7 +583,7 @@ def main():
     except Exception:
         _ok_dial = False
     if _ok_dial:
-        print("OK : dialogues (fixture 1/6/31/30, accueil 25272/161454/30, rejoué +0, R5 OK)")
+        print("OK : dialogues (fixture 1/6/34/33, accueil 25272/161454/30, rejoué +0, R5 OK)")
     else:
         print("ÉCHEC : le convertisseur dialogues est mauvais")
         echecs += 1
@@ -608,9 +608,9 @@ def main():
             _din = _Cerveau.relire("cerveau/fige-300M-ding.json.gz")
         _ok_ding = (_fd1 == _fd2 and _loid
                   and (_std["dialogues"], _std["tours"], _std["mots"],
-                       _std["paires_uniques"]) == (1, 5, 26, 23)
+                       _std["paires_uniques"]) == (1, 5, 30, 25)
                   and (len(_fd1["neurones"]), len(_fd1["liens"]),
-                       len(_fd1["motifs"])) == (20, 23, 2)
+                       len(_fd1["motifs"])) == (22, 25, 2)
                   and _fd1.get("format") == "fragment-cise-dialogues-v1"
                   and _cdd.ecoutes == 0 and _odd["sourds"] == 0
                   and _si2d["neurones"] == 0 and _si2d["liens"] == 0
@@ -627,9 +627,57 @@ def main():
     except Exception:
         _ok_ding = False
     if _ok_ding:
-        print("OK : ding (fixture 1/5/26/23, 25803/173556/30, rejoué +0, R5 OK)")
+        print("OK : ding (fixture 1/5/30/25, 25803/173556/30, rejoué +0, R5 OK)")
     else:
         print("ÉCHEC : le convertisseur ding est mauvais")
+        echecs += 1
+    controles += 1
+    _ok_cefr = False
+    try:
+        try:
+            del _cdd, _din  # libère le contrôle précédent (pics mémoire)
+        except NameError:
+            pass
+        _arcsc, _stc = _dx("education-manuelle/echantillon-cefr.csv")
+        _fc1 = _dc(_arcsc, "test", 0, _stc["mots_niveau"])
+        _fc2 = _dc(_arcsc, "test", 0, _stc["mots_niveau"])
+        _loic = all(l["force"] == min(100, 10 * l["n"]) for l in _fc1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdc = _Cerveau("FR")
+            _sic = _injecter(_cdc, _fc1)
+            _si2c = _injecter(_cdc, _fc1)
+            _rfc = _cdc.figer()
+            _boc = _dbo(_cdc, _arcsc)
+            _odc = _dor(_cdc, _fc1["neurones"])
+            _cef = _Cerveau.relire("cerveau/fige-300M-cefr.json.gz")
+        _ok_cefr = (_fc1 == _fc2 and _loic
+                  and (_stc["dialogues"], _stc["tours"], _stc["mots"],
+                       _stc["paires_uniques"]) == (3, 3, 24, 21)
+                  and (len(_fc1["neurones"]), len(_fc1["liens"]),
+                       len(_fc1["motifs"])) == (24, 21, 3)
+                  and _fc1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdc.ecoutes == 0 and _odc["sourds"] == 0
+                  and _si2c["neurones"] == 0 and _si2c["liens"] == 0
+                  and len(_rfc["figes"]) == len(_cdc.graph["neurones"])
+                  and (len(_cef.graph["neurones"]), len(_cef.graph["liens"]),
+                       len(_cef.motifs)) == (31374, 211888, 36)
+                  and _cef.ecoutes == 300000000
+                  and (len(_cef.motifs["MSUITE"]),
+                       len(_cef.motifs["MA1"]), len(_cef.motifs["MA2"]),
+                       len(_cef.motifs["MB1"]), len(_cef.motifs["MB2"]),
+                       len(_cef.motifs["MC1"]),
+                       len(_cef.motifs["MC2"])) == (12789, 1061, 1505, 2245,
+                       3753, 4675, 5827))
+        try:
+            del _cdc, _cef  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_cefr = False
+    if _ok_cefr:
+        print("OK : cefr (fixture 3/3/24/21, 31374/211888/36, MA1..MC2, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur cefr est mauvais")
         echecs += 1
     controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
