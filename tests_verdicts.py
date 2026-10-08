@@ -722,6 +722,48 @@ def main():
         print("ÉCHEC : le convertisseur frenchqa est mauvais")
         echecs += 1
     controles += 1
+    _ok_piaf = False
+    try:
+        _arcsp, _stp = _dx("education-manuelle/echantillon-piaf.parquet")
+        _fp1 = _dc(_arcsp, "test")
+        _fp2 = _dc(_arcsp, "test")
+        _loip = all(l["force"] == min(100, 10 * l["n"]) for l in _fp1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdp = _Cerveau("FR")
+            _sip = _injecter(_cdp, _fp1)
+            _si2p = _injecter(_cdp, _fp1)
+            _rfp = _cdp.figer()
+            _bop = _dbo(_cdp, _arcsp)
+            _odp = _dor(_cdp, _fp1["neurones"])
+            _piaf = _Cerveau.relire("cerveau/fige-300M-piaf.json.gz")
+        _ok_piaf = (_fp1 == _fp2 and _loip
+                  and (_stp["dialogues"], _stp["tours"], _stp["mots"],
+                       _stp["paires_uniques"]) == (5, 10, 55, 46)
+                  and _stp["qa"] == {"multiples_ignorees": 0,
+                                     "sans_reponse": 0, "contextes_ignores": 5}
+                  and (len(_fp1["neurones"]), len(_fp1["liens"]),
+                       len(_fp1["motifs"])) == (45, 46, 2)
+                  and _fp1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdp.ecoutes == 0 and _odp["sourds"] == 0
+                  and _si2p["neurones"] == 0 and _si2p["liens"] == 0
+                  and len(_rfp["figes"]) == len(_cdp.graph["neurones"])
+                  and (len(_piaf.graph["neurones"]), len(_piaf.graph["liens"]),
+                       len(_piaf.motifs)) == (64325, 314097, 36)
+                  and _piaf.ecoutes == 300000000
+                  and (len(_piaf.motifs["MSUITE"]),
+                       len(_piaf.motifs["MREPONSE"])) == (51219, 16334))
+        try:
+            del _cdp, _piaf  # libère (pics mémoire)
+        except NameError:
+            pass
+    except Exception:
+        _ok_piaf = False
+    if _ok_piaf:
+        print("OK : piaf (fixture 5/10/55/46, 64325/314097/36, Q&R natif, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur piaf est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:

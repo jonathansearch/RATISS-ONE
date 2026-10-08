@@ -174,6 +174,15 @@ BRUITS = {
     "xxxiv", "xxxviii",
     # notations (codepoint, transcripteur)
     "fffd", "www",
+    # --- repérés dans PIAF (leçon 42 : 53 neufs relus UN PAR UN) ---
+    # coquille humaine (question PIAF : "système giuvermental")
+    "giuvermental",
+    # span tronqué ("[V]ince, Lucifer..." : réponse coupée)
+    "ince",
+    # intrusions (NL : réponse de traduction ; DE : nom d'organisme)
+    "neushoorn", "werbestelle",
+    # fragment technique (Riccò : le ò italien est hors-classe LETTRES)
+    "ricc",
 }
 UNE_LETTRE = {"a", "y"}
 MOTIF_SUITE = "MSUITE"

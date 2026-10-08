@@ -1,0 +1,34 @@
+PREUVE — leçon 42 : PIAF bu (Q&R français NATIF, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut --injecter cerveau/fige-300M-frenchqa.json.gz --sortie cerveau/fige-300M-piaf.json.gz --topk 0
+
+DIALOGUES — 3835 dialogues, 7429 tours, 52658 mots, 25924 paires uniques, 48737 rencontres
+FRAGMENT — 7501 mots, 25693 liens, 2 motifs
+POUSSÉ — +48 neurones, +9536 liens, +2 motifs (16157 marbre épargné)
+BOUCHE — 24156 paires parlables, 0 sans lien
+OREILLE — 7501 mots appris, 0 sourds
+CERVEAU — 64277->64325 neurones, 304561->314097 liens, 64325 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-piaf.json.gz (10,5 Mo)
+Q&R : 3835 exemples lus, 0 sans réponse, 0 multiple, 3835 contextes ignorés.
+MSUITE=51219 MREPONSE=16334. topk=0 (TOUT, petit corpus comme CEFR).
+Notes : 239 réponses numériques pures non bues (pas de lettres, assumé) ;
+2 tours R ignorés (réponses-bruits seules : neushoorn, Werbestelle).
+
+Vocabulaire déjà connu à 99,3 % (même Wikipedia FR que frenchQA) : le gain
+est dans les LIENS (+9536 paires Q→R : questionner/répondre).
+
+Chasse aux bruits : 53 neufs relus UN PAR UN + 14 contextes (pas d'échantillon).
++5 : giuvermental (coquille "gouvernemental"), ince (span tronqué "[V]ince"),
+neushoorn (NL, réponse de traduction — cerveau non-traducteur), werbestelle
+(DE, nom d'organisme), ricc (fragment de Riccò : le ò italien est hors-classe
+LETTRES — bug connu, contourné par BRUITS comme le bypass xxx, fixtures sauves).
+GARDÉS notables : lifte (coup lifté, tennis), iyi (sigle), vitai/lampada
+(titre latin "Vitai Lampada" = nom d'œuvre), letort, sars, bulbul, tapenade.
+Zéro orphelin (topk=0 : rien d'évincé).
+
+Licence du jeu : MIT (AgentPublic/piaf, QA français natif Etalab/DINUM) —
+on ne garde que la trace relationnelle (paires + forces), jamais le texte.
+
+REJEU x3 : +48/+9536/+2 identiques ; bit-à-bit identique à seed fixe
+(PYTHONHASHSEED=0, hors meta.date : ordre chaines/geles seul variable).
+Batterie : 131/131 CONTRÔLES VERTS (contrôle piaf ajouté : fixture
+5/10/55/46, 64325/314097/36, Q&R natif, R5 OK).
