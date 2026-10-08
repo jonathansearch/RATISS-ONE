@@ -588,6 +588,50 @@ def main():
         print("ÉCHEC : le convertisseur dialogues est mauvais")
         echecs += 1
     controles += 1
+    _ok_ding = False
+    try:
+        try:
+            del _cd, _acc  # libère le contrôle précédent (pics mémoire)
+        except NameError:
+            pass
+        _arcsd, _std = _dx("education-manuelle/echantillon-ding.txt")
+        _fd1 = _dc(_arcsd, "test")
+        _fd2 = _dc(_arcsd, "test")
+        _loid = all(l["force"] == min(100, 10 * l["n"]) for l in _fd1["liens"])
+        with _ctx.redirect_stdout(_io.StringIO()):
+            _cdd = _Cerveau("FR")
+            _sid = _injecter(_cdd, _fd1)
+            _si2d = _injecter(_cdd, _fd1)
+            _rfd = _cdd.figer()
+            _bod = _dbo(_cdd, _arcsd)
+            _odd = _dor(_cdd, _fd1["neurones"])
+            _din = _Cerveau.relire("cerveau/fige-300M-ding.json.gz")
+        _ok_ding = (_fd1 == _fd2 and _loid
+                  and (_std["dialogues"], _std["tours"], _std["mots"],
+                       _std["paires_uniques"]) == (1, 5, 26, 23)
+                  and (len(_fd1["neurones"]), len(_fd1["liens"]),
+                       len(_fd1["motifs"])) == (20, 23, 2)
+                  and _fd1.get("format") == "fragment-cise-dialogues-v1"
+                  and _cdd.ecoutes == 0 and _odd["sourds"] == 0
+                  and _si2d["neurones"] == 0 and _si2d["liens"] == 0
+                  and len(_rfd["figes"]) == len(_cdd.graph["neurones"])
+                  and (len(_din.graph["neurones"]), len(_din.graph["liens"]),
+                       len(_din.motifs)) == (25803, 173556, 30)
+                  and _din.ecoutes == 300000000
+                  and (len(_din.motifs["MSUITE"]),
+                       len(_din.motifs["MREPONSE"])) == (2053, 1035))
+        try:
+            del _cdd, _din  # libère (pics mémoire : les cerveaux s'accumulent)
+        except NameError:
+            pass
+    except Exception:
+        _ok_ding = False
+    if _ok_ding:
+        print("OK : ding (fixture 1/5/26/23, 25803/173556/30, rejoué +0, R5 OK)")
+    else:
+        print("ÉCHEC : le convertisseur ding est mauvais")
+        echecs += 1
+    controles += 1
     from convertisseur_ud import echantillonner as _ech, extraire as _ext
     _ok_rx = False
     try:

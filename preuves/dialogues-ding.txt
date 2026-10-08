@@ -1,0 +1,27 @@
+PREUVE — leçon 39 : Ding-01 bu (10 dialogues Catan, 8 oct. 2026).
+Commande : python3 education-manuelle/convertisseur_dialogues.py --dialogues brut --injecter cerveau/fige-300M-accueil.json.gz --sortie cerveau/fige-300M-ding.json.gz
+
+DIALOGUES — 10 dialogues, 14834 tours, 70274 mots, 19737 paires uniques, 69793 rencontres
+FRAGMENT — 1793 mots, 17705 liens, 2 motifs
+POUSSÉ — +531 neurones, +12102 liens, +2 motifs (5603 marbre épargné)
+BOUCHE — 15240 paires parlables, 0 sans lien
+OREILLE — 1793 mots appris, 0 sourds
+CERVEAU — 25272->25803 neurones, 161454->173556 liens, 25803 figés, écoutes 300000000 (R5 : intactes)
+GRAVÉ — cerveau/fige-300M-ding.json.gz (5,9 Mo)
+
+Nettoyage à la main : 45 bruits Ding (coupés, coquilles, notations pron/inaudible,
+10 anglais clairs, chant, variantes) + "xxx" décollé (toux(xxx) -> toux + coupure).
+Passages sales : 576 (bruits) -> 538 (xxx traversé) -> 531 (blède accentué) -> PROPRE.
+Trou trouvé et bouché : les bruits accentués passaient (blède -> blede) ;
+le tokeniseur chasse maintenant aussi sur le lemme normalisé.
+
+REJEU x3 (principe du pourcentage) :
+passage 2 : +0 neurones +0 liens (épargné 17705) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 3 : +0 neurones +0 liens (épargné 17705) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+passage 4 : +0 neurones +0 liens (épargné 17705) | bouche +0 oreille +0 | couverture 100 % | écoutes 300000000
+signature cerveau avant/après : bc1219ca5364c34b / bc1219ca5364c34b (identique).
+RÉSERVOIR VIDE : plus rien à apprendre dans Ding-01. ✅
+
+Batterie : 128/128 CONTRÔLES VERTS (nouveau contrôle ding OK).
+Note : la batterie a manqué de mémoire (tuée 2x) — réparé en libérant
+les cerveaux entre les contrôles (del _cd/_acc/_cdd/_din). TOUS LES VERDICTS CONFORMES.

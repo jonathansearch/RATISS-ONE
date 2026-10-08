@@ -10,9 +10,12 @@ qui SE SUIVENT (MSUITE, dans un tour) ou SE RÉPONDENT (MREPONSE, d'un tour
 à l'autre quand le locuteur change). Même moteur que convertisseur_ud
 (injecter, Cerveau, figer) : seul l'extracteur change.
 
-Format lu (v1, style Accueil_UBS) : lignes "X: texte" (X = une lettre,
-le locuteur) ; le reste est ignoré. Fichiers *.txt, triés. Encodage :
-utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
+Format lu : auto-détecté par fichier. (v1, style Accueil_UBS) : lignes
+"X: texte" (X = une lettre, le locuteur), le reste ignoré. (v2, style
+Ding) : tours "NNNN L texte" (numéro, locuteur, texte sur la même ligne),
+suivis de lignes sans lettres (horaires, pauses) ignorées ; une ligne
+avec des lettres sous un tour = suite du tour. Fichiers *.txt, triés.
+Encodage : utf-8 essayé, repli latin-1 (les vieux corpus scolaires).
 
 Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
 - groupes de lettres uniquement (chiffres et ponctuation tombent, les
@@ -22,8 +25,14 @@ Règles du tokeniseur (simples, documentées, pinnées par la batterie) :
 - 1-lettre : seuls "a" (à/a) et "y" passent (comme la leçon 37).
 - les HÉSITATIONS ("e") et les BRUITS (liste ci-dessous, repérés à la
   main : morceaux de mots coupés, coquilles du transcripteur, bruits
-  de bouche, intrusions anglaises) ne sont pas appris ET coupent le
-  tour : pas de paire à travers (pas de faux voisins).
+  de bouche, intrusions anglaises, inaudibles "xxx") ne sont pas appris
+  ET coupent le tour : pas de paire à travers (pas de faux voisins).
+- les [crochets] décrivent des bruits ([rire], [micro], [pron ...]) :
+  on jette le contenu, ce n'est pas de la parole.
+- dans les (parenthèses), les morceaux coupés (tiret au bord : interrup-,
+  -oilà) tombent, mais les chevauchements (vraie parole à deux voix :
+  (c'est moi), (bien joué)) se gardent.
+- "xxx" est décollé avant tout (toux(xxx) -> toux : le mot se garde).
 
 Lois (mêmes que l'école UD) :
 - force = min(100, 10 x rencontres) — la répétition prouve.
@@ -51,6 +60,9 @@ from convertisseur_ud import injecter, normaliser_structure  # noqa: E402
 
 LETTRES = re.compile(r"[a-zàâäéèêëîïôöùûüç]+")
 TOUR = re.compile(r"^([a-zA-Z])\s*:\s*(.*)$")
+DING = re.compile(r"^(\d+)\s+([a-zA-Z])\s+(.*)$")
+CROCHETS = re.compile(r"\[[^\]]*\]")
+PARENS = re.compile(r"\(([^)]*)\)")
 HESITATIONS = {"e"}
 BRUITS = {
     # morceaux de mots coupés (transcription orale, repérés à la main)
@@ -67,6 +79,24 @@ BRUITS = {
     "beans", "cheese", "pronounce",
     # inclassables
     "ohannic", "tohannic",
+    # inaudible (convention Ding)
+    "xxx",
+    # --- repérés à la main dans Ding (leçon 39) ---
+    # morceaux de mots coupés
+    "acc", "arg", "beso", "blede", "bles", "co", "deche", "defau", "dem",
+    "echan", "inte", "pa", "pla", "poins", "poss", "pou", "rou", "secon",
+    "squand", "tou", "tr", "troisi",
+    # coquilles du transcripteur
+    "construre", "developemments", "jai", "pinurie",
+    # notations du transcripteur (pas de la parole)
+    "pron", "inaudible",
+    # anglais clair (le franglais d'usage — deal, timing, lol — reste)
+    "damned", "done", "fair", "indeed", "loose", "next", "nope", "play",
+    "safe", "unlock",
+    # chant (pas de la parole) et variantes de claquements (on garde "tch")
+    "tatalatata", "tchk", "tchoc", "tchu",
+    # inclassables
+    "disaenit", "mseugeu", "zouig",
 }
 UNE_LETTRE = {"a", "y"}
 MOTIF_SUITE = "MSUITE"
@@ -74,22 +104,54 @@ MOTIF_REPONSE = "MREPONSE"
 
 
 def lire_fichier(chemin):
-    """Un fichier -> [(locuteur, texte)] (utf-8, repli latin-1)."""
+    """Un fichier -> [(locuteur, texte)] (utf-8, repli latin-1).
+
+    Format auto-détecté : une ligne "NNNN L ..." = Ding, sinon "X: ..." =
+    Accueil. En Ding, les lignes sans lettres (horaires, pauses) ne sont
+    pas de la parole ; une ligne à lettres sous un tour = suite du tour.
+    """
     brut = open(chemin, "rb").read()
     try:
         texte = brut.decode("utf-8")
     except UnicodeDecodeError:
         texte = brut.decode("latin-1")
+    lignes = [l.strip().strip("\ufeff") for l in texte.splitlines()]
+    if any(DING.match(l) for l in lignes):
+        tours, courant = [], None
+        for l in lignes:
+            m = DING.match(l)
+            if m:
+                courant = [m.group(2).lower(), m.group(3)]
+                tours.append(courant)
+            elif courant is not None and l and LETTRES.search(l):
+                courant[1] += " " + l
+        return [(loc, txt) for loc, txt in tours]
     tours = []
-    for ligne in texte.splitlines():
-        m = TOUR.match(ligne.strip().strip("\ufeff"))
+    for l in lignes:
+        m = TOUR.match(l)
         if m:
             tours.append((m.group(1).lower(), m.group(2)))
     return tours
 
 
+def _nettoyer_parens(contenu):
+    """Dans les parenthèses : les morceaux coupés (tiret au bord) tombent,
+    les chevauchements (vraie parole) se gardent."""
+    gardes = []
+    for t in contenu.split():
+        t2 = t.strip(".,!?;:")
+        if t2.startswith("-") or t2.endswith("-"):
+            continue
+        gardes.append(t)
+    return " ".join(gardes)
+
+
 def tokeniser(texte, formes):
     """Un tour -> [segments] (un segment = [lemmes], coupé aux bruits)."""
+    texte = texte.replace("xxx", " xxx ")  # xxx décollé MAIS reste une
+    # coupure (toux(xxx) -> toux + coupure : pas de paire à travers)
+    texte = CROCHETS.sub(" ", texte)
+    texte = PARENS.sub(lambda m: _nettoyer_parens(m.group(1)), texte)
     segments, courant = [], []
     for morceau in LETTRES.findall(texte.lower()):
         if morceau in HESITATIONS or morceau in BRUITS:
@@ -100,8 +162,15 @@ def tokeniser(texte, formes):
         if len(morceau) < 2 and morceau not in UNE_LETTRE:
             continue
         lemme = formes.get(morceau) or normaliser_structure(morceau)
-        if lemme:
-            courant.append(lemme)
+        if not lemme:
+            continue
+        if lemme in BRUITS or lemme in HESITATIONS:
+            # chassé aussi sous forme accentuée (blède -> blede) : coupure.
+            if courant:
+                segments.append(courant)
+                courant = []
+            continue
+        courant.append(lemme)
     if courant:
         segments.append(courant)
     return segments
