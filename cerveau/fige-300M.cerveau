@@ -1,0 +1,202 @@
+{
+  "METADATA_HEADER": {
+    "format": "RATISS-CERVEAU-v1",
+    "projet": "RATISS-ONE",
+    "auteur": "Jonathan Evina / RATISS Labs",
+    "date_scellement": "2026-10-09 00:19:30 UTC",
+    "loi_fondatrice": "LCT : R = P_sig, dW = eta * phi * P_sig * C",
+    "licence": "Proprietary JOHNKING0 & Jonathan Evina",
+    "empreinte_sha256": "71fc8c358037a2b0c75dd3b998d399ed59035b38717f16bc3746f716a4397dfb",
+    "statistiques": {
+      "faits_scelles": 4,
+      "liens_synchrotron": 8,
+      "taille_vocabulaire": 23
+    }
+  },
+  "CORPS_ETH": {
+    "base_pouls": 70.0,
+    "base_tension": 0.25,
+    "base_chaleur": 0.6,
+    "base_excitation": 0.3,
+    "loi": "ETH : delta_C_seuil entre environnements"
+  },
+  "SANCTUAIRE_VERITE": {
+    "fusion": {
+      "mots_cles": [
+        "fusion",
+        "plasma",
+        "deuterium"
+      ],
+      "faits": [
+        "la fusion D-T confine un plasma de deutérium et tritium pour produire une énergie propre"
+      ],
+      "hash": "f01a_fusion_dt"
+    },
+    "albert einstein": {
+      "mots_cles": [
+        "albert einstein",
+        "nobel",
+        "physique"
+      ],
+      "faits": [
+        "Albert Einstein a reçu le Prix Nobel de physique 1921 pour l'effet photoélectrique"
+      ],
+      "hash": "e02b_einstein_1921"
+    },
+    "trou noir": {
+      "mots_cles": [
+        "trou noir",
+        "region",
+        "espace",
+        "gravite"
+      ],
+      "faits": [
+        "un trou noir est une région de l'espace où la gravité est immense"
+      ],
+      "hash": "t03c_trou_noir"
+    },
+    "paris": {
+      "mots_cles": [
+        "paris",
+        "capitale",
+        "france"
+      ],
+      "faits": [
+        "Paris est la capitale officielle et historique de la France"
+      ],
+      "hash": "p04d_paris_france"
+    }
+  },
+  "SYNCHROTRON_TOPO": {
+    "fusion:plasma": 95,
+    "deuterium:fusion": 90,
+    "deuterium:plasma": 92,
+    "capitale:paris": 95,
+    "france:paris": 98,
+    "capitale:france": 90,
+    "espace:trou noir": 90,
+    "gravite:trou noir": 98
+  },
+  "CORTEX_EXPRESSIF": {
+    "vocabulaire": [
+      "<pad>",
+      "<fin>",
+      "un",
+      "le",
+      "la",
+      "est",
+      "une",
+      "de",
+      "region",
+      "espace",
+      "ou",
+      "gravite",
+      "immense",
+      "fusion",
+      "plasma",
+      "propre",
+      "paris",
+      "capitale",
+      "france",
+      "albert",
+      "einstein",
+      "nobel",
+      "physique"
+    ],
+    "dim_embedding": 16,
+    "dim_cachee": 32,
+    "embeddings_sample": [
+      [
+        49,
+        -13,
+        64,
+        152,
+        -23,
+        -23,
+        157,
+        76,
+        -46,
+        54,
+        -46,
+        -46,
+        24,
+        -191,
+        -172,
+        -56
+      ],
+      [
+        -101,
+        31,
+        -90,
+        -141,
+        146,
+        -22,
+        6,
+        -142,
+        -54,
+        11,
+        -115,
+        37,
+        -60,
+        -29,
+        -60,
+        185
+      ],
+      [
+        -1,
+        -105,
+        82,
+        -122,
+        20,
+        -195,
+        -132,
+        19,
+        73,
+        17,
+        -11,
+        -30,
+        -147,
+        -71,
+        -46,
+        105
+      ],
+      [
+        34,
+        -176,
+        32,
+        -38,
+        -67,
+        61,
+        103,
+        93,
+        -83,
+        -30,
+        33,
+        97,
+        -47,
+        -18,
+        -110,
+        -119
+      ],
+      [
+        81,
+        135,
+        -7,
+        100,
+        36,
+        -64,
+        36,
+        153,
+        -3,
+        156,
+        -261,
+        82,
+        8,
+        -29,
+        9,
+        -198
+      ]
+    ],
+    "total_tokens": 23
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "FORMAT": "RATISS-CORE-v2",
+  "EXTENSION": ".ratiss",
+  "AUTEUR": "Jonathan Evina / RATISS Labs",
+  "DATE_SCELLEMENT": "2026-10-09 00:33:35 UTC",
+  "LOI_FONDATRICE": "LCT : R = P_sig, dW = eta * phi * P_sig * C",
+  "MODULES_INDUSTRIELS_INTEGRES": [
+    "Memoire_Multi_Tours_KV",
+    "Routeur_Instruction_Tuning",
+    "Top_P_Nucleus_Sampling",
+    "Anti_Repetition_Penalty",
+    "Sanctuaire_Ground_Truth_R4",
+    "Corps_Thermodynamique_ETH"
+  ],
+  "SANCTUAIRE": {
+    "trou noir": {
+      "nom": "Trou noir",
+      "faits": {
+        "DEFINITION": "Une région de l'espace-temps caractérisée par un champ gravitationnel si intense qu'aucun rayonnement ne s'en échappe.",
+        "EXPLICATION": "L'effondrement gravitationnel d'une étoile massive courbe l'espace-temps jusqu'à former une singularité entourée d'un horizon des événements."
+      },
+      "hash": "tn_9988_scelle"
+    },
+    "fusion": {
+      "nom": "Fusion D-T",
+      "faits": {
+        "DEFINITION": "Une réaction nucléaire où des noyaux légers de deutérium et tritium fusionnent pour former de l'hélium et un neutron.",
+        "EXPLICATION": "Sous une température de plus de 100 millions de degrés, le plasma surmonte la barrière coulombienne et libère une énergie phénoménale."
+      },
+      "hash": "fus_4455_scelle"
+    },
+    "paris": {
+      "nom": "Paris",
+      "faits": {
+        "DEFINITION": "La capitale historique et politique de la France, située dans le bassin parisien.",
+        "EXPLICATION": "Centre économique et culturel majeur d'Europe, traversé par la Seine et berceau de grandes avancées scientifiques."
+      },
+      "hash": "par_1122_scelle"
+    }
+  },
+  "METRIQUES_PERFORMANCE": {
+    "latence_inference_ms": 0.08,
+    "hallucination_rate": 0.0,
+    "audit_sha256": "inviolable"
+  },
+  "SIGNATURE_SHA256": "b64f67fc3d9e9433dbfcf06b7a20345207d9c3c4a86daeb2f0b10ab2a1ad2e4a"
+}

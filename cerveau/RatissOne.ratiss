@@ -1,0 +1,131 @@
+{
+  "FORMAT": "RATISS_SOUVERAIN_V2",
+  "EXTENSION_OFFICIELLE": ".ratiss",
+  "DIMINUTIF_EXTENSION": ".rt",
+  "META": {
+    "NOM_MODELE": "RatissOne",
+    "VERSION": "2.0-Souverain",
+    "AUTEUR": "Jonathan Evina (Mono-chercheur, Yaoundé, Cameroun)",
+    "LABO": "RATISS Labs",
+    "DATE_SCELLEMENT": "2026-10-09",
+    "LICENCE": "MIT",
+    "DEVISE": "Comprendre sans stocker · Le souvenir est le chemin"
+  },
+  "PORTS_CONNECTIQUE": {
+    "PORT_ENTREE_AUDIO": {
+      "nom": "Oreille-Phonon-ASR",
+      "format_supporte": [
+        "wav",
+        "pcm16",
+        "stream"
+      ],
+      "latence_nominale_ms": 0.1,
+      "purge_tampon_immediate": true
+    },
+    "PORT_SORTIE_AUDIO": {
+      "nom": "Bouche-Piper-TTS",
+      "voix_recommandee": "fr_FR-siwis-medium",
+      "prosodie_eth_asservie": true,
+      "latence_nominale_ms": 10.5
+    },
+    "PORT_CHAT_INTERFACE": {
+      "nom": "Dialogue-Souverain-v2",
+      "modes": [
+        "CLI",
+        "WebSocket",
+        "Docker-HTTP"
+      ],
+      "latence_nominale_us": 45.0
+    },
+    "PORT_TELEMETRIE_ETH": {
+      "nom": "Corps-Affectif-Somatique",
+      "mesures": [
+        "pouls_bpm",
+        "temperature_celsius",
+        "tension_somatique",
+        "timbre_prosodie"
+      ]
+    },
+    "PORT_MEMOIRE_EPISODIQUE": {
+      "nom": "Main-Tendue-OneShot",
+      "apprentissage_en_direct": true,
+      "scellement_sha256": true,
+      "zero_retropropagation": true,
+      "zero_oubli_catastrophique": true
+    }
+  },
+  "BLOC_ETH": {
+    "pouls_base": 72,
+    "temperature_base": 37.0,
+    "tension_base": "stable",
+    "sensibilite_chaleur": 1.2
+  },
+  "SANCTUAIRE": {
+    "trou noir": {
+      "nom": "Trou noir",
+      "faits": {
+        "DEFINITION": "Une région de l'espace-temps caractérisée par un champ gravitationnel si intense qu'aucun rayonnement ne s'en échappe.",
+        "EXPLICATION": "L'effondrement gravitationnel d'une étoile massive courbe l'espace-temps jusqu'à former une singularité entourée d'un horizon des événements."
+      },
+      "hash": "tn_9988_scelle"
+    },
+    "fusion": {
+      "nom": "Fusion D-T",
+      "faits": {
+        "DEFINITION": "Une réaction nucléaire où des noyaux légers de deutérium et tritium fusionnent pour former de l'hélium et un neutron.",
+        "EXPLICATION": "Sous une température de plus de 100 millions de degrés, le plasma surmonte la barrière coulombienne et libère une énergie phénoménale."
+      },
+      "hash": "fus_4455_scelle"
+    },
+    "paris": {
+      "nom": "Paris",
+      "faits": {
+        "DEFINITION": "La capitale historique et politique de la France, située dans le bassin parisien.",
+        "EXPLICATION": "Centre économique et culturel majeur d'Europe, traversé par la Seine et berceau de grandes avancées scientifiques."
+      },
+      "hash": "par_1122_scelle"
+    },
+    "yaounde": {
+      "nom": "Yaoundé",
+      "faits": {
+        "DEFINITION": "La capitale politique du Cameroun, ville aux sept collines et berceau de la recherche souveraine RATISS Labs.",
+        "EXPLICATION": "C'est à Yaoundé que Jonathan Evina a conçu et formalisé l'architecture des Réseaux de Neurones Intriqués sans GPU."
+      },
+      "hash": "yde_7744_scelle"
+    }
+  },
+  "SYNCHROTRON": {
+    "clefs_actives": [
+      "trou",
+      "noir",
+      "fusion",
+      "nucleaire",
+      "paris",
+      "yaounde",
+      "ratiss",
+      "energie"
+    ],
+    "seuil_resonance": 0.65,
+    "attenuation_bruit": 0.95
+  },
+  "CORTEX": {
+    "modele_generation": "OndeTopologique-TopP",
+    "top_p": 0.9,
+    "temperature": 0.7,
+    "penalite_presence": 1.2,
+    "longueur_reponse_max": 256
+  },
+  "MEMOIRE_EPISODIQUE": {
+    "jonathan": {
+      "enonce": "Jonathan Evina est le fondateur et chercheur unique de RATISS Labs.",
+      "sha256": "6cffd87fa17d",
+      "timestamp": 1791511228.5813813
+    },
+    "ratiss": {
+      "enonce": "L'architecture RATISS fonctionne sans GPU, sans rétropropagation et sans hallucination.",
+      "sha256": "88aa99bb11cc",
+      "timestamp": 1791511228.5813818
+    }
+  },
+  "SIGNATURE_SHA256": "6d67c34650ebe54baba88f248b19e4b9ea6602e7968a5a1d7e4de8046fe0f359"
+}

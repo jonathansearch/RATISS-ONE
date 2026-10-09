@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ratiss-one:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: ratiss_one_runtime
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      - RATISS_CERVEAU_PATH=/app/cerveau/RatissOne.ratiss
