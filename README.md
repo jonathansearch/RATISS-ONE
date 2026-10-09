@@ -10,7 +10,7 @@
 [![Format: .ratiss](https://img.shields.io/badge/Format-.ratiss%20%2F%20.rt-orange.svg)](cerveau/)
 [![Runtime: Souverain](https://img.shields.io/badge/Runtime-Boîte%20Blanche-brightgreen.svg)](cerveau/lecteur_ratiss.py)
 [![Audio: Phonon + Piper](https://img.shields.io/badge/Audio-Oreille%20%2B%20Bouche-blue.svg)](bouche/)
-[![Colab: Épisodique](https://img.shields.io/badge/Colab-Haute%20Vitesse-yellow.svg)](colab/)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jonathansearch/RATISS-ONE/blob/main/colab/Entrainement_RATISS_ONE.ipynb)
 [![Docker: Prêt](https://img.shields.io/badge/Docker-0.0.0.0:8080-blueviolet.svg)](docker/)
 
 *Par **RATISS Labs** — Jonathan Evina · Yaoundé 🇨🇲 · Recherche indépendante · Reproductibilité stricte (R4–R7)*
@@ -172,6 +172,8 @@ python3 dialogue/conversation_v2.py
 
 <a id="entrainement-colab"></a>
 ## 🚀 7. Entraînement Épisodique Colab Haute Vitesse
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jonathansearch/RATISS-ONE/blob/main/colab/Entrainement_RATISS_ONE.ipynb)
 
 Pour éviter les entraînements obscurs qui durent une semaine, le script Colab découpe le processus en **épisodes observables en temps réel** :
 
