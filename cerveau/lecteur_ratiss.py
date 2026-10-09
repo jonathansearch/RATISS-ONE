@@ -11,6 +11,7 @@ d'exécuter un cerveau scellé .ratiss / .rt en mode boîte blanche.
 import os
 import sys
 import json
+import gzip
 import time
 import hashlib
 import re
@@ -34,8 +35,12 @@ class LecteurRatiss:
         if not os.path.exists(chemin):
             raise FileNotFoundError(f"[ERREUR RUNTIME] Cerveau introuvable : {chemin}")
         
-        with open(chemin, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            with gzip.open(chemin, "rt", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            with open(chemin, "r", encoding="utf-8") as f:
+                data = json.load(f)
 
         if data.get("FORMAT") != MAGIC_HEADER:
             raise ValueError(f"[ERREUR SÉCURITÉ] Format invalide. Attendu {MAGIC_HEADER}, reçu {data.get('FORMAT')}")
