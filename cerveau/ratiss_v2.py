@@ -107,6 +107,11 @@ def convertir_ratiss_vers_npz(chemin_source, chemin_destination=None, alpha_ppmi
     pmi_vals = np.log(np.maximum(numer / np.maximum(denom, 1e-12), 1e-12))
     ppmi_vals = np.maximum(0.0, pmi_vals)
 
+    # Correctif de degré anti-mégaphone (abaisse les hubs comme 'de', 'le' au profit des concepts)
+    beta_discount = 0.3
+    degree_discount = 1.0 / np.power(np.maximum(c_in[cols], 1.0), beta_discount)
+    ppmi_vals = ppmi_vals * degree_discount
+
     PPMI = sp.csr_matrix((ppmi_vals, (rows, cols)), shape=(V, V), dtype=np.float32)
     PPMI.eliminate_zeros()
 
