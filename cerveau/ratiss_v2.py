@@ -258,7 +258,7 @@ class RatissV2:
                 resultats.append((nom_affiche, score))
         return resultats
 
-    def executer(self, message):
+    def executer(self, message, port="PORT_CHAT_INTERFACE"):
         """Inférence souveraine complète combinant Sanctuaire, Épisodique et État h_t."""
         t0 = time.time()
         msg = str(message).strip()

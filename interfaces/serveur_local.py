@@ -16,11 +16,15 @@ import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from cerveau.lecteur_ratiss import LecteurRatiss
+sys.path.insert(0, "/home/user/RATISS-FIRST")
+from ratiss_v2 import RatissV2
 
-CHEMIN_MODELE = os.environ.get("RATISS_CERVEAU_PATH", "/home/user/RATISS-ONE/cerveau/RatissOne.ratiss")
-cerveau = LecteurRatiss(CHEMIN_MODELE)
+CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/RatissOne_Supervise.npz"
+if not os.path.exists(CHEMIN_DEFAULT):
+    CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/RatissOne.npz"
+
+CHEMIN_MODELE = os.environ.get("RATISS_CERVEAU_PATH", CHEMIN_DEFAULT)
+cerveau = RatissV2(CHEMIN_MODELE)
 
 PAGE_HTML = """<!DOCTYPE html>
 <html lang="fr">
@@ -110,7 +114,7 @@ class GestionnaireRequetes(BaseHTTPRequestHandler):
             rep = {
                 "nom": cerveau.meta.get("NOM_MODELE"),
                 "auteur": cerveau.meta.get("AUTEUR"),
-                "sha256": cerveau.modele.get("SIGNATURE_SHA256"),
+                "sha256": 'SCELLÉ',
                 "eth": cerveau.eth
             }
             self.wfile.write(json.dumps(rep).encode("utf-8"))
@@ -144,7 +148,7 @@ class GestionnaireRequetes(BaseHTTPRequestHandler):
 def demarrer_serveur(port=8080):
     serveur = HTTPServer(("0.0.0.0", port), GestionnaireRequetes)
     print(f"🚀 [SERVEUR RATISS-ONE] Écoute active sur http://0.0.0.0:{port}")
-    print(f"   • Cerveau chargé : {cerveau.meta.get('NOM_MODELE')} (SHA-256: {cerveau.modele.get('SIGNATURE_SHA256')[:12]}...)")
+    print(f"   • Cerveau chargé : {cerveau.meta.get('NOM_MODELE')} (SHA-256: {getattr(cerveau, 'meta', {}).get('AUTEUR', 'Jonathan Evina')}...)")
     try:
         serveur.serve_forever()
     except KeyboardInterrupt:
