@@ -19,7 +19,9 @@ from urllib.parse import urlparse
 sys.path.insert(0, "/home/user/RATISS-FIRST")
 from ratiss_v2 import RatissV2
 
-CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/RatissOne_Supervise.npz"
+CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/Descent gradient/RatissOne_Supervise.npz"
+if not os.path.exists(CHEMIN_DEFAULT):
+    CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/RatissOne_Supervise.npz"
 if not os.path.exists(CHEMIN_DEFAULT):
     CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/RatissOne.npz"
 

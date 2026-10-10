@@ -206,6 +206,15 @@ class RatissV2:
         self.eth = self.annexe.get("BLOC_ETH", {"pouls_base": 72, "temperature_base": 37.0})
         self.eth_etat = {"pouls": self.eth.get("pouls_base", 72), "temperature": 37.0, "ton": "neutre"}
         self.dernier_sujet = None
+
+        # Couche plastique active pour le décodeur de chemin
+        if "edges_src" in z and "edges_dst" in z and "edges_w" in z:
+            src_arr = z["edges_src"]
+            dst_arr = z["edges_dst"]
+            w_arr = z["edges_w"]
+            self.plastic_acc = {(int(src_arr[i]), int(dst_arr[i])): float(w_arr[i]) for i in range(self.E) if not self.gel_mask[i]}
+        else:
+            self.plastic_acc = {}
         
         self.dt_chargement = time.time() - t0
 
@@ -224,6 +233,58 @@ class RatissV2:
         print(f"📝 Mémoire Épisodique: {len(self.memoire_episodique)} faits appris")
         print(f"❤️ Corps Somatique ETH: Pouls={self.eth_etat['pouls']} bpm | Temp={self.eth_etat['temperature']}°C")
         print("=" * 72)
+
+    def generer_phrase_conversationnelle(self, question, seuil_bruit=0.05):
+        """
+        Décodeur de chemin conversationnel (Sparsity & Greedy Path Decoding).
+        - Filtrage de la sparsité (seuil dynamique).
+        - Reconstruction de chemin par le pivot sémantique et la sous-matrice TT.
+        - Structuration grammaticale naturelle.
+        """
+        tokens_entree = [w.lower() for w in re.findall(r"\b\w+\b", question) if len(w) > 3]
+        if not tokens_entree:
+            return None
+
+        h = np.zeros(self.V, dtype=np.float32)
+        for t in tokens_entree:
+            h *= 0.8
+            cle = f"word_{t}" if f"word_{t}" in self.idx else (t if t in self.idx else None)
+            if cle:
+                h[self.idx[cle]] += 1.0
+
+        # Résonance PPMI (TT) + Activation plastique
+        s = self.TT.dot(h)
+        for (qi, ri), w_p in self.plastic_acc.items():
+            if h[qi] > 0:
+                s[ri] += h[qi] * (w_p * 15.0)
+
+        # Filtrage du bruit sémantique (Sparsity Threshold)
+        s[s < seuil_bruit] = 0.0
+
+        if np.sum(s) == 0:
+            return None
+
+        # Décodage de chemin (Greedy Path Reconstruction)
+        pivot_idx = int(np.argmax(s))
+        pivot_word = self.vocab[pivot_idx][5:] if self.vocab[pivot_idx].startswith("word_") else self.vocab[pivot_idx]
+
+        sub_state = self.TT[pivot_idx].toarray().flatten()
+        mots_associes_indices = np.argpartition(-sub_state, min(4, self.V - 1))[:5]
+        mots_associes = []
+        for m_i in mots_associes_indices:
+            if sub_state[m_i] > 0:
+                nom_m = self.vocab[m_i][5:] if self.vocab[m_i].startswith("word_") else self.vocab[m_i]
+                if len(nom_m) > 2 and nom_m != pivot_word:
+                    mots_associes.append(nom_m)
+
+        # Structuration grammaticale naturelle
+        mots_associes = mots_associes[:2]
+        if len(mots_associes) == 2:
+            return f"Le sujet concerne principalement {pivot_word} en liaison étroite avec {mots_associes[0]} et {mots_associes[1]}."
+        elif len(mots_associes) == 1:
+            return f"Il s'agit de {pivot_word} lié directement à {mots_associes[0]}."
+        else:
+            return f"Le concept clé identifié est : {pivot_word}."
 
     def propager_etat(self, tokens_mots, gamma=0.7, beta=0.2, topk=5):
         """
@@ -337,22 +398,14 @@ class RatissV2:
             rep = f"Avec plaisir mon pote ! {txt}" if self.eth_etat["ton"] == "chaleureux" else txt
             return {"intent": f"sanctuaire_{mode.lower()}", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
-        # 5. RÉSONANCE DE L'ÉTAT PROPAGÉ h_t (CHAMP SÉMANTIQUE COMPLET)
-        stop_words = {"les", "des", "une", "par", "dans", "pour", "avec", "est", "sont", "que", "sur", "qui", "quoi", "parle", "moi", "raconte", "peux", "dire", "sais", "veut", "veux", "quelque", "chose", "tout", "tous", "fait", "faire"}
-        mots_utiles = [w for w in tokens if len(w) >= 3 and w not in stop_words]
-        
-        if mots_utiles:
-            res_top = self.propager_etat(mots_utiles, gamma=0.8, beta=0.2, topk=4)
-            if res_top:
-                noms_propres = [nom for nom, _ in res_top if nom not in mots_utiles and nom not in stop_words and len(nom) > 3][:3]
-                if noms_propres:
-                    liaison = ", ".join(noms_propres[:-1]) + (" et " if len(noms_propres) > 1 else "") + noms_propres[-1]
-                    sujet_txt = " ".join(mots_utiles[:2])
-                    if self.eth_etat["ton"] == "chaleureux":
-                        rep = f"Quand on parle de « {sujet_txt} », mon réseau synaptique relie immédiatement cela à {liaison}. C'est une association forte dans ma mémoire !"
-                    else:
-                        rep = f"Sur le thème de « {sujet_txt} », mes connexions font émerger les concepts de {liaison}."
-                    return {"intent": "reponse_synthetisee", "langue": langue, "reponse": rep, "eth": self.eth_etat}
+        # 5. DÉCODEUR DE CHEMIN CONVERSATIONNEL (Sparsity & Path Decoding)
+        rep_decodee = self.generer_phrase_conversationnelle(msg)
+        if rep_decodee:
+            if self.eth_etat["ton"] == "chaleureux":
+                rep = f"{rep_decodee} C'est une liaison forte dans mon réseau synaptique !"
+            else:
+                rep = rep_decodee
+            return {"intent": "chemin_decode", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
         rep = "C'est une question très intéressante ! Je n'ai pas encore cette connaissance exacte dans mon Sanctuaire. Dis-moi « Apprends que... » suivi de l'explication, et je la graverai immédiatement dans mes circuits !"
         return {"intent": "inconnu_honnete", "langue": langue, "reponse": rep, "eth": self.eth_etat}
