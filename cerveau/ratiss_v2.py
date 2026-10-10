@@ -289,7 +289,11 @@ class RatissV2:
             rep = f"Recorded in active memory in {dt_us:.1f} µs! Fact sealed #{h}: « {enonce} »." if langue == "EN" else f"Gravé dans ma mémoire active en {dt_us:.1f} µs ! Fait scellé #{h} : « {enonce} »."
             return {"intent": "apprentissage", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
-        # 3. Salutations & Identité
+        # 3. Salutations & Nouvelles ("Comment vas-tu ?", "Ça va ?")
+        if any(p in msg.lower() for p in ["comment tu vas", "comment vas tu", "comment vas-tu", "comment ca va", "comment ça va", "ca va", "ça va", "comment il va"]):
+            rep = "I am doing great! My circuits are running fast and clear. How about you?" if langue == "EN" else ("Je vais super bien mon pote ! Mes circuits tournent à plein régime et mon pouls est serein. Et toi, la forme ?" if (self.eth_etat["ton"] == "chaleureux" or "pote" in msg.lower()) else "Je vais très bien ! Mes 445 589 connexions synaptiques sont stables et à ton écoute. Et toi, comment vas-tu ?")
+            return {"intent": "nouvelles", "langue": langue, "reponse": rep, "eth": self.eth_etat}
+
         if any(w in tokens_set for w in ["bonjour", "salut", "yo", "coucou", "hello", "hi"]):
             rep = "Hello! I am RATISS-ONE V2. Ready." if langue == "EN" else ("Salut mon pote ! Très heureux de te retrouver. Je t'écoute !" if self.eth_etat["ton"] == "chaleureux" else "Bonjour ! Je suis RATISS-ONE V2, le réseau neuronal souverain haute performance.")
             return {"intent": "saluer", "langue": langue, "reponse": rep, "eth": self.eth_etat}
@@ -298,9 +302,15 @@ class RatissV2:
             rep = "You're welcome! Always a pleasure." if langue == "EN" else ("De rien mon pote ! C'est un réel plaisir de collaborer avec toi." if self.eth_etat["ton"] == "chaleureux" else "Je t'en prie. Mes circuits restent à ton entière disposition.")
             return {"intent": "gratitude", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
-        if any(p in msg.lower() for p in ["qui es tu", "qui es-tu", "ton nom", "who are you"]):
-            rep = f"Je suis RATISS-ONE V2, un tissu de {self.V:,} neurones et {self.E:,} synapses fonctionnant en pur CPU sans GPU (conçu à Yaoundé)."
+        # Identité, Créateur et Origine
+        if any(p in msg.lower() for p in ["qui es tu", "qui es-tu", "tu es qui", "t'es qui", "ton nom", "who are you", "qui t'a fait", "qui t'a cree", "qui t'a conçu"]):
+            rep = "I am RATISS-ONE, a sovereign neural intelligence designed in Yaoundé by Jonathan Evina without any GPU." if langue == "EN" else f"Je suis RATISS-ONE, une intelligence neuronale souveraine conçue à Yaoundé par Jonathan Evina. Je fonctionne à 100% en pur processeur CPU sans aucun GPU, avec {self.V:,} neurones et {self.E:,} synapses actives !"
             return {"intent": "identite", "langue": langue, "reponse": rep, "eth": self.eth_etat}
+
+        # Capacités & Rôle
+        if any(p in msg.lower() for p in ["tu peux faire quoi", "que sais-tu faire", "a quoi tu sers", "que fais-tu", "que peux-tu faire"]):
+            rep = "Je peux dialoguer, t'expliquer des concepts scientifiques scellés (physique, astronomie, fusion), mémoriser en direct de nouveaux faits avec « Apprends que... » et propager des ondes associatives à travers tout mon tissu neuronal !"
+            return {"intent": "capacites", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
         # 4. Restitution du Sanctuaire et de la Mémoire Épisodique
         sujet = None
@@ -328,17 +338,23 @@ class RatissV2:
             return {"intent": f"sanctuaire_{mode.lower()}", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
         # 5. RÉSONANCE DE L'ÉTAT PROPAGÉ h_t (CHAMP SÉMANTIQUE COMPLET)
-        stop_words = {"les", "des", "une", "par", "dans", "pour", "avec", "est", "sont", "que", "sur", "qui", "quoi"}
+        stop_words = {"les", "des", "une", "par", "dans", "pour", "avec", "est", "sont", "que", "sur", "qui", "quoi", "parle", "moi", "raconte", "peux", "dire", "sais", "veut", "veux", "quelque", "chose", "tout", "tous", "fait", "faire"}
         mots_utiles = [w for w in tokens if len(w) >= 3 and w not in stop_words]
         
         if mots_utiles:
-            res_top = self.propager_etat(mots_utiles, gamma=0.8, beta=0.2, topk=5)
+            res_top = self.propager_etat(mots_utiles, gamma=0.8, beta=0.2, topk=4)
             if res_top:
-                texte_champ = ", ".join([f"{nom} ({score:.3f})" for nom, score in res_top])
-                rep = f"L'état propagé sur « {' '.join(mots_utiles[:3])} » active le champ associatif : {texte_champ}."
-                return {"intent": "vecteur_etat_ht", "langue": langue, "reponse": rep, "eth": self.eth_etat}
+                noms_propres = [nom for nom, _ in res_top if nom not in mots_utiles and nom not in stop_words and len(nom) > 3][:3]
+                if noms_propres:
+                    liaison = ", ".join(noms_propres[:-1]) + (" et " if len(noms_propres) > 1 else "") + noms_propres[-1]
+                    sujet_txt = " ".join(mots_utiles[:2])
+                    if self.eth_etat["ton"] == "chaleureux":
+                        rep = f"Quand on parle de « {sujet_txt} », mon réseau synaptique relie immédiatement cela à {liaison}. C'est une association forte dans ma mémoire !"
+                    else:
+                        rep = f"Sur le thème de « {sujet_txt} », mes connexions font émerger les concepts de {liaison}."
+                    return {"intent": "reponse_synthetisee", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
-        rep = "Je ne tiens pas encore cette information. Dis-moi « Apprends que... » pour que je la retienne !"
+        rep = "C'est une question très intéressante ! Je n'ai pas encore cette connaissance exacte dans mon Sanctuaire. Dis-moi « Apprends que... » suivi de l'explication, et je la graverai immédiatement dans mes circuits !"
         return {"intent": "inconnu_honnete", "langue": langue, "reponse": rep, "eth": self.eth_etat}
 
 
