@@ -16,16 +16,12 @@ import json
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-sys.path.insert(0, "/home/user/RATISS-FIRST")
+sys.path.insert(0, "/home/user/RATISS-ONE/cerveau")
 from ratiss_v2 import RatissV2
 
 CHEMIN_DEFAULT = "/home/user/RATISS-ONE/colab/RatissOne_Massive_1M.npz"
 if not os.path.exists(CHEMIN_DEFAULT):
-    CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/Descent gradient/RatissOne_Supervise.npz"
-if not os.path.exists(CHEMIN_DEFAULT):
-    CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/data/RatissOne_Supervise.npz"
-if not os.path.exists(CHEMIN_DEFAULT):
-    CHEMIN_DEFAULT = "/home/user/RATISS-FIRST/RatissOne.npz"
+    CHEMIN_DEFAULT = "/home/user/RATISS-ONE/cerveau/RatissOne.npz"
 
 CHEMIN_MODELE = os.environ.get("RATISS_CERVEAU_PATH", CHEMIN_DEFAULT)
 cerveau = RatissV2(CHEMIN_MODELE)
