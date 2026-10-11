@@ -1,0 +1,20 @@
+{
+  "methode": "RATISS_GPU_VRAM_VECTORIEL_V3",
+  "vitesse_tokens_sec": 279729,
+  "temps_calcul_sec": 0.298,
+  "arcs": 44640,
+  "trigrammes": 65157,
+  "modes": {
+    "trigramme": {
+      "top5": 0.23762646978397595,
+      "hits": 869,
+      "total": 3657
+    },
+    "ordre": {
+      "top5": 0.23789991796554552,
+      "hits": 870,
+      "total": 3657
+    }
+  },
+  "bouche": "/tmp/Ratiss-GI/ratiss_self/bouche.bouche"
+}

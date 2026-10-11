@@ -1,0 +1,8 @@
+MÉTHODE RATISS_GPU_VRAM_VECTORIEL_V3
+Moteur     : NUMPY VECTORIEL
+Vitesse    : 279,730 tokens/seconde
+Temps VRAM : 0.30 s
+Arcs       : 44,640
+Trigrammes : 65,157
+Top-5      : 23.8 %
+Destination: /tmp/Ratiss-GI/ratiss_self/bouche.bouche
