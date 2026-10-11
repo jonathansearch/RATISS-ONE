@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0e1a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="950" height="480" fill="url(#bg3)"/>
+
+  <!-- Title -->
+  <text x="475" y="40" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">RUPTURE DE PARADIGME : LLM MATRICIELS vs RATISS-ONE</text>
+  <text x="475" y="65" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Comparatif Fondamental d'Ingénierie &amp; de Frugalité Énergétique</text>
+
+  <!-- Left: LLM / Transformers -->
+  <g transform="translate(40, 95)">
+    <rect width="410" height="340" rx="10" fill="#1e1b2e" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="205" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#f87171" text-anchor="middle">LLM Classiques (Transformers)</text>
+    <text x="205" y="52" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Modèle Probabiliste à Force Brute</text>
+
+    <text x="25" y="90" font-family="system-ui, sans-serif" font-size="12" fill="#fca5a5">❌ Boîte Noire Opaque :</text>
+    <text x="40" y="108" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Milliards de poids denses indéchiffrables.</text>
+
+    <text x="25" y="135" font-family="system-ui, sans-serif" font-size="12" fill="#fca5a5">❌ Oubli Catastrophique :</text>
+    <text x="40" y="153" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Impossible d'éditer un fait sans déstabiliser le réseau.</text>
+
+    <text x="25" y="180" font-family="system-ui, sans-serif" font-size="12" fill="#fca5a5">❌ Dépendance Matérielle Extrême :</text>
+    <text x="40" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Clusters GPU Nvidia à millions $, 500W-1000W.</text>
+
+    <text x="25" y="225" font-family="system-ui, sans-serif" font-size="12" fill="#fca5a5">❌ Hallucinations Fréquentes :</text>
+    <text x="40" y="243" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Interpolation statistique floue, justification inventée a posteriori.</text>
+
+    <text x="25" y="270" font-family="system-ui, sans-serif" font-size="12" fill="#fca5a5">❌ Apprentissage Lourd :</text>
+    <text x="40" y="288" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Des heures de backpropagation pour chaque nouvel ajout.</text>
+  </g>
+
+  <!-- Right: RATISS-ONE -->
+  <g transform="translate(500, 95)">
+    <rect width="410" height="340" rx="10" fill="#0f291e" stroke="#10b981" stroke-width="2"/>
+    <text x="205" y="32" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#34d399" text-anchor="middle">RATISS-ONE (Neuro-Symbolique)</text>
+    <text x="205" y="52" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle">Système Associatif Causal Frugal</text>
+
+    <text x="25" y="90" font-family="system-ui, sans-serif" font-size="12" fill="#86efac">✅ Boîte Blanche Déterministe :</text>
+    <text x="40" y="108" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Chaque mot est certifié par audit au 10⁻⁹.</text>
+
+    <text x="25" y="135" font-family="system-ui, sans-serif" font-size="12" fill="#86efac">✅ Neurochirurgie O(1) sans Ré-entraînement :</text>
+    <text x="40" y="153" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Overlay Delta instantané sans toucher au fichier scellé.</text>
+
+    <text x="25" y="180" font-family="system-ui, sans-serif" font-size="12" fill="#86efac">✅ Frugalité Souveraine 100% CPU :</text>
+    <text x="40" y="198" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Tourne sur ordinateur standard ou smartphone, zéro GPU.</text>
+
+    <text x="25" y="225" font-family="system-ui, sans-serif" font-size="12" fill="#86efac">✅ Zéro Hallucination &amp; Ancrage Réel :</text>
+    <text x="40" y="243" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Le Tissu scellé élimine 99.9% de l'espace combinatoire.</text>
+
+    <text x="25" y="270" font-family="system-ui, sans-serif" font-size="12" fill="#86efac">✅ Apprentissage Épisodique One-Shot Live :</text>
+    <text x="40" y="288" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Une seule passe suffit pour mémoriser et enchaîner.</text>
+  </g>
+
+  <!-- VS in center -->
+  <circle cx="475" cy="265" r="22" fill="#0f172a" stroke="#64748b" stroke-width="2"/>
+  <text x="475" y="271" font-family="system-ui, sans-serif" font-size="13" font-weight="900" fill="#f8fafc" text-anchor="middle">VS</text>
+</svg>

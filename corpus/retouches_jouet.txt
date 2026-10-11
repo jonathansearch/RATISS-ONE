@@ -1,0 +1,4 @@
+# Après le compte. Une case. Les autres arcs ne sont pas relus.
+# editer SOURCE CIBLE POIDS [registre]
+# supprimer SOURCE CIBLE [registre]
+editer globe verre 5 conte

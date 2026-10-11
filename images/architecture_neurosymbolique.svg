@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f1d"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="tissuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="boucheGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="620" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="500" y="45" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="800" fill="#f8fafc" text-anchor="middle" letter-spacing="1">ARCHITECTURE UNIFIÉE RATISS-ONE (NEURO-SYMBOLIQUE)</text>
+  <text x="500" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#94a3b8" text-anchor="middle">Séparation Stricte : Mémoire Causale Immuable (.ratiss) &amp; Organe d'Élocution Séquentiel (.bouche) · 100% CPU</text>
+
+  <!-- Left: TISSU SCELLÉ -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="430" height="420" rx="14" fill="url(#tissuGrad)" stroke="#334155" stroke-width="2"/>
+    <rect x="20" y="18" width="130" height="26" rx="6" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6"/>
+    <text x="85" y="35" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#60a5fa" text-anchor="middle">LE TISSU SCELLÉ</text>
+    <text x="410" y="35" font-family="monospace" font-size="11" fill="#64748b" text-anchor="end">RatissOne.ratiss</text>
+    
+    <text x="20" y="75" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#f1f5f9">Mémoire Thématique Associative</text>
+    <text x="20" y="95" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">"De quoi parle-t-on ?" (Sémantique non-orientée)</text>
+
+    <!-- Specs Box -->
+    <rect x="20" y="115" width="390" height="90" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <text x="35" y="138" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">• Graphe Creux : <tspan font-weight="bold" fill="#38bdf8">95 660 neurones · 428 471 liens</tspan></text>
+    <text x="35" y="160" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">• Empreinte SHA-256 scellée : <tspan font-family="monospace" fill="#a7f3d0">b032c239...ab2c</tspan></text>
+    <text x="35" y="182" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">• Diffusion d'onde : Décroissance géométrique (1, 1/2, 1/4...)</text>
+
+    <!-- Pilier 1 & 4 Details -->
+    <rect x="20" y="215" width="390" height="90" rx="8" fill="#0f172a" stroke="#1e293b"/>
+    <text x="35" y="238" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Pilier 4 · Résonance avec Damping</text>
+    <text x="35" y="258" font-family="monospace" font-size="11" fill="#38bdf8">Poids_Effectif = Poids / ln(max(e, degré))</text>
+    <text x="35" y="280" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Étouffe les hubs syntaxiques (de, le) · Lune émerge #2</text>
+
+    <!-- Overlay Delta -->
+    <rect x="20" y="315" width="390" height="85" rx="8" fill="#132338" stroke="#0284c7" stroke-dasharray="4"/>
+    <text x="35" y="338" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Pilier 1 · Overlay Delta O(1) (Neurochirurgie)</text>
+    <text x="35" y="358" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Mutation/suppression synaptique en 1 ms sans réécriture.</text>
+    <text x="35" y="378" font-family="system-ui, sans-serif" font-size="11" fill="#6ee7b7">Zéro oubli catastrophique · SHA-256 du fichier intact.</text>
+  </g>
+
+  <!-- Right: LA BOUCHE -->
+  <g transform="translate(530, 95)" filter="url(#shadow)">
+    <rect width="430" height="420" rx="14" fill="url(#boucheGrad)" stroke="#4338ca" stroke-width="2"/>
+    <rect x="20" y="18" width="130" height="26" rx="6" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6"/>
+    <text x="85" y="35" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#c084fc" text-anchor="middle">LA BOUCHE</text>
+    <text x="410" y="35" font-family="monospace" font-size="11" fill="#64748b" text-anchor="end">bouche.bouche</text>
+
+    <text x="20" y="75" font-family="system-ui, sans-serif" font-size="17" font-weight="700" fill="#f1f5f9">Organe Séquentiel Multi-Registres</text>
+    <text x="20" y="95" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8">"Quel mot suit ?" (Causalité dirigée A → B → C)</text>
+
+    <!-- Speech Box -->
+    <rect x="20" y="115" width="390" height="90" rx="8" fill="#0f172a" stroke="#2e1065"/>
+    <text x="35" y="138" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">• Arcs Orientés + Trigrammes pondérés :</text>
+    <text x="45" y="160" font-family="monospace" font-size="11" fill="#a855f7">65% Trigramme (A,B)→C + 35% Bigramme B→C</text>
+    <text x="35" y="182" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">• Repli automatique dynamique si trigramme absent</text>
+
+    <!-- Registres -->
+    <rect x="20" y="215" width="390" height="90" rx="8" fill="#0f172a" stroke="#2e1065"/>
+    <text x="35" y="238" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f472b6">Registres Modulaires Indépendants</text>
+    <text x="35" y="258" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">• <tspan fill="#60a5fa">conte</tspan> · <tspan fill="#34d399">dialogue</tspan> · <tspan fill="#fbbf24">science</tspan> · <tspan fill="#94a3b8">ordre</tspan> (Prose pondérée)</text>
+    <text x="35" y="278" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">• <tspan fill="#f87171">fait</tspan> (Force 100 fixe) · <tspan fill="#c084fc">episodique</tspan> (Live stream 1-pass)</text>
+
+    <!-- Pilier 3 One-Shot -->
+    <rect x="20" y="315" width="390" height="85" rx="8" fill="#1e1438" stroke="#9333ea" stroke-dasharray="4"/>
+    <text x="35" y="338" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#d8b4fe">Pilier 3 · Épisode Vif One-Shot Live</text>
+    <text x="35" y="358" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Apprentissage en direct en 1 seule passe (contraste coupé).</text>
+    <text x="35" y="378" font-family="system-ui, sans-serif" font-size="11" fill="#6ee7b7">Disponible dès le mot suivant sans ré-entraînement GPU.</text>
+  </g>
+
+  <!-- Bottom Synthesis Box: FORMULA & AUDIT -->
+  <g transform="translate(140, 530)" filter="url(#shadow)">
+    <rect width="720" height="70" rx="10" fill="#0f172a" stroke="#22c55e" stroke-width="1.5"/>
+    <text x="360" y="26" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#4ade80" text-anchor="middle">PILIER 2 · ARBITRAGE DÉTERMINISTE WHITE-BOX &amp; AUDIT CERTIFIÉ</text>
+    <text x="360" y="50" font-family="monospace" font-size="14" font-weight="bold" fill="#f8fafc" text-anchor="middle">Score(w) = λ · Ordre(Bouche) + (1 − λ) · Thème(Tissu Scellé)</text>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 470 300 L 530 300" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4"/>
+  <circle cx="500" cy="300" r="4" fill="#38bdf8"/>
+</svg>

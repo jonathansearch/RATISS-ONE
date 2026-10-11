@@ -1,0 +1,36 @@
+{
+  "format": "RATISS_GI_PLAN_V3",
+  "savoir": "aucun",
+  "commentaire": "Ce fichier est le plan. Il ne contient pas un seul fait, pas un seul arc. L'analogue du config.json d'un Llama, avant l'initialisation des poids.",
+  "tissu": {
+    "loi": "Ratum",
+    "neurone": {"charge": "0..100", "seuil": 50},
+    "lien": {"naissance": 10, "renfort": 10, "delie": 3, "oubli": 3, "orientation": "triée, les deux bouts confondus"},
+    "ombre": 0.5,
+    "secteurs": ["VIF", "REFRAIN", "SANCTUAIRE", "ULTRA"],
+    "fichier": "cerveau/RatissOne.ratiss",
+    "gel": "ne pas réécrire"
+  },
+  "bouche": {
+    "format": "RATISS_BOUCHE_V3",
+    "orientation": "mot_i -> mot_{i+1}, et la paire (mot_{i-1}, mot_i) -> mot_{i+1} si elle a été vue",
+    "fenetre_theme": 3,
+    "poids_trigramme": 0.65,
+    "lam": 0.75,
+    "memoire": 8,
+    "lumiere": 0.5,
+    "temperature": 0.7,
+    "contraste": {"bonus_vrai": 1.0, "malus_rival": 0.35},
+    "registres": ["ordre", "conte", "dialogue", "science", "fait", "episodique"],
+    "etape_0": "config/bouche_etape0.json"
+  },
+  "mesure": "top-5 du mot suivant, sur un texte non vu",
+  "entrainement_langue": {
+    "script": "entrainement/entrainer_langue.py",
+    "organisation": "docs/ORGANISATION_LANGUE.md",
+    "ordre": ["oreille", "separation", "etape_0", "prose", "faits", "episodes", "retouches", "top5", "audit", "depot"],
+    "tissu": "hash des octets si --cerveau est donné. Le graphe n'est pas chargé.",
+    "savoir": "aucun dans ce plan"
+  },
+  "machine": "CPU. Pas de GPU pour cette bouche."
+}

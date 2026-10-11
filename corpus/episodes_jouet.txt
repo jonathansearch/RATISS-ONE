@@ -1,0 +1,5 @@
+# registre: episodique
+# Une ligne, une passe. Le contraste est coupé par la méthode, pas par ce fichier.
+# Ces phrases ne sont pas dans prince_jouet.txt.
+le soleil reveille la rose
+la maree suit la lune

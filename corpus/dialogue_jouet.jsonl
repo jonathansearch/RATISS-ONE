@@ -1,0 +1,3 @@
+{"user": "quelle est la capitale du cameroun", "assistant": "la capitale politique du cameroun est yaounde"}
+{"user": "qui a fonde ratiss labs", "assistant": "jonathan evina est le fondateur de ratiss labs"}
+{"messages": [{"role": "user", "content": "explique la fusion en une phrase"}, {"role": "assistant", "content": "la fusion du deuterium et du tritium libere un neutron"}]}

@@ -1,287 +1,238 @@
 <div align="center">
 
-<img src="images/logo-ratiss-labs.png" width="220" alt="RATISS Labs"/>
+<img src="images/logo-ratiss-labs.png" width="200" alt="RATISS Labs"/>
 
-# ⚛️ RATISS-ONE — Réseau de Neurones Intriqués & Intelligence Souveraine
+# ⚛️ RATISS-ONE — Intelligence Neuro-Symbolique Souveraine
 
-**Un conteneur unique `.ratiss`, une cognition sans GPU, une oreille sensorielle, une bouche expressive asservie au Corps ETH, et une mémoire épisodique one-shot.**
+**Architecture duale Tissu Scellé (.ratiss) + Bouche Séquentielle (.bouche) · 100% CPU Frugal · Zéro GPU · Audit Boîte Blanche au 10⁻⁹ · One-Shot Live**
 
-[![License: MIT](https://img.shields.io/badge/Code-MIT-teal.svg)](LICENSE)
-[![Format: .ratiss](https://img.shields.io/badge/Format-.ratiss%20%2F%20.rt-orange.svg)](cerveau/)
-[![Runtime: Souverain](https://img.shields.io/badge/Runtime-Boîte%20Blanche-brightgreen.svg)](cerveau/lecteur_ratiss.py)
-[![Audio: Phonon + Piper](https://img.shields.io/badge/Audio-Oreille%20%2B%20Bouche-blue.svg)](bouche/)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jonathansearch/RATISS-ONE/blob/main/colab/Entrainement_RATISS_ONE.ipynb)
-[![Docker: Prêt](https://img.shields.io/badge/Docker-0.0.0.0:8080-blueviolet.svg)](docker/)
+[![Licence: CC BY-NC-SA 4.0](https://img.shields.io/badge/Licence-CC%20BY--NC--SA%204.0%20%2F%20Propri%C3%A9taire-red.svg)](LICENSE)
+[![Format: .ratiss + .bouche](https://img.shields.io/badge/Format-.ratiss%20%2B%20.bouche-orange.svg)](cerveau/)
+[![Runtime: Boîte Blanche](https://img.shields.io/badge/Runtime-Audit%2010%E2%81%BB%E2%81%B9-brightgreen.svg)](piliers/audit.py)
+[![Tests: 27/27 au Vert](https://img.shields.io/badge/Tests-27%2F27%20OK%20(3.2s%20CPU)-teal.svg)](tests/)
+[![Matériel: 100% CPU Standard](https://img.shields.io/badge/Hardware-100%25%20CPU%20(Z%C3%A9ro%20GPU)-blue.svg)](ratiss_v3.py)
+[![Auteur: Jonathan Evina](https://img.shields.io/badge/Recherche-Jonathan%20Evina%20%28Yaound%C3%A9%20%F0%9F%87%A8%F0%9F%87%B2%29-purple.svg)](https://github.com/jonathansearch)
 
-*Par **RATISS Labs** — Jonathan Evina · Yaoundé 🇨🇲 · Recherche indépendante · Reproductibilité stricte (R4–R7)*
+*Par **Jonathan Evina** (18 ans) — RATISS Labs, Yaoundé, Cameroun 🇨🇲 · Recherche mono-auteur indépendante · Rigueur empirique stricte R4–R7*
 
 </div>
 
-<img src="images/hero-cerveau.png" width="100%" alt="Architecture RATISS-ONE Souverain"/>
+---
 
-> **Résumé.** *RATISS-ONE est une rupture d'architecture en intelligence artificielle : un Réseau de Neurones Intriqués (RNI) qui **comprend sans stocker de données brutes**. Fini l'empilement aveugle de gigaoctets : le cerveau complet est consolidé en un **fichier unique et inviolable `.ratiss` (ou `.rt`)**, exécutable exclusivement par son runtime officiel en boîte blanche. Il intègre 5 organes vitaux (Corps affectif ETH, Sanctuaire scellé SHA-256, Synchrotron de résonance, Cortex adaptatif Top-P, Juge cryptographique), une boucle sensorimotrice audio complète (Oreille Phonon ASR + Bouche Piper TTS modulée par l'émotion somatique), et un moteur d'apprentissage épisodique live ("Main Tendue") capable d'assimiler des faits en direct en 50 microsecondes sans rétropropagation ni oubli catastrophique.*
+## 📑 Sommaire
+
+1. [La Vision Mère &amp; La Question Fondatrice](#1-la-vision-mere)
+2. [L'Architecture Duale : Tissu Scellé vs Bouche Séquentielle](#2-larchitecture-duale)
+3. [Les 4 Piliers Neuro-Symboliques d'Émancipation](#3-les-4-piliers)
+4. [Pilier 4 : Résonance d'Onde &amp; Normalisation par le Degré](#4-pilier-4-resonance)
+5. [Le Moteur d'Entraînement en 10 Pas](#5-le-moteur-dentrainement)
+6. [Comparatif Fondamental : RATISS-ONE vs LLM Classiques](#6-comparatif-ratiss-vs-llm)
+7. [Démarrage Rapide en 3 Commandes CPU](#7-demarrage-rapide)
+8. [Organisation Épurée du Dépôt](#8-organisation-epuree)
+9. [Licence Propriétaire Souveraine &amp; Attribution](#9-licence-et-attribution)
 
 ---
 
-## 📖 Sommaire
+<a id="1-la-vision-mere"></a>
+## 💡 1. La Vision Mère &amp; La Question Fondatrice
 
-1. [La Question Fondatrice](#la-question)
-2. [En 30 Secondes : Les Faits Mesurés](#en-30-secondes)
-3. [Le Conteneur Unique .ratiss & La Boîte Blanche](#le-conteneur-ratiss)
-4. [Le Runtime Officiel Exclusif](#le-runtime-officiel)
-5. [La Boucle Sensorimotrice Audio (Oreille + Bouche + ETH)](#la-boucle-audio)
-6. [Dialogue v2 & Mémoire Épisodique Live](#dialogue-v2)
-7. [Entraînement Épisodique Colab Haute Vitesse](#entrainement-colab)
-8. [Déploiement Docker & Interface Web](#deploiement-docker)
-9. [Tableau Historique des 45 Leçons](#tableau-mesures)
-10. [Carte du Dépôt Épuré](#carte-du-depot)
-11. [Auteur, Identité & Licence](#auteur-licence)
+> **« Peut-on bâtir une véritable intelligence causale, frugale et transparente, sans dépendre des milliards de dollars de serveurs GPU de la Silicon Valley ? »**
 
----
+Né au Cameroun d'une recherche mono-auteur menée en toute indépendance par **Jonathan Evina**, le projet **RATISS** refuse le dogme du « tout-GPU » et la fuite en avant énergétique des modèles de langage matriciels (Transformers).
 
-<a id="la-question"></a>
-## ❓ 1. La Question Fondatrice
+Les modèles classiques empilent des milliards de paramètres statistiques opaques dans des mémoires denses, provoquant :
+- Des **hallucinations massives** issues d'interpolations statistiques floues ;
+- Un **oubli catastrophique** dès qu'on souhaite mettre à jour une seule connaissance ;
+- Une **boîte noire impénétrable**, incapable de justifier mathématiquement pourquoi un mot précis a été produit ;
+- Une **dépendance matérielle écrasante** envers des méga-centres de données occidentaux à refroidissement liquide.
 
-> **Peut-on comprendre et raisonner sans stocker des milliards de pages de texte brut ?**
-
-Les modèles classiques (LLM) reposent sur la mémorisation statistique de corpus massifs (gaspillage de gigaoctets et de VRAM, hallucinations, oubli catastrophique lors de nouvelles acquisitions).
-
-**RATISS-ONE inverse le paradigme :**
-- **Le souvenir est le chemin :** Une onde topologique traverse un graphe de 95 660 neurones vivants.
-- **La vérité est sanctuarisée :** Chaque fait fondamental est immuable et signé cryptographiquement (SHA-256).
-- **Le corps ressent :** Le module somatique ETH module le pouls, la tension et la chaleur en fonction de l'intention de l'interlocuteur.
-- **L'acquisition est immédiate :** Un nouvel énoncé est encodé et scellé en direct en moins de 1 milliseconde sans ré-entraîner le réseau.
+**RATISS-ONE démontre qu'une structure neuro-symbolique mathématiquement rigoureuse surpasse la force brute :**
+1. **La Vérité est Topologique :** Les concepts forment un graphe associatif causale immuable (**Le Tissu**, 95 660 neurones, 428 471 liens scellés).
+2. **Le Verbe est Séquentiel :** L'élocution temporelle est confiée à un organe dédié (**La Bouche**, arcs orientés et trigrammes avec repli dynamique).
+3. **L'Inférence est Déterministe :** Chaque mot produit est auditable au dixième de milliardième ($10^{-9}$).
+4. **La Frugalité est Totale :** 100% exécutable en Python standard (stdlib) sur un processeur d'ordinateur portable ordinaire, sans aucune dépendance lourde.
 
 ---
 
-<a id="en-30-secondes"></a>
-## ⚡ 2. En 30 Secondes : Les Faits Mesurés
+<a id="2-larchitecture-duale"></a>
+## 🏛️ 2. L'Architecture Duale : Tissu Scellé vs Bouche Séquentielle
 
-| Composant | Rôle | Performance Mesurée | Statut |
-| :--- | :--- | :---: | :---: |
-| 🧠 **`RatissOne.ratiss`** | Conteneur complet consolidé | **3,5 Ko** (scellé SHA-256) | ✅ Opérationnel |
-| ⚡ **`lecteur_ratiss.py`** | Runtime exclusif & ports E/S | **0,03 ms** / inférence | ✅ Prouvé |
-| 👂 **Oreille (Phonon)** | ASR éphémère (audio ➔ texte) | **0,10 ms** (purge immédiate) | ✅ Prouvé |
-| 🗣️ **Bouche (Piper)** | TTS modulé par le Corps ETH | **10,5 ms** (prosodie vivante) | ✅ Prouvé |
-| 🤝 **Main Tendue Live** | Apprentissage one-shot direct | **51 µs** (zéro oubli) | ✅ Prouvé |
-| 🚀 **Entraînement Colab** | Convergence Hebbienne vectorisée | **760 000 mots / s** | ✅ Prouvé |
-| 🐳 **Docker Runtime** | Conteneurisation universelle | **0.0.0.0:8080** | ✅ Prêt |
+<div align="center">
+<img src="images/architecture_neurosymbolique.svg" width="95%" alt="Architecture Neuro-Symbolique RATISS-ONE"/>
+</div>
+
+L'architecture RATISS-ONE repose sur une séparation physique et algorithmique étanche entre la mémoire de sens et la mécanique de parole :
+
+### A. Le Tissu Scellé (`cerveau/RatissOne.ratiss`)
+- **Rôle :** Mémoire causale associative (« De quoi parle-t-on ? »).
+- **Structure :** Graphe creux (*Sparse Graph*) de 95 660 neurones et 428 471 connexions synaptiques.
+- **Immuabilité R4–R7 :** Fichier binaire scellé sous empreinte cryptographique `SHA-256: b032c239...ab2c`. Le fichier n'est jamais ouvert en écriture.
+- **Diffusion :** Lumière géométrique locale ($1, rac{1}{2}, rac{1}{4}\dots$) pondérée par la normalisation par le degré.
+
+### B. La Bouche Séquentielle (`bouche.bouche`)
+- **Rôle :** Organe d'élocution séquentielle (« Quel mot suit ? »).
+- **Structure :** Arcs causaux orientés $A 	o B$ combinés à des trigrammes $(A, B) 	o C$ avec repli (Backoff) :
+  $$	ext{Ordre} = 0.65 	imes 	ext{Trigramme} + 0.35 	imes 	ext{Bigramme}$$
+  Si la paire contextuelle est inédite, la Bouche bascule dynamiquement sur le bigramme sans jamais se taire ni diverger.
+- **Registres Modulaires :**
+  - `conte` / `dialogue` / `science` / `ordre` : prose pondérée par apprentissage contrastif ;
+  - `fait` : chaînes déterministes gravées à force 100 fixe (hors décharge) ;
+  - `episodique` : flux d'apprentissage one-shot en direct (contraste coupé).
 
 ---
 
-<a id="le-conteneur-ratiss"></a>
-## 📦 3. Le Conteneur Unique `.ratiss` & La Boîte Blanche
+<a id="3-les-4-piliers"></a>
+## 🧬 3. Les 4 Piliers Neuro-Symboliques d'Émancipation
 
-Pour libérer le code principal et supprimer l'éparpillement des dizaines de fichiers, le cerveau complet est packagé dans un fichier maître unique : **`cerveau/RatissOne.ratiss`** (diminutif officiel : `.rt`).
+RATISS-ONE formalise et valide par 27 tests unitaires stricts les 4 capacités fondamentales structurellement impossibles pour les LLM traditionnels :
+
+| Pilier | Défi LLM résolu | Mécanisme RATISS-ONE | Mesure R4–R7 |
+|---|---|---|---|
+| **1. Neurochirurgie $O(1)$** | Éviter l'oubli catastrophique lors de la mise à jour d'un fait. | **Overlay Delta Dynamique** : modification ou masquage atomique d'arc en mémoire vive sans toucher au fichier scellé. | 1 ms CPU · 0 effet de bord sur le reste du réseau · Hash `.ratiss` intact. |
+| **2. Audit Certifié au $10^{-9}$** | Mettre fin aux hallucinations et aux justifications inventées après coup. | **Arbre Déterministe** : Décomposition exacte $	ext{Score} = \lambda \cdot 	ext{Ordre} + (1-\lambda) \cdot 	ext{Thème}$. | Écart arithmétique $\le 10^{-9}$ entre prédiction et certificat. |
+| **3. Épisode Vif One-Shot** | Supprimer les heures de backpropagation GPU pour assimiler un nouvel énoncé. | **Ingestion Directe Live** : Une seule passe en mémoire épisodique, contraste coupé. | Séquence immédiatement disponible à la phrase suivante. |
+| **4. Résonance Synaptique** | Remplacer l'attention vectorielle dense en $O(N^2)$ par une onde associative causale. | **Spreading Activation avec Damping** : Diffusion simultanée d'énergie et carrefour d'intersection. | Carrefour émerge sans prompt textuel d'explication. |
+
+---
+
+<a id="4-pilier-4-resonance"></a>
+## 🌊 4. Pilier 4 : Résonance d'Onde &amp; Normalisation par le Degré
+
+Dans un grand tissu associatif, les petits mots syntaxiques fréquents (`de`, `le`, `un`, `à`) possèdent des dizaines de milliers de connexions (ex: `de` possède 20 644 liens). Sans frein topologique, ces carrefours d'autoroute absorbent toute l'énergie électrique et masquent les concepts sémantiques.
+
+<div align="center">
+<img src="images/resonance_etouffement_hubs.svg" width="90%" alt="Résonance et étouffement des hubs"/>
+</div>
+
+### La Loi RATISS de Normalisation par le Degré :
+Pour restaurer la primauté du sens sur la syntaxe, RATISS applique une atténuation logarithmique naturelle inspirée de la théorie des graphes et de la physique des réseaux :
+
+$$	ext{Poids\_Effectif} = rac{	ext{Poids}}{\ln(\max(e, 	ext{degré}(	ext{cible})))$$
+
+### Mesure Réelle sur le Vrai Tissu (`RatissOne.ratiss`) :
+Sur l'interrogation conceptuelle simultanée `["soleil", "maree"]` :
+
+| Concept | Degré Réel | Sans Normalisation | AVEC Loi $rac{	ext{Poids}}{\ln(	ext{degré})}$ | Résultat |
+|---|---|---|---|---|
+| **`lune`** | 34 liens | Rang #943 (0,792) | **Rang #2 (0,252) 🥈** | **Podium Direct ! Victoire du sens** |
+| **`de`** | 20 644 liens | **Rang #1 (2,405)** | **Rang #3 (0,194)** | **Détrôné et étouffé** |
+| **`le`** | 16 922 liens | Rang #2 (1,874) | **Rang #8 (0,138)** | **Chute de 6 rangs** |
+| **`gravite`**| 17 liens | Rang #5 867 (0,405) | **Rang #21 (0,080)** | **Bond spectaculaire de +5 846 places** |
+
+Face à un hub artificiel de 50 liens, le rapport de force mesuré en test unitaire dépasse **3,9 contre 1** en faveur du concept sémantique.
+
+---
+
+<a id="5-le-moteur-dentrainement"></a>
+## 📚 5. Le Moteur d'Entraînement en 10 Pas (`entrainement/entrainer_langue.py`)
+
+L'éducation de la langue respecte un protocole linéaire strict en 10 étapes immuables, garantissant que le corpus d'évaluation tenu à l'écart (`02_ecart.txt`) ne pollue jamais le calcul des arcs :
 
 ```
-┌───────────────────────────────────────────────────────────────────┐
-│              CONTENEUR SOUVERAIN (.ratiss / .rt)                  │
-├───────────────────────────────────────────────────────────────────┤
-│ [ENTÊTE MAGIQUE]  RATISS_SOUVERAIN_V2                             │
-│ [MÉTADONNÉES]     Auteur : Jonathan Evina · Labo : RATISS Labs   │
-│ [SCEAU SHA-256]   6d67c34650ebe54baba88f248b19e4b9ea66...        │
-├───────────────────────────────────────────────────────────────────┤
-│ 1. BLOC_ETH              Constantes vitales (pouls 72 bpm, 37°C)  │
-│ 2. BLOC_SANCTUAIRE       Faits vérifiés inaltérables (0 halluc.) │
-│ 3. BLOC_SYNCHROTRON      Filtres d'onde et atténuation du bruit   │
-│ 4. BLOC_CORTEX           Matrices génératives & Top-P             │
-│ 5. BLOC_MEMOIRE_LIVE     Faits appris en temps réel               │
-│ 6. BLOC_PORTS_IO         Connecteurs ASR, TTS, Chat, Télémétrie   │
-└───────────────────────────────────────────────────────────────────┘
+1. oreille       -> Découpage en phrases et tokens nettoyés
+2. séparation    -> Écart isolé à part (10% à 30%), jamais vu à l'entraînement
+3. étape 0       -> Bouche vierge (zéro arc) ou reprise d'une bouche existante
+4. prose         -> Comptage des arcs et trigrammes par registre, N tours, décharge
+5. faits         -> Chaînes déterministes figées (force 100, hors décharge)
+6. épisodes      -> Phrases vives en 1 seule passe, contraste coupé
+7. retouches     -> Neurochirurgie O(1) de précision (éditer / supprimer une synapse)
+8. top-5         -> Mesure stricte du Top-5 sur l'écart seul (Bouche seule & Mixte avec Tissu)
+9. audit         -> Certification mathématique des premières positions de l'écart
+10. dépôt        -> Sauvegarde de bouche.bouche, mesures.json et ORGANISATION.txt
 ```
-
-**Pourquoi une Boîte Blanche ?**  
-Contrairement aux fichiers GGUF ou checkpoints PyTorch qui sont des "boîtes noires" de matrices opaques, le format `.ratiss` est **100 % transparent et auditable** par l'humain tout en étant scellé mathématiquement contre toute altération frauduleuse.
 
 ---
 
-<a id="le-runtime-officiel"></a>
-## 🛡️ 4. Le Runtime Officiel Exclusif (`lecteur_ratiss.py`)
+<a id="6-comparatif-ratiss-vs-llm"></a>
+## ⚖️ 6. Comparatif Fondamental : RATISS-ONE vs LLM Classiques
 
-Le fichier `.ratiss` ne s'ouvre pas avec un outil standard tiers : **il se lit exclusivement via son lecteur officiel** :
+<div align="center">
+<img src="images/comparatif_ratiss_vs_llm.svg" width="90%" alt="Comparatif RATISS vs LLM"/>
+</div>
 
+| Caractéristique | LLM Denses (GPT, LLaMA, Mistral) | RATISS-ONE |
+|---|---|---|
+| **Architecture** | Matrices denses de Transformers ($O(N^2)$) | Graphe creux associatif + n-grammes guidés ($O(1)$ à $O(K)$) |
+| **Matériel Requis** | Clusters GPU Nvidia A100/H100 (centaines de kW) | **100% CPU Standard (ordinateur de bureau / PC portable)** |
+| **Transparence** | Boîte noire statistique impénétrable | **Boîte blanche absolue (Audit au $10^{-9}$)** |
+| **Mise à jour d'un fait** | Fine-tuning lourd ou RAG externe (Oubli catastrophique) | **Neurochirurgie $O(1)$ immédiate sans ré-entraînement** |
+| **Apprentissage live** | Impossible en local sans GPU | **Épisode vif assimilé en direct en 1 seule passe** |
+| **Raisonnement** | Corrélation statistique de surface | **Résonance d'onde causale avec filtre de hubs** |
+| **Empreinte mémoire** | 6 à 24 Go de VRAM | **Quelques mégaoctets de RAM standard** |
+
+---
+
+<a id="7-demarrage-rapide"></a>
+## 🚀 7. Démarrage Rapide en 3 Commandes CPU
+
+Le dépôt est 100% autonome et n'utilise que la bibliothèque standard de Python 3.10+. Aucune installation lourde (PyTorch, TensorFlow ou CUDA) n'est nécessaire.
+
+### 1. Exécuter l'intégralité des 27 tests unitaires et d'intégration :
 ```bash
-# Exécution d'une requête en direct
-python3 cerveau/lecteur_ratiss.py cerveau/RatissOne.ratiss "Explique-moi la fusion nucléaire"
+python3 -m unittest discover -s tests -p "test_*.py"
 ```
+*Temps d'exécution : ~3,2 secondes sur un processeur standard.*
 
-**Sécurité Intrinsèque :**  
-Si un seul octet du conteneur est modifié ou corrompu par un tiers, le runtime intercepte instantanément l'incohérence et bloque l'exécution :
-```text
-[HALTE DE SÉCURITÉ] Empreinte altérée ! Déclaré: 6d67c34650eb..., Calculé: 35284ae84c9b...
-```
-
----
-
-<a id="la-boucle-audio"></a>
-## 🎧 5. La Boucle Sensorimotrice Audio (Oreille + Bouche + ETH)
-
-L'audio de RATISS-ONE obéit aux lois de l'anatomie : **le cerveau ne stocke jamais de signaux audio bruts**.
-
-```
- Micro / Audio WAV ➔ [OREILLE Phonon] ➔ Texte brut (Purge WAV instantanée)
-                              ↓
-                   [CERVEAU SOUVERAIN .ratiss]
-            (Corps ETH ➔ Sanctuaire ➔ Cortex ➔ Juge SHA)
-                              ↓
- Texte certifié + Paramètres ETH ➔ [BOUCHE Piper] ➔ Onde acoustique modulée
-```
-
-### Modulation Vocale par le Corps Affectif ETH 💓
-La voix ne sonne jamais comme un robot plat :
-- **Ton Chaleureux ("mon pote", "merci") :** Vitesse **x1.15**, pitch **520 Hz**, élocution dynamique et complice.
-- **Ton Neutre / Académique :** Vitesse **x1.00**, pitch **440 Hz**, diction claire et posée.
-- **Ton Vigilant / Alerte :** Vitesse **x0.90**, pitch **380 Hz**, diction solennelle et ferme.
-
-**Preuves Audio Générées :**  
-Les échantillons audio complets de test sont disponibles dans `bouche/audio_sorties/` :
-- `sequence_1_salutation.wav` (Salutation chaleureuse)
-- `sequence_2_apprentissage.wav` (Enregistrement vocal d'un fait live)
-- `sequence_3_restitution.wav` (Restitution vocale du fait scellé)
-
-Rejouer la boucle audio en une commande :
+### 2. Tester l'inférence de la Bouche guidée par le Tissu scellé :
 ```bash
-python3 bouche/assistant_vocal_complet.py
+python3 ratiss_v3.py cerveau/RatissOne.ratiss --message "le soleil" --mots 6 --glouton
 ```
 
----
-
-<a id="dialogue-v2"></a>
-## 💬 6. Dialogue v2 & Mémoire Épisodique Live ("Main Tendue")
-
-Fini les 7 intentions rigides et le rejet de *"merci beaucoup"*. Dialogue v2 apporte une souplesse totale :
-
+### 3. Lancer l'entraînement 10 pas avec mesure du Top-5 sur l'écart :
 ```bash
-python3 dialogue/conversation_v2.py
+python3 entrainement/entrainer_langue.py   --education corpus/prince_jouet.txt   --ecart corpus/tenu_a_lecart.txt   --faits corpus/faits_jouet.txt   --episodes corpus/episodes_jouet.txt   --retouches corpus/retouches_jouet.txt   --registre conte   --tours 3   --cerveau cerveau/RatissOne.ratiss   --sortie sortie/berceau_demo
 ```
 
-### Démonstration de l'Apprentissage One-Shot en Direct :
-1. **Tu lui dis :**  
-   *« Apprends que Jonathan Evina est le fondateur de RATISS Labs. »*
-2. **RATISS répond en 51 microsecondes :**  
-   *« Gravé dans ma mémoire active en 51.5 µs ! Fait scellé #6cffd87fa17d. »*
-3. **Tu lui demandes au tour suivant :**  
-   *« Qui est le fondateur de RATISS Labs ? »*
-4. **Il restitue immédiatement :**  
-   *« D'après ce que tu m'as appris (scellé #6cffd87fa17d) : Jonathan Evina est le fondateur de RATISS Labs. »*
-
-**Zéro rétropropagation, zéro GPU, zéro oubli catastrophique !**
-
 ---
 
-<a id="entrainement-colab"></a>
-## 🚀 7. Entraînement Épisodique Colab Haute Vitesse
+<a id="8-organisation-epuree"></a>
+## 📁 8. Organisation Épurée du Dépôt
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jonathansearch/RATISS-ONE/blob/main/colab/Entrainement_RATISS_ONE.ipynb)
-
-Pour éviter les entraînements obscurs qui durent une semaine, le script Colab découpe le processus en **épisodes observables en temps réel** :
-
-- **Script autonome :** `colab/train_ratiss_colab.py`
-- **Notebook interactif :** `colab/Entrainement_RATISS_ONE.ipynb`
-
-### Fonctionnalités Clés :
-1. **Zéro Boîte Noire :** Tableau de bord à chaque épisode (Vitesse mots/s, Énergie libre, Réticulation Hebbienne, Télémétrie ETH).
-2. **Vitesse Foudroyante :** Traitement vectorisé à **~760 000 mots par seconde** sur simple CPU.
-3. **Sauvegarde Directe Google Drive :** Le conteneur final est compilé et scellé automatiquement vers `/content/drive/MyDrive/RatissOne.ratiss`.
-
----
-
-<a id="deploiement-docker"></a>
-## 🐳 8. Déploiement Docker & Interface Web
-
-Déployer RATISS-ONE sur n'importe quel ordinateur ou serveur en une commande :
-
-```bash
-# Lancement direct via Python
-python3 interfaces/serveur_local.py
-
-# Ou via Docker
-cd docker && docker compose up -d
-```
-
-L'interface de chat Web et l'API locale sont immédiatement accessibles sur **`http://localhost:8080`** !
-
----
-
-<a id="tableau-mesures"></a>
-## 📊 9. Tableau Historique des 45 Leçons
-
-| Leçon | Découverte & Mesure Réelle | Preuve |
-| :---: | :--- | :--- |
-| **L01-L06** | Seuil, pas, oubli, asymétrie, propagation dans Ratum | `archives/anciennes_lecons.zip` |
-| **L07** | Oreille réelle Phonon-2 : JFK transcrit mot pour mot | `porte-voix/` |
-| **L08** | Bouche réelle Piper : verdicts parlés en 4,9 s | `bouche/` |
-| **L09-L10** | Cerveau à secteurs (VIF ➔ REFRAIN ➔ SANCTUAIRE f92) | `cerveau/cerveau.py` |
-| **L11-L12** | Éducation sans tissage manuel (50/50 TIENT, 0 témoin) | `archives/anciennes_lecons.zip` |
-| **L13** | Figement CISE : vitesse ≥ 10 ➔ étincelle ➔ neurones figés | `cerveau/` |
-| **L15** | Marbre : boucle fermée et gravure inaltérable | `cerveau/autotest_marbre.py` |
-| **L16** | Marée : tampon 50 sans perte et régulation de tempête | `cerveau/autotest_maree.py` |
-| **L17** | Rêve : consolidation nocturne sans ré-apprentissage | `cerveau/autotest_chaos.py` |
-| **L18** | Portabilité C : 24/24 sorties identiques au bit près | `livre/` |
-| **L19** | Pont topologique FOCAL (espace projectif P_sig) | `archives/anciennes_lecons.zip` |
-| **L20** | Règle R5 : compteur d'écoutes strict du monde extérieur | `cerveau/` |
-| **L22** | Dialogue v1 historique (7 intentions pinnées) | `dialogue/dialogue.py` |
-| **L45** | Lecture NarrativeQA (130 livres, 10,6M mots, 95k neurones) | `cerveau/fige-300M-narrativeqa.json.gz`|
-| **L46+** | **Architecture Souveraine 2.0 : Format .ratiss + Dialogue v2 + Mémoire Live** | **`cerveau/RatissOne.ratiss`** |
-
----
-
-<a id="carte-du-depot"></a>
-## 🗺️ 10. Carte du Dépôt Épuré
+Le dépôt a été restructuré pour garantir une lisibilité absolue, sans dispersion ni fichiers superflus :
 
 ```
 RATISS-ONE/
-├── README.md                          # Ce document (ancres 100% fonctionnelles)
-├── LICENSE                            # Licence MIT
-├── MANIFESTE.json                     # Principes directeurs et engagement
+├── ratiss_v3.py                 # Moteur unifié CPU (TissuScelle + Bouche + Inférence)
+├── LICENSE                      # Licence CC BY-NC-SA 4.0 & Propriétaire Souveraine
+├── README.md                    # Ce document de référence
 │
-├── cerveau/                           # LE CŒUR COGNITIF
-│   ├── RatissOne.ratiss               # CONTENEUR UNIQUE SCELLÉ (Boîte Blanche)
-│   ├── lecteur_ratiss.py              # RUNTIME OFFICIEL EXCLUSIF
-│   ├── fige-300M-narrativeqa.json.gz  # Graphe physique L45 (95 660 neurones)
-│   └── cerveau.py                     # Moteur de dynamique neuronale
+├── cerveau/                     # Sanctuaire du Tissu Scellé
+│   ├── RatissOne.ratiss         # Graphe causal scellé (95k neurones, 428k liens)
+│   ├── RatissOne.npz            # Matrice CSR d'interrogation ultra-rapide
+│   └── lecteur_ratiss.py        # Lecteur officiel boîte blanche
 │
-├── interfaces/                        # PORTS DE CONNECTIQUE & E/S
-│   ├── chat_terminal.py               # Chat interactif terminal
-│   ├── serveur_local.py               # Serveur Web & API locale (port 8080)
-│   └── assistant_vocal.py             # Assistant vocal E2E
+├── piliers/                     # Les 4 Piliers Neuro-Symboliques
+│   ├── neurochirurgie.py        # Pilier 1 : Overlay Delta O(1)
+│   ├── audit.py                 # Pilier 2 : Certification déterministe au 10⁻⁹
+│   ├── episodique.py            # Pilier 3 : Flux d'apprentissage live en 1 passe
+│   └── resonance.py             # Pilier 4 : Résonance d'ondes avec normalisation de degré
 │
-├── bouche/                            # LA BOUCHE VOCALE
-│   ├── assistant_vocal_complet.py     # Pipeline sensorimoteur audio complet
-│   ├── boucle_sensorielle.py          # Banc d'essai Oreille + Bouche + ETH
-│   └── audio_sorties/                 # Échantillons audio réels générés (.wav)
+├── entrainement/                # Méthode d'éducation CPU en 10 pas
+│   ├── entrainer_langue.py      # Pipeline complet (séparation, registres, top-5)
+│   └── organiser_corpus.py      # Linéarisation des dialogues
 │
-├── dialogue/                          # LE DIALOGUE SOUVERAIN
-│   ├── dialogue_v2.py                 # Moteur sémantique + Mémoire Live
-│   └── conversation_v2.py             # Démonstrateur conversationnel (17 répliques)
-│
-├── colab/                             # ENTRAÎNEMENT HAUTE VITESSE
-│   ├── Entrainement_RATISS_ONE.ipynb  # Notebook Colab avec export Drive
-│   └── train_ratiss_colab.py          # Script d'entraînement vectorisé
-│
-├── docker/                            # CONTENEURISATION
-│   ├── Dockerfile                     # Image légère prête à l'emploi
-│   └── docker-compose.yml             # Déploiement en 1 clic
-│
-├── livre/                             # LE LIVRE COMPLET (CC-BY-SA)
-│   ├── index.html                     # Livre interactif autonome
-│   └── presentation.html              # 12 slides des sommets
-│
-└── archives/                          # ARCHIVES SCELLÉES
-    └── anciennes_lecons.zip           # Sauvegarde intégrale des anciens scripts
+├── pipeline/                    # Outils modulaires pas-à-pas (oreille, eval, export)
+├── corpus/                      # Datasets de référence et corpus tenus à l'écart
+├── images/                      # Diagrammes d'architecture vectoriels (SVG haute résolution)
+├── tests/                       # Suite complète de 27 tests unitaires et de non-régression
+└── docs/                        # Spécifications théoriques détaillées (RATISS-VS-GPT, etc.)
 ```
 
 ---
 
-<a id="auteur-licence"></a>
-## 👤 11. Auteur, Identité & Licence
+<a id="9-licence-et-attribution"></a>
+## ⚖️ 9. Licence Propriétaire Souveraine &amp; Attribution
 
-- **Auteur :** Jonathan Evina (Mono-chercheur indépendant, 18 ans).
-- **Laboratoire :** RATISS Labs · Yaoundé, Cameroun 🇨🇲.
-- **Licence du Code :** [MIT](LICENSE) — Libre, ouvert, souverain.
-- **Licence du Livre :** [CC-BY-SA-4.0](livre/LICENCE.md) — Partage à l'identique.
-- **Règle d'or :** *« On ne croit pas. On rejoue. »*
+Le projet **RATISS-ONE** est une œuvre de recherche originale mono-auteur conçue et développée par **Jonathan Evina** (RATISS Labs, Yaoundé, Cameroun).
+
+- **Recherche &amp; Usage Non-Commercial :** Le code source et les modèles sont disponibles sous licence **Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International ([CC BY-NC-SA 4.0](LICENSE))**.
+- **Attribution obligatoire :** Toute utilisation académique, étude ou citation doit obligatoirement mentionner :  
+  *« Jonathan Evina, RATISS-ONE : Architecture Neuro-Symbolique Souveraine sans Transformeur, RATISS Labs, Yaoundé, Cameroun, 2026. »*
+- **Exploitation Commerciale &amp; Industrielle :** Toute utilisation commerciale, industrielle, déploiement bancaire, médical, militaire ou intégration SaaS nécessite une **Licence Commerciale Exclusive** accordée expressément par écrit par l'auteur.
+- **Révocation formelle :** Toute licence permissive antérieure (notamment MIT) est expressément révoquée.
 
 ---
-*Fait avec rigueur, passion et souveraineté à Yaoundé.*
+
+<div align="center">
+<b>RATISS Labs · Yaoundé, Cameroun 🇨🇲 · L'Intelligence Causale Souveraine</b>
+</div>

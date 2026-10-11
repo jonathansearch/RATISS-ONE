@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="900" height="480" fill="url(#bg2)"/>
+
+  <!-- Title -->
+  <text x="450" y="40" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#f8fafc" text-anchor="middle">PILIER 4 : RÉSONANCE SYNAPTIQUE ET ÉTOUFFEMENT DES HUBS</text>
+  <text x="450" y="65" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">Démonstration empirique de la défaite des hubs syntaxiques par la loi Poids / ln(degré)</text>
+
+  <!-- Sources -->
+  <circle cx="150" cy="170" r="35" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-width="2" filter="url(#glow)"/>
+  <text x="150" y="174" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#fbbf24" text-anchor="middle">soleil</text>
+  <text x="150" y="220" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">onde 1.0 (hop 0)</text>
+
+  <circle cx="150" cy="330" r="35" fill="#06b6d4" fill-opacity="0.2" stroke="#06b6d4" stroke-width="2" filter="url(#glow)"/>
+  <text x="150" y="334" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="middle">maree</text>
+  <text x="150" y="380" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">onde 1.0 (hop 0)</text>
+
+  <!-- Middle Hub: DE (Chute) -->
+  <g transform="translate(420, 130)">
+    <rect width="180" height="100" rx="8" fill="#1e293b" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="90" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#fca5a5" text-anchor="middle">Hub Syntaxique : "de"</text>
+    <text x="90" y="48" font-family="monospace" font-size="11" fill="#94a3b8" text-anchor="middle">20 644 connexions</text>
+    <line x1="20" y1="56" x2="160" y2="56" stroke="#334155"/>
+    <text x="90" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#f87171" text-anchor="middle">Pénalisé par ln(20 644) ≈ 9.9</text>
+    <text x="90" y="90" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#cbd5e1" text-anchor="middle">Chute : Rang #1 → #3</text>
+  </g>
+
+  <!-- Middle Carrefour: LUNE (Victoire) -->
+  <g transform="translate(420, 260)">
+    <rect width="180" height="110" rx="8" fill="#172554" stroke="#22c55e" stroke-width="2" filter="url(#glow)"/>
+    <text x="90" y="28" font-family="system-ui, sans-serif" font-size="14" font-weight="bold" fill="#4ade80" text-anchor="middle">Carrefour Causal : "lune"</text>
+    <text x="90" y="48" font-family="monospace" font-size="11" fill="#93c5fd" text-anchor="middle">34 connexions sémantiques</text>
+    <line x1="20" y1="56" x2="160" y2="56" stroke="#1e3a8a"/>
+    <text x="90" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#86efac" text-anchor="middle">Préservé par ln(34) ≈ 3.5</text>
+    <text x="90" y="93" font-family="system-ui, sans-serif" font-size="12" font-weight="bold" fill="#facc15" text-anchor="middle">🏆 PODIUM DIRECT : #2 !</text>
+  </g>
+
+  <!-- Target: GRAVITE -->
+  <g transform="translate(680, 275)">
+    <circle cx="60" cy="40" r="35" fill="#8b5cf6" fill-opacity="0.2" stroke="#a855f7" stroke-width="2"/>
+    <text x="60" y="44" font-family="system-ui, sans-serif" font-size="13" font-weight="bold" fill="#c084fc" text-anchor="middle">gravite</text>
+    <text x="60" y="95" font-family="system-ui, sans-serif" font-size="11" font-weight="bold" fill="#38bdf8" text-anchor="middle">Bond : #5867 → #21 !</text>
+  </g>
+
+  <!-- Lines -->
+  <path d="M 185 170 L 420 170" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3"/>
+  <path d="M 185 170 L 420 300" stroke="#f59e0b" stroke-width="2"/>
+  <path d="M 185 330 L 420 190" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="3"/>
+  <path d="M 185 330 L 420 320" stroke="#06b6d4" stroke-width="2"/>
+  <path d="M 600 315 L 680 315" stroke="#a855f7" stroke-width="2"/>
+
+  <!-- Footer note -->
+  <text x="450" y="440" font-family="system-ui, sans-serif" font-size="12" fill="#94a3b8" text-anchor="middle">R4–R7 Protocol : 27 tests unitaires au vert en 3,2s CPU · Empreinte SHA-256 du tissu scellé rigoureusement intacte.</text>
+</svg>

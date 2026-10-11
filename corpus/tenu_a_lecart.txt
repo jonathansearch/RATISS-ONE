@@ -1,0 +1,6 @@
+# Ces phrases ne sont pas dans prince_jouet.txt.
+# C'est sur CE fichier que le top-5 a le droit de juger.
+le petit prince aimait les etoiles
+un jardin gardait la rose
+le prince habitait une planete
+sa rose etait unique
