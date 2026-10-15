@@ -636,6 +636,52 @@ class Bouche:
 
     # ---------- scores ----------
 
+    _MOTS_LIAISON = {
+        "de", "la", "le", "les", "l", "un", "une", "des", "du", "d", "et", "en",
+        "a", "au", "aux", "est", "sont", "que", "qui", "ce", "dans", "par",
+        "pour", "sur", "avec", "se", "ne", "pas", "c", "y", "son", "sa", "ses",
+        "ou", "mais", "si", "leur", "leurs", "ces", "cet", "cette", "il", "elle",
+        "ils", "elles", "on", "nous", "vous"
+    }
+
+    _PARASITES_VOCAB = {
+        "tâche", "tache", "fidèlement", "fidelement", "assistant", "utilisateur",
+        "prompt", "instructions", "instruction", "ia", "modèle", "modele",
+        "réponse", "reponse"
+    }
+
+    def degre_entree(self, mot: str) -> int:
+        if not hasattr(self, "_index_degre_entree") or self._index_degre_entree is None:
+            deg = defaultdict(int)
+            for src, targets in self._arcs().items():
+                for tgt in targets:
+                    deg[tgt] += 1
+            self._index_degre_entree = deg
+            self._facteurs_anti_hub = {
+                c: 1.0 / (math.log(max(math.e, float(d))) ** 0.5)
+                for c, d in deg.items()
+            }
+        return self._index_degre_entree.get(mot, 0)
+
+    def facteur_anti_hub(self, cand: str) -> float:
+        if not hasattr(self, "_facteurs_anti_hub") or self._facteurs_anti_hub is None:
+            self.degre_entree(cand)
+        return self._facteurs_anti_hub.get(cand, 1.0)
+
+    def resoudre_mot(self, mot: str) -> str:
+        """Trouve la forme existante dans la bouche (avec ou sans accent)."""
+        if not hasattr(self, "_index_accents") or self._index_accents is None:
+            self._index_accents = {}
+            for w in self._arcs():
+                self._index_accents.setdefault(norm(w), []).append(w)
+        if mot in self._arcs():
+            return mot
+        n = norm(mot)
+        cands = self._index_accents.get(n, [])
+        if cands:
+            return max(cands, key=lambda w: len(self._arcs().get(w, {})))
+        return mot
+
     def scores_ordre(self, historique: list[str], memoire: int | None = None, registre: str | None = None) -> dict[str, float]:
         mem = self.memoire if memoire is None else memoire
         mem = max(1, int(mem))
@@ -647,10 +693,17 @@ class Bouche:
         fenetre = historique[-mem:]
         for dist, mot in enumerate(reversed(fenetre)):
             lum = LUMIERE ** dist
+            mot_res = self.resoudre_mot(mot)
             for table in tables:
-                for cand, force in table.get(mot, {}).items():
-                    if force > 0:
-                        scores[cand] += lum * float(force)
+                sub = table.get(mot, {}) or table.get(mot_res, {})
+                for cand, force in sub.items():
+                    if force <= 0 or cand in self._PARASITES_VOCAB:
+                        continue
+                    if cand in self._MOTS_LIAISON:
+                        force_eff = float(force)
+                    else:
+                        force_eff = float(force) * self.facteur_anti_hub(cand)
+                    scores[cand] += lum * force_eff
         return dict(scores)
 
     def _tables_trigrammes(self, registre: str | None = None) -> list[dict]:
@@ -664,21 +717,27 @@ class Bouche:
         memoire: int | None = None,
         registre: str | None = None,
     ) -> dict[str, float]:
-        """Paire si on l'a vue, sinon le bigramme du dernier mot.
-
-        On ne parcourt pas les 95 660 neurones. Les candidats sont les
-        successeurs déjà écrits sous cette paire, ou à défaut sous ce mot.
-        """
+        """Paire si on l'a vue, sinon le bigramme du dernier mot."""
         del memoire  # le repli est le dernier mot : la lumière à 8 a perdu le top-1
         base = self.scores_ordre(historique, memoire=1, registre=registre)
         if len(historique) < 2:
             return base
         gauche, src = historique[-2], historique[-1]
+        gauche_res = self.resoudre_mot(gauche)
+        src_res = self.resoudre_mot(src)
         brut: dict[str, float] = defaultdict(float)
         for table in self._tables_trigrammes(registre):
-            for cand, force in table.get(gauche, {}).get(src, {}).items():
-                if force > 0:
-                    brut[cand] += float(force)
+            sub = table.get(gauche, {}).get(src, {})
+            if not sub:
+                sub = table.get(gauche_res, {}).get(src_res, {})
+            for cand, force in sub.items():
+                if force <= 0 or cand in self._PARASITES_VOCAB:
+                    continue
+                if cand in self._MOTS_LIAISON:
+                    f_eff = float(force)
+                else:
+                    f_eff = float(force) * self.facteur_anti_hub(cand)
+                brut[cand] += f_eff
         if not brut:
             return base
         tg = normaliser(brut)
@@ -836,33 +895,94 @@ def parler(
     graine: int = 0,
     glouton: bool = False,
 ) -> str:
-    """Pioche le mot suivant. Ne prend pas toujours le plus fort : sinon ça boucle."""
+    """Marche guidée par le potentiel thématique et l'ordre, avec anti-boucle temporel et déterminisme R7."""
+    from collections import deque
+
+    # 1. Reproductibilité R7 : graine liée au prompt si 0
+    if graine == 0:
+        graine = int(hashlib.sha256(prompt.encode("utf-8")).hexdigest()[:8], 16) % 1_000_000
     rng = random.Random(graine)
-    hist = tokeniser(prompt)
-    if not hist:
-        # Départ : le mot qui a le plus d'arcs sortants.
-        table = bouche._arcs()
-        if not table:
-            return ""
-        hist = [max(table, key=lambda m: sum(table[m].values()))]
+
+    tokens_bruts = [w.lower() for w in re.findall(r"[0-9a-za-zàâäéèêëïîôùûüçœæ_-]+", prompt.lower())]
+    mots_questions = {"comment", "explique", "pourquoi", "parle", "raconte", "dis", "definition", "definir", "quel", "quelle", "qui", "quoi"}
+    is_question = any(t in mots_questions for t in tokens_bruts)
+
+    # Concepts utiles du prompt
+    concepts_utiles = [
+        bouche.resoudre_mot(t) for t in tokens_bruts 
+        if t not in bouche._MOTS_LIAISON and t not in mots_questions and len(t) > 2
+    ]
+
+    # Champ d'énergie persistant du Tissu Scellé
+    champ_tissu: dict[str, float] = {}
+    if tissu is not None and concepts_utiles:
+        champ_tissu = tissu.scores_theme(concepts_utiles, memoire=len(concepts_utiles))
+
+    # Amorçage de la réponse
+    if is_question and concepts_utiles:
+        # Démarrer sur le concept primaire le plus résonant
+        if champ_tissu:
+            cands_sujet = [c for c in concepts_utiles if c in champ_tissu or norm(c) in champ_tissu]
+            premier_mot = max(cands_sujet, key=lambda c: champ_tissu.get(c, champ_tissu.get(norm(c), 0.0))) if cands_sujet else concepts_utiles[-1]
+        else:
+            premier_mot = concepts_utiles[-1]
+        hist = [premier_mot]
+        produits = [premier_mot]
+    else:
+        hist = tokeniser(prompt)
+        if not hist:
+            table = bouche._arcs()
+            if not table:
+                return ""
+            hist = [max(table, key=lambda m: sum(table[m].values()))]
+        produits = []
+
     temp = bouche.temperature if temperature is None else temperature
     if glouton:
         temp = 1e-6
-    produits = []
-    vu_recent = []
-    bigrams_vus = set()
+
+    champ_energie = dict(champ_tissu)
+    recents_mots = deque(maxlen=8)
+    recents_bigrammes = deque(maxlen=6)
+    recents_trigrammes = deque(maxlen=6)
+
+    dernier = hist[-1]
+    avant_dernier = hist[-2] if len(hist) >= 2 else ""
+
     for _ in range(n):
-        scores = bouche.scores(hist, tissu=tissu, lam=lam, memoire=memoire)
-        # On évite de recracher tout de suite le mot qu'on vient de dire.
-        for vieux in vu_recent[-2:]:
-            if vieux in scores and len(scores) > 1:
-                scores[vieux] *= 0.15
-        rang = [(m, s) for m, s in scores.items() if s > 0 and m != hist[-1]]
-        if not rang:
+        scores = bouche.scores(hist, tissu=None, lam=lam, memoire=memoire)
+        
+        # Filtrer et moduler les scores
+        scores_filtres = {}
+        for m, s in scores.items():
+            if s <= 0 or m == dernier or m in bouche._PARASITES_VOCAB:
+                continue
+            # Anti-boucle temporelle glissante
+            if (dernier, m) in recents_bigrammes:
+                continue
+            if avant_dernier and (avant_dernier, dernier, m) in recents_trigrammes:
+                continue
+            if m in list(recents_mots)[-2:]:
+                continue
+
+            # Modulation sémantique continue du tissu
+            e_val = champ_energie.get(m, 0.0) or champ_energie.get(norm(m), 0.0)
+            if e_val > 0:
+                s *= (1.0 + 4.0 * e_val)
+            elif m not in bouche._MOTS_LIAISON:
+                s *= 0.35
+
+            scores_filtres[m] = s
+
+        if not scores_filtres:
             break
+
+        # Top 5 et échantillonnage contrôlé
+        rang = sorted(scores_filtres.items(), key=lambda x: x[1], reverse=True)[:5]
         mots = [m for m, _ in rang]
         poids = [s for _, s in rang]
         probs = softmax(poids, temp)
+
         seuil = rng.random()
         acc = 0.0
         choix = mots[-1]
@@ -871,13 +991,23 @@ def parler(
             if seuil <= acc:
                 choix = m
                 break
-        paire = (hist[-1], choix)
-        if paire in bigrams_vus:
-            break
-        bigrams_vus.add(paire)
+
+        # Consommation d'énergie du tissu pour faire progresser la phrase
+        if choix in champ_energie:
+            champ_energie[choix] *= 0.25
+        if norm(choix) in champ_energie:
+            champ_energie[norm(choix)] *= 0.25
+
+        recents_bigrammes.append((dernier, choix))
+        if avant_dernier:
+            recents_trigrammes.append((avant_dernier, dernier, choix))
+        recents_mots.append(choix)
+
         produits.append(choix)
         hist.append(choix)
-        vu_recent.append(choix)
+        avant_dernier = dernier
+        dernier = choix
+
     return " ".join(produits)
 
 
@@ -928,7 +1058,10 @@ def executer(message: str, bouche: Bouche, tissu: TissuScelle | None = None, **o
 
     if tissu is not None:
         cle = tissu.sujet_sanctuaire(msg, tokens)
-        if cle and any(w in ensemble for w in ("explique", "comment", "pourquoi", "definition", "definir", "cest", "quoi", "parle", "raconte")):
+        if cle and (
+            any(w in ensemble for w in ("explique", "comment", "pourquoi", "definition", "definir", "cest", "quoi", "parle", "raconte", "qu", "que", "c", "est"))
+            or re.search(r"(?:qu['\s]?est|c['\s]?est|definition|explique|parle|raconte)", msg, re.IGNORECASE)
+        ):
             ent = tissu.sanctuaire[cle]
             faits = ent.get("faits", {})
             if any(w in ensemble for w in ("explique", "comment", "pourquoi")):
@@ -937,9 +1070,6 @@ def executer(message: str, bouche: Bouche, tissu: TissuScelle | None = None, **o
                 mode = "DEFINITION"
             txt = faits.get(mode) or faits.get("DEFINITION") or ""
             nom = ent.get("nom", cle)
-            # Le paragraphe scellé n'entre pas dans la bouche plastique.
-            # On le compile en chemin, on le marche, on rend la graphie d'origine
-            # seulement si le chemin tient.
             mots = tokeniser(txt)
             rendu = _reponse_chemin(mots, txt, None)
             return {"intent": "sanctuaire", "reponse": f"{nom}. {rendu}"}

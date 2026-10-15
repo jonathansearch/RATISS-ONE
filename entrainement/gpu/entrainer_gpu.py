@@ -35,14 +35,25 @@ except ImportError:
     HAS_NUMPY = False
 
 
+# Filtre strict des attracteurs syntaxiques et amorces parasites de datasets
+_PATRONS_PARASITES = re.compile(
+    r"(?:vous êtes un assistant|accomplir la tâche aussi fidèlement|en tant qu['’]intelligence artificielle|en tant que modèle de langue|<\|im_start\|>|<\|im_end\|>|as an ai language model|how can i help you today)",
+    re.IGNORECASE,
+)
+
+
 def tokeniser_rapide(texte: str) -> list[list[str]]:
-    """Découpe rapide en phrases et tokens normalisés."""
+    """Découpe rapide en phrases et tokens normalisés avec filtrage des parasites."""
     phrases = []
     for ligne in texte.splitlines():
         ligne = ligne.strip()
         if not ligne or ligne.startswith("#"):
             continue
+        if _PATRONS_PARASITES.search(ligne):
+            continue
         for ph in re.split(r"[.!?]+", ligne):
+            if _PATRONS_PARASITES.search(ph):
+                continue
             tokens = [m.lower() for m in re.findall(r"[a-zàâäéèêëîïôöùûüç_]+", ph.lower())]
             if len(tokens) >= 2:
                 phrases.append(tokens)
